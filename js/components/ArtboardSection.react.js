@@ -1,11 +1,14 @@
 var MinceArtboardActionCreators = require('../actions/MinceArtboardActionCreators');
 var React = require('react');
 var ArtboardListLayer = require('../components/ArtboardListLayer.react');
+var MeasureSection = require('../components/MeasureSection.react');
 var ArtboardStore = require('../stores/ArtboardStore');
 
 function getStateFromStores() {
     return {
-        artboard: ArtboardStore.getCurrent()
+        artboard: ArtboardStore.getCurrent(),
+        layer: ArtboardStore.getLayer(),
+        image: ArtboardStore.getImage()
     };
 }
 
@@ -24,7 +27,9 @@ var ArtboardSection = React.createClass({
     },
 
     render: function() {
-        var layers = this.state.artboard.layer.map(function(layerItem) {
+        var artboard = this.state.artboard
+
+        var layers = this.state.layer.map(function(layerItem) {
             return (
                 <ArtboardListLayer
                     key={layerItem.id}
@@ -34,7 +39,7 @@ var ArtboardSection = React.createClass({
          });
 
         var wrapperStyle = {
-            backgroundImage: artboard.src,
+            backgroundImage: 'url('+this.state.image+')',
             left: artboard.x+'px',
             top: artboard.y+'px',
             width: artboard.width+'px',
@@ -42,11 +47,14 @@ var ArtboardSection = React.createClass({
             zIndex: artboard.zIndex
         };
 
+        artboard.name = decodeURIComponent(artboard.name);
+
         return (
             <div className="artboard">
                 <h3 className="artboard__title">{artboard.name}</h3>
                 <div className="artboard__wrapper" style={wrapperStyle}>
                     {layers}
+                    <MeasureSection />
                 </div>
             </div>
         );

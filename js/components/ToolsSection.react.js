@@ -1,10 +1,18 @@
 var React = require('react');
-var ArtboardStore = require('../stores/ArtboardStore');
+var ToolsStore = require('../stores/ToolsStore');
 
 function getStateFromStores() {
     return {
-        artboard: ArtboardStore.getCurrent()
+        layer: ToolsStore.getLayer()
     };
+}
+
+function formatStyle(styleJson){
+    var style = [];
+    for(var k in styleJson){
+        style.push(k +':'+ (styleJson[k].indexOf('font-family') > -1 ? '"'+styleJson[k]+'"' : styleJson[k]) +';');
+    }
+    return style.join('\r\n');
 }
 
 var ToolsSection = React.createClass({
@@ -14,16 +22,47 @@ var ToolsSection = React.createClass({
     },
 
     componentDidMount: function() {
-        ArtboardStore.addChangeListener(this._onChange);
+        ToolsStore.addChangeListener(this._onChange);
     },
 
     componentWillUnmount: function() {
-        ArtboardStore.removeChangeListener(this._onChange);
+        ToolsStore.removeChangeListener(this._onChange);
     },
 
     render: function() {
+        var layer = this.state.layer;
+
+        console.log(layer);
+
+        layer.name = decodeURIComponent(layer.name);
+        layer.html = decodeURIComponent(layer.html);
+
+        var tools = [];
+
+
+        if (layer.html && layer.html !== 'undefined') {
+            tools.push(
+                <textarea name="content" value={layer.html}></textarea>
+            )
+        }
+
+        if (layer.style) {
+            var styleHtml = formatStyle(layer.style);
+
+            tools.push(
+                <textarea name="code" value={styleHtml}>{styleHtml}</textarea>
+            )
+        }
+
         return (
             <div className="tools">
+                <h5>{layer.name}</h5>
+                x: {layer.x}px<br />
+                y: {layer.x}px<br />
+                width: {layer.width}px<br />
+                height: {layer.height}px<br />
+
+                {tools}
             </div>
         );
     },

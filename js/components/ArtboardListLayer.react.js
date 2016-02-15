@@ -2,6 +2,8 @@ var MinceArtboardActionCreators = require('../actions/MinceArtboardActionCreator
 var React = require('react');
 var ArtboardStore = require('../stores/ArtboardStore');
 
+var ReactPropTypes = React.PropTypes;
+
 var ArtboardListLayer = React.createClass({
 
     propTypes: {

@@ -1,131 +1,31 @@
-//TODO: Need to add other font formats for cross browser support
-
-/*Here are font-face for all fonts available in the font folder.
-If the font-face declaration is commented it means, that this font type wasn't used till now.
-If you need font type that is commented, please, uncomment it and use. */
-
 @font-face {
-    font-family: "FrutigerBoldCn";
-    src: url("../fonts/FrutigerBoldCn/FrutigerLTStd-BoldCn.eot");
-    src: url("../fonts/FrutigerBoldCn/FrutigerLTStd-BoldCn.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/FrutigerBoldCn/FrutigerLTStd-BoldCn.woff") format("woff"),
-    url("../fonts/FrutigerBoldCn/FrutigerLTStd-BoldCn.ttf") format("truetype"),
-    url("../fonts/FrutigerBoldCn/FrutigerLTStd-BoldCn.svg#FrutigerLTStd") format("svg");
+    font-family: 'Oswald';
+    src: url('../fonts/oswald/oswald-regular-webfont.eot');
+    src: url('../fonts/oswald/oswald-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/oswald/oswald-regular-webfont.woff2') format('woff'),
+         url('../fonts/oswald/oswald-regular-webfont.woff') format('woff'),
+         url('../fonts/oswald/oswald-regular-webfont.ttf') format('truetype');
     font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Oswald';
+    src: url('../fonts/oswald/oswald-light-webfont.eot');
+    src: url('../fonts/oswald/oswald-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/oswald/oswald-light-webfont.woff2') format('woff'),
+         url('../fonts/oswald/oswald-light-webfont.woff') format('woff'),
+         url('../fonts/oswald/oswald-light-webfont.ttf') format('truetype');
+    font-weight: 100;
     font-style: normal;
 }
 
 @font-face {
-    font-family: "FrutigerBlack";
-    src: url("../fonts/FrutigerBlack/frutiger-black-webfont.eot");
-    src: url("../fonts/FrutigerBlack/frutiger-black-webfont.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/FrutigerBlack/frutiger-black-webfont.woff") format("woff"),
-    url("../fonts/FrutigerBlack/frutiger-black-webfont.ttf") format("truetype"),
-    url("../fonts/FrutigerBlack/frutiger-black-webfont.svg#FrutigerBlack") format("svg");
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "FrutigerBold";
-    src: url("../fonts/FrutigerBold/frutiger-bold-webfont.eot");
-    src: url("../fonts/FrutigerBold/frutiger-bold-webfont.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/FrutigerBold/frutiger-bold-webfont.woff") format("woff"),
-    url("../fonts/FrutigerBold/frutiger-bold-webfont.ttf") format("truetype"),
-    url("../fonts/FrutigerBold/frutiger-bold-webfont.svg#FrutigerBold") format("svg");
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "FrutigerLight";
-    src: url("../fonts/FrutigerLight/frutiger-light-webfont.eot");
-    src: url("../fonts/FrutigerLight/frutiger-light-webfont.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/FrutigerLight/frutiger-light-webfont.woff") format("woff"),
-    url("../fonts/FrutigerLight/frutiger-light-webfont.ttf") format("truetype"),
-    url("../fonts/FrutigerLight/frutiger-light-webfont.svg#frutiger_45_lightregular") format("svg");
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "FrutigerRoman";
-    src: url("../fonts/FrutigerRoman/frutiger-roman-webfont.eot");
-    src: url("../fonts/FrutigerRoman/frutiger-roman-webfont.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/FrutigerRoman/frutiger-roman-webfont.woff") format("woff"),
-    url("../fonts/FrutigerRoman/frutiger-roman-webfont.ttf") format("truetype"),
-    url("../fonts/FrutigerRoman/frutiger-roman-webfont.svg#frutiger_55roman") format("svg");
-    font-weight: normal;
-    font-style: normal;
-}
-
-/*@font-face {
-    font-family: "FrutigerUltraBlack";
-    src: url("../fonts/FrutigerUltraBlack/frutiger-ultrablack-webfont.eot");
-    src: url("../fonts/FrutigerUltraBlack/frutiger-ultrablack-webfont.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/FrutigerUltraBlack/frutiger-ultrablack-webfont.woff2") format("woff2"),
-    url("../fonts/FrutigerUltraBlack/frutiger-ultrablack-webfont.woff") format("woff"),
-    url("../fonts/FrutigerUltraBlack/frutiger-ultrablack-webfont.ttf") format("truetype"),
-    url("../fonts/FrutigerUltraBlack/frutiger-ultrablack-webfont.svg#frutiger_95_ultra_blackRg") format("svg");
-    font-weight: normal;
-    font-style: normal;
-}*/
-
-@font-face {
-    font-family: "FrutigerLightCn";
-    src: url("../fonts/FrutigerLightCn/Frutiger-LightCn.eot");
-    src: url("../fonts/FrutigerLightCn/Frutiger-LightCn.woff") format("woff"),
-    url("../fonts/FrutigerLightCn/Frutiger-LightCn.ttf") format("truetype"),
-    url("../fonts/FrutigerLightCn/Frutiger-LightCn.svg") format("svg");
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "FrutigerExtraBlackCn";
-    src: url("../fonts/FrutigerExtraBlackCn/Frutiger-ExtraBlackCn.eot");
-    src: url("../fonts/FrutigerExtraBlackCn/Frutiger-ExtraBlackCn.woff") format("woff"),
-    url("../fonts/FrutigerExtraBlackCn/Frutiger-ExtraBlackCn.ttf") format("truetype"),
-    url("../fonts/FrutigerExtraBlackCn/Frutiger-ExtraBlackCn.svg") format("svg");
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "FrutigerCn";
-    src: url("../fonts/FrutigerCn/Frutiger-Cn.eot");
-    src: url("../fonts/FrutigerCn/Frutiger-Cn.woff") format("woff"),
-    url("../fonts/FrutigerCn/Frutiger-Cn.ttf") format("truetype"),
-    url("../fonts/FrutigerCn/Frutiger-Cn.svg") format("svg");
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "FrutigerBlackCn";
-    src: url("../fonts/FrutigerBlackCn/Frutiger-BlackCn.eot");
-    src: url("../fonts/FrutigerBlackCn/Frutiger-BlackCn.woff") format("woff"),
-    url("../fonts/FrutigerBlackCn/Frutiger-BlackCn.ttf") format("truetype"),
-    url("../fonts/FrutigerBlackCn/Frutiger-BlackCn.svg") format("svg");
-    font-weight: normal;
-    font-style: normal;
-}
-
-//Added for the Facebook sign in button
-@font-face {
-    font-family: "GalaxieCondensedBold";
-    src: url("../fonts/GalaxieCondensedBold/PolarisCondensed-Bold.eot");
-    src: url("../fonts/GalaxieCondensedBold/PolarisCondensed-Bold.woff") format("woff"),
-    url("../fonts/GalaxieCondensedBold/PolarisCondensed-Bold.svg#font") format("svg");
-    font-weight: normal;
-    font-style: normal;
-}
-
-//Fix problem with FrutigerBoldCn font for IE
-
-@font-face {
-    font-family: "FrutigerBlackCnIE";
-    src: url("../fonts/FrutigerBlackCn/Frutiger-BlackCn.eot");
-    font-weight: normal;
+    font-family: 'Oswald';
+    src: url('../fonts/oswald/oswald-bold-webfont.eot');
+    src: url('../fonts/oswald/oswald-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/oswald/oswald-bold-webfont.woff2') format('woff'),
+         url('../fonts/oswald/oswald-bold-webfont.woff') format('woff'),
+         url('../fonts/oswald/oswald-bold-webfont.ttf') format('truetype');
+    font-weight: 600;
     font-style: normal;
 }

@@ -2,39 +2,6 @@
 //  VARS.SCSS
 //------------------------------------*/
 
-$oldie: false!default;
-
-
-// Breakpoints
-// ===========
-// There are no common breakpoints so these are just a suggestion
-// You'll need to define your own breakpoints to suit your design
-
-// @media breakpoints
-// $BP_MOBILE_PORTRAIT                 :   300px;
-// $BP_MOBILE_LANDSCAPE                :   420px;
-// $BP_SM_TAB_PORTRAIT                 :   481px;
-// $BP_TAB_PORTRAIT                    :   733px;
-// $BP_TAB_LANDSCAPE                   :   961px;
-// $BP_DESKTOP                         :   1140px;
-// $BP_CINEMA                          :   1600px;
-
-$bp-mobile          : "screen and (max-width: 599px)";
-$bp-phablet         : "screen and (min-width: 600px) and (max-width: 959px)";
-$bp-tablet          : "screen and (min-width: 960px) and (max-width: 1279px)";
-$bp-desktop         : "screen and (min-width: 1280px) and (max-width: 1679px)";
-$bp-widescreen      : "screen and (min-width: 1680px)";
-
-$bp-tablet-widescreen : "screen and (min-width: 960px)";
-$bp-mobile-phablet    : "screen and (max-width: 959px)";
-$bp-mobile-tablet     : "screen and (max-width: 1279px)";
-$bp-phablet-tablet    : "screen and (min-width: 600px) and (max-width: 1279px)";
-$bp-phablet-widescreen: "screen and (min-width: 600px)";
-$bp-desktop-widescreen: "screen and (min-width: 1280px)";
-$bp-phablet-plus-widescreen: "screen and (min-width: 641px)"; // Added to work with styles for the Samsung S3 for some bugs
-$bp-mobile-phablet-nexus7: "screen and (max-width: 960px)"; // Added to work with styles for the Nexus7 for some bugs
-$bp-mobile-nexus6: "screen and (max-width: 690px)"; // Added to work with styles for the Nexus6 for some bugs
-
 // Colors
 $SWATCH_OUTLINE     : #dedee2;
 $LIGHTER_GRAY       : #f6f7f8;
@@ -75,28 +42,30 @@ $font-weight-semibold          : 700;
 $font-weight-bold              : 900;
 
 
-// Z-index map
-// ===========
-// Warning: Avoid customizing these values. They're used for a bird's eye view
-// of components dependent on the z-axis and are designed to all work together.
-// NOTE: Maximum value for z-index is limited to signed 32/64-bit value
-$z-index: (
-        max       : 2147483647,
-        modal     : 900,
-        overlay   : 800,
-        page-nav  : 700,
-        tooltip   : 600,
-        header    : 500
-);
-
 
 // Header dimensions
 $page-header-small-height   : 36px;
 $page-header-big-height     : 106px;
 
-// Page specific variables
-$plp-medium-layout: (columns: 4, gutters: 25/220);
-$plp-wide-layout: (columns: 5, gutters: 25/220);
-$PLP_FILTER_HEIGHT: 67px;
-$PLP_FILTER_HEIGHT_COMPACT: 48px;
-$PLP_GRID_GUTTER: (1/10);
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #fff;
+
+$mainColor: #464547;
+$headingColor: #464547;
+
+$mainFontSize: 38px;
+$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingFont: 'Oswald', Helvetica, sans-serif;
+$headingTextShadow: none;
+$heading1TextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: uppercase;
+$headingFontWeight: 600;
+$linkColor: #39c2d7;
+
+$secondaryLinkColor: #7F993A;
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;

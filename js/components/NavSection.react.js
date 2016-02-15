@@ -32,7 +32,8 @@ var NavSection = React.createClass({
             var navListPages = folder.artboard.map(function(artboard) {
                 var artboardData = {
                     id: artboard.id,
-                    name: artboard.name
+                    name: artboard.name,
+                    src: artboard.src
                 }
 
                 return (

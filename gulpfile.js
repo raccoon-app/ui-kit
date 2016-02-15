@@ -14,8 +14,7 @@ require('./gulp-config/gulp-load-tasks')(gulp, {
  */
 gulp.task('build', function(done) {
     return runSequence(
-		'scripts:compile',
-        'sass:compile'
+		['scripts:build', 'sass:build']
     );
 });
 

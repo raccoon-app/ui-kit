@@ -1,0 +1,43 @@
+var React = require('react');
+var ProjectStore = require('../stores/ProjectStore');
+var MinceWebAPIUtils = require('../utils/MinceWebAPIUtils');
+
+var ENTER_KEY_CODE = 13;
+
+var InputSection = React.createClass({
+
+    getInitialState: function() {
+        return {url: 'http://design.oweather.net/'};
+    },
+
+    render: function() {
+        return (
+            <input type="text"
+                   className="header__input"
+                   value={this.state.url}
+                   onChange={this._onChange}
+                   onKeyDown={this._onKeyDown} />
+        );
+    },
+
+    /**
+    * Event handler for 'change' events coming from the stores
+    */
+    _onChange: function() {
+        this.setState({url: event.target.value});
+    },
+
+    _onKeyDown: function(event) {
+        if (event.keyCode === ENTER_KEY_CODE) {
+            event.preventDefault();
+            var url = this.state.url.trim();
+            if (url) {
+                MinceWebAPIUtils.getProject(url);
+            }
+            //this.setState({text: ''});
+        }
+    }
+
+});
+
+module.exports = InputSection;

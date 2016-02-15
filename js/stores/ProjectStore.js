@@ -3,16 +3,21 @@ var MinceConstants = require('../constants/MinceConstants');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
+
 var ActionTypes = MinceConstants.ActionTypes;
 var CHANGE_EVENT = 'change';
 
 var _project = {};
+var _url = null;
 var _currentFolderID = null;
 var _currentArtboardID = null;
 
 var ProjectStore = assign({}, EventEmitter.prototype, {
 
-    init: function(project) {
+    init: function(project, url) {
+        _url = url || null;
+
+        console.log(project.sketchName);
         _project.name = decodeURIComponent(project.sketchName);
         _project.folders = [];
 
@@ -23,7 +28,7 @@ var ProjectStore = assign({}, EventEmitter.prototype, {
             item.artboard = item.artboardId.map(function(aId){
                 return {
                     id: project.artboard[aId].id,
-                    src: project.artboard[aId].src,
+                    src:  _url+project.artboard[aId].src +'/artboard.png',
                     name: decodeURIComponent(project.artboard[aId].name)
                 };
             });
@@ -63,7 +68,7 @@ var ProjectStore = assign({}, EventEmitter.prototype, {
     },
 
     getAllFolders: function() {
-        return _project.folders;
+        return _project.folders || [];
     },
 
     getName: function() {
@@ -83,7 +88,7 @@ ProjectStore.dispatchToken = MinceAppDispatcher.register(function(action) {
             break;
 
         case ActionTypes.RECEIVE_PROJECT:
-            ProjectStore.init(action.project);
+            ProjectStore.init(action.project, action.url);
             ProjectStore.emitChange();
             break;
 

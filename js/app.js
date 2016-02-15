@@ -1,13 +1,13 @@
 
 var MinceApp = require('./components/MinceApp.react');
-var MinceExampleData = require('./MinceExampleData');
-var MinceWebAPIUtils = require('./utils/MinceWebAPIUtils');
+//var MinceExampleData = require('./MinceExampleData');
+
 var React = require('react');
 window.React = React;
 
-MinceExampleData.init(); // load example data into localstorage
+//MinceExampleData.init(); // load example data into localstorage
 
-MinceWebAPIUtils.getProject();
+//MinceWebAPIUtils.getProject();
 
 React.render(
     <MinceApp />,

@@ -7,11 +7,13 @@ var ActionTypes = MinceConstants.ActionTypes;
 var CHANGE_EVENT = 'change';
 
 var _artboard = {};
+var _url = null;
 var _currentID = null;
 
 var ArtboardStore = assign({}, EventEmitter.prototype, {
 
-    init: function(project) {
+    init: function(project,url) {
+        _url = url;
         _artboard = project.artboard ;
 
         if (!_currentID) {
@@ -52,13 +54,15 @@ var ArtboardStore = assign({}, EventEmitter.prototype, {
     },
 
     getCurrent: function() {
-        return this.get(this.getCurrentID());
+        return this.get(this.getCurrentID()) || {};
     },
 
     getLayer: function() {
-        return this.getCurrent().layer;
+        return this.getCurrent().layer || [];
+    },
+    getImage: function() {
+        return _url+this.getCurrent().src +'/artboard.png';
     }
-
 });
 
 ArtboardStore.dispatchToken = MinceAppDispatcher.register(function(action) {
@@ -69,7 +73,7 @@ ArtboardStore.dispatchToken = MinceAppDispatcher.register(function(action) {
             break;
 
         case ActionTypes.RECEIVE_PROJECT:
-            ArtboardStore.init(action.project);
+            ArtboardStore.init(action.project, action.url);
             ArtboardStore.emitChange();
             break;
 

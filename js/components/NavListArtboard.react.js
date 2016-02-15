@@ -14,6 +14,10 @@ var NavListArtboard = React.createClass({
     render: function() {
         var artboard = this.props.artboard;
 
+        var imgStyle = {
+            backgroundImage: 'url('+artboard.src+')'
+        };
+
         return (
             <li
                 className={classNames({
@@ -21,7 +25,10 @@ var NavListArtboard = React.createClass({
                     'nav-page__item_active': artboard.id === this.props.currentArtboardID
                 })}
                 onClick={this._onClick}>
-                <h5 className="nav-page__link">{artboard.name}</h5>
+                <h5 className="nav-page__link">
+                    <span className="nav-page__link-img" style={imgStyle}></span>
+                    <span className="nav-page__link-text">{artboard.name}</span>
+                </h5>
             </li>
         );
     },

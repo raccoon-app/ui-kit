@@ -5,10 +5,11 @@ var ActionTypes = MinceConstants.ActionTypes;
 
 module.exports = {
 
-    receiveProject: function(data) {
+    receiveProject: function(data, url) {
         MinceAppDispatcher.dispatch({
             type: ActionTypes.RECEIVE_PROJECT,
-            project: data
+            project: data,
+            url: url
         });
     }
 

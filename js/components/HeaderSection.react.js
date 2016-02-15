@@ -1,5 +1,6 @@
 var React = require('react');
 var ProjectStore = require('../stores/ProjectStore');
+var InputProject = require('./InputProject.react');
 
 function getStateFromStores() {
     return {
@@ -26,6 +27,7 @@ var HeaderSection = React.createClass({
             <div className="header">
                 <a href="#" className="header__logo">logo</a>
                 <h1 className="header__title">{this.state.name}</h1>
+                <InputProject />
             </div>
         );
     },
