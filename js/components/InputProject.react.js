@@ -12,11 +12,17 @@ var InputSection = React.createClass({
 
     render: function() {
         return (
-            <input type="text"
-                   className="header__input"
-                   value={this.state.url}
-                   onChange={this._onChange}
-                   onKeyDown={this._onKeyDown} />
+            <div className="header__form">
+                <input type="text"
+                       className="header__input"
+                       value={this.state.url}
+                       onChange={this._onChange}
+                       onKeyDown={this._onKeyDown} />
+                <button className="header__btn"
+                        onClick={this._onClick}>
+                    load
+                </button>
+            </div>
         );
     },
 
@@ -36,8 +42,14 @@ var InputSection = React.createClass({
             }
             //this.setState({text: ''});
         }
-    }
+    },
 
+    _onClick: function() {
+        var url = this.state.url.trim();
+        if (url) {
+            MinceWebAPIUtils.getProject(url);
+        }
+    }
 });
 
 module.exports = InputSection;

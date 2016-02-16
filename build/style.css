@@ -379,11 +379,20 @@ h3 {
     display: block;
     float: left;
     padding: 20px;
+    width: 150px;
     font-family: 'Oswald', sans-serif; }
   .header__input {
     border: 2px solid #464547;
     margin: 15px 0;
     padding: 5px; }
+  .header__btn {
+    background: #39C2D7;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    padding: 5px 10px;
+    border: 0;
+    font-size: 16px; }
 
 .nav {
   position: absolute;
@@ -408,9 +417,9 @@ h3 {
     .nav-folder__title {
       font-family: 'Oswald', sans-serif;
       font-size: 18px;
-      color: #FFFFFF;
+      color: #fff;
       line-height: 25px;
-      background: #2CC4D5;
+      background: #39C2D7;
       display: block;
       padding: 20px; }
   .nav-page {
@@ -420,13 +429,13 @@ h3 {
     .nav-page__item {
       padding: 0;
       margin: 0;
-      background: #0FAABA; }
+      background: #1A9CB0; }
       .nav-page__item_active {
-        background: #000; }
+        background: #464547; }
     .nav-page__link {
       font-family: 'Oswald', sans-serif;
       font-size: 16px;
-      color: #FFFFFF;
+      color: #fff;
       line-height: 21px;
       display: block;
       padding: 20px 20px 20px 50px;
@@ -479,14 +488,25 @@ h3 {
   color: #fff;
   padding: 20px;
   overflow-y: auto; }
-  .tools textarea {
-    background: #000;
-    height: 200px; }
+  .tools__textarea {
+    background: #666;
+    color: #fff; }
+    .tools__textarea_content {
+      height: 100px; }
+    .tools__textarea_style {
+      height: 200px; }
+  .tools__btn {
+    display: inline-block;
+    background: #A3C644;
+    padding: 4px 10px;
+    color: #fff;
+    text-decoration: none; }
 
 .measure {
   position: relative;
   height: 100%;
-  width: 100%; }
+  width: 100%;
+  pointer-events: none; }
   .measure_disabled {
     display: none; }
   .measure-marker {

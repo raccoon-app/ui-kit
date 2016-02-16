@@ -25,7 +25,7 @@ body {
     padding: 0;
     margin: 0;
     background: #E8E8E8;
-    color: #464547;
+    color: $DEFAULT;
 }
 h1 {
     margin: 0;
@@ -40,7 +40,7 @@ h3 {
 .header {
     position: relative;
     height: 60px;
-    background: #fff;
+    background: $LIGHT;
     box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.30);
     margin: 0;
     padding: 0;
@@ -61,6 +61,7 @@ h3 {
         display: block;
         float: left;
         padding: 20px;
+        width: 150px;
         font-family: 'Oswald', sans-serif;
     }
 
@@ -68,6 +69,17 @@ h3 {
         border: 2px solid #464547;
         margin: 15px 0;
         padding: 5px;
+    }
+
+    &__btn {
+        background: $PRIMARY;
+        color: $LIGHT;
+        font-family: 'Oswald', sans-serif;
+        font-weight: 600;
+        padding: 5px 10px;
+        border: 0;
+        font-size: 16px;
+
     }
 }
 
@@ -98,9 +110,9 @@ h3 {
         &__title {
             font-family: 'Oswald', sans-serif;
             font-size: 18px;
-            color: #FFFFFF;
+            color: $LIGHT;
             line-height: 25px;
-            background: #2CC4D5;
+            background: $PRIMARY;
             display: block;
             padding: 20px
         }
@@ -114,10 +126,10 @@ h3 {
         &__item {
             padding: 0;
             margin: 0;
-            background:#0FAABA;
+            background: $PRIMARY_MUTED;
 
             &_active {
-                background: #000;
+                background: $DEFAULT;
             }
         }
 
@@ -126,7 +138,7 @@ h3 {
         &__link {
             font-family: 'Oswald', sans-serif;
             font-size :16px;
-            color: #FFFFFF;
+            color: $LIGHT;
             line-height: 21px;
             display: block;
             padding: 20px 20px 20px 50px;
@@ -168,7 +180,7 @@ h3 {
         top:0;
         left:0;
         background: rgba(0,0,0,.3);
-        color: #fff;
+        color: $LIGHT;
         padding: 4px;
     }
 
@@ -193,14 +205,30 @@ h3 {
     bottom: 0;
     right: 0;
     width: 200px;
-    background: #464547;
-    color:#fff;
+    background: $DEFAULT;
+    color: $LIGHT;
     padding: 20px;
     overflow-y: auto;
 
-    textarea {
-        background: #000;
-        height: 200px;
+    &__textarea {
+        background: $MEDIUM_GRAY;
+        color: $LIGHT;
+
+        &_content {
+            height: 100px;
+        }
+
+        &_style {
+            height: 200px;
+        }
+    }
+
+    &__btn {
+        display: inline-block;
+        background: $PRIMARY_CTRL;
+        padding: 4px 10px;
+        color: $LIGHT;
+        text-decoration: none;
     }
 }
 
@@ -208,6 +236,7 @@ h3 {
     position: relative;
     height: 100%;
     width: 100%;
+    pointer-events: none;
 
     &_disabled {
         display: none;
@@ -228,7 +257,6 @@ h3 {
 
         &__width,
         &__height {
-
             display: inline-block;
             padding: 0 5px;
             border-radius: 3px;

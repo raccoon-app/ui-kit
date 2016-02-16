@@ -3,7 +3,10 @@ var ToolsStore = require('../stores/ToolsStore');
 
 function getStateFromStores() {
     return {
-        layer: ToolsStore.getLayer()
+        artboard: ToolsStore.getArtboard(),
+        layer: ToolsStore.getLayer(),
+        isExportEveryLayer: ToolsStore.getIsExportEveryLayer(),
+        url: ToolsStore.getProjectUrl()
     };
 }
 
@@ -39,10 +42,9 @@ var ToolsSection = React.createClass({
 
         var tools = [];
 
-
         if (layer.html && layer.html !== 'undefined') {
             tools.push(
-                <textarea name="content" value={layer.html}></textarea>
+                <textarea name="content" value={layer.html} className="tools__textarea tools__textarea_content"></textarea>
             )
         }
 
@@ -50,7 +52,16 @@ var ToolsSection = React.createClass({
             var styleHtml = formatStyle(layer.style);
 
             tools.push(
-                <textarea name="code" value={styleHtml}>{styleHtml}</textarea>
+                <textarea name="code" value={styleHtml} className="tools__textarea tools__textarea_style">{styleHtml}</textarea>
+            )
+        }
+
+        if ((!layer.html || layer.html == 'undefined') && this.state.isExportEveryLayer) {
+            var fileUrl = this.state.url + this.state.artboard + '/' + layer.id + '@2x.png';
+            var fileName = layer.name + '.png'
+
+            tools.push(
+                <a href={fileUrl} download={fileName} className="tools__btn">download</a>
             )
         }
 

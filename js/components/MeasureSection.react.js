@@ -1,10 +1,10 @@
 var React = require('react');
-var ToolsStore = require('../stores/ToolsStore');
+var MeasureStore = require('../stores/MeasureStore');
 var classNames = require('classnames');
 
 function getStateFromStores() {
     return {
-        layer: ToolsStore.getLayer()
+        layer: MeasureStore.getLayer()
     };
 }
 
@@ -15,11 +15,11 @@ var ToolsSection = React.createClass({
     },
 
     componentDidMount: function() {
-        ToolsStore.addChangeListener(this._onChange);
+        MeasureStore.addChangeListener(this._onChange);
     },
 
     componentWillUnmount: function() {
-        ToolsStore.removeChangeListener(this._onChange);
+        MeasureStore.removeChangeListener(this._onChange);
     },
 
     render: function() {
