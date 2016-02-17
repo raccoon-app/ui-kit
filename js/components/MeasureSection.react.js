@@ -4,7 +4,8 @@ var classNames = require('classnames');
 
 function getStateFromStores() {
     return {
-        layer: MeasureStore.getLayer()
+        currentLayer: MeasureStore.getCurrentLayer(),
+        ruler: MeasureStore.getRuler()
     };
 }
 
@@ -23,7 +24,7 @@ var ToolsSection = React.createClass({
     },
 
     render: function() {
-        var layer = this.state.layer;
+        var layer = this.state.currentLayer;
 
         var markerStyle = {
             left: layer.x+'px',
@@ -49,6 +50,7 @@ var ToolsSection = React.createClass({
                 </div>
                 <div className="measure-lighthouse measure-lighthouse_left" style={{left: layer.x+'px'}}>
                 </div>
+
             </div>
         );
     },
