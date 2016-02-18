@@ -3,6 +3,8 @@ var MeasureStore = require('../stores/MeasureStore');
 var RulerSection = require('../components/RulerSection.react');
 var classNames = require('classnames');
 
+var ReactPropTypes = React.PropTypes;
+
 function getStateFromStores() {
     return {
         currentLayer: MeasureStore.getCurrentLayer()
@@ -10,6 +12,10 @@ function getStateFromStores() {
 }
 
 var ToolsSection = React.createClass({
+
+    propTypes: {
+        scale: ReactPropTypes.number
+    },
 
     getInitialState: function() {
         return getStateFromStores();
@@ -25,12 +31,13 @@ var ToolsSection = React.createClass({
 
     render: function() {
         var layer = this.state.currentLayer;
+        var scale = this.props.scale;
 
         var markerStyle = {
-            left: layer.x+'px',
-            top: layer.y+'px',
-            width: layer.width+'px',
-            height: layer.height+'px'
+            left: layer.x*scale+'px',
+            top: layer.y*scale+'px',
+            width: layer.width*scale+'px',
+            height: layer.height*scale+'px'
         };
 
         return (
@@ -42,16 +49,16 @@ var ToolsSection = React.createClass({
                     <span className="measure-marker__width">{layer.width}px</span>
                     <span className="measure-marker__height">{layer.height}px</span>
                 </div>
-                <div className="measure-lighthouse measure-lighthouse_top" style={{top: layer.y+'px'}}>
+                <div className="measure-lighthouse measure-lighthouse_top" style={{top: layer.y*scale+'px'}}>
                 </div>
-                <div className="measure-lighthouse measure-lighthouse_right" style={{left: layer.x+layer.width+'px'}}>
+                <div className="measure-lighthouse measure-lighthouse_right" style={{left: (layer.x+layer.width)*scale+'px'}}>
                 </div>
-                <div className="measure-lighthouse measure-lighthouse_bottom" style={{top: layer.y+layer.height+'px'}}>
+                <div className="measure-lighthouse measure-lighthouse_bottom" style={{top: (layer.y+layer.height)*scale+'px'}}>
                 </div>
-                <div className="measure-lighthouse measure-lighthouse_left" style={{left: layer.x+'px'}}>
+                <div className="measure-lighthouse measure-lighthouse_left" style={{left: layer.x*scale+'px'}}>
                 </div>
 
-                <RulerSection />
+                <RulerSection scale={scale} />
             </div>
         );
     },
