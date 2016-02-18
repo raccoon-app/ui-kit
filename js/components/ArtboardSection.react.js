@@ -49,8 +49,7 @@ var ArtboardSection = React.createClass({
         };
 
         var scaleStyle = {
-            scaleX: this.state.scale,
-            scaleY: this.state.scale
+            transform: 'scale('+this.state.scale+')'
         };
 
         artboard.name = decodeURIComponent(artboard.name);
