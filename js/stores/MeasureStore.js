@@ -7,7 +7,6 @@ var ActionTypes = MinceConstants.ActionTypes;
 var CHANGE_EVENT = 'change';
 
 var _currentLayer = {};
-var _targetLayer = {};
 var _ruler = [];
 
 var MeasureStore = assign({}, EventEmitter.prototype, {
@@ -17,7 +16,7 @@ var MeasureStore = assign({}, EventEmitter.prototype, {
     },
 
     initRuler: function(layer) {
-        _targetLayer = layer ;
+        var _targetLayer = layer ;
 
         _ruler = [];
         var coord = {
@@ -31,46 +30,129 @@ var MeasureStore = assign({}, EventEmitter.prototype, {
             ty2: _targetLayer.y + _targetLayer.height
         };
 
-
         // TOP RULER
         if (coord.ty1 > coord.cy2) {
             _ruler.push({
-                type:'top',
-                top:coord.cy2,
-                left:(coord.tx1+coord.tx2)/2,
-                height:(coord.ty1-coord.cy2)
+                type: 'top',
+                top: coord.cy2,
+                left: (coord.tx1+coord.tx2)/2,
+                height: (coord.ty1-coord.cy2)
             })
         } else {
             if (coord.ty1 < coord.cy2) {
                 if (coord.ty1 > coord.cy1) {
                     _ruler.push({
-                        type:'top',
-                        top:coord.cy1,
-                        left:(coord.tx1+coord.tx2)/2,
-                        height:(coord.ty1-coord.cy1)
+                        type: 'top',
+                        top: coord.cy1,
+                        left: (coord.tx1+coord.tx2)/2,
+                        height: (coord.ty1-coord.cy1)
                     })
                 }
 
-                if (coord.ty1 < coord.cy1) {
+                if (coord.ty1 < coord.cy1 && coord.ty2 > coord.cy1) {
                     _ruler.push({
-                        type:'top',
-                        top:coord.ty1,
-                        left:(coord.cx1+coord.cx2)/2,
-                        height:(coord.cy1-coord.ty1)
+                        type: 'top',
+                        top: coord.ty1,
+                        left: (coord.cx1+coord.cx2)/2,
+                        height: (coord.cy1-coord.ty1)
                     })
                 }
             }
         }
 
         // BOTTOM RULER
+        if (coord.cy1 > coord.ty2) {
+            _ruler.push({
+                type: 'bottom',
+                top: coord.ty2,
+                left: (coord.tx1+coord.tx2)/2,
+                height: (coord.cy1-coord.ty2)
+            })
+        } else {
+            if (coord.cy1 < coord.ty2) {
+                if (coord.cy2 > coord.ty2) {
+                    _ruler.push({
+                        type: 'bottom',
+                        top: coord.ty2,
+                        left: (coord.tx1+coord.tx2)/2,
+                        height: (coord.cy2-coord.ty2)
+                    })
+                }
+
+                if (coord.cy2 < coord.ty2 && coord.ty1 < coord.cy2) {
+                    _ruler.push({
+                        type: 'bottom',
+                        top: coord.cy2,
+                        left: (coord.cx1+coord.cx2)/2,
+                        height: (coord.ty2-coord.cy2)
+                    })
+                }
+            }
+        }
 
         // LEFT RULER
+        if (coord.tx1 > coord.cx2) {
+            _ruler.push({
+                type: 'left',
+                top: (coord.ty1+coord.ty2)/2,
+                left: coord.cx2,
+                width: (coord.tx1-coord.cx2)
+            })
+        } else {
+            if (coord.tx1 < coord.cx2) {
+                if (coord.tx1 > coord.cx1) {
+                    _ruler.push({
+                        type: 'left',
+                        top: (coord.ty1+coord.ty2)/2,
+                        left: coord.cx1,
+                        width: (coord.tx1-coord.cx1)
+                    })
+                }
+
+                if (coord.tx1 < coord.cx1 && coord.tx2 > coord.cx1) {
+                    _ruler.push({
+                        type: 'left',
+                        top: (coord.cy1+coord.cy2)/2,
+                        left: coord.tx1,
+                        width: (coord.cx1-coord.tx1)
+                    })
+                }
+            }
+        }
 
         // RIGHT RULER
+        if (coord.cx1 > coord.tx2) {
+            _ruler.push({
+                type: 'right',
+                top: (coord.ty1+coord.ty2)/2,
+                left: coord.tx2,
+                width: (coord.cx1-coord.tx2)
+            })
+        } else {
+            if (coord.cx1 < coord.tx2) {
+                if (coord.cx2 > coord.tx2) {
+                    _ruler.push({
+                        type: 'right',
+                        top: (coord.ty1+coord.ty2)/2,
+                        left: coord.tx2,
+                        width: (coord.cx2-coord.tx2)
+                    })
+                }
+
+                if (coord.cx2 < coord.tx2 && coord.tx1 < coord.cx2) {
+                    _ruler.push({
+                        type: 'right',
+                        top: (coord.cy1+coord.cy2)/2,
+                        left: coord.cx2,
+                        width: (coord.tx2-coord.cx2)
+                    })
+                }
+            }
+        }
     },
 
-    destroyRuler: function(layer) {
-        _targetLayer = _targetLayer.id == layer.id ? null : _targetLayer;
+    destroyRuler: function() {
+        _ruler = [];
     },
 
     emitChange: function() {
@@ -111,10 +193,12 @@ MeasureStore.dispatchToken = MinceAppDispatcher.register(function(action) {
     switch(action.type) {
         case ActionTypes.CLICK_NAV_ARTBOARD:
             _currentLayer = {};
+            _ruler = [];
             MeasureStore.emitChange();
             break;
 
         case ActionTypes.CLICK_ARTBOARD_LAYER:
+            _ruler = [];
             MeasureStore.init(action.layer);
             MeasureStore.emitChange();
             break;

@@ -168,12 +168,12 @@ h3 {
 
 .artboard {
     position: absolute;
-    top: 60px;
-    left: 320px;
-    right: 0px;
-    bottom: 0px;
+    top: 95px;
+    left: 340px;
+    right: 20px;
+    bottom: 20px;
     z-index: 0;
-    overflow: auto;
+    overflow: hidden;
 
     &__title {
         position: absolute;
@@ -186,15 +186,21 @@ h3 {
 
     &__wrapper {
         position: absolute;
-        margin: 35px 20px 20px;
+        top: 0;
+        left: 0;
     }
 
 
     &__layer {
         position: absolute;
 
+        &-list {
+            position: absolute;
+            margin: 0;
+        }
+
         &:hover {
-            box-shadow: 0 0 2px 1px red;
+            box-shadow: 0 0 2px 1px $PRIMARY_CTRL;
         }
     }
 }
@@ -233,7 +239,9 @@ h3 {
 }
 
 .measure {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     height: 100%;
     width: 100%;
     pointer-events: none;
@@ -284,7 +292,7 @@ h3 {
     &-lighthouse {
         position: absolute;
         z-index: 1;
-        opacity: 0.6;
+        opacity: 0.4;
         overflow: hidden;
 
         &_top {
@@ -318,4 +326,27 @@ h3 {
         }
     }
 
+    &-ruler {
+        position: absolute;
+        z-index: 1;
+        opacity: 0.8;
+        overflow: hidden;
+
+
+        &_top {
+            border-left:1px solid $PRIMARY_CTRL;
+        }
+
+        &_right {
+            border-top:1px solid $PRIMARY_CTRL;
+        }
+
+        &_bottom {
+            border-left:1px solid $PRIMARY_CTRL;
+        }
+
+        &_left {
+            border-top:1px solid $PRIMARY_CTRL;
+        }
+    }
 }
