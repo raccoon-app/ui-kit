@@ -24,12 +24,10 @@ var ArtboardSection = React.createClass({
     },
 
     componentDidMount: function() {
-        document.addEventListener('mousemove', this._onMouseMove, false);
         ArtboardStore.addChangeListener(this._onChange);
     },
 
     componentWillUnmount: function() {
-        document.removeEventListener('mousemove', this._onMouseMove, false);
         ArtboardStore.removeChangeListener(this._onChange);
     },
 
@@ -75,7 +73,9 @@ var ArtboardSection = React.createClass({
                  })}
                  onWheel={this._onMouseWheel}
                  onMouseDown={this._onMouseDown}
-                 onMouseUp={this._onMouseUp}>
+                 onMouseUp={this._onMouseUp}
+                 onMouseMove={this._onMouseMove}>
+
                 <h3 className="artboard__title">{artboard.name}</h3>
 
                 <div className="artboard__draggable" style={translateStyle}>

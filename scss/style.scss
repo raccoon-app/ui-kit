@@ -256,12 +256,19 @@ h3 {
         }
     }
 
-    &__btn {
-        display: inline-block;
+    &__download {
+        display: block;
+        width: 100%;
         background: $PRIMARY_CTRL;
         padding: 4px 10px;
         color: $LIGHT;
         text-decoration: none;
+
+        &-image {
+            height: 120px;
+            background-position: center;
+            background-size: contain;
+        }
     }
 }
 
@@ -289,31 +296,37 @@ h3 {
         vertical-align: middle;
         pointer-events: none;
 
+        &_disabled & {
+            &__value {
+                display: none;
+            }
+        }
 
-        &__width,
-        &__height {
+        &__value {
             display: inline-block;
-            padding: 0 5px;
-            border-radius: 3px;
-            height: 18px;
-            line-height: 18px;
+            padding: 0 4px;
+            border-radius: 2px;
+            height: 16px;
+            line-height: 16px;
             font-size: 12px;
             font-weight: 100;
             color: #FE3B00;
             background: #fff;
+
+            &_width {
+                position: relative;
+                top: -22px;
+            }
+
+            &_height {
+                position: absolute;
+                left: 100%;
+                top: 50%;
+                margin: -9px 0 0 3px ;
+            }
         }
 
-        &__width {
-            position: relative;
-            top: -23px;
-        }
 
-        &__height {
-            position: absolute;
-            left: 100%;
-            top: 50%;
-            margin: -10px 0 0 4px ;
-        }
     }
 
     &-lighthouse {
@@ -356,9 +369,10 @@ h3 {
     &-ruler {
         position: absolute;
         z-index: 1;
-        opacity: 0.8;
-        overflow: hidden;
-
+        //opacity: 0.8;
+        text-align: center;
+        vertical-align: middle;
+        pointer-events: none;
 
         &_top {
             border-left:1px solid $PRIMARY_CTRL;
@@ -374,6 +388,50 @@ h3 {
 
         &_left {
             border-top:1px solid $PRIMARY_CTRL;
+        }
+
+        &__value {
+            display: inline-block;
+            padding: 0 4px;
+            border-radius: 2px;
+            height: 16px;
+            line-height: 16px;
+            font-size: 12px;
+            font-weight: 100;
+            color: #FE3B00;
+            background: #fff;
+        }
+
+        &_top & {
+            &__value {
+                position: absolute;
+                left: 100%;
+                top: 50%;
+                margin: -9px 0 0 3px;
+            }
+        }
+
+        &_right & {
+            &__value {
+                position: relative;
+                top: -22px;
+            }
+        }
+
+        &_bottom & {
+            &__value {
+                position: absolute;
+                left: 100%;
+                top: 50%;
+                margin: -9px 0 0 3px;
+            }
+        }
+
+        &_left & {
+            &__value {
+                position: relative;
+                top: -22px;
+            }
         }
     }
 }

@@ -61,7 +61,10 @@ var ToolsSection = React.createClass({
             var fileName = layer.name + '.png'
 
             tools.push(
-                <a href={fileUrl} download={fileName} className="tools__btn">download</a>
+                <a href={fileUrl} download={fileName} className="tools__download">
+                    <span style={{backgroundImage:'url('+fileUrl+')'}} className="tools__download-image"></span>
+                    <span className="tools__download-text">download</span>
+                </a>
             )
         }
 

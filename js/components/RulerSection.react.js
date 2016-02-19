@@ -45,7 +45,9 @@ var ToolsSection = React.createClass({
                     'measure-ruler_bottom': rulerItem.type == 'bottom',
                     'measure-ruler_left': rulerItem.type == 'left',
                     'measure-ruler_right': rulerItem.type == 'right'
-                })} style={rulerStyle}></div>
+                })} style={rulerStyle}>
+                    <span className="measure-ruler__value">{rulerItem.value}px</span>
+                </div>
             );
         });
 

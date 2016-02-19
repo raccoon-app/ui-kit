@@ -7,7 +7,8 @@ var ReactPropTypes = React.PropTypes;
 
 function getStateFromStores() {
     return {
-        currentLayer: MeasureStore.getCurrentLayer()
+        currentLayer: MeasureStore.getCurrentLayer(),
+        ruler: MeasureStore.getRuler()
     };
 }
 
@@ -45,9 +46,13 @@ var ToolsSection = React.createClass({
                     'measure': true,
                     'measure_disabled': !layer.id
                 })}>
-                <div className="measure-marker" style={markerStyle}>
-                    <span className="measure-marker__width">{layer.width}px</span>
-                    <span className="measure-marker__height">{layer.height}px</span>
+                <div className={classNames({
+                    'measure-marker': true,
+                    'measure-marker_disabled': this.state.ruler.length
+                    })}
+                    style={markerStyle}>
+                    <span className="measure-marker__value measure-marker__value_width">{layer.width}px</span>
+                    <span className="measure-marker__value measure-marker__value_height">{layer.height}px</span>
                 </div>
                 <div className="measure-lighthouse measure-lighthouse_top" style={{top: layer.y*scale+'px'}}>
                 </div>
