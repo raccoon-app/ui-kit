@@ -168,12 +168,17 @@ h3 {
 
 .artboard {
     position: absolute;
-    top: 95px;
-    left: 340px;
-    right: 20px;
-    bottom: 20px;
+    top: 60px;
+    left: 320px;
+    right: 0px;
+    bottom: 0px;
     z-index: 0;
     overflow: hidden;
+    cursor: -webkit-grab;
+
+    &_dragging {
+        cursor: -webkit-grabbing;
+    }
 
     &__title {
         position: absolute;
@@ -182,17 +187,39 @@ h3 {
         background: rgba(0,0,0,.3);
         color: $LIGHT;
         padding: 4px;
+        z-index:999999;
     }
 
-    &__wrapper {
+    &__scale-value {
+        position: absolute;
+        bottom:0;
+        left:0;
+        background: rgba(0,0,0,.3);
+        color: $LIGHT;
+        padding: 4px;
+    }
+
+
+    &__scale {
         position: absolute;
         top: 0;
         left: 0;
     }
-
+    &__draggable {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 20px;
+        width:100%;
+        height:100%;
+    }
 
     &__layer {
         position: absolute;
+
+        &:not(:first-child) {
+            cursor: pointer;
+        }
 
         &-list {
             position: absolute;
@@ -200,7 +227,7 @@ h3 {
         }
 
         &:hover {
-            box-shadow: 0 0 2px 1px $PRIMARY_CTRL;
+            box-shadow: 0 0 0 1px $PRIMARY_CTRL;
         }
     }
 }
@@ -296,31 +323,31 @@ h3 {
         overflow: hidden;
 
         &_top {
-            left: 0;
+            left: -1000px;
+            right: -1000px;
             height: 0;
-            width: 100%;
             border-top: 1px dashed #FE3B00;
             margin-top: -1px;
         }
 
         &_right {
-            top: 0;
+            top: -1000px;
+            bottom: -1000px;
             width: 0;
-            height: 100%;
             border-left: 1px dashed #FE3B00;
         }
 
         &_bottom {
-            left: 0;
+            left: -1000px;
+            right: -1000px;
             height: 0;
-            width: 100%;
             border-top: 1px dashed #FE3B00;
         }
 
         &_left {
-            top: 0;
+            top: -1000px;
+            bottom: -1000px;
             width: 0;
-            height: 100%;
             border-left: 1px dashed #FE3B00;
             margin-left: -1px;
         }
