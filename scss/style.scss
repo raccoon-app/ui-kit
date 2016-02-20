@@ -227,7 +227,7 @@ h3 {
         }
 
         &:hover {
-            box-shadow: 0 0 0 1px $PRIMARY_CTRL;
+            //box-shadow: 0 0 0 1px $PRIMARY_CTRL;
         }
     }
 }
@@ -265,9 +265,11 @@ h3 {
         text-decoration: none;
 
         &-image {
+            display: block;
             height: 120px;
             background-position: center;
             background-size: contain;
+            background-repeat: no-repeat;
         }
     }
 }
@@ -289,44 +291,25 @@ h3 {
         top: 140px;
         left: 300px;
         z-index: 2;
-        box-shadow: 0 0 0 1px #FE3B00;
         width: 200px;
         height: 200px;
-        text-align: center;
         vertical-align: middle;
         pointer-events: none;
 
-        &_disabled & {
-            &__value {
-                display: none;
-            }
-        }
-
         &__value {
-            display: inline-block;
+            position: absolute;
+            top: 100%;
+            left: -1px;
+            display: block;
             padding: 0 4px;
-            border-radius: 2px;
             height: 16px;
             line-height: 16px;
             font-size: 12px;
             font-weight: 100;
-            color: #FE3B00;
-            background: #fff;
-
-            &_width {
-                position: relative;
-                top: -22px;
-            }
-
-            &_height {
-                position: absolute;
-                left: 100%;
-                top: 50%;
-                margin: -9px 0 0 3px ;
-            }
+            color: #fff;
+            background: $PRIMARY_CTRL;
+            white-space: nowrap;
         }
-
-
     }
 
     &-lighthouse {
@@ -366,6 +349,33 @@ h3 {
         }
     }
 
+    &-marker {
+        &_current {
+            box-shadow: 0 0 0 1px $PRIMARY_CTRL;
+        }
+
+        &_target {
+            box-shadow: 0 0 0 1px red;
+        }
+
+        &_target & {
+            &__value {
+                display: none;
+            }
+        }
+    }
+
+    &-marker_current ~ & {
+        &-lighthouse {
+            border-color: $PRIMARY_CTRL;
+        }
+    }
+    &-marker_target ~ & {
+        &-lighthouse {
+            border-color: red;
+        }
+    }
+
     &-ruler {
         position: absolute;
         z-index: 1;
@@ -375,31 +385,31 @@ h3 {
         pointer-events: none;
 
         &_top {
-            border-left:1px solid $PRIMARY_CTRL;
+            border-left:1px solid red;
         }
 
         &_right {
-            border-top:1px solid $PRIMARY_CTRL;
+            border-top:1px solid red;
         }
 
         &_bottom {
-            border-left:1px solid $PRIMARY_CTRL;
+            border-left:1px solid red;
         }
 
         &_left {
-            border-top:1px solid $PRIMARY_CTRL;
+            border-top:1px solid red;
         }
 
         &__value {
             display: inline-block;
-            padding: 0 4px;
+            padding: 0 3px;
             border-radius: 2px;
-            height: 16px;
-            line-height: 16px;
+            height: 14px;
+            line-height: 14px;
             font-size: 12px;
             font-weight: 100;
-            color: #FE3B00;
-            background: #fff;
+            color: #fff;
+            background: red;
         }
 
         &_top & {
@@ -407,14 +417,14 @@ h3 {
                 position: absolute;
                 left: 100%;
                 top: 50%;
-                margin: -9px 0 0 3px;
+                margin: -8px 0 0 -10px;
             }
         }
 
         &_right & {
             &__value {
                 position: relative;
-                top: -22px;
+                top: -11px;
             }
         }
 
@@ -423,14 +433,14 @@ h3 {
                 position: absolute;
                 left: 100%;
                 top: 50%;
-                margin: -9px 0 0 3px;
+                margin: -8px 0 0 -10px;
             }
         }
 
         &_left & {
             &__value {
                 position: relative;
-                top: -22px;
+                top: -11px;
             }
         }
     }

@@ -1,6 +1,7 @@
 var React = require('react');
 var MeasureStore = require('../stores/MeasureStore');
-var RulerSection = require('../components/RulerSection.react');
+var Marker = require('../components/Marker.react');
+var Spacing = require('../components/Spacing.react');
 var classNames = require('classnames');
 
 var ReactPropTypes = React.PropTypes;
@@ -8,11 +9,12 @@ var ReactPropTypes = React.PropTypes;
 function getStateFromStores() {
     return {
         currentLayer: MeasureStore.getCurrentLayer(),
-        ruler: MeasureStore.getRuler()
+        targetLayer: MeasureStore.getTargetLayer(),
+        spacing: MeasureStore.getSpacing()
     };
 }
 
-var ToolsSection = React.createClass({
+var MeasureSection = React.createClass({
 
     propTypes: {
         scale: ReactPropTypes.number
@@ -31,39 +33,15 @@ var ToolsSection = React.createClass({
     },
 
     render: function() {
-        var layer = this.state.currentLayer;
-        var scale = this.props.scale;
-
-        var markerStyle = {
-            left: layer.x*scale+'px',
-            top: layer.y*scale+'px',
-            width: layer.width*scale+'px',
-            height: layer.height*scale+'px'
-        };
-
         return (
             <div className={classNames({
                     'measure': true,
-                    'measure_disabled': !layer.id
+                    'measure_disabled': !this.state.currentLayer.x && !this.state.targetLayer.x
                 })}>
-                <div className={classNames({
-                    'measure-marker': true,
-                    'measure-marker_disabled': this.state.ruler.length
-                    })}
-                    style={markerStyle}>
-                    <span className="measure-marker__value measure-marker__value_width">{layer.width}px</span>
-                    <span className="measure-marker__value measure-marker__value_height">{layer.height}px</span>
-                </div>
-                <div className="measure-lighthouse measure-lighthouse_top" style={{top: layer.y*scale+'px'}}>
-                </div>
-                <div className="measure-lighthouse measure-lighthouse_right" style={{left: (layer.x+layer.width)*scale+'px'}}>
-                </div>
-                <div className="measure-lighthouse measure-lighthouse_bottom" style={{top: (layer.y+layer.height)*scale+'px'}}>
-                </div>
-                <div className="measure-lighthouse measure-lighthouse_left" style={{left: layer.x*scale+'px'}}>
-                </div>
 
-                <RulerSection scale={scale} />
+                <Marker scale={this.props.scale} measure={this.state.targetLayer} type="target" />
+                <Marker scale={this.props.scale} measure={this.state.currentLayer} type="current" />
+                <Spacing scale={this.props.scale} spacing={this.state.spacing} />
             </div>
         );
     },
@@ -77,4 +55,4 @@ var ToolsSection = React.createClass({
 
 });
 
-module.exports = ToolsSection;
+module.exports = MeasureSection;

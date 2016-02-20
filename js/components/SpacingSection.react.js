@@ -4,33 +4,17 @@ var classNames = require('classnames');
 
 var ReactPropTypes = React.PropTypes;
 
-function getStateFromStores() {
-    return {
-        ruler: MeasureStore.getRuler()
-    };
-}
+var Spacing = React.createClass({
 
-var ToolsSection = React.createClass({
     propTypes: {
-        scale: ReactPropTypes.number
-    },
-
-    getInitialState: function() {
-        return getStateFromStores();
-    },
-
-    componentDidMount: function() {
-        MeasureStore.addChangeListener(this._onChange);
-    },
-
-    componentWillUnmount: function() {
-        MeasureStore.removeChangeListener(this._onChange);
+        scale: ReactPropTypes.number,
+        spacing: ReactPropTypes.object
     },
 
     render: function() {
         var scale = this.props.scale;
 
-        var ruler = this.state.ruler.map(function(rulerItem) {
+        var spacing = this.props.spacing.map(function(rulerItem) {
             var rulerStyle = {
                 left: rulerItem.left*scale+'px',
                 top: rulerItem.top*scale+'px',
@@ -46,25 +30,17 @@ var ToolsSection = React.createClass({
                     'measure-ruler_left': rulerItem.type == 'left',
                     'measure-ruler_right': rulerItem.type == 'right'
                 })} style={rulerStyle}>
-                    <span className="measure-ruler__value">{rulerItem.value}px</span>
+                    <span className="measure-ruler__value">{rulerItem.value}</span>
                 </div>
             );
         });
 
         return (
             <div classNmae="measure-ruler">
-                {ruler}
+                {spacing}
             </div>
         );
-    },
-
-    /**
-    * Event handler for 'change' events coming from the stores
-    */
-    _onChange: function() {
-        this.setState(getStateFromStores());
     }
-
 });
 
-module.exports = ToolsSection;
+module.exports = Spacing;

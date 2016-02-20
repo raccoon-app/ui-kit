@@ -48,14 +48,6 @@ var ToolsSection = React.createClass({
             )
         }
 
-        if (layer.style) {
-            var styleHtml = formatStyle(layer.style);
-
-            tools.push(
-                <textarea name="code" value={styleHtml} className="tools__textarea tools__textarea_style">{styleHtml}</textarea>
-            )
-        }
-
         if ((!layer.html || layer.html == 'undefined') && this.state.isExportEveryLayer) {
             var fileUrl = this.state.url + this.state.artboard + '/' + layer.id + '@2x.png';
             var fileName = layer.name + '.png'
@@ -65,6 +57,14 @@ var ToolsSection = React.createClass({
                     <span style={{backgroundImage:'url('+fileUrl+')'}} className="tools__download-image"></span>
                     <span className="tools__download-text">download</span>
                 </a>
+            )
+        }
+
+        if (layer.style) {
+            var styleHtml = formatStyle(layer.style);
+
+            tools.push(
+                <textarea name="code" value={styleHtml} className="tools__textarea tools__textarea_style">{styleHtml}</textarea>
             )
         }
 

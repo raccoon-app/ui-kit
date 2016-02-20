@@ -7,21 +7,36 @@ var ActionTypes = MinceConstants.ActionTypes;
 var CHANGE_EVENT = 'change';
 
 var _currentLayer = {};
-var _ruler = [];
+var _targetLayer = {};
+var _spacing = [];
 
 var MeasureStore = assign({}, EventEmitter.prototype, {
 
-    init: function(layer) {
-        _currentLayer = layer ;
+    init: function(layer, type) {
+
+        if (type == 'current') {
+            _currentLayer = {
+                x: layer.x,
+                y: layer.y,
+                width: layer.width,
+                height: layer.height
+            };
+        } else {
+            _targetLayer = {
+                x: layer.x,
+                y: layer.y,
+                width: layer.width,
+                height: layer.height
+            };
+        }
     },
 
-    initRuler: function(layer) {
-        var _targetLayer = layer ;
-        _ruler = [];
+    createSpacing: function() {
+        _spacing = [];
 
-        if (_targetLayer == _currentLayer) {
-            return;
-        }
+        //if (_targetLayer == _currentLayer) {
+        //    return;
+        //}
 
         var coord = {
             cx1: _currentLayer.x,
@@ -36,7 +51,7 @@ var MeasureStore = assign({}, EventEmitter.prototype, {
 
         // TOP RULER
         if (coord.ty1 > coord.cy2) {
-            _ruler.push({
+            _spacing.push({
                 type: 'top',
                 top: coord.cy2,
                 left: (coord.tx1+coord.tx2)/2,
@@ -46,7 +61,7 @@ var MeasureStore = assign({}, EventEmitter.prototype, {
         } else {
             if (coord.ty1 < coord.cy2) {
                 if (coord.ty1 > coord.cy1) {
-                    _ruler.push({
+                    _spacing.push({
                         type: 'top',
                         top: coord.cy1,
                         left: (coord.tx1+coord.tx2)/2,
@@ -56,7 +71,7 @@ var MeasureStore = assign({}, EventEmitter.prototype, {
                 }
 
                 if (coord.ty1 < coord.cy1 && coord.ty2 > coord.cy1) {
-                    _ruler.push({
+                    _spacing.push({
                         type: 'top',
                         top: coord.ty1,
                         left: (coord.cx1+coord.cx2)/2,
@@ -69,7 +84,7 @@ var MeasureStore = assign({}, EventEmitter.prototype, {
 
         // BOTTOM RULER
         if (coord.cy1 > coord.ty2) {
-            _ruler.push({
+            _spacing.push({
                 type: 'bottom',
                 top: coord.ty2,
                 left: (coord.tx1+coord.tx2)/2,
@@ -79,7 +94,7 @@ var MeasureStore = assign({}, EventEmitter.prototype, {
         } else {
             if (coord.cy1 < coord.ty2) {
                 if (coord.cy2 > coord.ty2) {
-                    _ruler.push({
+                    _spacing.push({
                         type: 'bottom',
                         top: coord.ty2,
                         left: (coord.tx1+coord.tx2)/2,
@@ -89,7 +104,7 @@ var MeasureStore = assign({}, EventEmitter.prototype, {
                 }
 
                 if (coord.cy2 < coord.ty2 && coord.ty1 < coord.cy2) {
-                    _ruler.push({
+                    _spacing.push({
                         type: 'bottom',
                         top: coord.cy2,
                         left: (coord.cx1+coord.cx2)/2,
@@ -102,7 +117,7 @@ var MeasureStore = assign({}, EventEmitter.prototype, {
 
         // LEFT RULER
         if (coord.tx1 > coord.cx2) {
-            _ruler.push({
+            _spacing.push({
                 type: 'left',
                 top: (coord.ty1+coord.ty2)/2,
                 left: coord.cx2,
@@ -112,7 +127,7 @@ var MeasureStore = assign({}, EventEmitter.prototype, {
         } else {
             if (coord.tx1 < coord.cx2) {
                 if (coord.tx1 > coord.cx1) {
-                    _ruler.push({
+                    _spacing.push({
                         type: 'left',
                         top: (coord.ty1+coord.ty2)/2,
                         left: coord.cx1,
@@ -122,7 +137,7 @@ var MeasureStore = assign({}, EventEmitter.prototype, {
                 }
 
                 if (coord.tx1 < coord.cx1 && coord.tx2 > coord.cx1) {
-                    _ruler.push({
+                    _spacing.push({
                         type: 'left',
                         top: (coord.cy1+coord.cy2)/2,
                         left: coord.tx1,
@@ -135,7 +150,7 @@ var MeasureStore = assign({}, EventEmitter.prototype, {
 
         // RIGHT RULER
         if (coord.cx1 > coord.tx2) {
-            _ruler.push({
+            _spacing.push({
                 type: 'right',
                 top: (coord.ty1+coord.ty2)/2,
                 left: coord.tx2,
@@ -145,7 +160,7 @@ var MeasureStore = assign({}, EventEmitter.prototype, {
         } else {
             if (coord.cx1 < coord.tx2) {
                 if (coord.cx2 > coord.tx2) {
-                    _ruler.push({
+                    _spacing.push({
                         type: 'right',
                         top: (coord.ty1+coord.ty2)/2,
                         left: coord.tx2,
@@ -155,7 +170,7 @@ var MeasureStore = assign({}, EventEmitter.prototype, {
                 }
 
                 if (coord.cx2 < coord.tx2 && coord.tx1 < coord.cx2) {
-                    _ruler.push({
+                    _spacing.push({
                         type: 'right',
                         top: (coord.cy1+coord.cy2)/2,
                         left: coord.cx2,
@@ -167,8 +182,14 @@ var MeasureStore = assign({}, EventEmitter.prototype, {
         }
     },
 
-    destroyRuler: function() {
-        _ruler = [];
+    destroySpacing: function() {
+        _spacing = [];
+    },
+
+    destroy: function() {
+        _currentLayer = {};
+        _targetLayer = {};
+        _spacing = [];
     },
 
     emitChange: function() {
@@ -193,39 +214,43 @@ var MeasureStore = assign({}, EventEmitter.prototype, {
     * @param {string} id
     */
     get: function(id) {
-        return _curentLayer[id];
+        return _currentLayer[id];
     },
 
-    getRuler: function() {
-        return _ruler;
+    getSpacing: function() {
+        return _spacing;
     },
 
     getCurrentLayer: function() {
         return _currentLayer;
+    },
+
+    getTargetLayer: function() {
+        return _targetLayer;
     }
 });
 
 MeasureStore.dispatchToken = MinceAppDispatcher.register(function(action) {
     switch(action.type) {
         case ActionTypes.CLICK_NAV_ARTBOARD:
-            _currentLayer = {};
-            _ruler = [];
+            MeasureStore.destroy();
             MeasureStore.emitChange();
             break;
 
         case ActionTypes.CLICK_ARTBOARD_LAYER:
-            _ruler = [];
-            MeasureStore.init(action.layer);
+            MeasureStore.init(action.layer, 'current');
+            MeasureStore.destroySpacing();
             MeasureStore.emitChange();
             break;
 
         case ActionTypes.ENTER_ARTBOARD_LAYER:
-            MeasureStore.initRuler(action.layer);
+            MeasureStore.init(action.layer, 'target');
+            MeasureStore.createSpacing();
             MeasureStore.emitChange();
             break;
 
         case ActionTypes.LEAVE_ARTBOARD_LAYER:
-            MeasureStore.destroyRuler(action.layer);
+            MeasureStore.destroySpacing();
             MeasureStore.emitChange();
             break;
 
