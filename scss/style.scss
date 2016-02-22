@@ -108,13 +108,34 @@ h3 {
         }
 
         &__title {
+            position: relative;
             font-family: 'Oswald', sans-serif;
             font-size: 18px;
             color: $LIGHT;
             line-height: 25px;
             background: $PRIMARY;
             display: block;
-            padding: 20px
+            padding: 20px;
+            cursor: pointer;
+
+            &_active {
+                background: $PRIMARY_CTRL;
+                color: $LIGHT;
+            }
+
+            &:after {
+                position: absolute;
+                top: 50%;
+                right: 20px;
+                font-family: Arial, sans-serif;
+                font-size: 24px;
+                color: $LIGHT;
+                line-height: 24px;
+                margin-top: -12px;
+                text-align: center;
+                width: 20px;
+                content: '+'
+            }
         }
     }
 
@@ -122,6 +143,7 @@ h3 {
         list-style: none;
         padding: 0;
         margin: 0;
+        display: none;
 
         &__item {
             padding: 0;
@@ -161,6 +183,16 @@ h3 {
                 text-overflow: ellipsis;
                 overflow: hidden;
             }
+        }
+    }
+
+    &-folder__item_open & {
+        &-folder__title:after {
+            content: '-';
+        }
+
+        &-page {
+            display: block;
         }
     }
 }

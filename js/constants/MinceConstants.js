@@ -5,6 +5,7 @@ module.exports = {
     ActionTypes: keyMirror({
         RECEIVE_PROJECT: null,
         CLICK_NAV_ARTBOARD: null,
+        CLICK_NAV_FOLDER: null,
         CLICK_ARTBOARD_LAYER: null,
         ENTER_ARTBOARD_LAYER: null,
         LEAVE_ARTBOARD_LAYER: null

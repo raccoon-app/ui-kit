@@ -11,6 +11,7 @@ var _project = {};
 var _url = null;
 var _currentFolderID = null;
 var _currentArtboardID = null;
+var _openFolderID = null;
 
 var ProjectStore = assign({}, EventEmitter.prototype, {
 
@@ -36,9 +37,11 @@ var ProjectStore = assign({}, EventEmitter.prototype, {
             _project.folders.push(item);
         }
 
+
         if (_currentFolderID || _currentArtboardID) {
             _currentFolderID = _project.folders[0].pageId;
             _currentArtboardID = _project.folders[0].artboardId[0];
+            _openFolderID = _currentFolderID;
         }
     },
 
@@ -75,8 +78,16 @@ var ProjectStore = assign({}, EventEmitter.prototype, {
         return _project.name;
     },
 
+    getCurrentFolderID: function() {
+        return _currentFolderID;
+    },
+
     getCurrentArtboardID: function() {
         return _currentArtboardID;
+    },
+
+    getOpenFolderID: function() {
+        return _openFolderID; // || _currentFolderID
     }
 });
 
@@ -84,11 +95,19 @@ ProjectStore.dispatchToken = MinceAppDispatcher.register(function(action) {
     switch(action.type) {
         case ActionTypes.CLICK_NAV_ARTBOARD:
             _currentArtboardID = action.artboardID;
+            _currentFolderID = action.folderID;
+            _openFolderID = action.folderID;
+            ProjectStore.emitChange();
+            break;
+
+        case ActionTypes.CLICK_NAV_FOLDER:
+            _openFolderID = _openFolderID == action.folderID ? null : action.folderID;
             ProjectStore.emitChange();
             break;
 
         case ActionTypes.RECEIVE_PROJECT:
             ProjectStore.init(action.project, action.url);
+            console.log('emitChange')
             ProjectStore.emitChange();
             break;
 

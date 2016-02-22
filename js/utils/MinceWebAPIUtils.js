@@ -20,15 +20,18 @@ module.exports = {
         xdata.onload = function(){
             // @TODO: FIX DEFAULT ARTBOARD
             var defaultArtboard;
+            var defaultFolder;
+
             MinceServerActionCreators.receiveProject(pageData, url);
 
-            for (var key in pageData.artboard) {
-                defaultArtboard = pageData.artboard[key].id;
+            for (var key in pageData.pageData) {
+                defaultFolder = key;
                 break;
             }
 
-            MinceNavActionCreators.clickNavArtboard(defaultArtboard);
+            defaultArtboard = pageData.pageData[defaultFolder].artboardId[0];
 
+            MinceNavActionCreators.clickNavArtboard(defaultArtboard, defaultFolder);
         };
         xdata.src = url+'data.js';
         document.body.appendChild(xdata);

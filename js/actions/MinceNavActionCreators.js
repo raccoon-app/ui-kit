@@ -5,11 +5,18 @@ var ActionTypes = MinceConstants.ActionTypes;
 
 module.exports = {
 
-    clickNavArtboard: function(data) {
+    clickNavArtboard: function(artboardID, folderID) {
         MinceAppDispatcher.dispatch({
             type: ActionTypes.CLICK_NAV_ARTBOARD,
-            artboardID: data
+            artboardID: artboardID,
+            folderID: folderID
+        });
+    },
+
+    clickNavFolder: function(folderID) {
+        MinceAppDispatcher.dispatch({
+            type: ActionTypes.CLICK_NAV_FOLDER,
+            folderID: folderID
         });
     }
-
 };

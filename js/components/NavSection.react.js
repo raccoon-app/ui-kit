@@ -1,12 +1,16 @@
 var React = require('react');
+var MinceNavActionCreators = require('../actions/MinceNavActionCreators');
 var NavListArtboard = require('../components/NavListArtboard.react');
 var ProjectStore = require('../stores/ProjectStore');
+var classNames = require('classnames');
 
 function getStateFromStores() {
     return {
         folders: ProjectStore.getAllFolders(),
         name: ProjectStore.getName(),
+        currentFolderID: ProjectStore.getCurrentFolderID(),
         currentArtboardID: ProjectStore.getCurrentArtboardID(),
+        openFolderID: ProjectStore.getOpenFolderID()
     };
 }
 
@@ -25,7 +29,13 @@ var NavSection = React.createClass({
     },
 
     render: function() {
+        var _this = this;
         var currentArtboardID = this.state.currentArtboardID;
+        var currentFolderID = this.state.currentFolderID;
+        var openFolderID = this.state.openFolderID;
+
+
+        console.log(currentFolderID)
 
         var navListFolder = this.state.folders.map(function(folder) {
 
@@ -34,20 +44,31 @@ var NavSection = React.createClass({
                     id: artboard.id,
                     name: artboard.name,
                     src: artboard.src
-                }
+                };
 
                 return (
                     <NavListArtboard
                         key={artboard.id}
                         artboard={artboardData}
+                        folderID={folder.pageId}
                         currentArtboardID={currentArtboardID}
                     />
                 );
             });
-
+            console.log(folder.pageId)
             return (
-                <li className="nav-folder__item">
-                    <h3 className="nav-folder__title">{folder.name}</h3>
+                <li className={classNames({
+                    'nav-folder__item': true,
+                    'nav-folder__item_open': folder.pageId === openFolderID
+                })}>
+                    <h3
+                        className={classNames({
+                            'nav-folder__title': true,
+                            'nav-folder__title_active': folder.pageId === currentFolderID
+                        })}
+                        onClick={_this._onClick.bind(_this, folder.pageId)}>
+                        {folder.name}
+                    </h3>
                     <ul className="nav-page">
                         {navListPages}
                     </ul>
@@ -69,8 +90,11 @@ var NavSection = React.createClass({
     */
     _onChange: function() {
         this.setState(getStateFromStores());
-    }
+    },
 
+    _onClick: function(folderID) {
+        MinceNavActionCreators.clickNavFolder(folderID);
+    }
 });
 
 module.exports = NavSection;

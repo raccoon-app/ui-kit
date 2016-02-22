@@ -22,6 +22,5 @@ gulp.task('build', function(done) {
  * Default task
  */
 gulp.task('default', function() {
-    //return runSequence('build', 'watch');
-	return runSequence('build');
+	return runSequence('build', ['watch']);
 });
