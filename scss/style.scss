@@ -90,7 +90,7 @@ h3 {
     left: 0;
     width: 320px;
     margin: 0;
-    overflow-y: auto;
+    overflow-y: scroll;
     padding: 0;
     background: #029EAE;
     box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50);
@@ -220,6 +220,10 @@ h3 {
         color: $LIGHT;
         padding: 4px;
         z-index:999999;
+
+        &_disabled {
+            display: none;
+        }
     }
 
     &__scale-value {
@@ -432,45 +436,36 @@ h3 {
             border-top:1px solid red;
         }
 
+        &__label {
+            display: inline-block;
+            line-height: 14px;
+        }
+
         &__value {
             display: inline-block;
             padding: 0 3px;
             border-radius: 2px;
             height: 14px;
-            line-height: 14px;
             font-size: 12px;
             font-weight: 100;
             color: #fff;
             background: red;
         }
 
-        &_top & {
-            &__value {
-                position: absolute;
-                left: 100%;
-                top: 50%;
-                margin: -8px 0 0 -10px;
-            }
-        }
-
-        &_right & {
-            &__value {
-                position: relative;
-                top: -11px;
-            }
-        }
-
+        &_top &,
         &_bottom & {
-            &__value {
+            &__label {
                 position: absolute;
-                left: 100%;
+                left: -20px;
                 top: 50%;
-                margin: -8px 0 0 -10px;
+                margin: -9px auto 0;
+                width: 40px;
             }
         }
 
-        &_left & {
-            &__value {
+        &_left &,
+        &_right & {
+            &__label {
                 position: relative;
                 top: -11px;
             }

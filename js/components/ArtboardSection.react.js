@@ -66,8 +66,7 @@ var ArtboardSection = React.createClass({
         var scaleValue = Math.floor(this.state.scale*100)+'%';
 
         return (
-            <div className="artboard"
-                 className={classNames({
+            <div className={classNames({
                     'artboard': true,
                     'artboard_dragging': this.state.dragging
                  })}
@@ -76,7 +75,10 @@ var ArtboardSection = React.createClass({
                  onMouseUp={this._onMouseUp}
                  onMouseMove={this._onMouseMove}>
 
-                <h3 className="artboard__title">{artboard.name}</h3>
+                <h3 className={classNames({
+                    'artboard__title': true,
+                    'artboard__title_disabled': artboard.name
+                 })}>{artboard.name}</h3>
 
                 <div className="artboard__draggable" style={translateStyle}>
                     <div className="artboard__scale" style={scaleStyle}>

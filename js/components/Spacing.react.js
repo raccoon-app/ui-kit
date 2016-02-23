@@ -30,7 +30,9 @@ var Spacing = React.createClass({
                     'measure-ruler_left': rulerItem.type == 'left',
                     'measure-ruler_right': rulerItem.type == 'right'
                 })} style={rulerStyle}>
-                    <span className="measure-ruler__value">{rulerItem.value}</span>
+                    <span className="measure-ruler__label">
+                        <span className="measure-ruler__value">{rulerItem.value}</span>
+                    </span>
                 </div>
             );
         });

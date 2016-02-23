@@ -436,7 +436,7 @@ h3 {
   left: 0;
   width: 320px;
   margin: 0;
-  overflow-y: auto;
+  overflow-y: scroll;
   padding: 0;
   background: #029EAE;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
@@ -531,6 +531,8 @@ h3 {
     color: #fff;
     padding: 4px;
     z-index: 999999; }
+    .artboard__title_disabled {
+      display: none; }
   .artboard__scale-value {
     position: absolute;
     bottom: 0;
@@ -670,29 +672,26 @@ h3 {
       border-left: 1px solid red; }
     .measure-ruler_left {
       border-top: 1px solid red; }
+    .measure-ruler__label {
+      display: inline-block;
+      line-height: 14px; }
     .measure-ruler__value {
       display: inline-block;
       padding: 0 3px;
       border-radius: 2px;
       height: 14px;
-      line-height: 14px;
       font-size: 12px;
       font-weight: 100;
       color: #fff;
       background: red; }
-    .measure-ruler_top .measure-ruler__value {
+    .measure-ruler_top .measure-ruler__label,
+    .measure-ruler_bottom .measure-ruler__label {
       position: absolute;
-      left: 100%;
+      left: -20px;
       top: 50%;
-      margin: -8px 0 0 -10px; }
-    .measure-ruler_right .measure-ruler__value {
-      position: relative;
-      top: -11px; }
-    .measure-ruler_bottom .measure-ruler__value {
-      position: absolute;
-      left: 100%;
-      top: 50%;
-      margin: -8px 0 0 -10px; }
-    .measure-ruler_left .measure-ruler__value {
+      margin: -9px auto 0;
+      width: 40px; }
+    .measure-ruler_left .measure-ruler__label,
+    .measure-ruler_right .measure-ruler__label {
       position: relative;
       top: -11px; }

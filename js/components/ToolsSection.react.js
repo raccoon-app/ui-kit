@@ -37,18 +37,18 @@ var ToolsSection = React.createClass({
 
         console.log(layer);
 
-        layer.name = decodeURIComponent(layer.name);
+        layer.name = decodeURIComponent(layer.name); // @TODO FIX @ symbol
         layer.html = decodeURIComponent(layer.html);
 
         var tools = [];
 
         if (layer.html && layer.html !== 'undefined') {
             tools.push(
-                <textarea name="content" value={layer.html} className="tools__textarea tools__textarea_content"></textarea>
+                <textarea name="content" value={layer.html} className="tools__textarea tools__textarea_content" onClick={this._onClick}></textarea>
             )
         }
 
-        if ((!layer.html || layer.html == 'undefined') && this.state.isExportEveryLayer) {
+        if ((!layer.html || layer.html == 'undefined') && this.state.isExportEveryLayer && layer.id) {
             var fileUrl = this.state.url + this.state.artboard + '/' + layer.id + '@2x.png';
             var fileName = layer.name + '.png'
 
@@ -64,7 +64,7 @@ var ToolsSection = React.createClass({
             var styleHtml = formatStyle(layer.style);
 
             tools.push(
-                <textarea name="code" value={styleHtml} className="tools__textarea tools__textarea_style">{styleHtml}</textarea>
+                <textarea name="code" value={styleHtml} className="tools__textarea tools__textarea_style" onClick={this._onClick}>{styleHtml}</textarea>
             )
         }
 
@@ -77,6 +77,8 @@ var ToolsSection = React.createClass({
                 height: {layer.height}px<br />
 
                 {tools}
+
+                <span>click on textarea to copy</span>
             </div>
         );
     },
@@ -86,6 +88,11 @@ var ToolsSection = React.createClass({
     */
     _onChange: function() {
         this.setState(getStateFromStores());
+    },
+
+    _onClick: function(e) {
+        e.target.select();
+        document.execCommand('copy');
     }
 
 });
