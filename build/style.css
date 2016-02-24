@@ -491,7 +491,7 @@ h3 {
       color: #fff;
       line-height: 21px;
       display: block;
-      padding: 20px 20px 20px 50px;
+      padding: 20px 20px 20px 30px;
       margin: 0;
       cursor: pointer; }
       .nav-page__link-img {
@@ -627,24 +627,24 @@ h3 {
     opacity: 0.4;
     overflow: hidden; }
     .measure-lighthouse_top {
-      left: -1000px;
-      right: -1000px;
+      left: -3000px;
+      right: -3000px;
       height: 0;
       border-top: 1px dashed #FE3B00;
       margin-top: -1px; }
     .measure-lighthouse_right {
-      top: -1000px;
-      bottom: -1000px;
+      top: -3000px;
+      bottom: -3000px;
       width: 0;
       border-left: 1px dashed #FE3B00; }
     .measure-lighthouse_bottom {
-      left: -1000px;
-      right: -1000px;
+      left: -3000px;
+      right: -3000px;
       height: 0;
       border-top: 1px dashed #FE3B00; }
     .measure-lighthouse_left {
-      top: -1000px;
-      bottom: -1000px;
+      top: -3000px;
+      bottom: -3000px;
       width: 0;
       border-left: 1px dashed #FE3B00;
       margin-left: -1px; }

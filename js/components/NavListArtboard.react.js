@@ -28,11 +28,12 @@ var NavListArtboard = React.createClass({
                 })}
                 onClick={this._onClick}>
                 <h5 className="nav-page__link">
-                    <span className="nav-page__link-img" style={imgStyle}></span>
                     <span className="nav-page__link-text">{artboard.name}</span>
                 </h5>
             </li>
         );
+
+        //<span className="nav-page__link-img" style={imgStyle}></span>
     },
 
     _onClick: function() {

@@ -139,12 +139,13 @@ var ArtboardSection = React.createClass({
     },
 
     _onMouseWheel: function(e) {
-        var ZOOM_STEP = .04;
+        var ZOOM_STEP = .05;
 
         //require the shift key to be pressed to scroll
         //if (!e.shiftKey) {
         //    return;
         //}
+        var rect = document.getElementsByClassName('artboard__scale')[0].getBoundingClientRect();
 
         e.preventDefault();
 
@@ -154,6 +155,17 @@ var ArtboardSection = React.createClass({
             this.state.scale -= ZOOM_STEP;
         }
         this.state.scale = this.state.scale < 0 ? 0 : this.state.scale;
+
+        var xDiff = (e.pageX-rect.left)*ZOOM_STEP;
+        var yDiff = (e.pageY-rect.top)*ZOOM_STEP;
+
+        if (this.isNegative(e.deltaX) && this.isNegative(e.deltaY) ) {
+            this.state.x += xDiff;
+            this.state.y += yDiff;
+        } else {
+            this.state.x -= xDiff;
+            this.state.y -= yDiff;
+        }
 
         this.setState(this.state);
     }
