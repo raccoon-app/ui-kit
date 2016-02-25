@@ -160,11 +160,11 @@ var ArtboardSection = React.createClass({
         var yDiff = (e.pageY-rect.top)*ZOOM_STEP;
 
         if (this.isNegative(e.deltaX) && this.isNegative(e.deltaY) ) {
-            this.state.x += xDiff;
-            this.state.y += yDiff;
-        } else {
             this.state.x -= xDiff;
             this.state.y -= yDiff;
+        } else {
+            this.state.x += xDiff;
+            this.state.y += yDiff;
         }
 
         this.setState(this.state);
