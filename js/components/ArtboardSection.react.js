@@ -139,25 +139,18 @@ var ArtboardSection = React.createClass({
     },
 
     _onMouseWheel: function(e) {
-        var ZOOM_STEP = .05;
+        var ZOOM_STEP = .1;
 
         //require the shift key to be pressed to scroll
         //if (!e.shiftKey) {
         //    return;
         //}
-        var rect = document.getElementsByClassName('artboard__scale')[0].getBoundingClientRect();
+        var $target = document.getElementsByClassName('artboard__scale')[0].getBoundingClientRect();
 
         e.preventDefault();
 
-        if (this.isNegative(e.deltaX) && this.isNegative(e.deltaY) ) {
-            this.state.scale += ZOOM_STEP;
-        } else {
-            this.state.scale -= ZOOM_STEP;
-        }
-        this.state.scale = this.state.scale < 0 ? 0 : this.state.scale;
-
-        var xDiff = (e.pageX-rect.left)*ZOOM_STEP;
-        var yDiff = (e.pageY-rect.top)*ZOOM_STEP;
+        var xDiff = (e.pageX-$target.left)*ZOOM_STEP/this.state.scale;
+        var yDiff = (e.pageY-$target.top)*ZOOM_STEP/this.state.scale;
 
         if (this.isNegative(e.deltaX) && this.isNegative(e.deltaY) ) {
             this.state.x -= xDiff;
@@ -166,6 +159,13 @@ var ArtboardSection = React.createClass({
             this.state.x += xDiff;
             this.state.y += yDiff;
         }
+
+        if (this.isNegative(e.deltaX) && this.isNegative(e.deltaY) ) {
+            this.state.scale += ZOOM_STEP;
+        } else {
+            this.state.scale -= ZOOM_STEP;
+        }
+        this.state.scale = this.state.scale < 0 ? 0 : this.state.scale;
 
         this.setState(this.state);
     }

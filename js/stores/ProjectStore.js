@@ -18,7 +18,6 @@ var ProjectStore = assign({}, EventEmitter.prototype, {
     init: function(project, url) {
         _url = url || null;
 
-        console.log(project.sketchName);
         _project.name = decodeURIComponent(project.sketchName);
         _project.folders = [];
 
@@ -107,7 +106,6 @@ ProjectStore.dispatchToken = MinceAppDispatcher.register(function(action) {
 
         case ActionTypes.RECEIVE_PROJECT:
             ProjectStore.init(action.project, action.url);
-            console.log('emitChange')
             ProjectStore.emitChange();
             break;
 

@@ -53,22 +53,31 @@ h3 {
         height: 32px;
         background: url(../img/logo.png);
         background-size: 90px 32px;
-        margin: 20px;
+        margin: 19px 20px 8px;
         text-indent: -9999px;
     }
 
     &__title {
         display: block;
         float: left;
-        padding: 20px;
+        padding: 16px 20px;
         width: 150px;
         font-family: 'Oswald', sans-serif;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    &__form {
+        padding: 14px 0;
     }
 
     &__input {
-        border: 2px solid #464547;
-        margin: 15px 0;
-        padding: 5px;
+        border: 2px solid $PRIMARY;
+        margin: 0;
+        padding: 6px 5px 4px;
+        float: left;
+        display: block;
     }
 
     &__btn {
@@ -76,10 +85,12 @@ h3 {
         color: $LIGHT;
         font-family: 'Oswald', sans-serif;
         font-weight: 600;
-        padding: 5px 10px;
+        padding: 4px 12px 4px 10px;
         border: 0;
         font-size: 16px;
-
+        float: left;
+        display: block;
+        height: 32px;
     }
 }
 
