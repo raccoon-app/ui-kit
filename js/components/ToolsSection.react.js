@@ -53,7 +53,7 @@ var ToolsSection = React.createClass({
             var fileName = layer.name + '.png'
 
             tools.push(
-                <a href={fileUrl} download={fileName} className="tools__download">
+                <a href='img/logo.png' download='test.png' className="tools__download">
                     <span style={{backgroundImage:'url('+fileUrl+')'}} className="tools__download-image"></span>
                     <span className="tools__download-text">download</span>
                 </a>
@@ -70,15 +70,25 @@ var ToolsSection = React.createClass({
 
         return (
             <div className="tools">
-                <h5>{layer.name}</h5>
-                x: {layer.x}px<br />
-                y: {layer.x}px<br />
-                width: {layer.width}px<br />
-                height: {layer.height}px<br />
+                <h5 className="tools__title">{layer.name}</h5>
+                <ul className="tools__list">
+                    <li className="tools__item">
+                        <span className="tools__item-label">X:</span> {layer.x}px
+                    </li>
+                    <li className="tools__item">
+                        <span className="tools__item-label">Y:</span> {layer.x}px
+                    </li>
+                    <li className="tools__item">
+                        <span className="tools__item-label">Width:</span> {layer.width}px
+                    </li>
+                    <li className="tools__item">
+                        <span className="tools__item-label">Height:</span> {layer.height}px
+                    </li>
+                </ul>
 
                 {tools}
 
-                <span>click on textarea to copy</span>
+                <span className="tools__text">click on textarea to copy</span>
             </div>
         );
     },

@@ -3,6 +3,17 @@
 @import "normalize";
 @import "typography";
 
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
 ::-webkit-scrollbar{
     width:5px;
@@ -62,7 +73,7 @@ h3 {
         float: left;
         padding: 16px 20px;
         width: 150px;
-        font-family: 'Oswald', sans-serif;
+        font-family: $HEADLINE_FONT;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -83,7 +94,7 @@ h3 {
     &__btn {
         background: $PRIMARY;
         color: $LIGHT;
-        font-family: 'Oswald', sans-serif;
+        font-family: $HEADLINE_FONT;
         font-weight: 600;
         padding: 4px 12px 4px 10px;
         border: 0;
@@ -120,7 +131,7 @@ h3 {
 
         &__title {
             position: relative;
-            font-family: 'Oswald', sans-serif;
+            font-family: $HEADLINE_FONT;
             font-size: 18px;
             color: $LIGHT;
             line-height: 25px;
@@ -169,7 +180,7 @@ h3 {
 
 
         &__link {
-            font-family: 'Oswald', sans-serif;
+            font-family: $HEADLINE_FONT;
             font-size :16px;
             color: $LIGHT;
             line-height: 21px;
@@ -284,15 +295,51 @@ h3 {
     top: 60px;
     bottom: 0;
     right: 0;
-    width: 200px;
+    width: 280px;
     background: $DEFAULT;
     color: $LIGHT;
     padding: 20px;
     overflow-y: auto;
 
-    &__textarea {
-        background: $MEDIUM_GRAY;
+    &__list {
+        margin: 0 0 15px;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__item {
+        padding: 0 0 5px;
         color: $LIGHT;
+        font-family: $HEADLINE_FONT;
+        font-size:20px;
+        line-height:27px;
+
+        &-label {
+            color: $GRAY;
+            width: 70px;
+            display: inline-block;
+        }
+    }
+
+    &__title {
+        color: $PRIMARY;
+        font-family: $HEADLINE_FONT;
+        font-size:22px;
+        line-height:30px;
+        margin: 0 0 20px;
+        text-transform: uppercase;
+    }
+
+    &__textarea {
+        background: $LIGHT_GRAY;
+        color: $DEFAULT;
+        border: 0;
+        padding: 7px 10px;
+        margin: 0 0 20px;
+        font-family: $HEADLINE_FONT;
+        font-size:18px;
+        line-height:26px;
+        width: 100%;
 
         &_content {
             height: 100px;
@@ -307,17 +354,41 @@ h3 {
         display: block;
         width: 100%;
         background: $PRIMARY_CTRL;
-        padding: 4px 10px;
+        padding: 10px 10px 0;
+        margin: 0 0 20px;
         color: $LIGHT;
         text-decoration: none;
+        text-align: center;
 
         &-image {
             display: block;
-            height: 120px;
+            height: 100px;
+            border: 10px solid $LIGHT;
+            background-color: $LIGHT;
             background-position: center;
             background-size: contain;
             background-repeat: no-repeat;
         }
+
+        &-text {
+            display: block;
+            color: $LIGHT;
+            font-family: $HEADLINE_FONT;
+            font-size:18px;
+            line-height:20px;
+            padding: 5px 0;
+            text-transform: uppercase;
+        }
+    }
+
+    &__text {
+        display: block;
+        color: $GRAY;
+        font-family: $HEADLINE_FONT;
+        font-size:16px;
+        line-height:20px;
+        padding: 5px 0;
+        text-transform: uppercase;
     }
 }
 

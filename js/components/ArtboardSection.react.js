@@ -165,7 +165,7 @@ var ArtboardSection = React.createClass({
         } else {
             this.state.scale -= ZOOM_STEP;
         }
-        this.state.scale = this.state.scale < 0 ? 0 : this.state.scale;
+        this.state.scale = this.state.scale < ZOOM_STEP ? ZOOM_STEP : this.state.scale;
 
         this.setState(this.state);
     }
