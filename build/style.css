@@ -389,7 +389,8 @@ body {
   padding: 0;
   margin: 0;
   background: #E8E8E8;
-  color: #464547; }
+  color: #464547;
+  overflow: hidden; }
 
 h1 {
   margin: 0; }
@@ -421,7 +422,7 @@ h3 {
     display: block;
     float: left;
     padding: 16px 20px;
-    width: 150px;
+    width: 210px;
     font-family: "Oswald", sans-serif;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -585,7 +586,11 @@ h3 {
   background: #464547;
   color: #fff;
   padding: 20px;
-  overflow-y: auto; }
+  overflow-y: auto;
+  -webkit-transition: right .2s ease-out;
+          transition: right .2s ease-out; }
+  .tools_disabled {
+    right: -280px; }
   .tools__list {
     margin: 0 0 15px;
     padding: 0;
@@ -618,7 +623,7 @@ h3 {
     line-height: 26px;
     width: 100%; }
     .tools__textarea_content {
-      height: 100px; }
+      height: 140px; }
     .tools__textarea_style {
       height: 200px; }
   .tools__download {

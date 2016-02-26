@@ -37,6 +37,7 @@ body {
     margin: 0;
     background: #E8E8E8;
     color: $DEFAULT;
+    overflow: hidden;
 }
 h1 {
     margin: 0;
@@ -72,7 +73,7 @@ h3 {
         display: block;
         float: left;
         padding: 16px 20px;
-        width: 150px;
+        width: 210px;
         font-family: $HEADLINE_FONT;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -300,6 +301,11 @@ h3 {
     color: $LIGHT;
     padding: 20px;
     overflow-y: auto;
+    transition: right .2s ease-out;
+
+    &_disabled {
+        right: -280px;
+    }
 
     &__list {
         margin: 0 0 15px;

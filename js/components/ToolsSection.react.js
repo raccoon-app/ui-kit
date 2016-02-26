@@ -1,5 +1,6 @@
 var React = require('react');
 var ToolsStore = require('../stores/ToolsStore');
+var classNames = require('classnames');
 
 function getStateFromStores() {
     return {
@@ -35,8 +36,6 @@ var ToolsSection = React.createClass({
     render: function() {
         var layer = this.state.layer;
 
-        console.log(layer);
-
         layer.name = decodeURIComponent(layer.name); // @TODO FIX @ symbol
         layer.html = decodeURIComponent(layer.html);
 
@@ -69,7 +68,10 @@ var ToolsSection = React.createClass({
         }
 
         return (
-            <div className="tools">
+            <div className={classNames({
+                    'tools': true,
+                    'tools_disabled': !layer.id
+                 })}>
                 <h5 className="tools__title">{layer.name}</h5>
                 <ul className="tools__list">
                     <li className="tools__item">
