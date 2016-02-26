@@ -82,6 +82,7 @@ h3 {
 
     &__form {
         padding: 14px 0;
+        float: left;
     }
 
     &__input {
@@ -115,7 +116,7 @@ h3 {
     margin: 0;
     overflow-y: scroll;
     padding: 0;
-    background: $DEFAULT;
+    background: #029EAE;
     box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50);
     z-index: 9991;
     font-family: 'Oswald', sans-serif;
@@ -127,7 +128,7 @@ h3 {
 
         &__item {
             padding: 0;
-            margin: 0;
+            margin: 0 0 2px;
         }
 
         &__title {
@@ -136,13 +137,13 @@ h3 {
             font-size: 18px;
             color: $LIGHT;
             line-height: 25px;
-            background: $PRIMARY;
+            background: #2CC4D5;
             display: block;
             padding: 20px;
             cursor: pointer;
 
             &_active {
-                background: $PRIMARY_CTRL;
+                background: #1B7E8E;
                 color: $LIGHT;
             }
 
@@ -173,9 +174,16 @@ h3 {
             margin: 0;
             background: $PRIMARY_MUTED;
 
-            &_active {
+            &:hover {
+                background: #0FAABA;
+            }
+
+            &_active,
+            &_active:hover {
                 background: $DEFAULT;
             }
+
+
         }
 
 
@@ -252,10 +260,13 @@ h3 {
     &__scale-value {
         position: absolute;
         bottom:0;
-        left:0;
+        right: 300px;
         background: rgba(0,0,0,.3);
         color: $LIGHT;
-        padding: 4px;
+        padding: 4px 10px;
+        font-family: $HEADLINE_FONT;
+        font-size :16px;
+        line-height: 21px;
     }
 
 
@@ -337,6 +348,7 @@ h3 {
     }
 
     &__textarea {
+        display: block;
         background: $LIGHT_GRAY;
         color: $DEFAULT;
         border: 0;
@@ -557,6 +569,49 @@ h3 {
                 position: relative;
                 top: -11px;
             }
+        }
+    }
+}
+
+.setting-color {
+    float: right;
+    margin: 14px 50px 0 200px;
+
+    &__title {
+        float: left;
+        margin: 0 10px 0 0;
+        color: $PRIMARY;
+        font-family: $HEADLINE_FONT;
+        font-size:16px;
+        line-height:20px;
+        padding: 10px 0;
+        text-transform: uppercase;
+    }
+
+    &__list {
+        list-style: none;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        float: left;
+    }
+
+    &__item {
+        display: inline-block;
+        padding: 8px;
+        margin: 0;
+    }
+
+    &__button {
+        display: block;
+        border: 12px transparent solid;
+        border-radius: 12px;
+        padding: 0;
+        border-width: 0 12px;
+        height: 24px;
+
+        &_active {
+            box-shadow: 0 0 0 2px #fff, 0 0 0 4px $PRIMARY;
         }
     }
 }

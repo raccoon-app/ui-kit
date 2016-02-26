@@ -428,7 +428,8 @@ h3 {
     text-overflow: ellipsis;
     overflow: hidden; }
   .header__form {
-    padding: 14px 0; }
+    padding: 14px 0;
+    float: left; }
   .header__input {
     border: 2px solid #39C2D7;
     margin: 0;
@@ -456,7 +457,7 @@ h3 {
   margin: 0;
   overflow-y: scroll;
   padding: 0;
-  background: #464547;
+  background: #029EAE;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
   z-index: 9991;
   font-family: 'Oswald', sans-serif; }
@@ -466,19 +467,19 @@ h3 {
     margin: 0; }
     .nav-folder__item {
       padding: 0;
-      margin: 0; }
+      margin: 0 0 2px; }
     .nav-folder__title {
       position: relative;
       font-family: "Oswald", sans-serif;
       font-size: 18px;
       color: #fff;
       line-height: 25px;
-      background: #39C2D7;
+      background: #2CC4D5;
       display: block;
       padding: 20px;
       cursor: pointer; }
       .nav-folder__title_active {
-        background: #A3C644;
+        background: #1B7E8E;
         color: #fff; }
       .nav-folder__title:after {
         position: absolute;
@@ -501,7 +502,9 @@ h3 {
       padding: 0;
       margin: 0;
       background: #1A9CB0; }
-      .nav-page__item_active {
+      .nav-page__item:hover {
+        background: #0FAABA; }
+      .nav-page__item_active, .nav-page__item_active:hover {
         background: #464547; }
     .nav-page__link {
       font-family: "Oswald", sans-serif;
@@ -554,10 +557,13 @@ h3 {
   .artboard__scale-value {
     position: absolute;
     bottom: 0;
-    left: 0;
+    right: 300px;
     background: rgba(0, 0, 0, 0.3);
     color: #fff;
-    padding: 4px; }
+    padding: 4px 10px;
+    font-family: "Oswald", sans-serif;
+    font-size: 16px;
+    line-height: 21px; }
   .artboard__scale {
     position: absolute;
     top: 0;
@@ -613,6 +619,7 @@ h3 {
     margin: 0 0 20px;
     text-transform: uppercase; }
   .tools__textarea {
+    display: block;
     background: #ccc;
     color: #464547;
     border: 0;
@@ -765,3 +772,35 @@ h3 {
     .measure-ruler_right .measure-ruler__label {
       position: relative;
       top: -11px; }
+
+.setting-color {
+  float: right;
+  margin: 14px 50px 0 200px; }
+  .setting-color__title {
+    float: left;
+    margin: 0 10px 0 0;
+    color: #39C2D7;
+    font-family: "Oswald", sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 10px 0;
+    text-transform: uppercase; }
+  .setting-color__list {
+    list-style: none;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    float: left; }
+  .setting-color__item {
+    display: inline-block;
+    padding: 8px;
+    margin: 0; }
+  .setting-color__button {
+    display: block;
+    border: 12px transparent solid;
+    border-radius: 12px;
+    padding: 0;
+    border-width: 0 12px;
+    height: 24px; }
+    .setting-color__button_active {
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #39C2D7; }
