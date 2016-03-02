@@ -24,5 +24,12 @@ module.exports = {
             type: ActionTypes.LEAVE_ARTBOARD_LAYER,
             layer: data
         });
+    },
+
+    setMeasureColor: function(data) {
+        MinceAppDispatcher.dispatch({
+            type: ActionTypes.SET_MEASURE_COLOR,
+            color: data
+        });
     }
 };

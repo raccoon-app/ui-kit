@@ -8,7 +8,8 @@ module.exports = {
         CLICK_NAV_FOLDER: null,
         CLICK_ARTBOARD_LAYER: null,
         ENTER_ARTBOARD_LAYER: null,
-        LEAVE_ARTBOARD_LAYER: null
+        LEAVE_ARTBOARD_LAYER: null,
+        SET_MEASURE_COLOR: null
     })
 
 };

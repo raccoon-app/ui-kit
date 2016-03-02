@@ -8,18 +8,21 @@ var Spacing = React.createClass({
 
     propTypes: {
         scale: ReactPropTypes.number,
-        spacing: ReactPropTypes.object
+        spacing: ReactPropTypes.object,
+        color: ReactPropTypes.string
     },
 
     render: function() {
         var scale = this.props.scale;
+        var color = this.props.color;
 
         var spacing = this.props.spacing.map(function(rulerItem) {
             var rulerStyle = {
                 left: rulerItem.left*scale+'px',
                 top: rulerItem.top*scale+'px',
                 height: rulerItem.height ? rulerItem.height*scale+'px' : 0,
-                width: rulerItem.width ? rulerItem.width*scale+'px' : 0
+                width: rulerItem.width ? rulerItem.width*scale+'px' : 0,
+                borderColor: color
             };
 
             return (
@@ -31,7 +34,7 @@ var Spacing = React.createClass({
                     'measure-ruler_right': rulerItem.type == 'right'
                 })} style={rulerStyle}>
                     <span className="measure-ruler__label">
-                        <span className="measure-ruler__value">{rulerItem.value}</span>
+                        <span className="measure-ruler__value" style={{backgroundColor: color}}>{rulerItem.value}</span>
                     </span>
                 </div>
             );

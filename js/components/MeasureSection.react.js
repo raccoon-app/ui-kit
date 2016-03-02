@@ -10,7 +10,9 @@ function getStateFromStores() {
     return {
         currentLayer: MeasureStore.getCurrentLayer(),
         targetLayer: MeasureStore.getTargetLayer(),
-        spacing: MeasureStore.getSpacing()
+        spacing: MeasureStore.getSpacing(),
+        currentColor: MeasureStore.getCurrentColor(),
+        targetColor: MeasureStore.getTargetColor()
     };
 }
 
@@ -39,9 +41,9 @@ var MeasureSection = React.createClass({
                     'measure_disabled': !this.state.currentLayer.x && !this.state.targetLayer.x
                 })}>
 
-                <Marker scale={this.props.scale} measure={this.state.targetLayer} type="target" />
-                <Marker scale={this.props.scale} measure={this.state.currentLayer} type="current" />
-                <Spacing scale={this.props.scale} spacing={this.state.spacing} />
+                <Marker scale={this.props.scale} measure={this.state.targetLayer} color={this.state.targetColor} type="target" />
+                <Marker scale={this.props.scale} measure={this.state.currentLayer} color={this.state.currentColor} type="current" />
+                <Spacing scale={this.props.scale} spacing={this.state.spacing} color={this.state.targetColor} />
             </div>
         );
     },

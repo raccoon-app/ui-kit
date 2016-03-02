@@ -804,3 +804,5 @@ h3 {
     height: 24px; }
     .setting-color__button_active {
       box-shadow: 0 0 0 2px #fff, 0 0 0 4px #39C2D7; }
+    .setting-color__button:active, .setting-color__button:focus {
+      outline: 0; }
