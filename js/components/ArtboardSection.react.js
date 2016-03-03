@@ -3,6 +3,7 @@ var React = require('react');
 var ArtboardListLayer = require('../components/ArtboardListLayer.react');
 var MeasureSection = require('../components/MeasureSection.react');
 var ArtboardStore = require('../stores/ArtboardStore');
+var SettingStore = require('../stores/SettingStore');
 var classNames = require('classnames');
 
 function getStateFromStores() {
@@ -13,7 +14,8 @@ function getStateFromStores() {
         scale: 1,
         x: 0,
         y: 0,
-        dragging: false
+        dragging: false,
+        backgroundColor: SettingStore.getBackgroundColor()
     };
 }
 
@@ -25,14 +27,17 @@ var ArtboardSection = React.createClass({
 
     componentDidMount: function() {
         ArtboardStore.addChangeListener(this._onChange);
+        SettingStore.addChangeListener(this._onChange);
     },
 
     componentWillUnmount: function() {
         ArtboardStore.removeChangeListener(this._onChange);
+        SettingStore.removeChangeListener(this._onChange);
     },
 
     render: function() {
         var artboard = this.state.artboard;
+        var backgroundColor = this.state.backgroundColor;
 
         var layers = this.state.layer.map(function(layerItem) {
             return (
@@ -73,7 +78,8 @@ var ArtboardSection = React.createClass({
                  onWheel={this._onMouseWheel}
                  onMouseDown={this._onMouseDown}
                  onMouseUp={this._onMouseUp}
-                 onMouseMove={this._onMouseMove}>
+                 onMouseMove={this._onMouseMove}
+                 style={{background:backgroundColor}}>
 
                 <h3 className={classNames({
                     'artboard__title': true,

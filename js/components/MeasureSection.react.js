@@ -1,5 +1,6 @@
 var React = require('react');
 var MeasureStore = require('../stores/MeasureStore');
+var SettingStore = require('../stores/SettingStore');
 var Marker = require('../components/Marker.react');
 var Spacing = require('../components/Spacing.react');
 var classNames = require('classnames');
@@ -11,8 +12,8 @@ function getStateFromStores() {
         currentLayer: MeasureStore.getCurrentLayer(),
         targetLayer: MeasureStore.getTargetLayer(),
         spacing: MeasureStore.getSpacing(),
-        currentColor: MeasureStore.getCurrentColor(),
-        targetColor: MeasureStore.getTargetColor()
+        currentColor: SettingStore.getCurrentMarkerColor(),
+        targetColor: SettingStore.getTargetMarkerColor()
     };
 }
 
@@ -28,10 +29,12 @@ var MeasureSection = React.createClass({
 
     componentDidMount: function() {
         MeasureStore.addChangeListener(this._onChange);
+        SettingStore.addChangeListener(this._onChange);
     },
 
     componentWillUnmount: function() {
         MeasureStore.removeChangeListener(this._onChange);
+        SettingStore.addChangeListener(this._onChange);
     },
 
     render: function() {

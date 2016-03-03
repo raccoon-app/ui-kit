@@ -9,7 +9,8 @@ module.exports = {
         CLICK_ARTBOARD_LAYER: null,
         ENTER_ARTBOARD_LAYER: null,
         LEAVE_ARTBOARD_LAYER: null,
-        SET_MEASURE_COLOR: null
+        SET_MARKER_COLOR: null,
+        SET_BACKGROUND_COLOR: null
     })
 
 };
