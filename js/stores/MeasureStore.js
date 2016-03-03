@@ -1,17 +1,14 @@
 var MinceAppDispatcher = require('../dispatcher/MinceAppDispatcher');
 var MinceConstants = require('../constants/MinceConstants');
-var MinceSettingUtils = require('../utils/MinceSettingUtils');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
-var MeasureColors = MinceSettingUtils.MeasureColors;
 var ActionTypes = MinceConstants.ActionTypes;
 var CHANGE_EVENT = 'change';
 
 var _currentLayer = {};
 var _targetLayer = {};
 var _spacing = [];
-var _color = MeasureColors[0] || ['#FF0000','00FF00'];
 
 var MeasureStore = assign({}, EventEmitter.prototype, {
 
@@ -234,14 +231,6 @@ var MeasureStore = assign({}, EventEmitter.prototype, {
 
     getTargetLayer: function() {
         return _targetLayer;
-    },
-
-    getCurrentColor: function() {
-        return _color[0];
-    },
-
-    getTargetColor: function() {
-        return _color[1];
     }
 });
 
@@ -266,11 +255,6 @@ MeasureStore.dispatchToken = MinceAppDispatcher.register(function(action) {
 
         case ActionTypes.LEAVE_ARTBOARD_LAYER:
             MeasureStore.destroySpacing();
-            MeasureStore.emitChange();
-            break;
-
-        case ActionTypes.SET_MEASURE_COLOR:
-            MeasureStore.setColor(action.color);
             MeasureStore.emitChange();
             break;
 

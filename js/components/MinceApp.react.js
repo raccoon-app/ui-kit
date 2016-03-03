@@ -8,11 +8,13 @@ var MinceApp = React.createClass({
 
     render: function() {
         return (
-            <div>
+            <div className="app">
                 <HeaderSection />
-                <NavSection />
-                <ArtboardSection />
-                <ToolsSection />
+                <div className="main">
+                    <NavSection />
+                    <ArtboardSection />
+                    <ToolsSection />
+                </div>
             </div>
         );
     }

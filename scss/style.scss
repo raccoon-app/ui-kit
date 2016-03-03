@@ -49,9 +49,21 @@ h3 {
     margin: 0;
 }
 
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.main {
+    flex: 1 1 200px;
+    display: flex;
+}
+
+
 .header {
-    position: relative;
-    height: 60px;
+    flex: 0 0 60px;
+    display: flex;
     background: $LIGHT;
     box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.30);
     margin: 0;
@@ -108,18 +120,15 @@ h3 {
 }
 
 .nav {
-    position: absolute;
-    top: 60px;
-    bottom: 0;
-    left: 0;
-    width: 320px;
+    flex: 0 0 350px;
+    order: 0;
     margin: 0;
     overflow-y: scroll;
     padding: 0;
     background: #029EAE;
     box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50);
     z-index: 9991;
-    font-family: 'Oswald', sans-serif;
+    font-family: $HEADLINE_FONT;
 
     &-folder {
         list-style: none;
@@ -134,10 +143,11 @@ h3 {
         &__title {
             position: relative;
             font-family: $HEADLINE_FONT;
+            font-weight: bold;
             font-size: 18px;
             color: $LIGHT;
-            line-height: 25px;
-            background: #2CC4D5;
+            line-height: 20px;
+            background: #1B7E8E;
             display: block;
             padding: 20px;
             cursor: pointer;
@@ -182,19 +192,16 @@ h3 {
             &_active:hover {
                 background: $DEFAULT;
             }
-
-
         }
-
-
 
         &__link {
             font-family: $HEADLINE_FONT;
-            font-size :16px;
+            font-size :18px;
+            font-weight: normal;
             color: $LIGHT;
-            line-height: 21px;
+            line-height: 20px;
             display: block;
-            padding: 20px 20px 20px 30px;
+            padding: 20px;
             margin: 0;
             cursor: pointer;
 
@@ -230,11 +237,9 @@ h3 {
 
 
 .artboard {
-    position: absolute;
-    top: 60px;
-    left: 320px;
-    right: 0px;
-    bottom: 0px;
+    position: relative;
+    flex: 1 1 100px;
+    order: 1;
     z-index: 0;
     overflow: hidden;
     cursor: -webkit-grab;
@@ -259,14 +264,17 @@ h3 {
 
     &__scale-value {
         position: absolute;
-        bottom:0;
-        right: 300px;
+        bottom: 10px;
+        right: 10px;
+        width: 70px;
+        text-align: center;
         background: rgba(0,0,0,.3);
         color: $LIGHT;
-        padding: 4px 10px;
+        padding: 13px 10px;
         font-family: $HEADLINE_FONT;
-        font-size :16px;
-        line-height: 21px;
+        font-size:20px;
+        font-weight: bold;
+        line-height: 24px;
     }
 
 
@@ -303,11 +311,8 @@ h3 {
 }
 
 .tools {
-    position: absolute;
-    top: 60px;
-    bottom: 0;
-    right: 0;
-    width: 280px;
+    flex: 0 0 350px;
+    order: 2;
     background: $DEFAULT;
     color: $LIGHT;
     padding: 20px;
@@ -315,7 +320,7 @@ h3 {
     transition: right .2s ease-out;
 
     &_disabled {
-        right: -280px;
+        flex: 0 0 10px;
     }
 
     &__list {
@@ -573,9 +578,15 @@ h3 {
     }
 }
 
+.setting-wrapper {
+    position: absolute;
+    top:0;
+    right: 20px;
+}
+
 .setting-color {
     float: right;
-    margin: 14px 50px 0 200px;
+    margin: 12px 0 0 50px;
 
     &__title {
         float: left;

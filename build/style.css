@@ -364,6 +364,20 @@ th {
   font-weight: 600;
   font-style: normal; }
 
+@font-face {
+  font-family: 'SourceSansPro';
+  src: url("../fonts/source-sans-pro/source-sans-pro-regular.eot");
+  src: url("../fonts/source-sans-pro/source-sans-pro-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/source-sans-pro/source-sans-pro-regular.woff") format("woff"), url("../fonts/source-sans-pro/source-sans-pro-regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'SourceSansPro';
+  src: url("../fonts/source-sans-pro/source-sans-pro-semibold.eot");
+  src: url("../fonts/source-sans-pro/source-sans-pro-semibold.eot?#iefix") format("embedded-opentype"), url("../fonts/source-sans-pro/source-sans-pro-semibold.woff") format("woff"), url("../fonts/source-sans-pro/source-sans-pro-semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal; }
+
 * {
   box-sizing: border-box; }
 
@@ -401,9 +415,31 @@ h2 {
 h3 {
   margin: 0; }
 
+.app {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh; }
+
+.main {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 200px;
+          flex: 1 1 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
 .header {
-  position: relative;
-  height: 60px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 60px;
+          flex: 0 0 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   background: #fff;
   box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.3);
   margin: 0;
@@ -423,7 +459,7 @@ h3 {
     float: left;
     padding: 16px 20px;
     width: 210px;
-    font-family: "Oswald", sans-serif;
+    font-family: "SourceSansPro", Helvetica, sans-serif;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden; }
@@ -439,7 +475,7 @@ h3 {
   .header__btn {
     background: #39C2D7;
     color: #fff;
-    font-family: "Oswald", sans-serif;
+    font-family: "SourceSansPro", Helvetica, sans-serif;
     font-weight: 600;
     padding: 4px 12px 4px 10px;
     border: 0;
@@ -449,18 +485,19 @@ h3 {
     height: 32px; }
 
 .nav {
-  position: absolute;
-  top: 60px;
-  bottom: 0;
-  left: 0;
-  width: 320px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 350px;
+          flex: 0 0 350px;
+  -webkit-box-ordinal-group: 1;
+      -ms-flex-order: 0;
+          order: 0;
   margin: 0;
   overflow-y: scroll;
   padding: 0;
   background: #029EAE;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
   z-index: 9991;
-  font-family: 'Oswald', sans-serif; }
+  font-family: "SourceSansPro", Helvetica, sans-serif; }
   .nav-folder {
     list-style: none;
     padding: 0;
@@ -470,11 +507,12 @@ h3 {
       margin: 0 0 2px; }
     .nav-folder__title {
       position: relative;
-      font-family: "Oswald", sans-serif;
+      font-family: "SourceSansPro", Helvetica, sans-serif;
+      font-weight: bold;
       font-size: 18px;
       color: #fff;
-      line-height: 25px;
-      background: #2CC4D5;
+      line-height: 20px;
+      background: #1B7E8E;
       display: block;
       padding: 20px;
       cursor: pointer; }
@@ -507,12 +545,13 @@ h3 {
       .nav-page__item_active, .nav-page__item_active:hover {
         background: #464547; }
     .nav-page__link {
-      font-family: "Oswald", sans-serif;
-      font-size: 16px;
+      font-family: "SourceSansPro", Helvetica, sans-serif;
+      font-size: 18px;
+      font-weight: normal;
       color: #fff;
-      line-height: 21px;
+      line-height: 20px;
       display: block;
-      padding: 20px 20px 20px 30px;
+      padding: 20px;
       margin: 0;
       cursor: pointer; }
       .nav-page__link-img {
@@ -534,11 +573,13 @@ h3 {
     display: block; }
 
 .artboard {
-  position: absolute;
-  top: 60px;
-  left: 320px;
-  right: 0px;
-  bottom: 0px;
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100px;
+          flex: 1 1 100px;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
   z-index: 0;
   overflow: hidden;
   cursor: -webkit-grab; }
@@ -556,14 +597,17 @@ h3 {
       display: none; }
   .artboard__scale-value {
     position: absolute;
-    bottom: 0;
-    right: 300px;
+    bottom: 10px;
+    right: 10px;
+    width: 70px;
+    text-align: center;
     background: rgba(0, 0, 0, 0.3);
     color: #fff;
-    padding: 4px 10px;
-    font-family: "Oswald", sans-serif;
-    font-size: 16px;
-    line-height: 21px; }
+    padding: 13px 10px;
+    font-family: "SourceSansPro", Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 24px; }
   .artboard__scale {
     position: absolute;
     top: 0;
@@ -584,11 +628,12 @@ h3 {
       margin: 0; }
 
 .tools {
-  position: absolute;
-  top: 60px;
-  bottom: 0;
-  right: 0;
-  width: 280px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 350px;
+          flex: 0 0 350px;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
   background: #464547;
   color: #fff;
   padding: 20px;
@@ -596,7 +641,9 @@ h3 {
   -webkit-transition: right .2s ease-out;
           transition: right .2s ease-out; }
   .tools_disabled {
-    right: -280px; }
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 10px;
+            flex: 0 0 10px; }
   .tools__list {
     margin: 0 0 15px;
     padding: 0;
@@ -604,7 +651,7 @@ h3 {
   .tools__item {
     padding: 0 0 5px;
     color: #fff;
-    font-family: "Oswald", sans-serif;
+    font-family: "SourceSansPro", Helvetica, sans-serif;
     font-size: 20px;
     line-height: 27px; }
     .tools__item-label {
@@ -613,7 +660,7 @@ h3 {
       display: inline-block; }
   .tools__title {
     color: #39C2D7;
-    font-family: "Oswald", sans-serif;
+    font-family: "SourceSansPro", Helvetica, sans-serif;
     font-size: 22px;
     line-height: 30px;
     margin: 0 0 20px;
@@ -625,7 +672,7 @@ h3 {
     border: 0;
     padding: 7px 10px;
     margin: 0 0 20px;
-    font-family: "Oswald", sans-serif;
+    font-family: "SourceSansPro", Helvetica, sans-serif;
     font-size: 18px;
     line-height: 26px;
     width: 100%; }
@@ -653,7 +700,7 @@ h3 {
     .tools__download-text {
       display: block;
       color: #fff;
-      font-family: "Oswald", sans-serif;
+      font-family: "SourceSansPro", Helvetica, sans-serif;
       font-size: 18px;
       line-height: 20px;
       padding: 5px 0;
@@ -661,7 +708,7 @@ h3 {
   .tools__text {
     display: block;
     color: #999;
-    font-family: "Oswald", sans-serif;
+    font-family: "SourceSansPro", Helvetica, sans-serif;
     font-size: 16px;
     line-height: 20px;
     padding: 5px 0;
@@ -773,14 +820,19 @@ h3 {
       position: relative;
       top: -11px; }
 
+.setting-wrapper {
+  position: absolute;
+  top: 0;
+  right: 20px; }
+
 .setting-color {
   float: right;
-  margin: 14px 50px 0 200px; }
+  margin: 12px 0 0 50px; }
   .setting-color__title {
     float: left;
     margin: 0 10px 0 0;
     color: #39C2D7;
-    font-family: "Oswald", sans-serif;
+    font-family: "SourceSansPro", Helvetica, sans-serif;
     font-size: 16px;
     line-height: 20px;
     padding: 10px 0;
@@ -797,9 +849,9 @@ h3 {
     margin: 0; }
   .setting-color__button {
     display: block;
+    padding: 0;
     border: 12px transparent solid;
     border-radius: 12px;
-    padding: 0;
     border-width: 0 12px;
     height: 24px; }
     .setting-color__button_active {
