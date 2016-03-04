@@ -95,7 +95,11 @@ var ArtboardSection = React.createClass({
                     <MeasureSection scale={this.state.scale}/>
                 </div>
 
-                <div className="artboard__scale-value">{scaleValue}</div>
+                <div className="artboard-scalebar">
+                    <div className="artboard-scalebar__minus">-</div>
+                    <div className="artboard-scalebar__value">{scaleValue}</div>
+                    <div className="artboard-scalebar__plus">+</div>
+                </div>
             </div>
         );
     },
