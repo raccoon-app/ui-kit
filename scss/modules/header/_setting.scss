@@ -1,0 +1,53 @@
+.setting-wrapper {
+  position: absolute;
+  top:0;
+  right: 20px;
+}
+
+.setting-color {
+  float: right;
+  margin: 12px 0 0 50px;
+
+  &__title {
+    float: left;
+    margin: 0 10px 0 0;
+    color: $PRIMARY;
+    font-family: $HEADLINE_FONT;
+    font-size:16px;
+    line-height:20px;
+    padding: 10px 0;
+    text-transform: uppercase;
+  }
+
+  &__list {
+    list-style: none;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    float: left;
+  }
+
+  &__item {
+    display: inline-block;
+    padding: 8px;
+    margin: 0;
+  }
+
+  &__button {
+    display: block;
+    padding: 0;
+    border: 12px transparent solid;
+    border-radius: 12px;
+    border-width: 0 12px;
+    height: 24px;
+
+    &_active {
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px $PRIMARY;
+    }
+
+    &:active,
+    &:focus {
+      outline: 0;
+    }
+  }
+}
