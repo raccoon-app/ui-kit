@@ -9,16 +9,29 @@ var NavListArtboard = React.createClass({
     propTypes: {
         artboard: ReactPropTypes.object,
         folderID: ReactPropTypes.string,
-        currentArtboardID: ReactPropTypes.string
+        currentArtboardID: ReactPropTypes.string,
+        viewMode: ReactPropTypes.string
     },
 
     render: function() {
         var artboard = this.props.artboard;
         var currentArtboardID = this.props.currentArtboardID;
+        var viewMode = this.props.viewMode;
 
-        var imgStyle = {
-            backgroundImage: 'url('+artboard.src+')'
-        };
+        var navTileItem = (
+            <h5 className="nav-page__link">
+                <span className="nav-page__link-img" style={{backgroundImage: 'url('+artboard.src+')'}}></span>
+                <span className="nav-page__link-text">tile {artboard.name} </span>
+            </h5>
+        );
+
+        var navListItem = (
+            <h5 className="nav-page__link">
+                <span className="nav-page__link-text">{artboard.name}</span>
+            </h5>
+        );
+
+        var navItem = (viewMode === 'tile') ? navTileItem : navListItem;
 
         return (
             <li
@@ -27,9 +40,7 @@ var NavListArtboard = React.createClass({
                     'nav-page__item_active': artboard.id === currentArtboardID
                 })}
                 onClick={this._onClick}>
-                <h5 className="nav-page__link">
-                    <span className="nav-page__link-text">{artboard.name}</span>
-                </h5>
+                {navItem}
             </li>
         );
 

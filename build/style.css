@@ -595,7 +595,7 @@ h3 {
     z-index: 999999; }
     .artboard__title_disabled {
       display: none; }
-  .artboard__scale-value {
+  .artboard-scalebar {
     position: absolute;
     bottom: 10px;
     right: 10px;

@@ -18,5 +18,12 @@ module.exports = {
             type: ActionTypes.CLICK_NAV_FOLDER,
             folderID: folderID
         });
+    },
+
+    changeViewMode: function(mode) {
+        MinceAppDispatcher.dispatch({
+            type: ActionTypes.CHANGE_VIEW_MODE,
+            mode: mode
+        });
     }
 };

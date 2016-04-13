@@ -1,6 +1,6 @@
 var React = require('react');
 var MinceNavActionCreators = require('../actions/MinceNavActionCreators');
-var NavListArtboard = require('../components/NavListArtboard.react');
+var NavArtboardList = require('../components/NavArtboardList.react');
 var ProjectStore = require('../stores/ProjectStore');
 var classNames = require('classnames');
 
@@ -10,7 +10,8 @@ function getStateFromStores() {
         name: ProjectStore.getName(),
         currentFolderID: ProjectStore.getCurrentFolderID(),
         currentArtboardID: ProjectStore.getCurrentArtboardID(),
-        openFolderID: ProjectStore.getOpenFolderID()
+        openFolderID: ProjectStore.getOpenFolderID(),
+        viewMode: ProjectStore.getViewMode()
     };
 }
 
@@ -33,13 +34,11 @@ var NavSection = React.createClass({
         var currentArtboardID = this.state.currentArtboardID;
         var currentFolderID = this.state.currentFolderID;
         var openFolderID = this.state.openFolderID;
+        var viewMode = this.state.viewMode;
 
+        var navFolderList = this.state.folders.map(function(folder) {
 
-        console.log(currentFolderID)
-
-        var navListFolder = this.state.folders.map(function(folder) {
-
-            var navListPages = folder.artboard.map(function(artboard) {
+            var navPagesList = folder.artboard.map(function(artboard) {
                 var artboardData = {
                     id: artboard.id,
                     name: artboard.name,
@@ -47,15 +46,16 @@ var NavSection = React.createClass({
                 };
 
                 return (
-                    <NavListArtboard
+                    <NavArtboardList
                         key={artboard.id}
                         artboard={artboardData}
                         folderID={folder.pageId}
                         currentArtboardID={currentArtboardID}
-                    />
+                        viewMode = {viewMode}
+                        />
                 );
             });
-            console.log(folder.pageId)
+
             return (
                 <li className={classNames({
                     'nav-folder__item': true,
@@ -70,7 +70,7 @@ var NavSection = React.createClass({
                         {folder.name}
                     </h3>
                     <ul className="nav-page">
-                        {navListPages}
+                        {navPagesList}
                     </ul>
                 </li>
             );
@@ -79,8 +79,13 @@ var NavSection = React.createClass({
         return (
             <div className="nav">
                 <ul className="nav-folder" ref="messageList">
-                    {navListFolder}
+                    {navFolderList}
                 </ul>
+                <div>
+                    <button onClick={this._viewModeHandler.bind(this, 'list')}>list view</button>
+                    <button onClick={this._viewModeHandler.bind(this, 'tile')}>tile view</button>
+                    <input onChange={this._searchHandler} type="search" />
+                </div>
             </div>
         );
     },
@@ -94,6 +99,14 @@ var NavSection = React.createClass({
 
     _onClick: function(folderID) {
         MinceNavActionCreators.clickNavFolder(folderID);
+    },
+
+    _viewModeHandler: function(mode) {
+        MinceNavActionCreators.changeViewMode(mode);
+    },
+
+    _searchHandler: function() {
+
     }
 });
 

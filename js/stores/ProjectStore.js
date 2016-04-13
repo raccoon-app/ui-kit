@@ -12,6 +12,7 @@ var _url = null;
 var _currentFolderID = null;
 var _currentArtboardID = null;
 var _openFolderID = null;
+var _viewMode = 'list';
 
 var ProjectStore = assign({}, EventEmitter.prototype, {
 
@@ -87,6 +88,10 @@ var ProjectStore = assign({}, EventEmitter.prototype, {
 
     getOpenFolderID: function() {
         return _openFolderID; // || _currentFolderID
+    },
+
+    getViewMode: function() {
+        return _viewMode;
     }
 });
 
@@ -101,6 +106,11 @@ ProjectStore.dispatchToken = MinceAppDispatcher.register(function(action) {
 
         case ActionTypes.CLICK_NAV_FOLDER:
             _openFolderID = _openFolderID == action.folderID ? null : action.folderID;
+            ProjectStore.emitChange();
+            break;
+
+        case ActionTypes.CHANGE_VIEW_MODE:
+            _viewMode = action.mode;
             ProjectStore.emitChange();
             break;
 
