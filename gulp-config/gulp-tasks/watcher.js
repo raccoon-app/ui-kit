@@ -7,7 +7,7 @@ module.exports = function(gulp, options, plugins) {
 			gulp.start('scripts:build');
 		});
 
-		plugins.watch('./scss/**/!(_*).scss', function (event, cb) {
+		plugins.watch('./scss/**/*.scss', function (event, cb) {
 			gulp.start('sass:build');
 		});
 	});
