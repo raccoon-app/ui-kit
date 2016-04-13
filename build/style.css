@@ -484,6 +484,45 @@ h3 {
     display: block;
     height: 32px; }
 
+.setting-wrapper {
+  position: absolute;
+  top: 0;
+  right: 20px; }
+
+.setting-color {
+  float: right;
+  margin: 12px 0 0 50px; }
+  .setting-color__title {
+    float: left;
+    margin: 0 10px 0 0;
+    color: #39C2D7;
+    font-family: "SourceSansPro", Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 10px 0;
+    text-transform: uppercase; }
+  .setting-color__list {
+    list-style: none;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    float: left; }
+  .setting-color__item {
+    display: inline-block;
+    padding: 8px;
+    margin: 0; }
+  .setting-color__button {
+    display: block;
+    padding: 0;
+    border: 12px transparent solid;
+    border-radius: 12px;
+    border-width: 0 12px;
+    height: 24px; }
+    .setting-color__button_active {
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #39C2D7; }
+    .setting-color__button:active, .setting-color__button:focus {
+      outline: 0; }
+
 .nav {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 350px;
@@ -819,42 +858,3 @@ h3 {
     .measure-ruler_right .measure-ruler__label {
       position: relative;
       top: -11px; }
-
-.setting-wrapper {
-  position: absolute;
-  top: 0;
-  right: 20px; }
-
-.setting-color {
-  float: right;
-  margin: 12px 0 0 50px; }
-  .setting-color__title {
-    float: left;
-    margin: 0 10px 0 0;
-    color: #39C2D7;
-    font-family: "SourceSansPro", Helvetica, sans-serif;
-    font-size: 16px;
-    line-height: 20px;
-    padding: 10px 0;
-    text-transform: uppercase; }
-  .setting-color__list {
-    list-style: none;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
-    float: left; }
-  .setting-color__item {
-    display: inline-block;
-    padding: 8px;
-    margin: 0; }
-  .setting-color__button {
-    display: block;
-    padding: 0;
-    border: 12px transparent solid;
-    border-radius: 12px;
-    border-width: 0 12px;
-    height: 24px; }
-    .setting-color__button_active {
-      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #39C2D7; }
-    .setting-color__button:active, .setting-color__button:focus {
-      outline: 0; }

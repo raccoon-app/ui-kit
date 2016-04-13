@@ -1,0 +1,73 @@
+.artboard {
+  position: relative;
+  flex: 1 1 100px;
+  order: 1;
+  z-index: 0;
+  overflow: hidden;
+  cursor: -webkit-grab;
+
+  &_dragging {
+    cursor: -webkit-grabbing;
+  }
+
+  &__title {
+    position: absolute;
+    top:0;
+    left:0;
+    background: rgba(0,0,0,.3);
+    color: $LIGHT;
+    padding: 4px;
+    z-index:999999;
+
+    &_disabled {
+      display: none;
+    }
+  }
+
+  &__scale-value {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 70px;
+    text-align: center;
+    background: rgba(0,0,0,.3);
+    color: $LIGHT;
+    padding: 13px 10px;
+    font-family: $HEADLINE_FONT;
+    font-size:20px;
+    font-weight: bold;
+    line-height: 24px;
+  }
+
+
+  &__scale {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  &__draggable {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 20px;
+    width:100%;
+    height:100%;
+  }
+
+  &__layer {
+    position: absolute;
+
+    &:not(:first-child) {
+      cursor: pointer;
+    }
+
+    &-list {
+      position: absolute;
+      margin: 0;
+    }
+
+    &:hover {
+      //box-shadow: 0 0 0 1px $PRIMARY_CTRL;
+    }
+  }
+}
