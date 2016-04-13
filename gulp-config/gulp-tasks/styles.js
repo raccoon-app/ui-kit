@@ -5,11 +5,7 @@ module.exports = function(gulp, options, plugins) {
 	var autoprefixerConfig = require('../autoprefixer');
 
 	gulp.task('sass:clean', function() {
-		var srcOptions = {
-			read: false
-		};
-
-		return gulp.src('./build/**/*.css', srcOptions)
+		return gulp.src('./build/**/*.css', {read: false})
 			.pipe(plugins.clean());
 	});
 
@@ -20,27 +16,4 @@ module.exports = function(gulp, options, plugins) {
 			.pipe(plugins.autoprefixer(autoprefixerConfig))
 			.pipe(gulp.dest('./build'));
 	});
-	
-	
-	//Fix me, please, or remove
-	
-	/*gulp.task('sass:compile', function() {
-		var fileToDest = function(file) {
-			file.dirname = file.dirname.replace('scss', 'css');
-		};
-
-		var handleError = function(error) {
-			console.log(error);
-
-			this.emit('end');
-		};
-
-		return gulp.src('./scss/!**!/!*.scss')
-			.pipe(plugins.cached('sass'))
-			.pipe(plugins.sass())
-			.on('error', handleError)
-			.pipe(plugins.autoprefixer(autoprefixerConfig))
-			.pipe(plugins.rename(fileToDest))
-			.pipe(gulp.dest('./build'));
-    });*/
 };
