@@ -1,19 +1,19 @@
-var MinceAppDispatcher = require('../dispatcher/MinceAppDispatcher');
-var MinceConstants = require('../constants/MinceConstants');
+var AppDispatcher = require('../dispatcher/AppDispatcher');
+var AppConstants = require('../constants/AppConstants');
 
-var ActionTypes = MinceConstants.ActionTypes;
+var ActionTypes = AppConstants.ActionTypes;
 
 module.exports = {
 
     setBackgroundColor: function(data) {
-        MinceAppDispatcher.dispatch({
+        AppDispatcher.dispatch({
             type: ActionTypes.SET_BACKGROUND_COLOR,
             color: data
         });
     },
 
     setMarkerColor: function(data) {
-        MinceAppDispatcher.dispatch({
+        AppDispatcher.dispatch({
             type: ActionTypes.SET_MARKER_COLOR,
             color: data
         });

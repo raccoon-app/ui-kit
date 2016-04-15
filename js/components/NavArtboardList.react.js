@@ -1,5 +1,5 @@
-var MinceNavActionCreators = require('../actions/MinceNavActionCreators');
 var React = require('react');
+var NavActions = require('../actions/NavActions');
 var classNames = require('classnames');
 
 var ReactPropTypes = React.PropTypes;
@@ -48,7 +48,7 @@ var NavListArtboard = React.createClass({
     },
 
     _onClick: function() {
-        MinceNavActionCreators.clickNavArtboard(this.props.artboard.id, this.props.folderID);
+        NavActions.clickNavArtboard(this.props.artboard.id, this.props.folderID);
     }
 
 });

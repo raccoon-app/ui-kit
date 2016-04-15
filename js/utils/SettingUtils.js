@@ -1,4 +1,4 @@
-var MinceSettingActionCreators = require('../actions/MinceSettingActionCreators');
+var SettingActions = require('../actions/SettingActions');
 
 module.exports = {
 
@@ -25,7 +25,7 @@ module.exports = {
         var defaultMarkerColor = this.getMarkerColors()[0];
         var defaultBackgroundColor = this.getBackgroundColors()[0];
 
-        MinceSettingActionCreators.setMarkerColor(defaultMarkerColor);
-        MinceSettingActionCreators.setBackgroundColor(defaultBackgroundColor);
+        SettingActions.setMarkerColor(defaultMarkerColor);
+        SettingActions.setBackgroundColor(defaultBackgroundColor);
     }
 };

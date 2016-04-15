@@ -1,12 +1,12 @@
-var MinceAppDispatcher = require('../dispatcher/MinceAppDispatcher');
-var MinceConstants = require('../constants/MinceConstants');
+var AppDispatcher = require('../dispatcher/AppDispatcher');
+var AppConstants = require('../constants/AppConstants');
 
-var ActionTypes = MinceConstants.ActionTypes;
+var ActionTypes = AppConstants.ActionTypes;
 
 module.exports = {
 
     clickNavArtboard: function(artboardID, folderID) {
-        MinceAppDispatcher.dispatch({
+        AppDispatcher.dispatch({
             type: ActionTypes.CLICK_NAV_ARTBOARD,
             artboardID: artboardID,
             folderID: folderID
@@ -14,14 +14,14 @@ module.exports = {
     },
 
     clickNavFolder: function(folderID) {
-        MinceAppDispatcher.dispatch({
+        AppDispatcher.dispatch({
             type: ActionTypes.CLICK_NAV_FOLDER,
             folderID: folderID
         });
     },
 
     changeViewMode: function(mode) {
-        MinceAppDispatcher.dispatch({
+        AppDispatcher.dispatch({
             type: ActionTypes.CHANGE_VIEW_MODE,
             mode: mode
         });

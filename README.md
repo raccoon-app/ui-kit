@@ -1,6 +1,6 @@
-# MINCE
-Mince is a tool to measuring and getting styles of layouts design
+# RACCOON APP
+Raccoon App is a tool to measuring and getting styles of layouts design
 
-### Lates version of app online
+### Latest version of app online
 
-<a href="http://andreymokhovyk.github.io/mince/index.html">Online version</a>
+<a href="http://raccoon-app.github.io/ui-kit">Online version</a>

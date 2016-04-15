@@ -4,7 +4,7 @@ var ArtboardSection = require('./ArtboardSection.react');
 var ToolsSection = require('./ToolsSection.react');
 var HeaderSection = require('./HeaderSection.react');
 
-var MinceApp = React.createClass({
+var RaccoonApp = React.createClass({
 
     render: function() {
         return (
@@ -21,4 +21,4 @@ var MinceApp = React.createClass({
 
 });
 
-module.exports = MinceApp;
+module.exports = RaccoonApp;

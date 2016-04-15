@@ -1,6 +1,6 @@
 var React = require('react');
 var ProjectStore = require('../stores/ProjectStore');
-var MinceWebAPIUtils = require('../utils/MinceWebAPIUtils');
+var LoadDataUtils = require('../utils/LoadDataUtils');
 
 var ENTER_KEY_CODE = 13;
 
@@ -38,7 +38,7 @@ var InputSection = React.createClass({
             event.preventDefault();
             var url = this.state.url.trim();
             if (url) {
-                MinceWebAPIUtils.getProject(url);
+                LoadDataUtils.getProject(url);
             }
             //this.setState({text: ''});
         }
@@ -47,7 +47,7 @@ var InputSection = React.createClass({
     _onClick: function() {
         var url = this.state.url.trim();
         if (url) {
-            MinceWebAPIUtils.getProject(url);
+            LoadDataUtils.getProject(url);
         }
     }
 });

@@ -1,5 +1,5 @@
-var MinceServerActionCreators = require('../actions/MinceServerActionCreators');
-var MinceNavActionCreators = require('../actions/MinceNavActionCreators');
+var ServerActions = require('../actions/ServerActions');
+var NavActions = require('../actions/NavActions');
 
 module.exports = {
 
@@ -22,7 +22,7 @@ module.exports = {
             var defaultArtboard;
             var defaultFolder;
 
-            MinceServerActionCreators.receiveProject(pageData, url);
+            ServerActions.receiveProject(pageData, url);
 
             for (var key in pageData.pageData) {
                 defaultFolder = key;
@@ -31,13 +31,13 @@ module.exports = {
 
             defaultArtboard = pageData.pageData[defaultFolder].artboardId[0];
 
-            MinceNavActionCreators.clickNavArtboard(defaultArtboard, defaultFolder);
+            NavActions.clickNavArtboard(defaultArtboard, defaultFolder);
         };
         xdata.src = url+'data.js';
         document.body.appendChild(xdata);
 
         // simulate success callback
-        //MinceServerActionCreators.receiveProject(data);
+        //ServerActions.receiveProject(data);
     }
 
 };

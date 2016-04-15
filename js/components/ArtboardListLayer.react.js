@@ -1,5 +1,5 @@
-var MinceArtboardActionCreators = require('../actions/MinceArtboardActionCreators');
 var React = require('react');
+var ArtboardActions= require('../actions/ArtboardActions');
 var ArtboardStore = require('../stores/ArtboardStore');
 
 var ReactPropTypes = React.PropTypes;
@@ -32,15 +32,15 @@ var ArtboardListLayer = React.createClass({
     },
 
     _onClick: function() {
-        MinceArtboardActionCreators.clickArtboardLayer(this.props.layer);
+        ArtboardActions.clickArtboardLayer(this.props.layer);
     },
 
     _onMouseEnter: function() {
-        MinceArtboardActionCreators.enterArtboardLayer(this.props.layer);
+        ArtboardActions.enterArtboardLayer(this.props.layer);
     },
 
     _onMouseLeave: function() {
-        MinceArtboardActionCreators.leaveArtboardLayer(this.props.layer);
+        ArtboardActions.leaveArtboardLayer(this.props.layer);
     }
 });
 

@@ -1,17 +1,16 @@
-
-var MinceApp = require('./components/MinceApp.react');
-var MinceSettingUtils = require('./utils/MinceSettingUtils');
-//var MinceExampleData = require('./MinceExampleData');
+var RaccoonApp = require('./components/RaccoonApp.react');
+var SettingUtils = require('./utils/SettingUtils');
+//var ExampleDataUtils = require('./utils/ExampleDataUtils');
 
 var React = require('react');
 window.React = React;
 
-//MinceExampleData.init(); // load example data into localstorage
+//ExampleDataUtils.init(); // load example data into localstorage
 
-//MinceWebAPIUtils.getProject();
-MinceSettingUtils.setDefault();
+//LoadDataUtils.getProject();
+SettingUtils.setDefault();
 
 React.render(
-    <MinceApp />,
+    <RaccoonApp />,
     document.getElementById('react')
 );

@@ -1,5 +1,5 @@
 var React = require('react');
-var MinceNavActionCreators = require('../actions/MinceNavActionCreators');
+var NavActions = require('../actions/NavActions');
 var NavArtboardList = require('../components/NavArtboardList.react');
 var ProjectStore = require('../stores/ProjectStore');
 var classNames = require('classnames');
@@ -98,11 +98,11 @@ var NavSection = React.createClass({
     },
 
     _onClick: function(folderID) {
-        MinceNavActionCreators.clickNavFolder(folderID);
+        NavActions.clickNavFolder(folderID);
     },
 
     _viewModeHandler: function(mode) {
-        MinceNavActionCreators.changeViewMode(mode);
+        NavActions.changeViewMode(mode);
     },
 
     _searchHandler: function() {

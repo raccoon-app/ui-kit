@@ -1,6 +1,6 @@
 {
-  "name": "mince",
-  "version": "0.0.2",
+  "name": "RacconApp",
+  "version": "0.1.0",
   "dependencies": {
     "classnames": "^2.1.3",
     "flux": "^2.0.0",

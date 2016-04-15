@@ -1,9 +1,9 @@
-var MinceAppDispatcher = require('../dispatcher/MinceAppDispatcher');
-var MinceConstants = require('../constants/MinceConstants');
+var AppDispatcher = require('../dispatcher/AppDispatcher');
+var AppConstants = require('../constants/AppConstants');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
-var ActionTypes = MinceConstants.ActionTypes;
+var ActionTypes = AppConstants.ActionTypes;
 var CHANGE_EVENT = 'change';
 
 var _artboard = {};
@@ -65,7 +65,7 @@ var ArtboardStore = assign({}, EventEmitter.prototype, {
     }
 });
 
-ArtboardStore.dispatchToken = MinceAppDispatcher.register(function(action) {
+ArtboardStore.dispatchToken = AppDispatcher.register(function(action) {
     switch(action.type) {
         case ActionTypes.CLICK_NAV_ARTBOARD:
             _currentID = action.artboardID;

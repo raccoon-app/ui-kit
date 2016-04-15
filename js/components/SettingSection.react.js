@@ -1,11 +1,11 @@
 var React = require('react');
-var MinceSettingActionCreators = require('../actions/MinceSettingActionCreators');
-var MinceSettingUtils = require('../utils/MinceSettingUtils');
+var SettingActions = require('../actions/SettingActions');
+var SettingUtils = require('../utils/SettingUtils');
 var SettingStore = require('../stores/SettingStore');
 var classNames = require('classnames');
 
-var MarkerColors = MinceSettingUtils.getMarkerColors();
-var BackgroundColors = MinceSettingUtils.getBackgroundColors();
+var MarkerColors = SettingUtils.getMarkerColors();
+var BackgroundColors = SettingUtils.getBackgroundColors();
 
 function getStateFromStores() {
     return {
@@ -92,11 +92,11 @@ var SettingSection = React.createClass({
     },
 
     _onClick: function(value) {
-        MinceSettingActionCreators.setMarkerColor(value);
+        SettingActions.setMarkerColor(value);
     },
 
     _onClick2: function(value) {
-        MinceSettingActionCreators.setBackgroundColor(value);
+        SettingActions.setBackgroundColor(value);
     }
 });
 

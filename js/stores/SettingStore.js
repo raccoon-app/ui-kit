@@ -1,12 +1,12 @@
-var MinceAppDispatcher = require('../dispatcher/MinceAppDispatcher');
-var MinceConstants = require('../constants/MinceConstants');
-var MinceSettingUtils = require('../utils/MinceSettingUtils');
+var AppDispatcher = require('../dispatcher/AppDispatcher');
+var AppConstants = require('../constants/AppConstants');
+var SettingUtils = require('../utils/SettingUtils');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
-var MarkerColors = MinceSettingUtils.getMarkerColors();
-var BackgroundColors = MinceSettingUtils.getBackgroundColors();
-var ActionTypes = MinceConstants.ActionTypes;
+var MarkerColors = SettingUtils.getMarkerColors();
+var BackgroundColors = SettingUtils.getBackgroundColors();
+var ActionTypes = AppConstants.ActionTypes;
 var CHANGE_EVENT = 'change';
 
 
@@ -67,7 +67,7 @@ var SettingStore = assign({}, EventEmitter.prototype, {
     }
 });
 
-SettingStore.dispatchToken = MinceAppDispatcher.register(function(action) {
+SettingStore.dispatchToken = AppDispatcher.register(function(action) {
     switch(action.type) {
 
         case ActionTypes.SET_BACKGROUND_COLOR:

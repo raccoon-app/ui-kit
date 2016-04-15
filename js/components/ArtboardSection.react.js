@@ -1,5 +1,5 @@
-var MinceArtboardActionCreators = require('../actions/MinceArtboardActionCreators');
 var React = require('react');
+var ArtboardActions= require('../actions/ArtboardActions');
 var ArtboardListLayer = require('../components/ArtboardListLayer.react');
 var MeasureSection = require('../components/MeasureSection.react');
 var ArtboardStore = require('../stores/ArtboardStore');
