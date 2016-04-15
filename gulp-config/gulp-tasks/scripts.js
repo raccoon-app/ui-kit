@@ -5,31 +5,24 @@ module.exports = function(gulp, options, plugins) {
 	var source = require('vinyl-source-stream');
 var watchify = require('watchify');
 var reactify = require('reactify');
+	var livereload = require('gulp-livereload');
 
 	gulp.task('scripts:clean', function() {
-		var srcOptions = {
-			read: false
-		};
-
-		return gulp.src('./build/**/*.js', srcOptions)
+		return gulp.src('./build/**/*.js')
 			.pipe(plugins.clean());
 	});
 
-	gulp.task('scripts:compile', function() {
-		return browserify({
+	gulp.task('scripts:build', ['scripts:clean'], function() {
+			return browserify({
 				entries: ['./js/app.js'],
 				transform: [reactify],
 				debug: true,
-				cache: {}, packageCache: {}, fullPaths: true
+				fullPaths: true
 			  })
 			.bundle()
 			.pipe(source('bundle.js'))
-			.pipe(gulp.dest('./build'));
-    })
-
-
-    gulp.task('scripts:build', ['scripts:clean', 'scripts:compile']);
-
-
+			.pipe(gulp.dest('./build'))
+			.pipe(livereload());
+	});
 
 };

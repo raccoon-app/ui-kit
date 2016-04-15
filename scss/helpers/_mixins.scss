@@ -1,0 +1,5 @@
+@mixin cross-browser-rule($rulename, $variable) {
+  -webkit-#{$rulename}: $variable;
+  -moz-#{$rulename}: $variable;
+  #{$rulename}: $variable;
+}

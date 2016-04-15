@@ -14,9 +14,11 @@ function getStateFromStores() {
 function formatStyle(styleJson){
     var style = [];
     for(var k in styleJson){
-        style.push(k +':'+ (styleJson[k].indexOf('font-family') > -1 ? '"'+styleJson[k]+'"' : styleJson[k]) +';');
+        style.push('<span class="tools__textarea-classname">'+k+'</span>'+
+        ': '+ '<span class="tools__textarea-value'+(k.indexOf('font-family') !== -1 ? '_font-family' : '')+'">'
+        + styleJson[k] + '</span>;');
     }
-    return style.join('\r\n');
+    return style.join('<br>');
 }
 
 var ToolsSection = React.createClass({
@@ -41,11 +43,7 @@ var ToolsSection = React.createClass({
 
         var tools = [];
 
-        if (layer.html && layer.html !== 'undefined') {
-            tools.push(
-                <textarea name="content" value={layer.html} className="tools__textarea tools__textarea_content" onClick={this._onClick}></textarea>
-            )
-        }
+
 
         if ((!layer.html || layer.html == 'undefined') && this.state.isExportEveryLayer && layer.id) {
             var fileUrl = this.state.url + this.state.artboard + '/' + layer.id + '@2x.png';
@@ -60,10 +58,26 @@ var ToolsSection = React.createClass({
         }
 
         if (layer.style) {
-            var styleHtml = formatStyle(layer.style);
 
+            var styleHtml = formatStyle(layer.style);
             tools.push(
-                <textarea name="code" value={styleHtml} className="tools__textarea tools__textarea_style" onClick={this._onClick}>{styleHtml}</textarea>
+                <div>
+                    <h5 className="tools__title">Code style</h5>
+                    <div className="tools__textarea tools__textarea_style" onClick={this._onClick}
+                         dangerouslySetInnerHTML={{__html: styleHtml}}>
+                    </div>
+                </div>
+            )
+        }
+
+        if (layer.html && layer.html !== 'undefined') {
+            tools.push(
+                <div>
+                    <h5 className="tools__title">Content</h5>
+                    <div className="tools__textarea tools__textarea_content" onClick={this._onClick}>
+                        {layer.html}
+                    </div>
+                </div>
             )
         }
 
@@ -72,19 +86,28 @@ var ToolsSection = React.createClass({
                     'tools': true,
                     'tools_disabled': !layer.id
                  })}>
-                <h5 className="tools__title">{layer.name}</h5>
+                <h5 className="tools__title">Object measure</h5>
                 <ul className="tools__list">
                     <li className="tools__item">
-                        <span className="tools__item-label">X:</span> {layer.x}px
+                        <span className="tools__item-label">X</span>
+                        <span className="icon-x-coord"></span>
+                        <span className="tools__item-value">{layer.x} px</span>
                     </li>
                     <li className="tools__item">
-                        <span className="tools__item-label">Y:</span> {layer.x}px
+                        <span className="tools__item-label">Width</span>
+                        <span className="icon-width"></span>
+                        <span className="tools__item-value">{layer.width} px</span>
+                    </li>
+
+                    <li className="tools__item">
+                        <span className="tools__item-label">Y</span>
+                        <span className="icon-y-coord"></span>
+                        <span className="tools__item-value">{layer.y} px</span>
                     </li>
                     <li className="tools__item">
-                        <span className="tools__item-label">Width:</span> {layer.width}px
-                    </li>
-                    <li className="tools__item">
-                        <span className="tools__item-label">Height:</span> {layer.height}px
+                        <span className="tools__item-label">Height</span>
+                        <span className="icon-height"></span>
+                        <span className="tools__item-value">{layer.height} px</span>
                     </li>
                 </ul>
 

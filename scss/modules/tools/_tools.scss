@@ -1,14 +1,18 @@
 .tools {
-  flex: 0 0 350px;
   order: 2;
   background: $DEFAULT;
   color: $LIGHT;
   padding: 20px;
   overflow-y: auto;
-  transition: right .2s ease-out;
+  position: relative;
+  width: 360px;
+  right: 0;
+  @include cross-browser-rule('transition', right 1s cubic-bezier(0.115, 0.715, 0.305, 0.990));
+
 
   &_disabled {
-    flex: 0 0 10px;
+    @include cross-browser-rule('transition', right 1s cubic-bezier(0.115, 0.715, 0.305, 0.990));
+    right: -340px;
   }
 
   &__list {
@@ -19,15 +23,58 @@
 
   &__item {
     padding: 0 0 5px;
-    color: $LIGHT;
-    font-family: $HEADLINE_FONT;
-    font-size:20px;
-    line-height:27px;
+    font-family: $DEFAULT_FONT;
+    font-size:18px;
+    line-height:45px;
+    display: inline-block;
+    vertical-align: middle;
+
+    [class^="icon-"]:before {
+      color: $LIGHT_BLUE;
+      font-size: 12px;
+      margin: 0 8px;
+      vertical-align: middle;
+    }
+
+    &:nth-child(2n+1) {
+      width: 105px;
+      margin-right: 35px;
+    }
+
+    &:nth-child(2n) {
+      width: 160px;
+    }
+
+    .icon-x-coord:before {
+      content: "\e902";
+    }
+
+    .icon-y-coord:before {
+      content: "\e903";
+      font-size: 16px;
+      margin-left: 14px;
+    }
+
+    .icon-width:before {
+      content: "\e901";
+    }
+
+    .icon-height:before {
+      content: "\e900";
+      font-size: 19px;
+    }
 
     &-label {
       color: $GRAY;
-      width: 70px;
       display: inline-block;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+
+    &-value {
+      color: $LIGHT;
+      float: right;
+
     }
   }
 
@@ -36,20 +83,20 @@
     font-family: $HEADLINE_FONT;
     font-size:22px;
     line-height:30px;
-    margin: 0 0 20px;
+    margin: 0 0 10px;
     text-transform: uppercase;
   }
 
   &__textarea {
     display: block;
-    background: $LIGHT_GRAY;
-    color: $DEFAULT;
+    background: $FILL_BLACK;
+    color: $LIGHT;
     border: 0;
     padding: 7px 10px;
-    margin: 0 0 20px;
-    font-family: $HEADLINE_FONT;
-    font-size:18px;
-    line-height:26px;
+    margin: 0 0 30px;
+    font-family: $DEFAULT_FONT;
+    font-size:14px;
+    line-height: 20px;
     width: 100%;
 
     &_content {
@@ -59,6 +106,18 @@
     &_style {
       height: 200px;
     }
+  }
+
+  &__textarea-classname {
+    color: $LIGHT_BLUE;
+  }
+
+  &__textarea-value {
+    color: $LIGHT_GREEN;
+  }
+
+  &__textarea-value_font-family {
+    color: $LIGHT_RED;
   }
 
   &__download {

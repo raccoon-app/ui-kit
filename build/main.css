@@ -345,37 +345,44 @@ th {
 
 @font-face {
   font-family: 'Oswald';
-  src: url("../../fonts/oswald/oswald-regular-webfont.eot");
-  src: url("../../fonts/oswald/oswald-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/oswald/oswald-regular-webfont.woff2") format("woff"), url("../../fonts/oswald/oswald-regular-webfont.woff") format("woff"), url("../../fonts/oswald/oswald-regular-webfont.ttf") format("truetype");
+  src: url("../fonts/oswald/oswald-regular-webfont.eot");
+  src: url("../fonts/oswald/oswald-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/oswald/oswald-regular-webfont.woff2") format("woff"), url("../fonts/oswald/oswald-regular-webfont.woff") format("woff"), url("../fonts/oswald/oswald-regular-webfont.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: 'Oswald';
-  src: url("../../fonts/oswald/oswald-light-webfont.eot");
-  src: url("../../fonts/oswald/oswald-light-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/oswald/oswald-light-webfont.woff2") format("woff"), url("../../fonts/oswald/oswald-light-webfont.woff") format("woff"), url("../../fonts/oswald/oswald-light-webfont.ttf") format("truetype");
+  src: url("../fonts/oswald/oswald-light-webfont.eot");
+  src: url("../fonts/oswald/oswald-light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/oswald/oswald-light-webfont.woff2") format("woff"), url("../fonts/oswald/oswald-light-webfont.woff") format("woff"), url("../fonts/oswald/oswald-light-webfont.ttf") format("truetype");
   font-weight: 100;
   font-style: normal; }
 
 @font-face {
   font-family: 'Oswald';
-  src: url("../../fonts/oswald/oswald-bold-webfont.eot");
-  src: url("../../fonts/oswald/oswald-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/oswald/oswald-bold-webfont.woff2") format("woff"), url("../../fonts/oswald/oswald-bold-webfont.woff") format("woff"), url("../../fonts/oswald/oswald-bold-webfont.ttf") format("truetype");
+  src: url("../fonts/oswald/oswald-bold-webfont.eot");
+  src: url("../fonts/oswald/oswald-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/oswald/oswald-bold-webfont.woff2") format("woff"), url("../fonts/oswald/oswald-bold-webfont.woff") format("woff"), url("../fonts/oswald/oswald-bold-webfont.ttf") format("truetype");
   font-weight: 600;
   font-style: normal; }
 
 @font-face {
-  font-family: 'SourceSansPro';
-  src: url("../../fonts/source-sans-pro/source-sans-pro-regular.eot");
-  src: url("../../fonts/source-sans-pro/source-sans-pro-regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/source-sans-pro/source-sans-pro-regular.woff") format("woff"), url("../../fonts/source-sans-pro/source-sans-pro-regular.ttf") format("truetype");
+  font-family: 'SourceSansProRegular';
+  src: url("../fonts/source-sans-pro/source-sans-pro-regular.eot");
+  src: url("../fonts/source-sans-pro/source-sans-pro-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/source-sans-pro/source-sans-pro-regular.woff") format("woff"), url("../fonts/source-sans-pro/source-sans-pro-regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
-  font-family: 'SourceSansPro';
-  src: url("../../fonts/source-sans-pro/source-sans-pro-semibold.eot");
-  src: url("../../fonts/source-sans-pro/source-sans-pro-semibold.eot?#iefix") format("embedded-opentype"), url("../../fonts/source-sans-pro/source-sans-pro-semibold.woff") format("woff"), url("../../fonts/source-sans-pro/source-sans-pro-semibold.ttf") format("truetype");
+  font-family: 'SourceSansProSemibold';
+  src: url("../fonts/source-sans-pro/source-sans-pro-semibold.eot");
+  src: url("../fonts/source-sans-pro/source-sans-pro-semibold.eot?#iefix") format("embedded-opentype"), url("../fonts/source-sans-pro/source-sans-pro-semibold.woff") format("woff"), url("../fonts/source-sans-pro/source-sans-pro-semibold.ttf") format("truetype");
   font-weight: 600;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon/icomoon.eot?qcmbfc");
+  src: url("../fonts/icomoon/icomoon.eot?qcmbfc#iefix") format("embedded-opentype"), url("../fonts/icomoon/icomoon.ttf?qcmbfc") format("truetype"), url("../fonts/icomoon/icomoon.woff?qcmbfc") format("woff"), url("../fonts/icomoon/icomoon.svg?qcmbfc#icomoon") format("svg");
+  font-weight: normal;
   font-style: normal; }
 
 * {
@@ -433,6 +440,18 @@ h3 {
   display: -ms-flexbox;
   display: flex; }
 
+[class^="icon-"] {
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
 .header {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 60px;
@@ -459,7 +478,7 @@ h3 {
     float: left;
     padding: 16px 20px;
     width: 210px;
-    font-family: "SourceSansPro", Helvetica, sans-serif;
+    font-family: "SourceSansProSemibold", Helvetica, sans-serif;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden; }
@@ -467,15 +486,15 @@ h3 {
     padding: 14px 0;
     float: left; }
   .header__input {
-    border: 2px solid #39C2D7;
+    border: 2px solid #00abbe;
     margin: 0;
     padding: 6px 5px 4px;
     float: left;
     display: block; }
   .header__btn {
-    background: #39C2D7;
+    background: #00abbe;
     color: #fff;
-    font-family: "SourceSansPro", Helvetica, sans-serif;
+    font-family: "SourceSansProSemibold", Helvetica, sans-serif;
     font-weight: 600;
     padding: 4px 12px 4px 10px;
     border: 0;
@@ -495,8 +514,8 @@ h3 {
   .setting-color__title {
     float: left;
     margin: 0 10px 0 0;
-    color: #39C2D7;
-    font-family: "SourceSansPro", Helvetica, sans-serif;
+    color: #00abbe;
+    font-family: "SourceSansProSemibold", Helvetica, sans-serif;
     font-size: 16px;
     line-height: 20px;
     padding: 10px 0;
@@ -519,7 +538,7 @@ h3 {
     border-width: 0 12px;
     height: 24px; }
     .setting-color__button_active {
-      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #39C2D7; }
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #00abbe; }
     .setting-color__button:active, .setting-color__button:focus {
       outline: 0; }
 
@@ -536,7 +555,7 @@ h3 {
   background: #029EAE;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
   z-index: 9991;
-  font-family: "SourceSansPro", Helvetica, sans-serif; }
+  font-family: "SourceSansProSemibold", Helvetica, sans-serif; }
   .nav-folder {
     list-style: none;
     padding: 0;
@@ -546,7 +565,7 @@ h3 {
       margin: 0 0 2px; }
     .nav-folder__title {
       position: relative;
-      font-family: "SourceSansPro", Helvetica, sans-serif;
+      font-family: "SourceSansProSemibold", Helvetica, sans-serif;
       font-weight: bold;
       font-size: 18px;
       color: #fff;
@@ -584,7 +603,7 @@ h3 {
       .nav-page__item_active, .nav-page__item_active:hover {
         background: #464547; }
     .nav-page__link {
-      font-family: "SourceSansPro", Helvetica, sans-serif;
+      font-family: "SourceSansProSemibold", Helvetica, sans-serif;
       font-size: 18px;
       font-weight: normal;
       color: #fff;
@@ -643,7 +662,7 @@ h3 {
     background: rgba(0, 0, 0, 0.3);
     color: #fff;
     padding: 13px 10px;
-    font-family: "SourceSansPro", Helvetica, sans-serif;
+    font-family: "SourceSansProSemibold", Helvetica, sans-serif;
     font-size: 20px;
     font-weight: bold;
     line-height: 24px; }
@@ -667,9 +686,6 @@ h3 {
       margin: 0; }
 
 .tools {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 350px;
-          flex: 0 0 350px;
   -webkit-box-ordinal-group: 3;
       -ms-flex-order: 2;
           order: 2;
@@ -677,48 +693,83 @@ h3 {
   color: #fff;
   padding: 20px;
   overflow-y: auto;
-  -webkit-transition: right .2s ease-out;
-          transition: right .2s ease-out; }
+  position: relative;
+  width: 360px;
+  right: 0;
+  -webkit-transition: right 1s cubic-bezier(0.115, 0.715, 0.305, 0.99);
+  transition: right 1s cubic-bezier(0.115, 0.715, 0.305, 0.99); }
   .tools_disabled {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 10px;
-            flex: 0 0 10px; }
+    -webkit-transition: right 1s cubic-bezier(0.115, 0.715, 0.305, 0.99);
+    transition: right 1s cubic-bezier(0.115, 0.715, 0.305, 0.99);
+    right: -340px; }
   .tools__list {
     margin: 0 0 15px;
     padding: 0;
     list-style: none; }
   .tools__item {
     padding: 0 0 5px;
-    color: #fff;
-    font-family: "SourceSansPro", Helvetica, sans-serif;
-    font-size: 20px;
-    line-height: 27px; }
+    font-family: "SourceSansProRegular", Helvetica, sans-serif;
+    font-size: 18px;
+    line-height: 45px;
+    display: inline-block;
+    vertical-align: middle; }
+    .tools__item [class^="icon-"]:before {
+      color: #2cc4d5;
+      font-size: 12px;
+      margin: 0 8px;
+      vertical-align: middle; }
+    .tools__item:nth-child(2n+1) {
+      width: 105px;
+      margin-right: 35px; }
+    .tools__item:nth-child(2n) {
+      width: 160px; }
+    .tools__item .icon-x-coord:before {
+      content: "\e902"; }
+    .tools__item .icon-y-coord:before {
+      content: "\e903";
+      font-size: 16px;
+      margin-left: 14px; }
+    .tools__item .icon-width:before {
+      content: "\e901"; }
+    .tools__item .icon-height:before {
+      content: "\e900";
+      font-size: 19px; }
     .tools__item-label {
       color: #999;
-      width: 70px;
-      display: inline-block; }
+      display: inline-block;
+      text-transform: uppercase;
+      vertical-align: middle; }
+    .tools__item-value {
+      color: #fff;
+      float: right; }
   .tools__title {
-    color: #39C2D7;
-    font-family: "SourceSansPro", Helvetica, sans-serif;
+    color: #00abbe;
+    font-family: "SourceSansProSemibold", Helvetica, sans-serif;
     font-size: 22px;
     line-height: 30px;
-    margin: 0 0 20px;
+    margin: 0 0 10px;
     text-transform: uppercase; }
   .tools__textarea {
     display: block;
-    background: #ccc;
-    color: #464547;
+    background: #353535;
+    color: #fff;
     border: 0;
     padding: 7px 10px;
-    margin: 0 0 20px;
-    font-family: "SourceSansPro", Helvetica, sans-serif;
-    font-size: 18px;
-    line-height: 26px;
+    margin: 0 0 30px;
+    font-family: "SourceSansProRegular", Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
     width: 100%; }
     .tools__textarea_content {
       height: 140px; }
     .tools__textarea_style {
       height: 200px; }
+  .tools__textarea-classname {
+    color: #2cc4d5; }
+  .tools__textarea-value {
+    color: #91e77f; }
+  .tools__textarea-value_font-family {
+    color: #fe6971; }
   .tools__download {
     display: block;
     width: 100%;
@@ -739,7 +790,7 @@ h3 {
     .tools__download-text {
       display: block;
       color: #fff;
-      font-family: "SourceSansPro", Helvetica, sans-serif;
+      font-family: "SourceSansProSemibold", Helvetica, sans-serif;
       font-size: 18px;
       line-height: 20px;
       padding: 5px 0;
@@ -747,7 +798,7 @@ h3 {
   .tools__text {
     display: block;
     color: #999;
-    font-family: "SourceSansPro", Helvetica, sans-serif;
+    font-family: "SourceSansProSemibold", Helvetica, sans-serif;
     font-size: 16px;
     line-height: 20px;
     padding: 5px 0;
