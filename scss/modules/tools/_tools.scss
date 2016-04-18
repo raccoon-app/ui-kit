@@ -15,6 +15,10 @@
     right: -340px;
   }
 
+  &-container {
+    padding-bottom: 20px;
+  }
+
   &__list {
     margin: 0 0 15px;
     padding: 0;
@@ -93,15 +97,11 @@
     color: $LIGHT;
     border: 0;
     padding: 7px 10px;
-    margin: 0 0 30px;
+    margin: 0 0 20px;
     font-family: $DEFAULT_FONT;
     font-size:14px;
     line-height: 20px;
     width: 100%;
-
-    &_content {
-      height: 140px;
-    }
 
     &_style {
       height: 200px;
@@ -110,6 +110,13 @@
 
   &__textarea-classname {
     color: $LIGHT_BLUE;
+  }
+
+  &__textarea-content {
+    background-color: $LIGHT;
+    color: $FILL_BLACK;
+    height: 140px;
+    font: 16px/22px $DEFAULT_FONT;
   }
 
   &__textarea-value {
@@ -140,15 +147,6 @@
       background-repeat: no-repeat;
     }
 
-    &-text {
-      display: block;
-      color: $LIGHT;
-      font-family: $HEADLINE_FONT;
-      font-size:18px;
-      line-height:20px;
-      padding: 5px 0;
-      text-transform: uppercase;
-    }
   }
 
   &__text {
@@ -159,5 +157,53 @@
     line-height:20px;
     padding: 5px 0;
     text-transform: uppercase;
+  }
+
+  &__copy-info {
+    float: right;
+    background-color: $PRIMARY;
+    color: $LIGHT;
+    text-transform: uppercase;
+    font: 20px $HEADLINE_FONT;
+    padding: 7px 30px;
+    cursor: pointer;
+    @include cross-browser-rule('transition', background-color .3s);
+
+    &:hover {
+      background-color: $LIGHT_BLUE;
+    }
+  }
+
+  &__gradient-opts {
+    .icon-paint-color-2:before {
+      content: "\e905";
+      font-size: 28px;
+      vertical-align: middle;
+      margin-right: 18px;
+    }
+  }
+
+  &__gradient-item {
+    list-style-type: none;
+    font: 18px $DEFAULT_FONT;
+    color: $GRAY;
+
+    .icon-gradient-down-arrow:before {
+      content: "\e904";
+      color: $LIGHT_BLUE;
+      margin: 0 0 5px 7px;
+      font-size: 11px;
+      display: inline-block;
+
+    }
+  }
+
+  &__gradient-color {
+    display: inline-block;
+    margin-top: 8px;
+  }
+
+  &__gradient-code {
+    color: $LIGHT;
   }
 }

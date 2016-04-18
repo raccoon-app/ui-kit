@@ -4,6 +4,10 @@
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
+* {
+  margin: 0;
+  padding: 0; }
+
 html {
   font-family: sans-serif;
   /* 1 */
@@ -452,6 +456,11 @@ h3 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+.clearfix:after {
+  display: block;
+  clear: both;
+  content: ''; }
+
 .header {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 60px;
@@ -702,6 +711,8 @@ h3 {
     -webkit-transition: right 1s cubic-bezier(0.115, 0.715, 0.305, 0.99);
     transition: right 1s cubic-bezier(0.115, 0.715, 0.305, 0.99);
     right: -340px; }
+  .tools-container {
+    padding-bottom: 20px; }
   .tools__list {
     margin: 0 0 15px;
     padding: 0;
@@ -755,17 +766,20 @@ h3 {
     color: #fff;
     border: 0;
     padding: 7px 10px;
-    margin: 0 0 30px;
+    margin: 0 0 20px;
     font-family: "SourceSansProRegular", Helvetica, sans-serif;
     font-size: 14px;
     line-height: 20px;
     width: 100%; }
-    .tools__textarea_content {
-      height: 140px; }
     .tools__textarea_style {
       height: 200px; }
   .tools__textarea-classname {
     color: #2cc4d5; }
+  .tools__textarea-content {
+    background-color: #fff;
+    color: #353535;
+    height: 140px;
+    font: 16px/22px "SourceSansProRegular", Helvetica, sans-serif; }
   .tools__textarea-value {
     color: #91e77f; }
   .tools__textarea-value_font-family {
@@ -787,14 +801,6 @@ h3 {
       background-position: center;
       background-size: contain;
       background-repeat: no-repeat; }
-    .tools__download-text {
-      display: block;
-      color: #fff;
-      font-family: "SourceSansProSemibold", Helvetica, sans-serif;
-      font-size: 18px;
-      line-height: 20px;
-      padding: 5px 0;
-      text-transform: uppercase; }
   .tools__text {
     display: block;
     color: #999;
@@ -803,6 +809,38 @@ h3 {
     line-height: 20px;
     padding: 5px 0;
     text-transform: uppercase; }
+  .tools__copy-info {
+    float: right;
+    background-color: #00abbe;
+    color: #fff;
+    text-transform: uppercase;
+    font: 20px "SourceSansProSemibold", Helvetica, sans-serif;
+    padding: 7px 30px;
+    cursor: pointer;
+    -webkit-transition: background-color 0.3s;
+    transition: background-color 0.3s; }
+    .tools__copy-info:hover {
+      background-color: #2cc4d5; }
+  .tools__gradient-opts .icon-paint-color-2:before {
+    content: "\e905";
+    font-size: 28px;
+    vertical-align: middle;
+    margin-right: 18px; }
+  .tools__gradient-item {
+    list-style-type: none;
+    font: 18px "SourceSansProRegular", Helvetica, sans-serif;
+    color: #999; }
+    .tools__gradient-item .icon-gradient-down-arrow:before {
+      content: "\e904";
+      color: #2cc4d5;
+      margin: 0 0 5px 7px;
+      font-size: 11px;
+      display: inline-block; }
+  .tools__gradient-color {
+    display: inline-block;
+    margin-top: 8px; }
+  .tools__gradient-code {
+    color: #fff; }
 
 .measure {
   position: absolute;
