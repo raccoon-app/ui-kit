@@ -64,3 +64,9 @@ h3 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.clearfix:after {
+  display: block;
+  clear: both;
+  content: '';
+}

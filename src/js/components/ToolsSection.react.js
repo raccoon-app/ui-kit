@@ -57,26 +57,61 @@ var ToolsSection = React.createClass({
             )
         }
 
+        //temporary solution for gradient properties
+
+        tools.push(
+            <div className="tools__gradient-opts tools-container">
+                <ul className="tools__gradient-list">
+                    <li className="tools__gradient-item clearfix">
+                        <span className="tools__gradient-color">
+                            <span className="icon-paint-color-2" style={{color: '#2cc4d5'}}></span>
+                            #<span className="tools__gradient-code">2CC4D5</span> (30%)
+                        </span>
+                        <span className="tools__copy-info">Copy</span>
+                    </li>
+                    <li className="tools__gradient-item clearfix ">
+                        <div className="icon-gradient-down-arrow"></div>
+                        <span className="tools__gradient-color">
+                            <span className="icon-paint-color-2" style={{color: '#f45602'}}></span>
+                            #<span className="tools__gradient-code">F45602</span> (30%)
+                        </span>
+                        <span className="tools__copy-info">Copy</span>
+                    </li>
+                    <li className="tools__gradient-item clearfix">
+                        <div className="icon-gradient-down-arrow"></div>
+                        <span className="tools__gradient-color">
+                            <span className="icon-paint-color-2" style={{color: '#eee300'}}></span>
+                            #<span className="tools__gradient-code">EEE300</span> (30%)
+                        </span>
+                        <span className="tools__copy-info">Copy</span>
+                    </li>
+                </ul>
+            </div>
+        );
+
         if (layer.style) {
 
             var styleHtml = formatStyle(layer.style);
             tools.push(
-                <div>
+                <div className="tools-container clearfix">
                     <h5 className="tools__title">Code style</h5>
                     <div className="tools__textarea tools__textarea_style" onClick={this._onClick}
                          dangerouslySetInnerHTML={{__html: styleHtml}}>
                     </div>
+                    <span className="tools__copy-info">Copy</span>
                 </div>
             )
         }
 
+
         if (layer.html && layer.html !== 'undefined') {
             tools.push(
-                <div>
+                <div className="tools-container clearfix">
                     <h5 className="tools__title">Content</h5>
-                    <div className="tools__textarea tools__textarea_content" onClick={this._onClick}>
+                    <div className="tools__textarea tools__textarea-content" onClick={this._onClick}>
                         {layer.html}
                     </div>
+                    <span className="tools__copy-info">Copy</span>
                 </div>
             )
         }
@@ -113,7 +148,6 @@ var ToolsSection = React.createClass({
 
                 {tools}
 
-                <span className="tools__text">click on textarea to copy</span>
             </div>
         );
     },
