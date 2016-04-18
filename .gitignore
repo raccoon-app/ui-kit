@@ -8,3 +8,4 @@ out/
 log/*.log
 tmp/**
 node_modules/
+target/build
