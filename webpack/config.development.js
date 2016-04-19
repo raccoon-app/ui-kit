@@ -9,7 +9,7 @@ const
 module.exports = {
     devtool: 'eval',
     output: {
-        path: layout.target.buildDir,
+        path: layout.dist.buildDir,
         filename: 'app.js'
     },
     plugins: [].concat(

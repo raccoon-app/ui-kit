@@ -4,7 +4,7 @@ const
     layout = require('../layout');
 
 module.exports = {
-    //contentBase: layout.target.buildDir,
+    //contentBase: layout.dist.buildDir,
     hot: true,
     inline: true,
     progress: true,

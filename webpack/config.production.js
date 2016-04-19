@@ -7,7 +7,7 @@ const
 
 module.exports = {
     output: {
-        path: layout.target.releaseDir,
+        path: layout.dist.releaseDir,
         filename: 'app.js'
     },
     plugins: [].concat(
