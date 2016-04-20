@@ -43,20 +43,6 @@ var ToolsSection = React.createClass({
 
         var tools = [];
 
-
-
-        if ((!layer.html || layer.html == 'undefined') && this.state.isExportEveryLayer && layer.id) {
-            var fileUrl = this.state.url + this.state.artboard + '/' + layer.id + '@2x.png';
-            var fileName = layer.name + '.png'
-
-            tools.push(
-                <a href='img/logo.png' download='test.png' className="tools__download">
-                    <span style={{backgroundImage:'url('+fileUrl+')'}} className="tools__download-image"></span>
-                    <span className="tools__download-text">download</span>
-                </a>
-            )
-        }
-
         //temporary solution for gradient properties
 
         tools.push(
@@ -115,6 +101,49 @@ var ToolsSection = React.createClass({
                 </div>
             )
         }
+
+        if ((!layer.html || layer.html == 'undefined') && this.state.isExportEveryLayer && layer.id) {
+            var fileUrl = this.state.url + this.state.artboard + '/' + layer.id + '@2x.png';
+            var fileName = layer.name + '.png';
+
+            tools.push(
+                <div className="tools-container">
+                    <h5 className="tools__title">Export asset</h5>
+                    <a href='img/logo.png' download='test.png' className="tools__export">
+                        <span style={{backgroundImage:'url('+fileUrl+')'}} className="tools__export-image"></span>
+                    </a>
+                    <div className="tools__export-config clearfix">
+                        <div className="tools__export-measure">
+                            <div className="tools__export-param">Size:</div>
+                            <div className="dropdown icon-chevron-down">
+                                <div className="dropdown__value">All</div>
+                                <select name="size" className="tools__export-size">
+                                    <option value="1">1x</option>
+                                    <option value="12">1-2x</option>
+                                    <option value="2">2x</option>
+                                    <option value="23">2-3x</option>
+                                    <option value="3">3x</option>
+                                    <option value="all">All</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className="tools__export-measure">
+                            <div className="tools__export-param">Format:</div>
+                            <div className="dropdown icon-chevron-down">
+                                <div className="dropdown__value">PNG</div>
+                                <select name="size" className="tools__export-size">
+                                    <option value="png">PNG</option>
+                                    <option value="jpg">JPG</option>
+                                    <option value="gif">GIF</option>
+                                </select>
+                            </div>
+                        </div>
+                        <span className="tools__copy-info">Export</span>
+                    </div>
+                </div>
+            )
+        }
+
 
         return (
             <div className={classNames({

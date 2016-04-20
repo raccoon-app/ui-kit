@@ -2,10 +2,10 @@
 
 @import "helpers/_variables";
 @import "helpers/_mixins";
+@import "helpers/_animations";
 @import "base/_normalize";
 @import "base/_common";
-
-
+@import "base/_typography";
 /*modules*/
 @import "modules/header/_header";
 @import "modules/header/_setting";

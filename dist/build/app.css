@@ -7,6 +7,12 @@
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
 html
 {
     font-family: sans-serif;
@@ -536,6 +542,14 @@ h3
     -moz-osx-font-smoothing: grayscale;
 }
 
+.clearfix:after
+{
+    display: block;
+    clear: both;
+
+    content: '';
+}
+
 /*modules*/
 .header
 {
@@ -941,6 +955,10 @@ h3
 
     transition: right 1s cubic-bezier(.115, .715, .305, .99);
 }
+.tools-container
+{
+    padding-bottom: 20px;
+}
 .tools__list
 {
     margin: 0 0 15px;
@@ -1037,16 +1055,12 @@ h3
     display: block;
 
     width: 100%; 
-    margin: 0 0 30px;
+    margin: 0 0 20px;
     padding: 7px 10px;
 
     color: #fff;
     border: 0;
     background: #353535;
-}
-.tools__textarea_content
-{
-    height: 140px;
 }
 .tools__textarea_style
 {
@@ -1055,6 +1069,15 @@ h3
 .tools__textarea-classname
 {
     color: #2cc4d5;
+}
+.tools__textarea-content
+{
+    font: 16px/22px 'SourceSansProRegular', Helvetica, sans-serif; 
+
+    height: 140px;
+
+    color: #353535;
+    background-color: #fff;
 }
 .tools__textarea-value
 {
@@ -1090,20 +1113,6 @@ h3
     background-position: center;
     background-size: contain;
 }
-.tools__download-text
-{
-    font-family: 'SourceSansProSemibold', Helvetica, sans-serif;
-    font-size: 18px;
-    line-height: 20px;
-
-    display: block;
-
-    padding: 5px 0;
-
-    text-transform: uppercase; 
-
-    color: #fff;
-}
 .tools__text
 {
     font-family: 'SourceSansProSemibold', Helvetica, sans-serif;
@@ -1117,6 +1126,64 @@ h3
     text-transform: uppercase; 
 
     color: #999;
+}
+.tools__copy-info
+{
+    font: 20px 'SourceSansProSemibold', Helvetica, sans-serif;
+
+    float: right;
+
+    padding: 7px 30px;
+
+    cursor: pointer;
+    transition: background-color .3s; 
+    text-transform: uppercase;
+
+    color: #fff;
+    background-color: #00abbe;
+}
+.tools__copy-info:hover
+{
+    background-color: #2cc4d5;
+}
+.tools__gradient-opts .icon-paint-color-2:before
+{
+    font-size: 28px;
+
+    margin-right: 18px; 
+
+    content: '\E905';
+    vertical-align: middle;
+}
+.tools__gradient-item
+{
+    font: 18px 'SourceSansProRegular', Helvetica, sans-serif;
+
+    list-style-type: none;
+
+    color: #999;
+}
+.tools__gradient-item .icon-gradient-down-arrow:before
+{
+    font-size: 11px;
+
+    display: inline-block; 
+
+    margin: 0 0 5px 7px;
+
+    content: '\E904';
+
+    color: #2cc4d5;
+}
+.tools__gradient-color
+{
+    display: inline-block;
+
+    margin-top: 8px;
+}
+.tools__gradient-code
+{
+    color: #fff;
 }
 
 .measure

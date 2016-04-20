@@ -51,7 +51,7 @@ h3 {
   display: flex;
 }
 
-[class^="icon-"] {
+[class^="icon-"], [class*=" icon-"] {
   font-family: 'icomoon' !important;
   speak: none;
   font-style: normal;
@@ -69,4 +69,60 @@ h3 {
   display: block;
   clear: both;
   content: '';
+}
+
+.dropdown {
+  background-color: $LIGHT;
+  padding-top: 10px;
+  text-align: center;
+  box-sizing: border-box;
+  position: relative;
+  height: 40px;
+  width: 45px;
+  cursor: pointer;
+
+  &__value {
+    font: 18px $HEADLINE_FONT;
+    color: $FILL_BLACK;
+    text-transform: uppercase;
+  }
+
+  &:after, &:before {
+    content:'';
+    display: block;
+    position: absolute;
+  }
+  &:after {
+    right:-40px;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background-color: $FILL_BLACK;
+  }
+
+  &:before {
+    right: -28px;
+    top: 16px;
+  }
+
+  &.icon-chevron-down:before {
+    content: "\e906";
+    font-size: 10px;
+    color: $LIGHT;
+    z-index: 2;
+  }
+
+  select {
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 45px;
+  }
+
+  option {
+    font: 18px $HEADLINE_FONT;
+    color: $FILL_BLACK;
+    background-color: $LIGHT;
+  }
 }
