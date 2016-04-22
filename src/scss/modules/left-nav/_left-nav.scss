@@ -1,107 +1,11 @@
 .nav {
   flex: 0 0 350px;
   order: 0;
-  margin: 0;
   overflow-y: scroll;
-  padding: 0;
-  background: #029EAE;
-  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50);
+  background: $DEFAULT;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.50);
   z-index: 9991;
   font-family: $HEADLINE_FONT;
-
-  &-folder {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
-    &__item {
-      padding: 0;
-      margin: 0 0 2px;
-    }
-
-    &__title {
-      position: relative;
-      font-family: $HEADLINE_FONT;
-      font-weight: bold;
-      font-size: 18px;
-      color: $LIGHT;
-      line-height: 20px;
-      background: #1B7E8E;
-      display: block;
-      padding: 20px;
-      cursor: pointer;
-
-      &_active {
-        background: #1B7E8E;
-        color: $LIGHT;
-      }
-
-      &:after {
-        position: absolute;
-        top: 50%;
-        right: 20px;
-        font-family: Arial, sans-serif;
-        font-size: 24px;
-        color: $LIGHT;
-        line-height: 24px;
-        margin-top: -12px;
-        text-align: center;
-        width: 20px;
-        content: '+'
-      }
-    }
-  }
-
-  &-page {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: none;
-
-    &__item {
-      padding: 0;
-      margin: 0;
-      background: $PRIMARY_MUTED;
-
-      &:hover {
-        background: #0FAABA;
-      }
-
-      &_active,
-      &_active:hover {
-        background: $DEFAULT;
-      }
-    }
-
-    &__link {
-      font-family: $HEADLINE_FONT;
-      font-size :18px;
-      font-weight: normal;
-      color: $LIGHT;
-      line-height: 20px;
-      display: block;
-      padding: 20px;
-      margin: 0;
-      cursor: pointer;
-
-      &-img {
-        display: block;
-        float: left;
-        width: 21px;
-        height: 21px;
-        margin: 0 0 0 -30px;
-        background-size: cover;
-        background-position: 0 0;
-      }
-
-      &-text {
-        display: block;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-      }
-    }
-  }
 
   &-folder__item_open & {
     &-folder__title:after {
@@ -110,6 +14,105 @@
 
     &-page {
       display: block;
+    }
+  }
+}
+
+.nav-page {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+
+  &__item {
+    padding: 0;
+    margin: 0;
+
+    &_active {
+      background-color: $PRIMARY;
+    }
+
+    &:hover {
+      background: $HOVER-GREY;
+    }
+
+    &_active:hover {
+      background-color: $PRIMARY;
+    }
+  }
+
+  &__link {
+    font-family: $HEADLINE_FONT;
+    font-size: 18px;
+    font-weight: normal;
+    color: $LIGHT;
+    line-height: 20px;
+    display: block;
+    padding: 20px;
+    margin: 0;
+    cursor: pointer;
+
+    &-img {
+      display: block;
+      float: left;
+      width: 21px;
+      height: 21px;
+      margin: 0 0 0 -30px;
+      background-size: cover;
+      background-position: 0 0;
+    }
+
+    &-text {
+      display: block;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+}
+
+.nav-page_active {
+  background: $PRIMARY;
+
+  &:hover {
+    background: $PRIMARY;
+  }
+}
+
+.nav-folder {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &__item {
+    padding: 0;
+    margin: 0 0 2px;
+  }
+
+  &__title {
+    position: relative;
+    font-family: $HEADLINE_FONT;
+    font-weight: bold;
+    font-size: 18px;
+    color: $LIGHT;
+    line-height: 20px;
+    background: $FILL_BLACK;
+    display: block;
+    padding: 20px;
+    cursor: pointer;
+
+    &:after {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      color: $LIGHT;
+      line-height: 24px;
+      margin-top: -12px;
+      text-align: center;
+      width: 20px;
+      content: '+'
     }
   }
 }
