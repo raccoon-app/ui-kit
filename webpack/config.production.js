@@ -8,7 +8,7 @@ const
 module.exports = {
     output: {
         path: layout.dist.releaseDir,
-        filename: 'app.js'
+        filename: 'index.js'
     },
     plugins: [].concat(
         new webpack.optimize.UglifyJsPlugin(),

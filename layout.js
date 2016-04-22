@@ -9,7 +9,7 @@ const
 module.exports = {
     src: {
         front: {
-            jsEntry: path.join(srcDir, 'js/app.js'),
+            jsEntry: path.join(srcDir, 'js/index.js'),
             htmlEntry: path.join(srcDir, 'index.html'),
             stylesEntry: path.join(srcDir, 'scss/style.scss')
         }

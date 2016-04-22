@@ -10,7 +10,7 @@ module.exports = {
     devtool: 'eval',
     output: {
         path: layout.dist.buildDir,
-        filename: 'app.js'
+        filename: 'index.js'
     },
     plugins: [].concat(
         new webpack.HotModuleReplacementPlugin(),

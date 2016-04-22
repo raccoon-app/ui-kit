@@ -1,42 +1,19 @@
-var React = require('react');
-var ToolsStore = require('../stores/ToolsStore');
-var classNames = require('classnames');
-
-function getStateFromStores() {
-    return {
-        artboard: ToolsStore.getArtboard(),
-        layer: ToolsStore.getLayer(),
-        isExportEveryLayer: ToolsStore.getIsExportEveryLayer(),
-        url: ToolsStore.getProjectUrl()
-    };
-}
+import React, { Component, PropTypes } from 'react'
+import classnames from 'classnames'
 
 function formatStyle(styleJson){
     var style = [];
     for(var k in styleJson){
         style.push('<span class="tools__textarea-classname">'+k+'</span>'+
-        ': '+ '<span class="tools__textarea-value'+(k.indexOf('font-family') !== -1 ? '_font-family' : '')+'">'
-        + styleJson[k] + '</span>;');
+            ': '+ '<span class="tools__textarea-value'+(k.indexOf('font-family') !== -1 ? '_font-family' : '')+'">'
+            + styleJson[k] + '</span>;');
     }
     return style.join('<br>');
 }
 
-var ToolsSection = React.createClass({
-
-    getInitialState: function() {
-        return getStateFromStores();
-    },
-
-    componentDidMount: function() {
-        ToolsStore.addChangeListener(this._onChange);
-    },
-
-    componentWillUnmount: function() {
-        ToolsStore.removeChangeListener(this._onChange);
-    },
-
-    render: function() {
-        var layer = this.state.layer;
+export default class ToolsComponent extends Component {
+    render() {
+        const { layer, src, isExportEveryLayer } = this.props
 
         layer.name = decodeURIComponent(layer.name); // @TODO FIX @ symbol
         layer.html = decodeURIComponent(layer.html);
@@ -102,8 +79,8 @@ var ToolsSection = React.createClass({
             )
         }
 
-        if ((!layer.html || layer.html == 'undefined') && this.state.isExportEveryLayer && layer.id) {
-            var fileUrl = this.state.url + this.state.artboard + '/' + layer.id + '@2x.png';
+        if ((!layer.html || layer.html == 'undefined') && isExportEveryLayer && layer.id) {
+            var fileUrl = src + layer.id + '@2x.png';
             var fileName = layer.name + '.png';
 
             tools.push(
@@ -146,7 +123,7 @@ var ToolsSection = React.createClass({
 
 
         return (
-            <div className={classNames({
+            <div className={classnames({
                     'tools': true,
                     'tools_disabled': !layer.id
                  })}>
@@ -178,21 +155,13 @@ var ToolsSection = React.createClass({
                 {tools}
 
             </div>
-        );
-    },
-
-    /**
-    * Event handler for 'change' events coming from the stores
-    */
-    _onChange: function() {
-        this.setState(getStateFromStores());
-    },
-
-    _onClick: function(e) {
-        e.target.select();
-        document.execCommand('copy');
+        )
     }
+}
 
-});
 
-module.exports = ToolsSection;
+ToolsComponent.propTypes = {
+    layer: PropTypes.object,
+    isExportEveryLayer: PropTypes.string,
+    url: PropTypes.string
+}

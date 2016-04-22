@@ -1,22 +1,11 @@
-var React = require('react');
-var MeasureStore = require('../stores/MeasureStore');
-var classNames = require('classnames');
+import React, { Component, PropTypes } from 'react'
+import classnames from 'classnames'
 
-var ReactPropTypes = React.PropTypes;
+export default class MeasureMarker extends Component {
+    render() {
+        const { scale, color, spacing} = this.props
 
-var Spacing = React.createClass({
-
-    propTypes: {
-        scale: ReactPropTypes.number,
-        spacing: ReactPropTypes.object,
-        color: ReactPropTypes.string
-    },
-
-    render: function() {
-        var scale = this.props.scale;
-        var color = this.props.color;
-
-        var spacing = this.props.spacing.map(function(rulerItem) {
+        const spacingList = spacing.map(function(rulerItem) {
             var rulerStyle = {
                 left: rulerItem.left*scale+'px',
                 top: rulerItem.top*scale+'px',
@@ -26,7 +15,7 @@ var Spacing = React.createClass({
             };
 
             return (
-                <div className={classNames({
+                <div className={classnames({
                     'measure-ruler': true,
                     'measure-ruler_top': rulerItem.type == 'top',
                     'measure-ruler_bottom': rulerItem.type == 'bottom',
@@ -42,10 +31,14 @@ var Spacing = React.createClass({
 
         return (
             <div classNmae="measure-ruler">
-                {spacing}
+                {spacingList}
             </div>
-        );
+        )
     }
-});
+}
 
-module.exports = Spacing;
+MeasureMarker.propTypes = {
+    scale: PropTypes.number,
+    spacing: PropTypes.array,
+    color: PropTypes.string
+}
