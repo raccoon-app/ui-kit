@@ -4,7 +4,6 @@ import { } from '../actions'
 import { getCurrentLayer, getHoverLayer, getSpacing, getCurrentMarkerColor, getHoverMarkerColor } from '../reducers/measure'
 import MeasureComponent from '../components/MeasureComponent'
 
-
 const mapStateToProps = (state) => {
     return {
         currentLayer: getCurrentLayer(state.measure),
