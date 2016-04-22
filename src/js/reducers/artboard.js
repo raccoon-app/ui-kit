@@ -4,7 +4,9 @@ import { RECEIVE_PROJECT, SET_ACTIVE_ARTBOARD } from '../constants/ActionTypes'
 const initialState = {
     artboards: {},
     url: null,
-    activeArtboard: {layer:[]}
+    activeArtboard: {
+        layer: []
+    }
 };
 
 function artboards(state = initialState.artboards, action) {
@@ -30,6 +32,7 @@ function activeArtboard(state = initialState.activeArtboard, action) {
         case RECEIVE_PROJECT:
             let firstId;
 
+            // @TODO FOXME
             for(let key in action.project.artboard) {
                 firstId = action.project.artboard[key].id;
                 break;

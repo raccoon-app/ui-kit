@@ -18,17 +18,8 @@ export default {
       console.log('getProject')
       console.log(pageData)
       cb(pageData)
-      //ServerActions.receiveProject(pageData, url);
-      //
-      //for (var key in pageData.pageData) {
-      //  defaultFolder = key;
-      //  break;
-      //}
-
-      //defaultArtboard = pageData.pageData[defaultFolder].artboardId[0];
-
-      //NavActions.clickNavArtboard(defaultArtboard, defaultFolder);
     };
+
     xdata.src = url+'data.js';
     document.body.appendChild(xdata);
   }

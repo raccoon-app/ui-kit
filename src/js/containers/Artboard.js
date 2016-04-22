@@ -6,10 +6,6 @@ import { getScale, getDragging, getIsDragging } from '../reducers/control'
 import ArtboardComponent from '../components/ArtboardComponent'
 import ArtboardLayerItem from '../components/ArtboardLayerItem'
 
-//onMouseDown={this.props.takeArtboard}
-//onMouseUp={this.props.dropArtboard}
-//onMouseMove={this.props.dragArtboard}
-
 class Artboard extends Component {
     render() {
         const { activeArtboard } = this.props

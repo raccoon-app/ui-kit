@@ -10,6 +10,9 @@ const initialState = {
     isDragging: false
 };
 
+
+// @TODO: FIXME
+
 function isNegative(n) {
     return ((n = +n) || 1 / n) < 0;
 }

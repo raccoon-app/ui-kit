@@ -26,13 +26,29 @@ export function leaveArtboardLayer(layer) {
 }
 
 
-
 export function setActiveArtboard(pageId, artboardId) {
     return { type: types.SET_ACTIVE_ARTBOARD, pageId, artboardId}
 }
 
 export function setOpenPage(pageId) {
     return { type: types.SET_OPEN_PAGE, pageId}
+}
+
+
+export function scaleArtboard(event) {
+    return {type: types.SCALE_ARTBOARD, event}
+}
+
+export function takeArtboard(event) {
+    return {type: types.TAKE_ARTBOARD, event}
+}
+
+export function dropArtboard(event) {
+    return {type: types.DROP_ARTBOARD, event}
+}
+
+export function dragArtboard(event) {
+    return {type: types.DRAG_ARTBOARD, event}
 }
 
 
@@ -48,19 +64,3 @@ export function setBackgroundColor(color) {
 export function setMarkerColor(color) {
     return {type: types.SET_MARKER_COLOR, color}
 }
-
-
-
-export function scaleArtboard(event) {
-    return {type: types.SCALE_ARTBOARD, event}
-}
-export function takeArtboard(event) {
-    return {type: types.TAKE_ARTBOARD, event}
-}
-export function dropArtboard(event) {
-    return {type: types.DROP_ARTBOARD, event}
-}
-export function dragArtboard(event) {
-    return {type: types.DRAG_ARTBOARD, event}
-}
-
