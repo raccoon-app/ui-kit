@@ -18,7 +18,12 @@ export default class NavPageList extends Component {
                     onClick={this.props.onNavPageClicked}>
                     {name}
                 </h3>
-                <ul className="nav-page">
+                <ul
+                    className={classnames({
+                        'nav-page': true,
+                        'nav-page_tile': viewMode === 'tile'
+                    })}
+                >
                     {artboards.map(artboard =>
                         <NavArtboardList
                             key={artboard.id}
