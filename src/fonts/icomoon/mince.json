@@ -1,10 +1,52 @@
 {
 	"metadata": {
 		"name": "mince",
-		"lastOpened": 1460990760756,
-		"created": 1460990347010
+		"lastOpened": 1461853796761,
+		"created": 1461853793080
 	},
 	"iconSets": [
+		{
+			"selection": [
+				{
+					"order": 10,
+					"id": 0,
+					"prevSize": 32,
+					"code": 59655,
+					"name": "selected-page-icon",
+					"tempChar": ""
+				}
+			],
+			"id": 4,
+			"metadata": {
+				"name": "Untitled Set 4",
+				"importSize": {
+					"width": 32,
+					"height": 32
+				}
+			},
+			"height": 1024,
+			"prevSize": 32,
+			"icons": [
+				{
+					"id": 0,
+					"paths": [
+						"M512 0c-282.764 0-512 229.225-512 512s229.236 512 512 512c282.764 0 512-229.225 512-512s-229.236-512-512-512v0zM512 930.909c-231.354 0-418.909-187.555-418.909-418.909s187.555-418.909 418.909-418.909c231.354 0 418.909 187.555 418.909 418.909s-187.555 418.909-418.909 418.909v0zM635.66 385.978l-164.573 164.561-65.815-65.815c-18.176-18.176-47.639-18.176-65.827 0-18.176 18.176-18.176 47.651 0 65.839l98.723 98.688c18.176 18.176 47.663 18.176 65.827 0l197.481-197.469c18.176-18.176 18.199-47.639 0.012-65.827-18.164-18.141-47.651-18.141-65.827 0.023v0z"
+					],
+					"attrs": [
+						{
+							"fill": "rgb(255, 255, 255)"
+						}
+					],
+					"isMulticolor": false,
+					"grid": 0,
+					"tags": [
+						"selected-page-icon"
+					]
+				}
+			],
+			"invisible": false,
+			"colorThemes": []
+		},
 		{
 			"selection": [
 				{
@@ -13,7 +55,7 @@
 					"prevSize": 32,
 					"code": 59654,
 					"name": "chevron-down",
-					"tempChar": ""
+					"tempChar": ""
 				}
 			],
 			"id": 3,
@@ -56,7 +98,7 @@
 					"prevSize": 32,
 					"code": 59652,
 					"name": "gradient-down-arrow",
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"order": 5,
@@ -64,7 +106,7 @@
 					"prevSize": 32,
 					"code": 59653,
 					"name": "paint-color-2",
-					"tempChar": ""
+					"tempChar": ""
 				}
 			],
 			"id": 2,
@@ -124,7 +166,7 @@
 					"prevSize": 32,
 					"code": 59648,
 					"name": "h-e-i-g-h-t-icon",
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"order": 2,
@@ -132,7 +174,7 @@
 					"prevSize": 32,
 					"code": 59649,
 					"name": "w-i-d-t-h-icon",
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"order": 3,
@@ -140,7 +182,7 @@
 					"prevSize": 32,
 					"code": 59650,
 					"name": "x-icon",
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"order": 4,
@@ -148,7 +190,7 @@
 					"prevSize": 32,
 					"code": 59651,
 					"name": "y-icon",
-					"tempChar": ""
+					"tempChar": ""
 				}
 			],
 			"id": 1,

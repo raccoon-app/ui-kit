@@ -7,7 +7,9 @@ export default class NavArtboardList extends Component {
 
         var navTileItem = (
             <h5 className="nav-page__link">
-                <span className="nav-page__link-img" style={{backgroundImage: 'url('+this.props.src+')'}}></span>
+                <span className="nav-page__link-img" style={{backgroundImage: 'url('+this.props.src+')'}}>
+                    <i className="icon-selected-page-icon"></i>
+                </span>
             </h5>
         );
 
