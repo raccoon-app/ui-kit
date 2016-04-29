@@ -10,22 +10,22 @@ export default class NavPageList extends Component {
                     {this.props.children}
                 </ul>
                 <div className="left-nav-footer">
-                    <i
+                    <button
                         className={classnames({
                             'icon-list-view': true,
                             'left-nav-footer__btn': true,
                             'left-nav-footer__btn_list': true,
                             'active': this.props.viewMode === 'list'
                         })}
-                        onClick={this.props.changeViewMode.bind(this, 'list')}></i>
-                    <i
+                        onClick={this.props.changeViewMode.bind(this, 'list')}></button>
+                    <button
                         className={classnames({
                             'icon-title-view': true,
                             'left-nav-footer__btn': true,
                             'left-nav-footer__btn_tile': true,
                             'active': this.props.viewMode === 'tile'
                         })}
-                        onClick={this.props.changeViewMode.bind(this, 'tile')}></i>
+                        onClick={this.props.changeViewMode.bind(this, 'tile')}></button>
                     
                     <div className="left-nav-footer__wrap">
                         <input placeholder="search" className="left-nav-footer__search" type="search" />

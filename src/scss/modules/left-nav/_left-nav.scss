@@ -221,6 +221,13 @@
     font-size: 26px;
     color: $ULTRA-LIGHT-GREY;
     cursor: pointer;
+    border: 0;
+    background-color: transparent;
+
+    &:focus, &:active {
+      border: 0;
+      outline: 0;
+    }
   }
 
   &__btn.active {
