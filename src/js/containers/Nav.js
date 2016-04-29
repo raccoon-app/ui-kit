@@ -14,6 +14,7 @@ class NavContainer extends Component {
             <NavComponent
                 name={this.props.name}
                 changeViewMode={this.props.changeViewMode}
+                viewMode={viewMode}
             >
                 {folders.map(page =>
                     <NavPageList

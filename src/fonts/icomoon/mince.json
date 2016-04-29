@@ -1,10 +1,76 @@
 {
 	"metadata": {
-		"name": "mince",
-		"lastOpened": 1461853796761,
-		"created": 1461853793080
+		"name": "mince 1",
+		"lastOpened": 1461859843597,
+		"created": 1461859828615
 	},
 	"iconSets": [
+		{
+			"selection": [
+				{
+					"order": 15,
+					"id": 1,
+					"prevSize": 32,
+					"code": 59656,
+					"name": "list-view",
+					"tempChar": ""
+				},
+				{
+					"order": 16,
+					"id": 0,
+					"prevSize": 32,
+					"code": 59657,
+					"name": "title-view",
+					"tempChar": ""
+				}
+			],
+			"id": 5,
+			"metadata": {
+				"name": "Untitled Set 5",
+				"importSize": {
+					"width": 26,
+					"height": 26
+				}
+			},
+			"height": 1024,
+			"prevSize": 32,
+			"icons": [
+				{
+					"id": 1,
+					"paths": [
+						"M0 787.692h1024v236.308h-1024v-236.308zM0 393.846h1024v236.308h-1024v-236.308zM0 0h1024v236.308h-1024v-236.308z"
+					],
+					"attrs": [
+						{
+							"fill": "rgb(153, 153, 153)"
+						}
+					],
+					"isMulticolor": false,
+					"grid": 0,
+					"tags": [
+						"list-view"
+					]
+				},
+				{
+					"id": 0,
+					"paths": [
+						"M0 590.769h433.231v433.231h-433.231v-433.231zM590.769 590.769h433.231v433.231h-433.231v-433.231zM590.769 0h433.231v433.231h-433.231v-433.231zM0 0h433.231v433.231h-433.231v-433.231z"
+					],
+					"attrs": [
+						{
+							"fill": "rgb(153, 153, 153)"
+						}
+					],
+					"isMulticolor": false,
+					"grid": 0,
+					"tags": [
+						"title-view"
+					]
+				}
+			],
+			"invisible": false,
+			"colorThemes": []
+		},
 		{
 			"selection": [
 				{
@@ -13,7 +79,7 @@
 					"prevSize": 32,
 					"code": 59655,
 					"name": "selected-page-icon",
-					"tempChar": ""
+					"tempChar": ""
 				}
 			],
 			"id": 4,
@@ -55,7 +121,7 @@
 					"prevSize": 32,
 					"code": 59654,
 					"name": "chevron-down",
-					"tempChar": ""
+					"tempChar": ""
 				}
 			],
 			"id": 3,
@@ -98,7 +164,7 @@
 					"prevSize": 32,
 					"code": 59652,
 					"name": "gradient-down-arrow",
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"order": 5,
@@ -106,7 +172,7 @@
 					"prevSize": 32,
 					"code": 59653,
 					"name": "paint-color-2",
-					"tempChar": ""
+					"tempChar": ""
 				}
 			],
 			"id": 2,
@@ -166,7 +232,7 @@
 					"prevSize": 32,
 					"code": 59648,
 					"name": "h-e-i-g-h-t-icon",
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"order": 2,
@@ -174,7 +240,7 @@
 					"prevSize": 32,
 					"code": 59649,
 					"name": "w-i-d-t-h-icon",
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"order": 3,
@@ -182,7 +248,7 @@
 					"prevSize": 32,
 					"code": 59650,
 					"name": "x-icon",
-					"tempChar": ""
+					"tempChar": ""
 				},
 				{
 					"order": 4,
@@ -190,7 +256,7 @@
 					"prevSize": 32,
 					"code": 59651,
 					"name": "y-icon",
-					"tempChar": ""
+					"tempChar": ""
 				}
 			],
 			"id": 1,
@@ -283,7 +349,9 @@
 					"prevSize": 16,
 					"ligatures": "home, house",
 					"name": "home",
-					"id": 1
+					"id": 1,
+					"code": 59659,
+					"tempChar": ""
 				},
 				{
 					"order": 0,
@@ -1217,11 +1285,13 @@
 					"id": 134
 				},
 				{
-					"order": 0,
+					"order": 20,
 					"prevSize": 16,
 					"ligatures": "search, magnifier",
 					"name": "search",
-					"id": 135
+					"id": 135,
+					"code": 59658,
+					"tempChar": ""
 				},
 				{
 					"order": 0,
@@ -11246,7 +11316,7 @@
 		"showCodes": true,
 		"gridSize": 16,
 		"quickUsageToken": {
-			"mince": "ODQ4ODM3YTJiMDVhOTFkMWE2NTQzZTQzYThiYjBiYzUjMSMxNDYwNjMwMTY1IyMj"
+			"mince1": "ZjhhZDNhMDVkOTdlODVjNDFjMmM4YWJhYjRiYTZiODQjMSMxNDYxODU5OTAwIyMj"
 		}
 	},
 	"uid": -1
