@@ -704,7 +704,7 @@ h3
     font-style: normal; 
 
     src: url(src/fonts/icomoon/icomoon.eot?916a359dd11136a79fff9163320f68b4);
-    src: url(src/fonts/icomoon/icomoon.eot?916a359dd11136a79fff9163320f68b4) format('embedded-opentype'), url(src/fonts/icomoon/icomoon.ttf?3bf1f6bc2df47f0239666f77b9ac96f8) format('truetype'), url(src/fonts/icomoon/icomoon.woff?54e5e042c4017ec5c556b842eae8dc00) format('woff'), url(src/fonts/icomoon/icomoon.svg?3dfb8ac0f42064fdbd84d69077fc8738) format('svg');
+    src: url(src/fonts/icomoon/icomoon.eot?916a359dd11136a79fff9163320f68b4) format('embedded-opentype'), url(src/fonts/icomoon/icomoon.ttf?3bf1f6bc2df47f0239666f77b9ac96f8) format('truetype'), url(src/fonts/icomoon/icomoon.woff?54e5e042c4017ec5c556b842eae8dc00) format('woff'), url(src/fonts/icomoon/icomoon.svg?8297acd4cbc18e00edbee334da92ec3b) format('svg');
 }
 
 /*modules*/
@@ -1125,9 +1125,23 @@ h3
 
     display: inline-block;
 
-    cursor: pointer; 
+    cursor: pointer;
 
     color: #999;
+    border: 0;
+    background-color: transparent;
+}
+.left-nav-footer__btn:focus,
+.left-nav-footer__btn:active
+{
+    border: 0;
+    outline: 0;
+}
+.left-nav-footer__btn.active
+{
+    cursor: default; 
+
+    color: #00abbe;
 }
 .left-nav-footer__btn:hover
 {
@@ -1139,25 +1153,32 @@ h3
 }
 .left-nav-footer__search
 {
-    float: right;
-
-    width: 120px;
-    height: 15px;
+    width: 224px;
+    height: 14px;
     padding: 5px 25px 5px 5px;
+
+    border: solid 1px #999; 
+    background-color: #eee;
 }
 .left-nav-footer__wrap
 {
     position: relative;
+
+    float: right;
 }
-.left-nav-footer .ico-search
+.left-nav-footer .icon-search
 {
-    font-size: 14px; 
+    font-size: 14px;
 
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 6px;
+    right: 6px;
+
+    cursor: pointer; 
+
+    color: #999;
 }
-.left-nav-footer .ico-search::after
+.left-nav-footer .icon-search::after
 {
     content: '\E90A';
 }
