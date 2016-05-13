@@ -192,6 +192,21 @@
     text-transform: uppercase;
   }
 
+  &-copy-popup {
+    position: fixed;
+    z-index: 3;
+    opacity: 0;
+    background-color: #f45602;
+    color: $LIGHT;
+    padding: 5px 20px;
+    font: 18px $HEADLINE_FONT;
+
+    &--animated {
+      animation: showCopyLayer 2s linear;
+      animation-fill-mode: forwards;
+    }
+  }
+
   &__copy-info {
     float: right;
     background-color: $PRIMARY;
@@ -202,6 +217,7 @@
     width: 100px;
     text-align: center;
     cursor: pointer;
+    border: none;
     transition: background-color .3s;
 
     &:hover {
