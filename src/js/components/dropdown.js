@@ -29,7 +29,7 @@ export default class Dropdown extends Component {
 
             var select = this.refs.select;
             select.value = el.getAttribute('data-value');
-            changeDropdownValue(name, el.innerHTML );
+            changeDropdownValue( name, el.innerHTML );
         }
 
         return (
