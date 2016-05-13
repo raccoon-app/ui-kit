@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { changeDropdownValue, toggleDropdown } from '../actions'
 import { getFormatDropdownValue, getFormatDropdownVisibleState } from '../reducers/setting'
-import Dropdown from '../components/Dropdown'
+import Dropdown from '../components/dropdown'
 const data = [{value: 'png', text: 'PNG'}, {value: 'jpg', text: 'JPG'}, {value: 'gif', text: 'GIF'}];
 const name = 'format';
 class FormatDropdown extends Component {

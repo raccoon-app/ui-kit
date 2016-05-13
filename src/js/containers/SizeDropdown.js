@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { changeDropdownValue, toggleDropdown } from '../actions'
 import { getSizeDropdownValue, getSizeDropdownVisibleState } from '../reducers/setting'
-import Dropdown from '../components/Dropdown'
+import Dropdown from '../components/dropdown'
 const data = [{value: '1', text: '1x'}, {value: '12', text: '1-2x'}, {value: '2', text: '2x'}, {value: '23', text: '2-3x'},
     {value: '3', text: '3x'}, {value: 'all', text: 'All'}];
 const name = 'size';
