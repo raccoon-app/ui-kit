@@ -64,3 +64,24 @@ export function setBackgroundColor(color) {
 export function setMarkerColor(color) {
     return {type: types.SET_MARKER_COLOR, color}
 }
+
+export function changeDropdownValue(name, currentValue) {
+    switch(name) {
+        case 'size':
+            return {type: types.CHANGE_SIZE_DROPDOWN, currentValue}
+        default:
+            return {type: types.CHANGE_FORMAT_DROPDOWN, currentValue}
+
+    }
+}
+
+export function toggleDropdown(name, value) {
+    var newValue = !value;
+    switch(name) {
+        case 'size':
+            return {type: types.TOGGLE_SIZE_DROPDOWN, newValue};
+        default:
+            return {type: types.TOGGLE_FORMAT_DROPDOWN, newValue}
+
+    }
+}

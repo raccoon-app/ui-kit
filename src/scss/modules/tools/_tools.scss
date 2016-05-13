@@ -7,11 +7,11 @@
   position: relative;
   width: 360px;
   right: 0;
-  transition: right 1s cubic-bezier(0.115, 0.715, 0.305, 0.990);
+  transition: right .7s cubic-bezier(0.115, 0.715, 0.305, 0.990);
 
 
   &_disabled {
-    transition: right 1s cubic-bezier(0.115, 0.715, 0.305, 0.990);
+    transition: right .7s cubic-bezier(0.115, 0.715, 0.305, 0.990);
     right: -340px;
   }
 
@@ -157,12 +157,6 @@
       background-position: center;
       background-size: contain;
       background-repeat: no-repeat;
-    }
-
-    &-size {
-      border: 1px solid red;
-      color: #000000;
-      opacity: 0;
     }
 
     &-measure {

@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
-import { CHANGE_VIEW_MODE } from '../constants/ActionTypes'
+import { CHANGE_VIEW_MODE, CHANGE_SIZE_DROPDOWN, CHANGE_FORMAT_DROPDOWN, TOGGLE_SIZE_DROPDOWN,
+    TOGGLE_FORMAT_DROPDOWN} from '../constants/ActionTypes'
 
 const initialState = {
     markerColor: ['#A3C644','FF0000'],
@@ -17,7 +18,11 @@ const initialState = {
         '#999999',
         '#333333'
     ],
-    viewMode: 'list'
+    viewMode: 'list',
+    sizeDropdownValue: 'all',
+    formatDropdownValue: 'PNG',
+    sizeDropdownVisibility: false,
+    formatDropdownVisibility: false
 };
 
 
@@ -42,11 +47,50 @@ function backgroundColorList(state = initialState.backgroundColorList, action) {
     }
 }
 
+function sizeDropdownValue(state = initialState.sizeDropdownValue, action) {
+    switch (action.type) {
+        case CHANGE_SIZE_DROPDOWN:
+            return action.currentValue;
+        default:
+            return state
+    }
+}
+
+function formatDropdownValue(state = initialState.formatDropdownValue, action) {
+    switch (action.type) {
+        case CHANGE_FORMAT_DROPDOWN:
+            return action.currentValue;
+        default:
+            return state
+    }
+}
+
+function sizeDropdownVisibility(state = initialState.sizeDropdownVisibility, action) {
+    switch (action.type) {
+        case TOGGLE_SIZE_DROPDOWN:
+            return action.newValue;
+        default:
+            return state
+    }
+}
+
+function formatDropdownVisibility(state = initialState.formatDropdownVisibility, action) {
+    switch (action.type) {
+        case TOGGLE_FORMAT_DROPDOWN:
+            return action.newValue;
+        default:
+            return state
+    }
+}
 
 export default combineReducers({
     markerColorList,
     backgroundColorList,
-    viewMode
+    viewMode,
+    sizeDropdownValue,
+    formatDropdownValue,
+    sizeDropdownVisibility,
+    formatDropdownVisibility
 })
 
 export function getViewMode(state) {
@@ -59,4 +103,20 @@ export function getMarkerColorList(state) {
 
 export function getBackgroundColorList(state) {
     return state.backgroundColorList
+}
+
+export function getSizeDropdownValue(state) {
+    return state.sizeDropdownValue
+}
+
+export function getFormatDropdownValue(state) {
+    return state.formatDropdownValue
+}
+
+export function getSizeDropdownVisibleState(state) {
+    return state.sizeDropdownVisibility
+}
+
+export function getFormatDropdownVisibleState(state) {
+    return state.formatDropdownVisibility
 }

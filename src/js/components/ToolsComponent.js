@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
+import SizeDropdown from '../containers/SizeDropdown'
+import FormatDropdown from '../containers/FormatDropdown'
 
 function formatStyle(styleJson){
     var style = [];
@@ -13,7 +15,7 @@ function formatStyle(styleJson){
 
 export default class ToolsComponent extends Component {
     render() {
-        const { layer, src, isExportEveryLayer } = this.props
+        const { layer, src, isExportEveryLayer } = this.props;
 
         layer.name = decodeURIComponent(layer.name); // @TODO FIX @ symbol
         layer.html = decodeURIComponent(layer.html);
@@ -92,28 +94,13 @@ export default class ToolsComponent extends Component {
                     <div className="tools__export-config clearfix">
                         <div className="tools__export-measure">
                             <div className="tools__export-param">Size:</div>
-                            <div className="dropdown icon-chevron-down">
-                                <div className="dropdown__value">All</div>
-                                <select name="size" className="tools__export-size">
-                                    <option value="1">1x</option>
-                                    <option value="12">1-2x</option>
-                                    <option value="2">2x</option>
-                                    <option value="23">2-3x</option>
-                                    <option value="3">3x</option>
-                                    <option value="all">All</option>
-                                </select>
-                            </div>
+                                <SizeDropdown />
+
+
                         </div>
                         <div className="tools__export-measure">
                             <div className="tools__export-param">Format:</div>
-                            <div className="dropdown icon-chevron-down">
-                                <div className="dropdown__value">PNG</div>
-                                <select name="size" className="tools__export-size">
-                                    <option value="png">PNG</option>
-                                    <option value="jpg">JPG</option>
-                                    <option value="gif">GIF</option>
-                                </select>
-                            </div>
+                                <FormatDropdown />
                         </div>
                         <span className="tools__copy-info">Export</span>
                     </div>
