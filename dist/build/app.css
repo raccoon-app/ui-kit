@@ -24,6 +24,38 @@
     }
 }
 
+@-webkit-keyframes showCopyLayer
+{
+    0%
+    {
+        opacity: 1;
+    }
+    60%
+    {
+        opacity: 1;
+    }
+    100%
+    {
+        opacity: 0;
+    }
+}
+
+@keyframes showCopyLayer
+{
+    0%
+    {
+        opacity: 1;
+    }
+    60%
+    {
+        opacity: 1;
+    }
+    100%
+    {
+        opacity: 0;
+    }
+}
+
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
@@ -596,35 +628,29 @@ h3
 
     color: #353535;
 }
-.dropdown:after,
-.dropdown:before
+.dropdown .icon-chevron-down
 {
-    position: absolute; 
-
-    display: block;
-
-    content: '';
-}
-.dropdown:after
-{
+    position: absolute;
     top: 0;
     right: -40px;
+
+    display: block;
 
     width: 40px;
     height: 40px;
 
     background-color: #353535;
 }
-.dropdown:before
-{
-    top: 16px; 
-    right: -28px;
-}
-.dropdown.icon-chevron-down:before
+.dropdown .icon-chevron-down:before
 {
     font-size: 10px;
 
-    z-index: 2; 
+    z-index: 2;
+    top: 10px;
+
+    display: inline-block;
+
+    margin-top: 16px; 
 
     content: '\E906';
 
@@ -632,19 +658,41 @@ h3
 }
 .dropdown select
 {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 45px;
+    display: none;
 }
-.dropdown option
+.dropdown-options
+{
+    overflow: hidden;
+
+    height: 0;
+    margin-top: 7px; 
+
+    transition: opacity .1s;
+
+    opacity: 0;
+}
+.dropdown-options--opened
+{
+    height: auto;
+
+    transition: opacity .1s; 
+
+    opacity: 1;
+}
+.dropdown__option
 {
     font: 18px 'SourceSansProSemibold', Helvetica, sans-serif;
 
+    padding: 5px 0; 
+
     color: #353535;
     background-color: #fff;
+}
+.dropdown__option:hover,
+.dropdown__option--selected
+{
+    color: #fff; 
+    background-color: #2cc4d5;
 }
 
 @font-face
@@ -703,8 +751,8 @@ h3
     font-weight: normal;
     font-style: normal; 
 
-    src: url(src/fonts/icomoon/icomoon.eot?916a359dd11136a79fff9163320f68b4);
-    src: url(src/fonts/icomoon/icomoon.eot?916a359dd11136a79fff9163320f68b4) format('embedded-opentype'), url(src/fonts/icomoon/icomoon.ttf?3bf1f6bc2df47f0239666f77b9ac96f8) format('truetype'), url(src/fonts/icomoon/icomoon.woff?54e5e042c4017ec5c556b842eae8dc00) format('woff'), url(src/fonts/icomoon/icomoon.svg?8297acd4cbc18e00edbee334da92ec3b) format('svg');
+    src: url(src/fonts/icomoon/icomoon.eot?7b23b123a3b2927869f159b3216ca4c5);
+    src: url(src/fonts/icomoon/icomoon.eot?7b23b123a3b2927869f159b3216ca4c5) format('embedded-opentype'), url(src/fonts/icomoon/icomoon.ttf?eeee9ac403ec94bda4c4e28adcb4ab5a) format('truetype'), url(src/fonts/icomoon/icomoon.woff?c0c665195597bf9b57f8a2a70e0d5f19) format('woff'), url(src/fonts/icomoon/icomoon.svg?3825d55f170001bf148801a5831bfb53) format('svg');
 }
 
 /*modules*/
@@ -950,16 +998,22 @@ h3
 .nav-page__link-text
 {
     display: block;
-    overflow: hidden; 
+    overflow: hidden;
 
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none; 
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
 .nav-page__item
 {
-    margin: 0; 
+    margin: 0;
     padding: 0;
+
+    transition: all .2s;
 }
 .nav-page__item:hover
 {
@@ -1025,10 +1079,20 @@ h3
 
     padding: 20px;
 
-    cursor: pointer; 
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    transition: all .3s; 
 
     color: #00abbe;
     background: #353535;
+}
+.nav-folder__title:hover
+{
+    color: #2cc4d5; 
+    background: #3a3a3a;
 }
 .nav-folder__title::after
 {
@@ -1283,7 +1347,7 @@ h3
     width: 360px;
     padding: 20px;
 
-    transition: right 1s cubic-bezier(.115, .715, .305, .99); 
+    transition: right .7s cubic-bezier(.115, .715, .305, .99); 
 
     color: #fff;
     background: #464547;
@@ -1296,7 +1360,7 @@ h3
 {
     right: -340px; 
 
-    transition: right 1s cubic-bezier(.115, .715, .305, .99);
+    transition: right .7s cubic-bezier(.115, .715, .305, .99);
 }
 .tools-container
 {
@@ -1481,12 +1545,6 @@ h3
     background-position: center;
     background-size: contain;
 }
-.tools__export-size
-{
-    opacity: 0; 
-    color: #000;
-    border: 1px solid red;
-}
 .tools__export-measure
 {
     display: inline-block;
@@ -1523,6 +1581,27 @@ h3
 
     color: #999;
 }
+.tools-copy-popup
+{
+    font: 18px 'SourceSansProSemibold', Helvetica, sans-serif; 
+
+    position: fixed;
+    z-index: 3;
+
+    padding: 5px 20px;
+
+    opacity: 0;
+    color: #fff;
+    background-color: #f45602;
+}
+.tools-copy-popup--animated
+{
+    -webkit-animation: showCopyLayer 2s linear;
+            animation: showCopyLayer 2s linear;
+
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+}
 .tools__copy-info
 {
     font: 20px 'SourceSansProSemibold', Helvetica, sans-serif;
@@ -1538,6 +1617,7 @@ h3
     text-transform: uppercase;
 
     color: #fff;
+    border: none;
     background-color: #00abbe;
 }
 .tools__copy-info:hover
@@ -1582,6 +1662,13 @@ h3
 .tools__gradient-code
 {
     color: #fff;
+}
+
+.tool-zoom
+{
+    position: fixed;
+    right: 25px; 
+    bottom: 5px;
 }
 
 .measure

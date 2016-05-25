@@ -73,12 +73,18 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
   }
 }
 
 .nav-page__item {
   padding: 0;
   margin: 0;
+  transition: all .2s;
 
   &:hover {
     background: $HOVER-GREY;
@@ -139,6 +145,18 @@
     display: block;
     padding: 20px;
     cursor: pointer;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: all .3s;
+
+    &:hover {
+      background: lighten($FILL_BLACK, 2%);
+      color: $LIGHT_BLUE;
+
+    }
   }
 
   &__title::after {
