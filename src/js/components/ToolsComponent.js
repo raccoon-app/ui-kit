@@ -150,8 +150,7 @@ export default class ToolsComponent extends Component {
             <div className={classnames({
                     'tools': true,
                     'tools_disabled': !layer.id
-                 })}
-                ref="tool">
+                 })}>
                 {copyLayer}
                 <h5 className="tools__title">Object measure</h5>
                 <ul className="tools__list">
