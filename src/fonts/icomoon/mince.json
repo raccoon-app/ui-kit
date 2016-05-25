@@ -29,7 +29,7 @@
 				}
 			],
 			"properties": {
-				"order": 34,
+				"order": 37,
 				"id": 3,
 				"prevSize": 32,
 				"code": 59656,
@@ -149,6 +149,38 @@
 			"setIdx": 0,
 			"setId": 6,
 			"iconIdx": 3
+		},
+		{
+			"icon": {
+				"paths": [
+					"M0 787.692h1024v236.308h-1024v-236.308zM0 393.846h1024v236.308h-1024v-236.308zM0 0h1024v236.308h-1024v-236.308z"
+				],
+				"attrs": [
+					{
+						"fill": "rgb(153, 153, 153)"
+					}
+				],
+				"isMulticolor": false,
+				"grid": 0,
+				"tags": [
+					"list-view"
+				]
+			},
+			"attrs": [
+				{
+					"fill": "rgb(153, 153, 153)"
+				}
+			],
+			"properties": {
+				"order": 38,
+				"id": 1,
+				"prevSize": 32,
+				"code": 59663,
+				"name": "list-view"
+			},
+			"setIdx": 1,
+			"setId": 5,
+			"iconIdx": 0
 		},
 		{
 			"icon": {
@@ -473,35 +505,6 @@
 			"setIdx": 6,
 			"setId": 0,
 			"iconIdx": 134
-		},
-		{
-			"icon": {
-				"paths": [
-					"M64 192h896v192h-896zM64 448h896v192h-896zM64 704h896v192h-896z"
-				],
-				"attrs": [],
-				"isMulticolor": false,
-				"tags": [
-					"menu",
-					"list",
-					"options",
-					"lines",
-					"hamburger"
-				],
-				"grid": 16
-			},
-			"attrs": [],
-			"properties": {
-				"order": 23,
-				"prevSize": 16,
-				"ligatures": "menu, list3",
-				"name": "menu",
-				"id": 190,
-				"code": 59662
-			},
-			"setIdx": 6,
-			"setId": 0,
-			"iconIdx": 189
 		}
 	],
 	"height": 1024,

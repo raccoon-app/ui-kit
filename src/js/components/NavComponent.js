@@ -32,6 +32,9 @@ export default class NavPageList extends Component {
                         <i className="icon-search"></i>
                     </div>
                 </div>
+                <div className="left-nav-toggle">
+                    <button className="left-nav-toggle__btn icon-chevron-left turned"></button>
+                </div>
             </div>
         )
     }

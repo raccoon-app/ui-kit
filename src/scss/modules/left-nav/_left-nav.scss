@@ -73,10 +73,6 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    -ms-user-select: none;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
     user-select: none;
   }
 }
@@ -145,17 +141,12 @@
     display: block;
     padding: 20px;
     cursor: pointer;
-    -ms-user-select: none;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
     user-select: none;
     transition: all .3s;
 
     &:hover {
       background: lighten($FILL_BLACK, 2%);
       color: $LIGHT_BLUE;
-
     }
   }
 
@@ -227,7 +218,7 @@
   background-color: $LIGHT;
 
   .icon-list-view::after {
-    content: "\e908";
+    content: "\e90f";
   }
 
   .icon-title-view::after {
@@ -286,5 +277,48 @@
       content: "\e90a";
     }
   }
+}
 
+.left-nav-toggle {
+  position: fixed;
+  left: 30px;
+  bottom: 20px;
+
+  .icon-chevron-left::after {
+    content: '\e908';
+  }
+
+  .disable {
+    display: none;
+  }
+}
+
+.left-nav-toggle__btn {
+  font-size: 20px;
+  color: $LIGHT;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  background-color: $NAV_BTN;
+  border: none;
+  transition: background-color .2s;
+
+  &::after {
+    transition: all .5s;
+    display: block;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: lighten($NAV_BTN, 5%);
+  }
+
+  &.turned {
+    &::after {
+      transform: rotate(180deg);
+    }
+  }
 }

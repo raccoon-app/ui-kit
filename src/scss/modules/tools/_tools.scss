@@ -256,4 +256,72 @@
   &__gradient-code {
     color: $LIGHT;
   }
+
+  &__info {
+    color: $DEFAULT;
+    font-family: $HEADLINE_FONT;
+    text-transform: uppercase;
+    background-color: $INFO_SUCCESS;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 25px;
+    position: fixed;
+    top: 70px;
+    right: 30px;
+    user-select: none;
+  }
+}
+
+.tools-zoom {
+  position: fixed;
+  right: 30px;
+  bottom: 20px;
+
+  .icon-minus-circle::after {
+    content: '\e90c';
+  }
+
+  .icon-plus-circle::after {
+    content: '\e90d';
+  }
+
+  .icon-fit-to-screen-icon::after {
+    content: '\e90b';
+  }
+}
+
+.tools-zoom__btn {
+  font-size: 20px;
+  color: $LIGHT;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 9px;
+  background-color: $NAV_BTN;
+  border: none;
+  transition: background-color .2s;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+      background-color: lighten($NAV_BTN, 5%);
+  }
+
+  &_value {
+    margin: 0 4px;
+    position: relative;
+    top: -2px;
+    display: inline-block;
+    user-select: none;
+    cursor: default;
+
+    &:hover {
+      background-color: $NAV_BTN;
+    }
+  }
+
+  &_full-screen {
+    margin-right: 8px;
+  }
 }

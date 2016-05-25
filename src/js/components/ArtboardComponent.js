@@ -42,12 +42,6 @@ export default class ArtboardComponent extends Component {
                         </div>
                         <Measure scale={this.props.scale} />
                     </div>
-
-                    <div className="artboard-scalebar">
-                        <div className="artboard-scalebar__minus">-</div>
-                        <div className="artboard-scalebar__value">{this.props.dragging.x}</div>
-                        <div className="artboard-scalebar__plus">+</div>
-                    </div>
             </div>
         )
     }
