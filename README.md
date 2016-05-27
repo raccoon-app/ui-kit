@@ -7,12 +7,12 @@ Raccoon App is a tool to measuring and getting styles of layouts design
 ---------
 
 ## Main npm scripts
-To build app, start server http://localhost:8080/ and watch for changes
+To build app, start server http://localhost:8080/ and watch for changes:
 ```
 npm run watch
 ```
 
-To build app
+To build app:
 ```
 npm start
 ```
