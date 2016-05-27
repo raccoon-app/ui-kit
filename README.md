@@ -8,10 +8,14 @@ Raccoon App is a tool to measuring and getting styles of layouts design
 
 ## Main npm scripts
 To build app, start server http://localhost:8080/ and watch for changes
-    npm run watch
+```
+npm run watch
+```
 
 To build app
-    npm start
+```
+npm start
+```
 
 ### Style Guide
 * JavaScript: https://github.com/airbnb/javascript
