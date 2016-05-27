@@ -1,31 +1,24 @@
-'use strict';
+const layout = require('../layout');
+const preloaders = require('./preloaders');
+const loaders = require('./loaders');
+const autoprefixer = require('autoprefixer');
+const eslint = require('../.eslintrc');
+const environment = process.env.NODE_ENV;
 
-const
-    layout = require('../layout'),
-    loaders = require('./loaders'),
-    autoprefixer = require('autoprefixer');
-
+function getConfigForEnv(env) {
+    return (env === 'production') ? require('./config.production') : require('./config.development');
+}
 
 module.exports = Object.assign({
     target: 'web',
     entry: layout.src.front.jsEntry,
     module: {
-        preloaders: [{
-            test: /\.scss$/,
-            loaders: 'import-glob-loader'
-        }],
-        loaders
+        preloaders,
+        loaders,
     },
     postcss: () => ([
         autoprefixer({ browsers: ['last 2 versions'] })
-    ])
+    ]),
+    eslint,
 
-}, getConfigForEnv());
-
-function getConfigForEnv(environment) {
-    //if (environment.NODE_ENV === 'production') {
-    //    return require('./config.production');
-    //}
-    //return require('./config.production');
-    return require('./config.development');
-}
+}, getConfigForEnv(environment));

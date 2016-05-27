@@ -1,3 +1,5 @@
+'use strict';
+
 import React from 'react'
 import { createStore, applyMiddleware } from 'redux'
 import { render } from 'react-dom'

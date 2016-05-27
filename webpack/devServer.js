@@ -1,13 +1,10 @@
-'use strict';
-
-const
-    layout = require('../layout');
+//const layout = require('../layout');
 
 module.exports = {
-    //contentBase: layout.dist.buildDir,
+    // contentBase: layout.dist.buildDir,
     hot: true,
     inline: true,
     progress: true,
     host: 'localhost',
-    port: 8080
+    port: 8080,
 };
