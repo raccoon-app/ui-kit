@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import { CHANGE_VIEW_MODE, CHANGE_SIZE_DROPDOWN, CHANGE_FORMAT_DROPDOWN, TOGGLE_SIZE_DROPDOWN,
-    TOGGLE_FORMAT_DROPDOWN} from '../constants/ActionTypes'
+    TOGGLE_FORMAT_DROPDOWN, TOGGLE_SETTING_PANEL} from '../constants/ActionTypes'
 
 const initialState = {
     markerColor: ['#A3C644','FF0000'],
@@ -22,7 +22,8 @@ const initialState = {
     sizeDropdownValue: 'all',
     formatDropdownValue: 'PNG',
     sizeDropdownVisibility: false,
-    formatDropdownVisibility: false
+    formatDropdownVisibility: false,
+    settingPanelVisibility: false
 };
 
 
@@ -83,6 +84,15 @@ function formatDropdownVisibility(state = initialState.formatDropdownVisibility,
     }
 }
 
+function settingPanelVisibility(state = initialState.settingPanelVisibility, action) {
+    switch (action.type) {
+        case TOGGLE_SETTING_PANEL:
+            return state = !state;
+        default:
+            return state
+    }
+}
+
 export default combineReducers({
     markerColorList,
     backgroundColorList,
@@ -90,7 +100,8 @@ export default combineReducers({
     sizeDropdownValue,
     formatDropdownValue,
     sizeDropdownVisibility,
-    formatDropdownVisibility
+    formatDropdownVisibility,
+    settingPanelVisibility
 })
 
 export function getViewMode(state) {
@@ -119,4 +130,8 @@ export function getSizeDropdownVisibleState(state) {
 
 export function getFormatDropdownVisibleState(state) {
     return state.formatDropdownVisibility
+}
+
+export function getSettingPanelVisibilityState(state) {
+    return state.settingPanelVisibility
 }

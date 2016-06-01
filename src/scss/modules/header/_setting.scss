@@ -1,11 +1,54 @@
-.setting-wrapper {
-  position: absolute;
-  top:0;
-  right: 20px;
+.setting-panel {
+  display: flex;
+  flex-direction: row-reverse;
+  flex: 1;
+  overflow: hidden;
+
+  &__options {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 500ms ease;
+
+  }
+
+  &_opened {
+
+    .setting-panel__options {
+      opacity: 1;
+      width: 90%;
+    }
+
+    .setting-control-btn:after {
+      content: "\e907";
+    }
+
+  }
+
 }
 
-.setting-color {
-  float: right;
+
+.setting-control-btn {
+  background-color: $PRIMARY;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:after {
+    content: "\e90e";
+    color: #fff;
+    font-size: 30px;
+  }
+
+}
+
+.setting-color,
+.radio-color-switcher {
   margin: 12px 0 0 50px;
 
   &__title {

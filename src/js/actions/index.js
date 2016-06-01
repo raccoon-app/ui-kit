@@ -85,3 +85,7 @@ export function toggleDropdown(name, value) {
 
     }
 }
+
+export function toggleSettingPanel() {
+    return { type: types.TOGGLE_SETTING_PANEL }
+}
