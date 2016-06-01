@@ -3,7 +3,8 @@
     "airbnb"
   ],
   "rules": {
-    "indent": [2, 4, { "SwitchCase": 1, "VariableDeclarator": 1 }],
-    "max-len": 120
+    "indent": [2, 4, { "SwitchCase": 1, "VariableDeclarator": 2 }],
+    "max-len": [2, 120],
+    "react/jsx-indent-props": [2, 4]
   }
 }

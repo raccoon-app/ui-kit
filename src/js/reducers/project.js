@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux'
-import { SET_ACTIVE_ARTBOARD, SET_OPEN_PAGE, RECEIVE_PROJECT } from '../constants/ActionTypes'
+import { combineReducers } from 'redux';
+import { SET_ACTIVE_ARTBOARD, SET_OPEN_PAGE, RECEIVE_PROJECT, CHANGE_FILTER } from '../constants/ActionTypes';
 
 const initialState = {
     name: 'project name',
@@ -7,69 +7,78 @@ const initialState = {
     activePage: null,
     activeArtboard: null,
     openPage: null,
-    viewMode: 'list'
+    filter: null,
 };
 
-function name(state = initialState.name, action) {
+function name(state = initialState.name, action = {}) {
     switch (action.type) {
         case RECEIVE_PROJECT:
-          return action.project.sketchName;
+            return action.project.sketchName;
         default:
-          return state
+            return state;
     }
 }
 
-function folders(state = initialState.folders, action) {
+function folders(state = initialState.folders, action = {}) {
     switch (action.type) {
         case RECEIVE_PROJECT:
-            return action.project.pageOrder.map(function(id){
-                var item = action.project.pageData[id];
+            return action.project.pageOrder.map(function(id) {
+                const item = action.project.pageData[id];
 
                 item.name = decodeURIComponent(item.name);
-                item.artboards = item.artboardId.map(function(aId){
+                item.artboards = item.artboardId.map(function (aId) {
                     return {
                         id: action.project.artboard[aId].id,
-                        src:  action.url+action.project.artboard[aId].src +'/artboard.png',
-                        name: decodeURIComponent(action.project.artboard[aId].name)
+                        src:  action.url+action.project.artboard[aId].src + '/artboard.png',
+                        name: decodeURIComponent(action.project.artboard[aId].name),
                     };
                 });
 
                 return item;
             });
         default:
-          return state
+            return state;
     }
 }
 
-function activePage(state = initialState.activePage, action) {
+function activePage(state = initialState.activePage, action = {}) {
     switch (action.type) {
         case SET_ACTIVE_ARTBOARD:
             return action.pageId;
         default:
-            return state
+            return state;
     }
 }
 
-function activeArtboard(state = initialState.activeArtboard, action) {
+function activeArtboard(state = initialState.activeArtboard, action = {}) {
     switch (action.type) {
         case SET_ACTIVE_ARTBOARD:
             return action.artboardId;
         default:
-            return state
+            return state;
     }
 }
 
-function openPage(state = initialState.openPage, action) {
+function openPage(state = initialState.openPage, action = {}) {
     switch (action.type) {
         case SET_OPEN_PAGE:
             return state === action.pageId ? null : action.pageId;
         case SET_ACTIVE_ARTBOARD:
             return action.pageId;
         default:
-            return state
+            return state;
     }
 }
 
+function filter(state = initialState.filter, action = {}) {
+    switch (action.type) {
+        case CHANGE_FILTER:
+            console.log(action.filter)
+            return action.filter;
+        default:
+            return state;
+    }
+}
 
 
 export default combineReducers({
@@ -77,25 +86,30 @@ export default combineReducers({
     folders,
     activePage,
     activeArtboard,
-    openPage
-})
+    openPage,
+    filter,
+});
 
 export function getProjectName(state) {
-    return state.name
+    return state.name;
 }
 
 export function getProjectFolders(state) {
-  return state.folders
+    return state.folders;
 }
 
 export function getActivePage(state) {
-    return state.activePage
+    return state.activePage;
 }
 
 export function getActiveArtboard(state) {
-    return state.activeArtboard
+    return state.activeArtboard;
 }
 
 export function getOpenPage(state) {
-    return state.openPage
+    return state.openPage;
+}
+
+export function getFilter(state) {
+    return state.filter;
 }
