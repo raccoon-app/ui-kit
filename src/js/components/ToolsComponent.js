@@ -28,18 +28,18 @@ export default class ToolsComponent extends Component {
         const { layer, src, isExportEveryLayer } = this.props;
 
         const copyLayer = (
-            <div className="tools-copy-popup" ref="copyPopup">Copied!</div>
+            <div className="tools-copy-info" ref="copyInfo">Content copied!</div>
         );
 
         const showCopyMessage = () => {
-            var copyPopup = this.refs.copyPopup;
-            copyPopup.addEventListener('animationend', handler);
-            copyPopup.classList.add('tools-copy-popup--animated');
+            var copyInfo = this.refs.copyInfo;
+            copyInfo.addEventListener('animationend', handler);
+            copyInfo.classList.add('tools-copy-info_animated');
 
             function handler(e) {
                 e.target.removeEventListener(e.type, handler);
 
-                copyPopup.classList.remove('tools-copy-popup--animated');
+                copyInfo.classList.remove('tools-copy-info_animated');
             }
         }
         layer.name = decodeURIComponent(layer.name); // @TODO FIX @ symbol
@@ -147,37 +147,42 @@ export default class ToolsComponent extends Component {
 
 
         return (
-            <div className={classnames({
+            <aside
+                className={classnames({
                     'tools': true,
-                    'tools_disabled': !layer.id
-                 })}>
+                    'tools_disabled': !layer.id,
+                })}
+            >
                 {copyLayer}
-                <h5 className="tools__title">Object measure</h5>
-                <ul className="tools__list">
-                    <li className="tools__item">
-                        <span className="tools__item-label">X</span>
-                        <span className="icon-x-coord"></span>
-                        <span className="tools__item-value">{layer.x} px</span>
-                    </li>
-                    <li className="tools__item">
-                        <span className="tools__item-label">Width</span>
-                        <span className="icon-width"></span>
-                        <span className="tools__item-value">{layer.width} px</span>
-                    </li>
 
-                    <li className="tools__item">
-                        <span className="tools__item-label">Y</span>
-                        <span className="icon-y-coord"></span>
-                        <span className="tools__item-value">{layer.y} px</span>
-                    </li>
-                    <li className="tools__item">
-                        <span className="tools__item-label">Height</span>
-                        <span className="icon-height"></span>
-                        <span className="tools__item-value">{layer.height} px</span>
-                    </li>
-                </ul>
+                <div className="tools-body">
+                    <h5 className="tools__title">Object measure</h5>
+                    <ul className="tools__list">
+                        <li className="tools__item">
+                            <span className="tools__item-label">X</span>
+                            <span className="icon-x-coord"></span>
+                            <span className="tools__item-value">{layer.x} px</span>
+                        </li>
+                        <li className="tools__item">
+                            <span className="tools__item-label">Width</span>
+                            <span className="icon-width"></span>
+                            <span className="tools__item-value">{layer.width} px</span>
+                        </li>
 
-                {tools}
+                        <li className="tools__item">
+                            <span className="tools__item-label">Y</span>
+                            <span className="icon-y-coord"></span>
+                            <span className="tools__item-value">{layer.y} px</span>
+                        </li>
+                        <li className="tools__item">
+                            <span className="tools__item-label">Height</span>
+                            <span className="icon-height"></span>
+                            <span className="tools__item-value">{layer.height} px</span>
+                        </li>
+                    </ul>
+
+                    {tools}
+                </div>
 
                 <div className="tools-zoom">
                     <button className="tools-zoom__btn tools-zoom__btn_full-screen icon-fit-to-screen-icon"></button>
@@ -186,8 +191,7 @@ export default class ToolsComponent extends Component {
                     <button className="tools-zoom__btn tools-zoom__btn_plus icon-plus-circle"></button>
                 </div>
 
-                <p className="tools__info">Content copied</p>
-            </div>
+            </aside>
         )
     }
 }

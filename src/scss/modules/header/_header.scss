@@ -1,58 +1,60 @@
 .header {
-  flex: 0 0 60px;
-  display: flex;
-  background: $LIGHT;
-  box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.30);
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-  z-index: 9990;
-
-  &__logo {
-    display: block;
-    float: left;
-    width: 90px;
-    height: 32px;
-    background: url(../img/logo.png);
-    background-size: 90px 32px;
-    margin: 19px 20px 8px;
-    text-indent: -9999px;
-  }
-
-  &__title {
-    display: block;
-    float: left;
-    padding: 16px 20px;
-    width: 210px;
-    font-family: $HEADLINE_FONT;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-
-  &__form {
-    padding: 14px 0;
-    float: left;
-  }
-
-  &__input {
-    border: 2px solid $PRIMARY;
+    flex: 0 0 60px;
+    display: flex;
+    background: $LIGHT;
+    box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.30);
     margin: 0;
-    padding: 6px 5px 4px;
-    float: left;
-    display: block;
-  }
+    overflow: hidden;
+    padding: 0;
+    z-index: 9990;
 
-  &__btn {
-    background: $PRIMARY;
-    color: $LIGHT;
-    font-family: $HEADLINE_FONT;
-    font-weight: 600;
-    padding: 4px 12px 4px 10px;
-    border: 0;
-    font-size: 16px;
-    float: left;
-    display: block;
-    height: 32px;
-  }
+    &__logo {
+        display: block;
+        float: left;
+        width: 90px;
+        height: 32px;
+        background: url(../img/logo.png);
+        background-size: 90px 32px;
+        margin: 19px 20px 8px;
+        text-indent: -9999px;
+    }
+
+    &__title {
+        display: block;
+        float: left;
+        padding: 23px 0 15px;
+        width: 220px;
+        font-size: 26px;
+        line-height: 1;
+        font-family: $HEADLINE_FONT;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    &__form {
+        padding: 14px 0;
+        float: left;
+    }
+
+    &__input {
+        border: 2px solid $PRIMARY;
+        margin: 0;
+        padding: 6px 5px 4px;
+        float: left;
+        display: block;
+    }
+
+    &__btn {
+        background: $PRIMARY;
+        color: $LIGHT;
+        font-family: $HEADLINE_FONT;
+        font-weight: 600;
+        padding: 4px 12px 4px 10px;
+        border: 0;
+        font-size: 16px;
+        float: left;
+        display: block;
+        height: 32px;
+    }
 }

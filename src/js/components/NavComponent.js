@@ -4,18 +4,17 @@ import classnames from 'classnames';
 export default class NavPageList extends Component {
     render() {
         return (
-            <div className="nav">
+            <nav className="nav">
                 <h3 style={{ display: 'none' }}>{this.props.name}</h3>
                 <ul className="nav-folder" ref="messageList">
                     {this.props.children}
                 </ul>
-                <div className="left-nav-footer">
+                <div className="nav-footer">
                     <button
                         className={classnames({
                             'icon-list-view': true,
-                            'left-nav-footer__btn': true,
-                            'left-nav-footer__btn_list': true,
-                            'active': this.props.viewMode === 'list',
+                            'nav-footer__btn': true,
+                            'nav-footer__btn_active': this.props.viewMode === 'list',
                         })}
                         onClick={() => this.props.changeViewMode('list')}
                     >
@@ -23,19 +22,18 @@ export default class NavPageList extends Component {
                     <button
                         className={classnames({
                             'icon-title-view': true,
-                            'left-nav-footer__btn': true,
-                            'left-nav-footer__btn_tile': true,
-                            'active': this.props.viewMode === 'tile',
+                            'nav-footer__btn': true,
+                            'nav-footer__btn_active': this.props.viewMode === 'tile',
                         })}
                         onClick={() => this.props.changeViewMode('tile')}
                     >
                     </button>
 
-                    <div className="left-nav-footer__wrap">
+                    <div className="nav-footer__search">
 
                         <input
                             placeholder="search"
-                            className="left-nav-footer__search"
+                            className="nav-footer__search-input"
                             type="search"
                             value={this.props.filter}
                             onChange={(event) => this.props.setFilter(event.target.value)}
@@ -43,18 +41,18 @@ export default class NavPageList extends Component {
                         <button
                             className={classnames({
                                 'icon-search': true,
-                                'btn-search': true,
-                                'btn-search_reset': this.props.filter,
+                                'nav-footer__search-btn': true,
+                                'nav-footer__search-btn_reset': this.props.filter,
                             })}
                             onClick={() => this.props.setFilter()}
                         >
                         </button>
                     </div>
                 </div>
-                <div className="left-nav-toggle">
-                    <button className="left-nav-toggle__btn icon-chevron-left turned"></button>
+                <div className="nav-toggle">
+                    <button className="nav-toggle__btn nav-toggle__btn_turned icon-chevron-left"></button>
                 </div>
-            </div>
+            </nav>
         );
     }
 }
