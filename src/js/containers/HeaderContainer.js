@@ -1,7 +1,7 @@
-import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { getProjectName} from '../reducers/project'
-import SettingPanel from './SettingsPanel'
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { getProjectName} from '../reducers/project';
+import SettingPanel from './SettingsPanel';
 
 
 class HeaderContainer extends Component {

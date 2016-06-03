@@ -184,15 +184,8 @@ export default class ToolsComponent extends Component {
                     {tools}
                 </div>
 
-                <div className="tools-zoom">
-                    <button className="tools-zoom__btn tools-zoom__btn_full-screen icon-fit-to-screen-icon"></button>
-                    <button className="tools-zoom__btn tools-zoom__btn_minus icon-minus-circle"></button>
-                    <span className="tools-zoom__btn tools-zoom__btn_value">100%</span>
-                    <button className="tools-zoom__btn tools-zoom__btn_plus icon-plus-circle"></button>
-                </div>
-
             </aside>
-        )
+        );
     }
 }
 
@@ -200,5 +193,5 @@ export default class ToolsComponent extends Component {
 ToolsComponent.propTypes = {
     layer: PropTypes.object,
     isExportEveryLayer: PropTypes.string,
-    url: PropTypes.string
-}
+    url: PropTypes.string,
+};
