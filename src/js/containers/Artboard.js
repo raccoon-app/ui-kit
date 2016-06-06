@@ -1,10 +1,10 @@
-import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { clickArtboardLayer, enterArtboardLayer, leaveArtboardLayer, scaleArtboard, takeArtboard, dropArtboard, dragArtboard } from '../actions'
-import { getArtboards, getActiveArtboard, getImage} from '../reducers/artboard'
-import { getScale, getDragging, getIsDragging } from '../reducers/control'
-import ArtboardComponent from '../components/ArtboardComponent'
-import ArtboardLayerItem from '../components/ArtboardLayerItem'
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { clickArtboardLayer, enterArtboardLayer, leaveArtboardLayer, scaleArtboard, takeArtboard, dropArtboard, dragArtboard } from '../actions';
+import { getArtboards, getActiveArtboard, getImage } from '../reducers/artboard';
+import { getScale, getDragging, getIsDragging } from '../reducers/control';
+import ArtboardComponent from '../components/ArtboardComponent';
+import ArtboardLayerItem from '../components/ArtboardLayerItem';
 
 class Artboard extends Component {
     render() {

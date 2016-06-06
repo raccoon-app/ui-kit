@@ -1,53 +1,90 @@
-.setting-wrapper {
-  position: absolute;
-  top:0;
-  right: 20px;
+.setting-panel {
+    display: flex;
+    flex-direction: row-reverse;
+    flex: 1;
+    overflow: hidden;
+
+    &__options {
+        display: flex;
+        flex-direction: row-reverse;
+        width: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 500ms ease;
+    }
+
+    &_opened {
+        .setting-panel__options {
+            opacity: 1;
+            width: 90%;
+        }
+
+        .setting-control-btn:after {
+            content: "\e907";
+        }
+    }
 }
 
-.setting-color {
-  float: right;
-  margin: 12px 0 0 50px;
+.setting-control-btn {
+    background-color: $PRIMARY;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  &__title {
-    float: left;
-    margin: 0 10px 0 0;
-    color: $PRIMARY;
-    font-family: $HEADLINE_FONT;
-    font-size:16px;
-    line-height:20px;
-    padding: 10px 0;
-    text-transform: uppercase;
-  }
+    &:after {
+        content: "\e90e";
+        color: #fff;
+        font-size: 30px;
+    }
+}
 
-  &__list {
-    list-style: none;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
-    float: left;
-  }
+.setting-color,
+.radio-color-switcher {
+    margin: 12px 0 0 50px;
 
-  &__item {
-    display: inline-block;
-    padding: 8px;
-    margin: 0;
-  }
-
-  &__button {
-    display: block;
-    padding: 0;
-    border: 12px transparent solid;
-    border-radius: 12px;
-    border-width: 0 12px;
-    height: 24px;
-
-    &_active {
-      box-shadow: 0 0 0 2px #fff, 0 0 0 4px $PRIMARY;
+    &__title {
+        float: left;
+        margin: 0 10px 0 0;
+        color: $PRIMARY;
+        font-family: $HEADLINE_FONT;
+        font-size:16px;
+        line-height:20px;
+        padding: 10px 0;
+        text-transform: uppercase;
     }
 
-    &:active,
-    &:focus {
-      outline: 0;
+    &__list {
+        list-style: none;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        float: left;
     }
-  }
+
+    &__item {
+        display: inline-block;
+        padding: 8px;
+        margin: 0;
+    }
+
+    &__button {
+        display: block;
+        padding: 0;
+        border: 12px transparent solid;
+        border-radius: 12px;
+        border-width: 0 12px;
+        height: 24px;
+
+        &_active {
+            box-shadow: 0 0 0 2px #fff, 0 0 0 4px $PRIMARY;
+        }
+
+        &:active,
+        &:focus {
+            outline: 0;
+        }
+    }
 }
