@@ -1,0 +1,163 @@
+.measure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+
+    &_disabled {
+        display: none;
+    }
+
+    &-marker {
+        position: absolute;
+        top: 140px;
+        left: 300px;
+        z-index: 2;
+        width: 200px;
+        height: 200px;
+        vertical-align: middle;
+        pointer-events: none;
+
+        &__value {
+            position: absolute;
+            top: 100%;
+            left: -1px;
+            display: block;
+            padding: 0 4px;
+            height: 16px;
+            line-height: 16px;
+            font-size: 12px;
+            font-weight: 100;
+            color: #fff;
+            background: $PRIMARY_CTRL;
+            white-space: nowrap;
+        }
+    }
+
+    &-lighthouse {
+        position: absolute;
+        z-index: 1;
+        opacity: 0.4;
+        overflow: hidden;
+
+        &_top {
+            left: -3000px;
+            right: -3000px;
+            height: 0;
+            border-top: 1px dashed #FE3B00;
+            margin-top: -1px;
+        }
+
+        &_right {
+            top: -3000px;
+            bottom: -3000px;
+            width: 0;
+            border-left: 1px dashed #FE3B00;
+        }
+
+        &_bottom {
+            left: -3000px;
+            right: -3000px;
+            height: 0;
+            border-top: 1px dashed #FE3B00;
+        }
+
+        &_left {
+            top: -3000px;
+            bottom: -3000px;
+            width: 0;
+            border-left: 1px dashed #FE3B00;
+            margin-left: -1px;
+        }
+    }
+
+    &-marker {
+        &_current {
+            box-shadow: 0 0 0 1px $PRIMARY_CTRL;
+        }
+
+        &_target {
+            box-shadow: 0 0 0 1px red;
+        }
+
+        &_target & {
+            &__value {
+                display: none;
+            }
+        }
+    }
+
+    &-marker_current ~ & {
+        &-lighthouse {
+            border-color: $PRIMARY_CTRL;
+        }
+    }
+
+    &-marker_target ~ & {
+        &-lighthouse {
+            border-color: red;
+        }
+    }
+
+    &-ruler {
+        position: absolute;
+        z-index: 1;
+        //opacity: 0.8;
+        text-align: center;
+        vertical-align: middle;
+        pointer-events: none;
+
+        &_top {
+            border-left:1px solid red;
+        }
+
+        &_right {
+            border-top:1px solid red;
+        }
+
+        &_bottom {
+            border-left:1px solid red;
+        }
+
+        &_left {
+            border-top:1px solid red;
+        }
+
+        &__label {
+            display: inline-block;
+            line-height: 14px;
+        }
+
+        &__value {
+            display: inline-block;
+            padding: 0 3px;
+            border-radius: 2px;
+            height: 14px;
+            font-size: 12px;
+            font-weight: 100;
+            color: #fff;
+            background: red;
+        }
+
+        &_top &,
+        &_bottom & {
+            &__label {
+                position: absolute;
+                left: -20px;
+                top: 50%;
+                margin: -9px auto 0;
+                width: 40px;
+            }
+        }
+
+        &_left &,
+        &_right & {
+            &__label {
+                position: relative;
+                top: -11px;
+            }
+        }
+    }
+}
