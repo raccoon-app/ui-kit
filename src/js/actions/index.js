@@ -36,15 +36,15 @@ export function setOpenPage(pageId) {
 
 
 export function scaleArtboard(event) {
-    return {type: types.SCALE_ARTBOARD, event };
+    return { type: types.SCALE_ARTBOARD, event };
 }
 
 export function takeArtboard(event) {
-    return {type: types.TAKE_ARTBOARD, event };
+    return { type: types.TAKE_ARTBOARD, event };
 }
 
 export function dropArtboard(event) {
-    return {type: types.DROP_ARTBOARD, event };
+    return { type: types.DROP_ARTBOARD, event };
 }
 
 export function dragArtboard(event) {
@@ -71,7 +71,7 @@ export function setMarkerColor(color) {
 }
 
 export function changeDropdownValue(name, currentValue) {
-    switch(name) {
+    switch (name) {
         case 'size':
             return { type: types.CHANGE_SIZE_DROPDOWN, currentValue };
         default:
@@ -81,8 +81,8 @@ export function changeDropdownValue(name, currentValue) {
 }
 
 export function toggleDropdown(name, value) {
-    var newValue = !value;
-    switch(name) {
+    const newValue = !value;
+    switch (name) {
         case 'size':
             return { type: types.TOGGLE_SIZE_DROPDOWN, newValue };
         default:
@@ -92,5 +92,5 @@ export function toggleDropdown(name, value) {
 }
 
 export function toggleSettingPanel() {
-    return { type: types.TOGGLE_SETTING_PANEL }
+    return { type: types.TOGGLE_SETTING_PANEL };
 }
