@@ -1,29 +1,29 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 import { CHANGE_VIEW_MODE, CHANGE_SIZE_DROPDOWN, CHANGE_FORMAT_DROPDOWN, TOGGLE_SIZE_DROPDOWN,
-    TOGGLE_FORMAT_DROPDOWN, TOGGLE_SETTING_PANEL} from '../constants/ActionTypes'
+    TOGGLE_FORMAT_DROPDOWN, TOGGLE_SETTING_PANEL} from '../constants/ActionTypes';
 
 const initialState = {
-    markerColor: ['#A3C644','FF0000'],
+    markerColor: ['#A3C644', 'FF0000'],
     backgroundColor: '#E8E8E8',
     markerColorList: [
-        ['#A3C644', '#FF0000'],
-        ['#FF0000', '#A3C644'],
-        ['#0000ff', '#00ff00'],
-        ['#F78F21', '#1B7E8E']
+        { currentColor: '#A3C644', hoverColor: '#FF0000' },
+        { currentColor: '#FF0000', hoverColor: '#A3C644' },
+        { currentColor: '#0000ff', hoverColor: '#00ff00' },
+        { currentColor: '#F78F21', hoverColor: '#1B7E8E' },
     ],
     backgroundColorList: [
         '#E8E8E8',
         '#F0F0F0',
         '#BBBBBB',
         '#999999',
-        '#333333'
+        '#333333',
     ],
     viewMode: 'list',
     sizeDropdownValue: 'all',
     formatDropdownValue: 'PNG',
     sizeDropdownVisibility: false,
     formatDropdownVisibility: false,
-    settingPanelVisibility: false
+    settingPanelVisibility: false,
 };
 
 
@@ -32,19 +32,19 @@ function viewMode(state = initialState.viewMode, action) {
         case CHANGE_VIEW_MODE:
             return action.mode;
         default:
-            return state
+            return state;
     }
 }
 function markerColorList(state = initialState.markerColorList, action) {
     switch (action.type) {
         default:
-            return state
+            return state;
     }
 }
 function backgroundColorList(state = initialState.backgroundColorList, action) {
     switch (action.type) {
         default:
-            return state
+            return state;
     }
 }
 
@@ -53,7 +53,7 @@ function sizeDropdownValue(state = initialState.sizeDropdownValue, action) {
         case CHANGE_SIZE_DROPDOWN:
             return action.currentValue;
         default:
-            return state
+            return state;
     }
 }
 
@@ -62,7 +62,7 @@ function formatDropdownValue(state = initialState.formatDropdownValue, action) {
         case CHANGE_FORMAT_DROPDOWN:
             return action.currentValue;
         default:
-            return state
+            return state;
     }
 }
 
@@ -71,7 +71,7 @@ function sizeDropdownVisibility(state = initialState.sizeDropdownVisibility, act
         case TOGGLE_SIZE_DROPDOWN:
             return action.newValue;
         default:
-            return state
+            return state;
     }
 }
 
@@ -80,16 +80,16 @@ function formatDropdownVisibility(state = initialState.formatDropdownVisibility,
         case TOGGLE_FORMAT_DROPDOWN:
             return action.newValue;
         default:
-            return state
+            return state;
     }
 }
 
 function settingPanelVisibility(state = initialState.settingPanelVisibility, action) {
     switch (action.type) {
         case TOGGLE_SETTING_PANEL:
-            return state = !state;
+            return !state;
         default:
-            return state
+            return state;
     }
 }
 
@@ -101,37 +101,37 @@ export default combineReducers({
     formatDropdownValue,
     sizeDropdownVisibility,
     formatDropdownVisibility,
-    settingPanelVisibility
-})
+    settingPanelVisibility,
+});
 
 export function getViewMode(state) {
-    return state.viewMode
+    return state.viewMode;
 }
 
 export function getMarkerColorList(state) {
-    return state.markerColorList
+    return state.markerColorList;
 }
 
 export function getBackgroundColorList(state) {
-    return state.backgroundColorList
+    return state.backgroundColorList;
 }
 
 export function getSizeDropdownValue(state) {
-    return state.sizeDropdownValue
+    return state.sizeDropdownValue;
 }
 
 export function getFormatDropdownValue(state) {
-    return state.formatDropdownValue
+    return state.formatDropdownValue;
 }
 
 export function getSizeDropdownVisibleState(state) {
-    return state.sizeDropdownVisibility
+    return state.sizeDropdownVisibility;
 }
 
 export function getFormatDropdownVisibleState(state) {
-    return state.formatDropdownVisibility
+    return state.formatDropdownVisibility;
 }
 
 export function getSettingPanelVisibilityState(state) {
-    return state.settingPanelVisibility
+    return state.settingPanelVisibility;
 }
