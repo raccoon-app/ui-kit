@@ -10,21 +10,13 @@ export default class ArtboardComponent extends Component {
             <div
                 className={classnames({
                     'artboard': true,
-                    'artboard_dragging': false,
+                    'artboard_dragging': isDragging,
                 })}
                 onWheel={this.props.scaleArtboard}
                 onMouseDown={this.props.takeArtboard}
                 onMouseUp={this.props.dropArtboard}
                 onMouseMove={this.props.dragArtboard}
             >
-                <h3
-                    className={classnames({
-                        'artboard__title': true,
-                        'artboard__title_disabled': isDragging
-                    })}
-                >
-                    {name}
-                </h3>
                 <div
                     className="artboard__draggable" style={{
                         left: dragging.x + 'px',
