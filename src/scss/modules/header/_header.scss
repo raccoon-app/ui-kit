@@ -9,40 +9,56 @@
     z-index: 9990;
 
     &__logo {
-        display: block;
-        float: left;
-        width: 90px;
+        flex: 0 0 90px;
+        max-width: 90px;
+        order: 1;
         height: 32px;
         background: url(../img/logo.png);
         background-size: 90px 32px;
-        margin: 19px 20px 8px;
+        margin: 15px 20px 10px;
         text-indent: -9999px;
     }
 
     &__title {
-        display: block;
-        float: left;
-        padding: 23px 0 15px;
-        width: 220px;
-        font-size: 26px;
+        flex: 0 0 220px;
+        max-width: 220px;
+        order: 2;
+        padding: 4px 0 0;
+        font-size: 24px;
         line-height: 1;
         font-family: $HEADLINE_FONT;
+        font-weight: 600;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
+        align-self: center;
+        color: $PRIMARY;
     }
 
-    &__form {
-        padding: 14px 0;
-        float: left;
-    }
+    &-info {
+        flex: 1 1 auto;
+        order: 3;
+        padding: 4px 290px 0 0;
+        text-align: center;
+        align-self: center;
+        position: relative;
+        top: 0;
+        transition: all 500ms ease;
 
-    &__input {
-        border: 2px solid $PRIMARY;
-        margin: 0;
-        padding: 6px 5px 4px;
-        float: left;
-        display: block;
+        &__title {
+            display: inline-block;
+            font-size: 20px;
+            font-family: $HEADLINE_FONT;
+            font-weight: 600;
+        }
+
+        &__subtitle {
+            font-size: 20px;
+            font-family: $HEADLINE_FONT;
+            font-weight: normal;
+            color: $GRAY;
+            padding: 0 5px;
+        }
     }
 
     &__btn {
