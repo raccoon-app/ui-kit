@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Nav from './../containers/Nav'
-import HeaderContainer from './../containers/HeaderContainer'
+import HeaderContainer from './../containers/Header'
 import Artboard from './../containers/Artboard'
 import Tools from './../containers/Tools'
 

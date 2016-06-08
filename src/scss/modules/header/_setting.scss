@@ -1,31 +1,38 @@
 .setting-panel {
-    display: flex;
-    flex-direction: row-reverse;
-    flex: 1;
-    overflow: hidden;
+    flex: 0 0 60px;
+    max-width: 60px;
+    order: 4;
+    position: relative;
 
     &__options {
+        position: absolute;
         display: flex;
         flex-direction: row-reverse;
-        width: 0;
+        width: 640px;
+        left: 60px;
+        top: 0;
         overflow: hidden;
-        opacity: 0;
         transition: all 500ms ease;
     }
 
     &_opened {
         .setting-panel__options {
-            opacity: 1;
-            width: 90%;
+            left: -640px;
         }
 
         .setting-control-btn:after {
             content: "\e907";
         }
+
+        ~ .header-info {
+            top: -45px;
+        }
     }
 }
 
 .setting-control-btn {
+    position: relative;
+    z-index: 3;
     background-color: $PRIMARY;
     cursor: pointer;
     width: 60px;

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { clickArtboardLayer, enterArtboardLayer, leaveArtboardLayer, scaleArtboard, takeArtboard, dropArtboard, dragArtboard } from '../actions';
+import { clickArtboardLayer, enterArtboardLayer, leaveArtboardLayer, scaleArtboard,
+    takeArtboard, dropArtboard, dragArtboard } from '../actions';
 import { getArtboards, getActiveArtboard, getImage } from '../reducers/artboard';
 import { getScale, getDragging, getIsDragging } from '../reducers/control';
 import ArtboardComponent from '../components/ArtboardComponent';
@@ -8,7 +9,8 @@ import ArtboardLayerItem from '../components/ArtboardLayerItem';
 
 class Artboard extends Component {
     render() {
-        const { activeArtboard } = this.props
+        const { activeArtboard } = this.props;
+
         return (
             <ArtboardComponent
                 name={decodeURIComponent(activeArtboard.name)}
@@ -36,7 +38,7 @@ class Artboard extends Component {
                         />
                 )}
             </ArtboardComponent>
-        )
+        );
     }
 }
 
@@ -57,21 +59,20 @@ Artboard.propTypes = {
     clickArtboardLayer: PropTypes.func.isRequired,
     enterArtboardLayer: PropTypes.func.isRequired,
     leaveArtboardLayer: PropTypes.func.isRequired
-}
+};
 
-const mapStateToProps = (state) => {
-    return {
-        artboards: getArtboards(state.artboard),
-        activeArtboard: getActiveArtboard(state.artboard),
-        image: getImage(state.artboard),
-        scale: getScale(state.control),
-        dragging: getDragging(state.control),
-        isDragging: getIsDragging(state.control)//,
-        //backgroundColor: getBackgroundColor(state.setting)
-    }
-}
+const mapStateToProps = (state) => ({
+    artboards: getArtboards(state.artboard),
+    activeArtboard: getActiveArtboard(state.artboard),
+    image: getImage(state.artboard),
+    scale: getScale(state.control),
+    dragging: getDragging(state.control),
+    isDragging: getIsDragging(state.control),
+    //backgroundColor: getBackgroundColor(state.setting),
+});
 
 export default connect(
     mapStateToProps,
-    { clickArtboardLayer, enterArtboardLayer, leaveArtboardLayer, scaleArtboard, takeArtboard, dropArtboard, dragArtboard }
-)(Artboard)
+    { clickArtboardLayer, enterArtboardLayer, leaveArtboardLayer, scaleArtboard,
+        takeArtboard, dropArtboard, dragArtboard }
+)(Artboard);
