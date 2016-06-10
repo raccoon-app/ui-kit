@@ -240,6 +240,7 @@
         cursor: pointer;
         border: none;
         transition: background-color .3s;
+        text-decoration: none;
 
         &:hover {
           background-color: $LIGHT_BLUE;
@@ -265,7 +266,13 @@
             color: $LIGHT_BLUE;
             margin: 0 0 5px 7px;
             font-size: 11px;
-            display: inline-block;
+            display: none;
+        }
+
+        & + & {
+            .icon-gradient-down-arrow:before {
+                display: inline-block;
+            }
         }
     }
 

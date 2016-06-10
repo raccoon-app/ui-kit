@@ -1,4 +1,4 @@
-import api from '../api';
+import api from '../utils/api';
 import * as types from '../constants/ActionTypes';
 
 export function receiveProject(project, url) {
