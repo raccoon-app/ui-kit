@@ -106,26 +106,40 @@
         background: $FILL_BLACK;
         color: $LIGHT;
         border: 0;
-        padding: 7px 10px;
+        padding: 10px 10px;
         margin: 0 0 20px;
         font-family: $DEFAULT_FONT;
-        font-size:14px;
+        font-size: 14px;
         line-height: 20px;
         width: 100%;
 
         &_style {
-            height: 200px;
+            max-height: 240px;
+            border-left: 10px $HOVER-GREY solid;
         }
     }
 
     &__textarea-classname {
         color: $LIGHT_BLUE;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 7px;
+            left: -17px;
+            background: $DEFAULT;
+            border-radius: 50%;
+            width: 4px;
+            height: 4px;
+        }
     }
 
     &__textarea-content {
         background-color: $LIGHT;
         color: $FILL_BLACK;
-        height: 140px;
+        min-height: 108px;
+        max-height: 152px;
         font: 16px/22px $DEFAULT_FONT;
     }
 
@@ -186,7 +200,7 @@
 
         &-config {
 
-            .tools__copy-info {
+            .tools__btn {
                 margin-top: 23px;
             }
         }
@@ -203,32 +217,7 @@
         text-transform: uppercase;
     }
 
-    &-copy-info {
-        position: absolute;
-        top: 10px;
-        right: 100%;
-        margin-right: 10px;
-
-        color: $DEFAULT;
-        font-family: $DEFAULT_FONT;
-        font-weight: 600;
-        text-transform: uppercase;
-        background-color: $INFO_SUCCESS;
-        height: 60px;
-        line-height: 60px;
-        padding: 0 25px;
-        user-select: none;
-        z-index: 3;
-        opacity: 0;
-        white-space: nowrap;
-
-        &_animated {
-            animation: showCopyLayer 2s linear;
-            animation-fill-mode: forwards;
-        }
-    }
-
-    &__copy-info {
+    &__btn {
         float: right;
         background-color: $PRIMARY;
         color: $LIGHT;
@@ -242,8 +231,11 @@
         transition: background-color .3s;
         text-decoration: none;
 
-        &:hover {
-          background-color: $LIGHT_BLUE;
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: $LIGHT_BLUE;
+            outline: none;
         }
     }
 
@@ -285,6 +277,30 @@
         color: $LIGHT;
     }
 
+    &-copy-info {
+        position: absolute;
+        top: 10px;
+        right: 100%;
+        margin-right: 10px;
+
+        color: $DEFAULT;
+        font-family: $DEFAULT_FONT;
+        font-weight: 600;
+        text-transform: uppercase;
+        background-color: $INFO_SUCCESS;
+        height: 60px;
+        line-height: 60px;
+        padding: 0 25px;
+        user-select: none;
+        z-index: 3;
+        opacity: 0;
+        white-space: nowrap;
+
+        &_animated {
+            animation: showCopyLayer 2s linear;
+            animation-fill-mode: forwards;
+        }
+    }
 }
 
 .tools-zoom {

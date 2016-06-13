@@ -41,5 +41,5 @@ NavArtboardList.propTypes = {
     name: PropTypes.string,
     src: PropTypes.string,
     viewMode: PropTypes.string,
-    onNavArtboardClicked: PropTypes.func
+    onNavArtboardClicked: PropTypes.func,
 }

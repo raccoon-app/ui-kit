@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux'
-import { RECEIVE_PROJECT, SET_ACTIVE_ARTBOARD } from '../constants/ActionTypes'
+import { combineReducers } from 'redux';
+import { RECEIVE_PROJECT, SET_ACTIVE_ARTBOARD } from '../constants/ActionTypes';
 
 const initialState = {
     artboards: {},
@@ -9,7 +9,7 @@ const initialState = {
     },
 };
 
-function artboards(state = initialState.artboards, action) {
+function artboards(state = initialState.artboards, action = {}) {
     switch (action.type) {
         case RECEIVE_PROJECT:
             return action.project.artboard;
@@ -18,7 +18,7 @@ function artboards(state = initialState.artboards, action) {
     }
 }
 
-function url(state = initialState.url, action) {
+function url(state = initialState.url, action = {}) {
     switch (action.type) {
         case RECEIVE_PROJECT:
             return action.url;
@@ -27,13 +27,13 @@ function url(state = initialState.url, action) {
     }
 }
 
-function activeArtboard(state = initialState.activeArtboard, action) {
+function activeArtboard(state = initialState.activeArtboard, action = {}) {
     switch (action.type) {
         case RECEIVE_PROJECT:
             let firstId;
 
             // @TODO FIXME
-            for(let key in action.project.artboard) {
+            for (const key in action.project.artboard) {
                 firstId = action.project.artboard[key].id;
                 break;
             }
@@ -45,7 +45,7 @@ function activeArtboard(state = initialState.activeArtboard, action) {
     }
 }
 
-export default function artboard(state = initialState, action) {
+export default function artboard(state = initialState, action = {}) {
     switch (action.type) {
         case SET_ACTIVE_ARTBOARD:
             return Object.assign({}, state, {
