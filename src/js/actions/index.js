@@ -34,6 +34,9 @@ export function setOpenPage(pageId) {
     return { type: types.SET_OPEN_PAGE, pageId };
 }
 
+export function zoomArtboard(event, value) {
+    return { type: types.ZOOM_ARTBOARD, event, value };
+}
 
 export function scaleArtboard(event) {
     return { type: types.SCALE_ARTBOARD, event };

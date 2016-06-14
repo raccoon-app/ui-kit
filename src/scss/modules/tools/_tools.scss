@@ -9,11 +9,10 @@
     transition: flex .4s cubic-bezier(0.115, 0.715, 0.305, 0.990);
 
     &_disabled {
-        transition: flex .4s cubic-bezier(0.115, 0.715, 0.305, 0.990);
         flex-basis: 20px;
     }
 
-    &-body {
+    &__body {
         padding: 20px;
         overflow-y: scroll;
         overflow-x: hidden;
@@ -346,11 +345,8 @@
             top: -2px;
             display: inline-block;
             user-select: none;
-            cursor: default;
-
-            &:hover {
-                background-color: $NAV_BTN;
-            }
+            min-width: 70px;
+            text-align: center;
         }
 
         &_full-screen {

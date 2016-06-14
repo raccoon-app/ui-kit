@@ -73,7 +73,7 @@ class ToolsComponent extends Component {
             >
                 <ToolsCopyInfo />
 
-                <div className="tools-body">
+                <div className="tools__body">
                     <ToolsMainInfo layer={layer} />
 
                     {tools}
