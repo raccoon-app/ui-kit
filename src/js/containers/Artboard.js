@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { clickArtboardLayer, enterArtboardLayer, leaveArtboardLayer, scaleArtboard,
+import { clickArtboardLayer, enterArtboardLayer, leaveArtboardLayer, scaleArtboard, zoomArtboard,
     takeArtboard, dropArtboard, dragArtboard } from '../actions';
 import { getArtboards, getActiveArtboard, getImage } from '../reducers/artboard';
 import { getScale, getDragging, getIsDragging } from '../reducers/control';
@@ -13,7 +13,6 @@ class Artboard extends Component {
 
         return (
             <ArtboardComponent
-                name={decodeURIComponent(activeArtboard.name)}
                 image={this.props.image}
                 left={activeArtboard.x}
                 top={activeArtboard.y}
@@ -23,6 +22,7 @@ class Artboard extends Component {
                 scale={this.props.scale}
                 dragging={this.props.dragging}
                 isDragging={this.props.isDragging}
+                zoomArtboard={this.props.zoomArtboard}
                 scaleArtboard={this.props.scaleArtboard}
                 takeArtboard={this.props.takeArtboard}
                 dropArtboard={this.props.dropArtboard}
@@ -51,6 +51,7 @@ Artboard.propTypes = {
     dragging: PropTypes.object,
     isDragging: PropTypes.bool,
 
+    zoomArtboard: PropTypes.func.isRequired,
     scaleArtboard: PropTypes.func.isRequired,
     takeArtboard: PropTypes.func.isRequired,
     dropArtboard: PropTypes.func.isRequired,
@@ -73,6 +74,6 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { clickArtboardLayer, enterArtboardLayer, leaveArtboardLayer, scaleArtboard,
+    { clickArtboardLayer, enterArtboardLayer, leaveArtboardLayer, scaleArtboard, zoomArtboard,
         takeArtboard, dropArtboard, dragArtboard }
 )(Artboard);

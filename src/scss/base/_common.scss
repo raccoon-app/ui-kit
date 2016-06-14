@@ -22,6 +22,15 @@
 }
 
 
+::selection {
+  background: $PRIMARY;
+  color: $LIGHT;
+}
+
+::-moz-selection {
+  background: $PRIMARY;
+  color: $LIGHT;
+}
 
 body {
   padding: 0;

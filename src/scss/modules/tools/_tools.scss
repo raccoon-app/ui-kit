@@ -9,11 +9,10 @@
     transition: flex .4s cubic-bezier(0.115, 0.715, 0.305, 0.990);
 
     &_disabled {
-        transition: flex .4s cubic-bezier(0.115, 0.715, 0.305, 0.990);
         flex-basis: 20px;
     }
 
-    &-body {
+    &__body {
         padding: 20px;
         overflow-y: scroll;
         overflow-x: hidden;
@@ -106,26 +105,40 @@
         background: $FILL_BLACK;
         color: $LIGHT;
         border: 0;
-        padding: 7px 10px;
+        padding: 10px 10px;
         margin: 0 0 20px;
         font-family: $DEFAULT_FONT;
-        font-size:14px;
+        font-size: 14px;
         line-height: 20px;
         width: 100%;
 
         &_style {
-            height: 200px;
+            max-height: 240px;
+            border-left: 10px $HOVER-GREY solid;
         }
     }
 
     &__textarea-classname {
         color: $LIGHT_BLUE;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 7px;
+            left: -17px;
+            background: $DEFAULT;
+            border-radius: 50%;
+            width: 4px;
+            height: 4px;
+        }
     }
 
     &__textarea-content {
         background-color: $LIGHT;
         color: $FILL_BLACK;
-        height: 140px;
+        min-height: 108px;
+        max-height: 152px;
         font: 16px/22px $DEFAULT_FONT;
     }
 
@@ -186,7 +199,7 @@
 
         &-config {
 
-            .tools__copy-info {
+            .tools__btn {
                 margin-top: 23px;
             }
         }
@@ -201,6 +214,66 @@
         line-height:20px;
         padding: 5px 0;
         text-transform: uppercase;
+    }
+
+    &__btn {
+        float: right;
+        background-color: $PRIMARY;
+        color: $LIGHT;
+        text-transform: uppercase;
+        font: 600 20px $DEFAULT_FONT;
+        padding: 7px 0;
+        width: 100px;
+        text-align: center;
+        cursor: pointer;
+        border: none;
+        transition: background-color .3s;
+        text-decoration: none;
+
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: $LIGHT_BLUE;
+            outline: none;
+        }
+    }
+
+    &__gradient-opts {
+        .icon-paint-color-2:before {
+          content: "\e905";
+          font-size: 28px;
+          vertical-align: middle;
+          margin-right: 18px;
+        }
+    }
+
+    &__gradient-item {
+        list-style-type: none;
+        font: 18px $DEFAULT_FONT;
+        color: $GRAY;
+
+        .icon-gradient-down-arrow:before {
+            content: "\e904";
+            color: $LIGHT_BLUE;
+            margin: 0 0 5px 7px;
+            font-size: 11px;
+            display: none;
+        }
+
+        & + & {
+            .icon-gradient-down-arrow:before {
+                display: inline-block;
+            }
+        }
+    }
+
+    &__gradient-color {
+        display: inline-block;
+        margin-top: 8px;
+    }
+
+    &__gradient-code {
+        color: $LIGHT;
     }
 
     &-copy-info {
@@ -227,57 +300,6 @@
             animation-fill-mode: forwards;
         }
     }
-
-    &__copy-info {
-        float: right;
-        background-color: $PRIMARY;
-        color: $LIGHT;
-        text-transform: uppercase;
-        font: 600 20px $DEFAULT_FONT;
-        padding: 7px 0;
-        width: 100px;
-        text-align: center;
-        cursor: pointer;
-        border: none;
-        transition: background-color .3s;
-
-        &:hover {
-          background-color: $LIGHT_BLUE;
-        }
-    }
-
-    &__gradient-opts {
-        .icon-paint-color-2:before {
-          content: "\e905";
-          font-size: 28px;
-          vertical-align: middle;
-          margin-right: 18px;
-        }
-    }
-
-    &__gradient-item {
-        list-style-type: none;
-        font: 18px $DEFAULT_FONT;
-        color: $GRAY;
-
-        .icon-gradient-down-arrow:before {
-            content: "\e904";
-            color: $LIGHT_BLUE;
-            margin: 0 0 5px 7px;
-            font-size: 11px;
-            display: inline-block;
-        }
-    }
-
-    &__gradient-color {
-        display: inline-block;
-        margin-top: 8px;
-    }
-
-    &__gradient-code {
-        color: $LIGHT;
-    }
-
 }
 
 .tools-zoom {
@@ -323,11 +345,8 @@
             top: -2px;
             display: inline-block;
             user-select: none;
-            cursor: default;
-
-            &:hover {
-                background-color: $NAV_BTN;
-            }
+            min-width: 70px;
+            text-align: center;
         }
 
         &_full-screen {
