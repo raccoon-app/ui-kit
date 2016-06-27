@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { getMarkerColorList, getBackgroundColorList, getSettingPanelVisibilityState } from '../reducers/setting';
-import RadioSwitcher from '../components/settings/RadioSwitcher';
+import { getCurrentMarkerColor, getHoverMarkerColor, getBackgroundColor } from '../reducers/measure';
+import RadioColorSwitcher from '../components/settings/RadioColorSwitcher';
 import SettingControlButton from '../components/settings/SettingControlButton';
-import { toggleSettingPanel, setMarkerColor } from '../actions';
+import { toggleSettingPanel, setSwitcherColor } from '../actions';
 import classnames from 'classnames';
 
 const SettingsPanel = (props) => {
@@ -11,14 +12,19 @@ const SettingsPanel = (props) => {
     const bgSwitcherProps = {
         optionList: props.backgroundColorList,
         title: 'Background',
-        type: 'backgroundList',
         onChange: props.onSwitcherChange,
+        activeColor: {
+            currentBgColor: props.currentBgColor,
+        },
     };
     const markerSwitcherProps = {
         optionList: props.markerColorList,
         title: 'Guides',
-        type: 'markerList',
         onChange: props.onSwitcherChange,
+        activeColor: {
+            currentColor: props.currentMarkerColor,
+            hoverColor: props.hoverMarkerColor,
+        },
     };
     return (
         <div className={ classnames({
@@ -28,8 +34,8 @@ const SettingsPanel = (props) => {
         >
             <SettingControlButton onClick={onControlBtnClick} />
             <div className="setting-panel__options">
-                <RadioSwitcher {...bgSwitcherProps} />
-                <RadioSwitcher {...markerSwitcherProps} />
+                <RadioColorSwitcher {...bgSwitcherProps} />
+                <RadioColorSwitcher {...markerSwitcherProps} />
             </div>
         </div>
     );
@@ -41,12 +47,17 @@ SettingsPanel.propTypes = {
     backgroundColorList: PropTypes.array.isRequired,
     onControlBtnClick: PropTypes.func.isRequired,
     onSwitcherChange: PropTypes.func.isRequired,
+    currentMarkerColor: PropTypes.string.isRequired,
+    hoverMarkerColor: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
     markerColorList: getMarkerColorList(state.setting),
     backgroundColorList: getBackgroundColorList(state.setting),
     settingPanelVisibility: getSettingPanelVisibilityState(state.setting),
+    currentMarkerColor: getCurrentMarkerColor(state.measure),
+    hoverMarkerColor: getHoverMarkerColor(state.measure),
+    currentBgColor: getBackgroundColor(state.measure),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -54,7 +65,7 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(toggleSettingPanel());
     },
     onSwitcherChange: (color) => {
-        dispatch(setMarkerColor(color));
+        dispatch(setSwitcherColor(color));
     },
 });
 

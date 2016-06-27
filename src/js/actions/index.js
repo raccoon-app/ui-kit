@@ -69,8 +69,9 @@ export function setBackgroundColor(color) {
     return { type: types.SET_BACKGROUND_COLOR, color };
 }
 
-export function setMarkerColor(color) {
-    return { type: types.SET_MARKER_COLOR, color };
+export function setSwitcherColor(color) {
+    console.log(color);
+    return { type: types.SET_SWITCHER_COLOR, color };
 }
 
 export function changeDropdownValue(name, currentValue) {

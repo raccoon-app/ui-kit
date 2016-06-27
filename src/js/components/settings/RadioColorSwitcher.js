@@ -1,10 +1,30 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 
-class RadioSwitcher extends Component {
+class RadioColorSwitcher extends Component {
     constructor() {
         super();
         this.handleClick = this.handleClick.bind(this);
+        this.getStyle = this.getStyle.bind(this);
+    }
+
+    getStyle(obj) {
+        const objKeys = Object.keys(obj);
+        const leftBrd = obj[objKeys[0]];
+        const rightBrd = (objKeys.length >= 2) ? obj[objKeys[1]] : obj[objKeys[0]];
+        return { borderLeftColor: leftBrd, borderRightColor: rightBrd };
+    }
+
+    isActiveColor(curObj) {
+        const { activeColor } = this.props;
+        console.log(activeColor);
+
+        if (activeColor.currentColor === curObj.currentColor && activeColor.hoverColor === curObj.hoverColor){
+            return true;
+        }
+
+//TODO; implement background active color
+        return false;
     }
 
     handleClick(e) {
@@ -13,15 +33,15 @@ class RadioSwitcher extends Component {
     }
 
     render() {
-        const optionList = this.props.optionList;
-        const title = this.props.title;
+        const { optionList, title } = this.props;
+
         const list = optionList.map((option, index) => (
                 <li key = { index } className="radio-color-switcher__item">
                     <button
-                        style={{ borderLeftColor: option.currentColor, borderRightColor: option.hoverColor }}
+                        style={this.getStyle(option)}
                         className={classnames({
                             'radio-color-switcher__button': true,
-                            'radio-color-switcher__button_active': false, //currentMarkerColor === item[0] && targetMarkerColor === item[1]
+                            'radio-color-switcher__button_active': this.isActiveColor(option), //false, //currentMarkerColor === item[0] && targetMarkerColor === item[1]
                         })}
                         data-color={ JSON.stringify(option) }
                         onClick={ this.handleClick }
@@ -41,10 +61,10 @@ class RadioSwitcher extends Component {
     }
 }
 
-RadioSwitcher.propTypes = {
+RadioColorSwitcher.propTypes = {
     onChange: PropTypes.func.isRequired,
     optionList: PropTypes.array.isRequired,
     title: PropTypes.string.isRequired,
 };
 
-export default RadioSwitcher;
+export default RadioColorSwitcher;
