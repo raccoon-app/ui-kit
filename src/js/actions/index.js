@@ -70,7 +70,6 @@ export function setBackgroundColor(color) {
 }
 
 export function setSwitcherColor(color) {
-    console.log(color);
     return { type: types.SET_SWITCHER_COLOR, color };
 }
 

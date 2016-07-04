@@ -17,13 +17,18 @@ class RadioColorSwitcher extends Component {
 
     isActiveColor(curObj) {
         const { activeColor } = this.props;
-        console.log(activeColor);
+        const isActiveMarkerColor = activeColor.currentColor &&
+                                    activeColor.currentColor === curObj.currentColor &&
+                                    activeColor.hoverColor === curObj.hoverColor;
+        const isActiveBgColor = activeColor.currentBgColor && activeColor.currentBgColor === curObj.bgColor;
 
-        if (activeColor.currentColor === curObj.currentColor && activeColor.hoverColor === curObj.hoverColor){
+        if (isActiveMarkerColor) {
+            return true;
+        }
+        if (isActiveBgColor) {
             return true;
         }
 
-//TODO; implement background active color
         return false;
     }
 
@@ -41,7 +46,7 @@ class RadioColorSwitcher extends Component {
                         style={this.getStyle(option)}
                         className={classnames({
                             'radio-color-switcher__button': true,
-                            'radio-color-switcher__button_active': this.isActiveColor(option), //false, //currentMarkerColor === item[0] && targetMarkerColor === item[1]
+                            'radio-color-switcher__button_active': this.isActiveColor(option),
                         })}
                         data-color={ JSON.stringify(option) }
                         onClick={ this.handleClick }
@@ -65,6 +70,7 @@ RadioColorSwitcher.propTypes = {
     onChange: PropTypes.func.isRequired,
     optionList: PropTypes.array.isRequired,
     title: PropTypes.string.isRequired,
+    activeColor: PropTypes.object.isRequired,
 };
 
 export default RadioColorSwitcher;
