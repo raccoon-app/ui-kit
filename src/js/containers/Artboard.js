@@ -4,7 +4,7 @@ import { clickArtboardLayer, enterArtboardLayer, leaveArtboardLayer, scaleArtboa
     takeArtboard, dropArtboard, dragArtboard } from '../actions';
 import { getArtboards, getActiveArtboard, getImage } from '../reducers/artboard';
 import { getScale, getDragging, getIsDragging } from '../reducers/control';
-import { getBackgroundColor } from '../reducers/measure';
+import { getBackgroundColor } from '../reducers/setting';
 import ArtboardComponent from '../components/ArtboardComponent';
 import ArtboardLayerItem from '../components/ArtboardLayerItem';
 
@@ -67,7 +67,7 @@ Artboard.propTypes = {
 const mapStateToProps = (state) => ({
     artboards: getArtboards(state.artboard),
     activeArtboard: getActiveArtboard(state.artboard),
-    backgroundColor: getBackgroundColor(state.measure),
+    backgroundColor: getBackgroundColor(state.setting),
     image: getImage(state.artboard),
     scale: getScale(state.control),
     dragging: getDragging(state.control),

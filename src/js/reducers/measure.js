@@ -3,16 +3,12 @@ import {
     ENTER_ARTBOARD_LAYER,
     LEAVE_ARTBOARD_LAYER,
     SET_ACTIVE_ARTBOARD,
-    SET_SWITCHER_COLOR,
 } from '../constants/ActionTypes';
 
 const initialState = {
     currentLayer: {},
     hoverLayer: {},
     spacing: [],
-    currentColor: '#A3C644',
-    hoverColor: '#FF0000',
-    bgColor: '#E8E8E8',
 };
 
 function createSpacing(currentLayer, hoverLayer) {
@@ -196,8 +192,6 @@ export default function measure(state = initialState, action) {
             });
         case SET_ACTIVE_ARTBOARD:
             return initialState;
-        case SET_SWITCHER_COLOR:
-            return Object.assign({}, state, action.color);
         default:
             return state;
     }
@@ -213,16 +207,4 @@ export function getHoverLayer(state) {
 
 export function getSpacing(state) {
     return state.spacing;
-}
-
-export function getCurrentMarkerColor(state) {
-    return state.currentColor;
-}
-
-export function getHoverMarkerColor(state) {
-    return state.hoverColor;
-}
-
-export function getBackgroundColor(state) {
-    return state.bgColor;
 }

@@ -16,11 +16,11 @@ class RadioColorSwitcher extends Component {
     }
 
     isActiveColor(curObj) {
-        const { activeColor } = this.props;
-        const isActiveMarkerColor = activeColor.currentColor &&
-                                    activeColor.currentColor === curObj.currentColor &&
-                                    activeColor.hoverColor === curObj.hoverColor;
-        const isActiveBgColor = activeColor.currentBgColor && activeColor.currentBgColor === curObj.bgColor;
+        const { activeColor: { currentColor, hoverColor, bgColor } } = this.props;
+        const isActiveMarkerColor = currentColor &&
+                                    currentColor === curObj.currentColor &&
+                                    hoverColor === curObj.hoverColor;
+        const isActiveBgColor = bgColor && bgColor === curObj.bgColor;
 
         if (isActiveMarkerColor) {
             return true;

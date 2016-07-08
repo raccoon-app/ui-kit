@@ -4,15 +4,14 @@ import Measure from './../containers/Measure';
 
 export default class ArtboardComponent extends Component {
     render() {
-        const { image, width, height, left, top, zIndex, scale, dragging, isDragging, backgroundColor } = this.props;
-        
+        const { image, width, height, left, top, zIndex, scale, dragging, isDragging, backgroundColor: { bgColor } } = this.props;
         return (
             <div
                 className={classnames({
                     artboard: true,
                     artboard_dragging: isDragging,
                 })}
-                style={{ backgroundColor: backgroundColor }}
+                style={{ backgroundColor: bgColor }}
                 onWheel={this.props.scaleArtboard}
                 onMouseDown={this.props.takeArtboard}
                 onMouseUp={this.props.dropArtboard}
@@ -79,6 +78,7 @@ ArtboardComponent.propTypes = {
     zIndex: PropTypes.number,
     scale: PropTypes.number,
     dragging: PropTypes.object,
+    backgroundColor: PropTypes.object,
     isDragging: PropTypes.bool,
 
     zoomArtboard: PropTypes.func,

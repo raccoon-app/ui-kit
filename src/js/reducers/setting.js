@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { CHANGE_VIEW_MODE, CHANGE_SIZE_DROPDOWN, CHANGE_FORMAT_DROPDOWN, TOGGLE_SIZE_DROPDOWN,
-    TOGGLE_FORMAT_DROPDOWN, TOGGLE_SETTING_PANEL} from '../constants/ActionTypes';
+    TOGGLE_FORMAT_DROPDOWN, TOGGLE_SETTING_PANEL, SET_SWITCHER_COLOR } from '../constants/ActionTypes';
 
 const initialState = {
-    markerColor: ['#A3C644', 'FF0000'],
-    backgroundColor: '#E8E8E8',
+    markerColor: { currentColor: '#A3C644', hoverColor: '#FF0000' },
+    backgroundColor: { bgColor: '#E8E8E8' },
     markerColorList: [
         { currentColor: '#A3C644', hoverColor: '#FF0000' },
         { currentColor: '#FF0000', hoverColor: '#A3C644' },
@@ -35,12 +35,32 @@ function viewMode(state = initialState.viewMode, action) {
             return state;
     }
 }
+
+function markerColor(state = initialState.markerColor, action) {
+    switch (action.type) {
+        case SET_SWITCHER_COLOR:
+            return Object.assign({}, state, action.color);
+        default:
+            return state;
+    }
+}
+
+function backgroundColor(state = initialState.backgroundColor, action) {
+    switch (action.type) {
+        case SET_SWITCHER_COLOR:
+            return Object.assign({}, state, action.color);
+        default:
+            return state;
+    }
+}
+
 function markerColorList(state = initialState.markerColorList, action) {
     switch (action.type) {
         default:
             return state;
     }
 }
+
 function backgroundColorList(state = initialState.backgroundColorList, action) {
     switch (action.type) {
         default:
@@ -94,6 +114,8 @@ function settingPanelVisibility(state = initialState.settingPanelVisibility, act
 }
 
 export default combineReducers({
+    markerColor,
+    backgroundColor,
     markerColorList,
     backgroundColorList,
     viewMode,
@@ -106,6 +128,14 @@ export default combineReducers({
 
 export function getViewMode(state) {
     return state.viewMode;
+}
+
+export function getMarkerColor(state) {
+    return state.markerColor;
+}
+
+export function getBackgroundColor(state) {
+    return state.backgroundColor;
 }
 
 export function getMarkerColorList(state) {

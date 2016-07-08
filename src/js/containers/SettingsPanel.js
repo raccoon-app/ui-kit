@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { getMarkerColorList, getBackgroundColorList, getSettingPanelVisibilityState } from '../reducers/setting';
-import { getCurrentMarkerColor, getHoverMarkerColor, getBackgroundColor } from '../reducers/measure';
+import { getMarkerColorList, getBackgroundColorList, getSettingPanelVisibilityState, getBackgroundColor, getMarkerColor } from '../reducers/setting';
 import RadioColorSwitcher from '../components/settings/RadioColorSwitcher';
 import SettingControlButton from '../components/settings/SettingControlButton';
 import { toggleSettingPanel, setSwitcherColor } from '../actions';
@@ -13,18 +12,13 @@ const SettingsPanel = (props) => {
         optionList: props.backgroundColorList,
         title: 'Background',
         onChange: props.onSwitcherChange,
-        activeColor: {
-            currentBgColor: props.currentBgColor,
-        },
+        activeColor: props.backgroundColor,
     };
     const markerSwitcherProps = {
         optionList: props.markerColorList,
         title: 'Guides',
         onChange: props.onSwitcherChange,
-        activeColor: {
-            currentColor: props.currentMarkerColor,
-            hoverColor: props.hoverMarkerColor,
-        },
+        activeColor: props.markerColor,
     };
     return (
         <div className={ classnames({
@@ -47,17 +41,16 @@ SettingsPanel.propTypes = {
     backgroundColorList: PropTypes.array.isRequired,
     onControlBtnClick: PropTypes.func.isRequired,
     onSwitcherChange: PropTypes.func.isRequired,
-    currentMarkerColor: PropTypes.string.isRequired,
-    hoverMarkerColor: PropTypes.string.isRequired,
+    markerColor: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
     markerColorList: getMarkerColorList(state.setting),
     backgroundColorList: getBackgroundColorList(state.setting),
     settingPanelVisibility: getSettingPanelVisibilityState(state.setting),
-    currentMarkerColor: getCurrentMarkerColor(state.measure),
-    hoverMarkerColor: getHoverMarkerColor(state.measure),
-    currentBgColor: getBackgroundColor(state.measure),
+    markerColor: getMarkerColor(state.setting),
+    backgroundColor: getBackgroundColor(state.setting),
 });
 
 const mapDispatchToProps = (dispatch) => ({
