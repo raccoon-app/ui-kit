@@ -3,7 +3,7 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 
 export default class ToolsContent extends Component {
     render() {
-        const { content, showCopyMessage } = this.props;
+        const { content, showCopyMessage, copyMessage } = this.props;
 
         return (
             <div className="tools-container clearfix">
@@ -12,7 +12,7 @@ export default class ToolsContent extends Component {
                 <div className="tools__textarea tools__textarea-content">
                     {content}
                 </div>
-                <CopyToClipboard text={content} onCopy={showCopyMessage}>
+                <CopyToClipboard text={content} onCopy={() => showCopyMessage(copyMessage)}>
                     <button className="tools__btn">Copy</button>
                 </CopyToClipboard>
             </div>
