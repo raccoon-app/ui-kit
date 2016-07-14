@@ -20,7 +20,7 @@ class Artboard extends Component {
                 width={activeArtboard.width}
                 height={activeArtboard.height}
                 zIndex={activeArtboard.zIndex}
-                backgroundColor={this.props.backgroundColor}
+                background={this.props.backgroundColor}
                 scale={this.props.scale}
                 dragging={this.props.dragging}
                 isDragging={this.props.isDragging}
@@ -48,6 +48,7 @@ Artboard.propTypes = {
     artboards: PropTypes.object,
     activeArtboard: PropTypes.object,
     image: PropTypes.string,
+    backgroundColor: PropTypes.object.isRequired,
 
     scale: PropTypes.number,
     dragging: PropTypes.object,

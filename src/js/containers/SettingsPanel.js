@@ -13,12 +13,14 @@ const SettingsPanel = (props) => {
         title: 'Background',
         onChange: props.onSwitcherChange,
         activeColor: props.backgroundColor,
+        type: 'BACKGROUND_COLOR',
     };
     const markerSwitcherProps = {
         optionList: props.markerColorList,
         title: 'Guides',
         onChange: props.onSwitcherChange,
         activeColor: props.markerColor,
+        type: 'MARKER_COLOR',
     };
     return (
         <div className={ classnames({
@@ -28,8 +30,8 @@ const SettingsPanel = (props) => {
         >
             <SettingControlButton onClick={onControlBtnClick} />
             <div className="setting-panel__options">
-                <RadioColorSwitcher {...bgSwitcherProps} />
                 <RadioColorSwitcher {...markerSwitcherProps} />
+                <RadioColorSwitcher {...bgSwitcherProps} />
             </div>
         </div>
     );
@@ -41,8 +43,8 @@ SettingsPanel.propTypes = {
     backgroundColorList: PropTypes.array.isRequired,
     onControlBtnClick: PropTypes.func.isRequired,
     onSwitcherChange: PropTypes.func.isRequired,
-    markerColor: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
+    markerColor: PropTypes.object.isRequired,
+    backgroundColor: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -57,8 +59,8 @@ const mapDispatchToProps = (dispatch) => ({
     onControlBtnClick: () => {
         dispatch(toggleSettingPanel());
     },
-    onSwitcherChange: (color) => {
-        dispatch(setSwitcherColor(color));
+    onSwitcherChange: (type, color) => {
+        dispatch(setSwitcherColor(type, color));
     },
 });
 

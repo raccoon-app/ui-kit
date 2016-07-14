@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
+import { getDottedTexture } from '../../utils/backgroundTexture';
 
 class RadioColorSwitcher extends Component {
     constructor() {
@@ -8,47 +9,48 @@ class RadioColorSwitcher extends Component {
         this.getStyle = this.getStyle.bind(this);
     }
 
-    getStyle(obj) {
-        const objKeys = Object.keys(obj);
-        const leftBrd = obj[objKeys[0]];
-        const rightBrd = (objKeys.length >= 2) ? obj[objKeys[1]] : obj[objKeys[0]];
-        return { borderLeftColor: leftBrd, borderRightColor: rightBrd };
+    getStyle(item, type) {
+        const keys = Object.keys(item);
+        const styles = {
+            BACKGROUND_COLOR: () => (getDottedTexture(item[keys[0]], item[keys[1]])),
+            MARKER_COLOR: () => ({ borderLeftColor: item[keys[0]], borderRightColor: item[keys[1]] }),
+        };
+        return styles[type]();
     }
 
-    isActiveColor(curObj) {
-        const { activeColor: { currentColor, hoverColor, bgColor } } = this.props;
-        const isActiveMarkerColor = currentColor &&
-                                    currentColor === curObj.currentColor &&
-                                    hoverColor === curObj.hoverColor;
-        const isActiveBgColor = bgColor && bgColor === curObj.bgColor;
+    isActiveColor(item, type) {
+        const switcherType = {
+            BACKGROUND_COLOR: () => {
+                const { activeColor: { backgroundColor, radialGradient } } = this.props;
+                return backgroundColor === item.backgroundColor && radialGradient === item.radialGradient;
+            },
+            MARKER_COLOR: () => {
+                const { activeColor: { currentColor, hoverColor } } = this.props;
+                return currentColor === item.currentColor && hoverColor === item.hoverColor;
+            },
 
-        if (isActiveMarkerColor) {
-            return true;
-        }
-        if (isActiveBgColor) {
-            return true;
-        }
-
-        return false;
+        };
+        return switcherType[type]();
     }
 
     handleClick(e) {
         const data = e.target.dataset;
-        this.props.onChange(JSON.parse(data.color));
+        this.props.onChange(data.type, JSON.parse(data.color));
     }
 
     render() {
-        const { optionList, title } = this.props;
+        const { optionList, title, type } = this.props;
 
         const list = optionList.map((option, index) => (
                 <li key = { index } className="radio-color-switcher__item">
                     <button
-                        style={this.getStyle(option)}
+                        style={this.getStyle(option, type)}
                         className={classnames({
                             'radio-color-switcher__button': true,
-                            'radio-color-switcher__button_active': this.isActiveColor(option),
+                            'radio-color-switcher__button_active': this.isActiveColor(option, type),
                         })}
                         data-color={ JSON.stringify(option) }
+                        data-type={ type }
                         onClick={ this.handleClick }
                     ></button>
                 </li>
@@ -71,6 +73,7 @@ RadioColorSwitcher.propTypes = {
     optionList: PropTypes.array.isRequired,
     title: PropTypes.string.isRequired,
     activeColor: PropTypes.object.isRequired,
+    type: PropTypes.string.isRequired,
 };
 
 export default RadioColorSwitcher;
