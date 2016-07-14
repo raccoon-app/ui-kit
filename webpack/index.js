@@ -6,7 +6,7 @@ const eslint = require('../.eslintrc');
 const environment = process.env.NODE_ENV;
 
 function getConfigForEnv(env) {
-    return (env === 'production') ? require('./config.production') : require('./config.development');
+    return (env === 'production') ? require('./config.production') : require('./config.production');
 }
 
 module.exports = Object.assign({
