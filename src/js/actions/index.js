@@ -64,13 +64,8 @@ export function setFilter(filter = null) {
     return { type: types.CHANGE_FILTER, filter };
 }
 
-
-export function setBackgroundColor(color) {
-    return { type: types.SET_BACKGROUND_COLOR, color };
-}
-
-export function setMarkerColor(color) {
-    return { type: types.SET_MARKER_COLOR, color };
+export function setSwitcherColor(type, color) {
+    return { type: `SET_${type}`, color };
 }
 
 export function changeDropdownValue(name, currentValue) {

@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
-import Nav from './../containers/Nav'
-import HeaderContainer from './../containers/Header'
-import Artboard from './../containers/Artboard'
-import Tools from './../containers/Tools'
+import React, { Component } from 'react';
+import Nav from './../containers/Nav';
+import Header from './../containers/Header';
+import Artboard from './../containers/Artboard';
+import Tools from './../containers/Tools';
 
 export default class App extends Component {
     render() {
         return (
             <div className="app">
-                <HeaderContainer />
+                <Header />
                 <div className="main">
                     <Nav />
                     <Artboard />

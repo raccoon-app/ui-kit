@@ -17,6 +17,11 @@ To build app:
 npm start
 ```
 
+To execute unit test:
+```
+npm test
+```
+
 ### Style Guide
 * JavaScript: https://github.com/airbnb/javascript
 * React: https://github.com/airbnb/javascript/tree/master/react

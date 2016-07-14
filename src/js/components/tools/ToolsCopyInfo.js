@@ -5,11 +5,12 @@ let showCopyMessage;
 class ToolsCopyInfo extends Component {
     render() {
 
-        showCopyMessage = () => {
+        showCopyMessage = (message) => {
             const copyInfo = this.refs.copyInfo;
 
             copyInfo.addEventListener('animationend', handler);
             copyInfo.classList.add('tools-copy-info_animated');
+            copyInfo.innerHTML = message;
 
             function handler(e) {
                 e.target.removeEventListener(e.type, handler);
@@ -19,7 +20,7 @@ class ToolsCopyInfo extends Component {
         };
 
         return (
-            <div className="tools-copy-info" ref="copyInfo">Content copied!</div>
+            <div className="tools-copy-info" ref="copyInfo"></div>
         );
     }
 }

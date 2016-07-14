@@ -35,7 +35,7 @@ export default class ToolsStyle extends Component {
                 <h5 className="tools__title">Code style</h5>
                 <div className="tools__textarea tools__textarea_style" dangerouslySetInnerHTML={{ __html: styleHtml }}>
                 </div>
-                <CopyToClipboard text={stringStyle} onCopy={showCopyMessage}>
+                <CopyToClipboard text={stringStyle} onCopy={() => showCopyMessage('style copied')}>
                     <button className="tools__btn">Copy</button>
                 </CopyToClipboard>
             </div>

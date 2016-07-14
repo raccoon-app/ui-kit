@@ -1,17 +1,28 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import Measure from './../containers/Measure';
+import { getDottedTexture } from '../utils/backgroundTexture';
 
 export default class ArtboardComponent extends Component {
+    constructor() {
+        super();
+        this.getStyles = this.getStyles.bind(this);
+    }
+    getStyles({ backgroundColor, radialGradient }) {
+        return Object.assign(
+            {},
+            getDottedTexture(backgroundColor, radialGradient, '10%', '30px 30px')
+        );
+    }
     render() {
-        const { image, width, height, left, top, zIndex, scale, dragging, isDragging } = this.props;
-
+        const { image, width, height, left, top, zIndex, scale, dragging, isDragging, background } = this.props;
         return (
             <div
                 className={classnames({
-                    'artboard': true,
-                    'artboard_dragging': isDragging,
+                    artboard: true,
+                    artboard_dragging: isDragging,
                 })}
+                style={this.getStyles(background)}
                 onWheel={this.props.scaleArtboard}
                 onMouseDown={this.props.takeArtboard}
                 onMouseUp={this.props.dropArtboard}
@@ -69,6 +80,7 @@ export default class ArtboardComponent extends Component {
 
 ArtboardComponent.propTypes = {
     children: PropTypes.node,
+    name: PropTypes.string,
     image: PropTypes.string,
     width: PropTypes.number,
     height: PropTypes.number,
@@ -77,6 +89,7 @@ ArtboardComponent.propTypes = {
     zIndex: PropTypes.number,
     scale: PropTypes.number,
     dragging: PropTypes.object,
+    background: PropTypes.object,
     isDragging: PropTypes.bool,
 
     zoomArtboard: PropTypes.func,

@@ -239,11 +239,22 @@
     }
 
     &__gradient-opts {
-        .icon-paint-color-2:before {
-          content: "\e905";
-          font-size: 28px;
-          vertical-align: middle;
-          margin-right: 18px;
+        .icon-paint-color-2 {
+            &:before {
+                content: "\e905";
+                font-size: 28px;
+                vertical-align: middle;
+                margin-right: 18px;
+                position: relative;
+                z-index: 2;
+            }
+        }
+        .icon-transparent-color {
+            display: block;
+            position: absolute;
+            background: url('../img/transparent-color.svg') left top no-repeat transparent;
+            width: 23px;
+            height: 28px;
         }
     }
 
