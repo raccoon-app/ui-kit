@@ -3,7 +3,7 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 
 export default class ToolsBackground extends Component {
     render() {
-        const { background, showCopyMessage } = this.props;
+        const { background, showCopyMessage, copyMessage } = this.props;
 
         return (
             <div className="tools__gradient-opts tools-container">
@@ -13,7 +13,7 @@ export default class ToolsBackground extends Component {
                             <span className="icon-paint-color-2" style={{ color: background }}></span>
                             <span className="tools__gradient-code">{background}</span>
                         </span>
-                        <CopyToClipboard text={background} onCopy={() => showCopyMessage('background copied')}>
+                        <CopyToClipboard text={background} onCopy={() => showCopyMessage(copyMessage)}>
                             <button className="tools__btn">Copy</button>
                         </CopyToClipboard>
                     </li>
