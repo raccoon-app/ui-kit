@@ -19,8 +19,12 @@
             left: -640px;
         }
 
-        .setting-control-btn:after {
-            content: "\e907";
+        .setting-control-btn {
+            background-color: $PRIMARY_CTRL;
+
+            &:after {
+                content: "\e907";
+            }
         }
 
         ~ .header-info {
@@ -39,6 +43,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 500ms ease;
 
     &:after {
         content: "\e90e";

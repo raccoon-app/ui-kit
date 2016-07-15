@@ -9,10 +9,7 @@ export default class ArtboardComponent extends Component {
         this.getStyles = this.getStyles.bind(this);
     }
     getStyles({ backgroundColor, radialGradient }) {
-        return Object.assign(
-            {},
-            getDottedTexture(backgroundColor, radialGradient, '10%', '30px 30px')
-        );
+        return getDottedTexture(backgroundColor, radialGradient, '10%', '16px 16px');
     }
     render() {
         const { image, width, height, left, top, zIndex, scale, dragging, isDragging, background } = this.props;

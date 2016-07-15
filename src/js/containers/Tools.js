@@ -38,7 +38,7 @@ class ToolsComponent extends Component {
             tools.push(
                 <ToolsGradient gradientList={gradient.colorStopList}
                                showCopyMessage={showCopyMessage}
-                               copyMessage='Gradient copied'/>
+                               copyMessage='Color copied'/>
             );
         }
 
@@ -46,7 +46,7 @@ class ToolsComponent extends Component {
             tools.push(
                 <ToolsBackground background={layer.background}
                                  showCopyMessage={showCopyMessage}
-                                 copyMessage='Background copied'/>
+                                 copyMessage='Color copied'/>
             );
         }
 
