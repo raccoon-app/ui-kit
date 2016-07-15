@@ -21,6 +21,7 @@
     "start": "npm run build",
     "build": "webpack --config webpack/index.js",
     "watch": "webpack-dev-server --config webpack/index.js",
+    "release": "webpack --config webpack/production.js",
     "test": "jest"
   },
   "dependencies": {
