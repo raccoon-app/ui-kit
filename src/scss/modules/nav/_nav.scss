@@ -337,6 +337,7 @@
 
     .icon-chevron-left::after {
         content: '\e908';
+        transform: rotate(180deg);
     }
 
     .disable {
@@ -368,8 +369,8 @@
         }
 
         &_turned {
-            &::after {
-                transform: rotate(180deg);
+            &.icon-chevron-left::after {
+                transform: none;
             }
         }
     }
