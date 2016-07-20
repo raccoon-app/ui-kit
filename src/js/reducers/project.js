@@ -13,7 +13,7 @@ const initialState = {
 function name(state = initialState.name, action = {}) {
     switch (action.type) {
         case RECEIVE_PROJECT:
-            return action.project.sketchName.replace(".sketch","");
+            return action.project.sketchName.replace(/\.[^\.]+$/, '');
         default:
             return state;
     }
