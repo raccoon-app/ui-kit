@@ -4,7 +4,7 @@ import classnames from 'classnames'
 export default class Dropdown extends Component {
     render() {
 
-        const { data, activeValue, changeDropdownValue, visibility, name, toggleDropdown } = this.props;
+        const { data, activeValue, changeDropdownValue, visibility, topPosition, name, toggleDropdown, ref } = this.props;
 
         const optionList = data.map(function(option) {
             return(
@@ -33,13 +33,16 @@ export default class Dropdown extends Component {
         }
 
         return (
-            <div className="dropdown" onClick = {toggleDropdown}>
+            <div className={visibility? "dropdown dropdown--opened" : "dropdown"}
+                 onClick = {toggleDropdown}
+                 ref = "dropdownContainer">
                 <div className = "dropdown-title">
                     <div className="dropdown__value">{activeValue}</div>
                     <span className="icon-chevron-down"></span>
                 </div>
-                <div className={visibility ? "dropdown-options dropdown-options--opened" : "dropdown-options"}
-                     onClick = {dropdownOnchange}>
+                <div className={topPosition ? "dropdown-options top-opened" : "dropdown-options"}
+                     onClick = {dropdownOnchange}
+                     ref="options">
                     {dropdownList}
                 </div>
                 <select ref="select">
@@ -56,7 +59,8 @@ Dropdown.propTypes = {
     name: PropTypes.string,
     changeDropdownValue: PropTypes.func.isRequired,
     toggleDropdown: PropTypes.func.isRequired,
-    visibility: PropTypes.boolean
+    visibility: PropTypes.boolean,
+    ref: PropTypes.string
 }
 
 

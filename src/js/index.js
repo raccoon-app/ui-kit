@@ -9,7 +9,7 @@ import { getProject } from './actions';
 import '../scss/main.scss';
 
 const store = configureStore(applyMiddleware(thunk));
-store.dispatch(getProject('http://design.oweather.net/'));
+store.dispatch(getProject('http://mokhovyk.com/raccoon/'));
 
 render(
     <Provider store={store}>

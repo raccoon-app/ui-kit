@@ -25,7 +25,6 @@ export function leaveArtboardLayer(layer) {
     return { type: types.LEAVE_ARTBOARD_LAYER, layer };
 }
 
-
 export function setActiveArtboard(pageId, artboardId) {
     return { type: types.SET_ACTIVE_ARTBOARD, pageId, artboardId };
 }
@@ -78,13 +77,42 @@ export function changeDropdownValue(name, currentValue) {
     }
 }
 
-export function toggleDropdown(name, value) {
+export function toggleDropdown(e, name, value) {
+
+    const dropdown = e.refs.dropdown;
+    const options = dropdown.refs.options;
+
+    let toolsBody = document.getElementsByClassName('tools__body')[0];
+    let toolsBodyHeight = toolsBody.getBoundingClientRect().height;
+    let toolsBodyScrollTop = toolsBody.scrollTop;
+    let optionsBottomOffset = options.getBoundingClientRect().bottom
+        - dropdown.refs.dropdownContainer.getBoundingClientRect().height;
+
+    let sizeTopPosition = false;
+    let formatTopPosition = false;
+
+
     const newValue = !value;
+
+    //if dropdown is open check if there is enough space for it
+    if (newValue != false) {
+        console.log(toolsBodyScrollTop + toolsBodyHeight);
+        console.log(optionsBottomOffset);
+            if (toolsBodyScrollTop + toolsBodyHeight < optionsBottomOffset) {
+                if(name == 'size') {
+                    sizeTopPosition = true;
+                }
+                else {
+                    formatTopPosition = true;
+                }
+            }
+    }
+
     switch (name) {
         case 'size':
-            return { type: types.TOGGLE_SIZE_DROPDOWN, newValue };
+            return { type: types.TOGGLE_SIZE_DROPDOWN, newValue,  sizeTopPosition };
         default:
-            return { type: types.TOGGLE_FORMAT_DROPDOWN, newValue };
+            return { type: types.TOGGLE_FORMAT_DROPDOWN, newValue, formatTopPosition };
 
     }
 }

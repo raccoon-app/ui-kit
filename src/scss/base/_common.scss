@@ -87,19 +87,22 @@ h3 {
   box-sizing: border-box;
   position: relative;
   height: 40px;
-  width: 45px;
+  width: 85px;
   cursor: pointer;
+  overflow: hidden;
+
 
   &__value {
     font: 18px $HEADLINE_FONT;
     color: $FILL_BLACK;
     text-transform: uppercase;
+    width: 45px;
   }
 
   .icon-chevron-down {
     display: block;
     position: absolute;
-    right:-40px;
+    right: 0px;
     top: 0;
     width: 40px;
     height: 40px;
@@ -112,6 +115,7 @@ h3 {
       top: 10px;
       display: inline-block;
       margin-top: 16px;
+
     }
   }
   select {
@@ -119,16 +123,14 @@ h3 {
   }
 
   &-options {
-    height:0;
     opacity: 0;
     overflow: hidden;
-    transition: opacity .1s;
     margin-top: 7px;
-
-    &--opened {
-      height: auto;
-      opacity: 1;
-      transition: opacity .1s;
+    width: 45px;
+    transition: opacity .2s;
+    &.top-opened {
+      position: absolute;
+      bottom: 40px;
     }
   }
 
@@ -141,6 +143,17 @@ h3 {
     &:hover, &--selected {
       background-color: $LIGHT_BLUE;
       color: $LIGHT;
+    }
+  }
+
+  &--opened {
+    overflow: visible;
+    .icon-chevron-down {
+      transform: rotateX(180deg);
+    }
+
+    .dropdown-options {
+      opacity: 1;
     }
   }
 }

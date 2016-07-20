@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { CHANGE_VIEW_MODE, CHANGE_SIZE_DROPDOWN, CHANGE_FORMAT_DROPDOWN, TOGGLE_SIZE_DROPDOWN,
-    TOGGLE_FORMAT_DROPDOWN, TOGGLE_SETTING_PANEL, SET_MARKER_COLOR, SET_BACKGROUND_COLOR } from '../constants/ActionTypes';
+    TOGGLE_FORMAT_DROPDOWN, TOGGLE_SETTING_PANEL, SET_MARKER_COLOR, SET_BACKGROUND_COLOR, CLICK_ARTBOARD_LAYER } from '../constants/ActionTypes';
 
 const initialState = {
     markerColor: { currentColor: '#a3c644', hoverColor: '#2cc4d5' },
@@ -25,6 +25,9 @@ const initialState = {
     sizeDropdownVisibility: false,
     formatDropdownVisibility: false,
     settingPanelVisibility: false,
+    sizeTopPosition: false,
+    formatTopPosition: false
+
 };
 
 
@@ -91,6 +94,9 @@ function sizeDropdownVisibility(state = initialState.sizeDropdownVisibility, act
     switch (action.type) {
         case TOGGLE_SIZE_DROPDOWN:
             return action.newValue;
+        case CLICK_ARTBOARD_LAYER:
+        case TOGGLE_FORMAT_DROPDOWN:
+            return initialState.sizeDropdownVisibility;
         default:
             return state;
     }
@@ -100,6 +106,9 @@ function formatDropdownVisibility(state = initialState.formatDropdownVisibility,
     switch (action.type) {
         case TOGGLE_FORMAT_DROPDOWN:
             return action.newValue;
+        case CLICK_ARTBOARD_LAYER:
+        case TOGGLE_SIZE_DROPDOWN:
+            return initialState.formatDropdownVisibility;
         default:
             return state;
     }
@@ -109,6 +118,24 @@ function settingPanelVisibility(state = initialState.settingPanelVisibility, act
     switch (action.type) {
         case TOGGLE_SETTING_PANEL:
             return !state;
+        default:
+            return state;
+    }
+}
+
+function sizeTopPosition(state = initialState.sizeTopPosition, action) {
+    switch(action.type) {
+        case TOGGLE_SIZE_DROPDOWN:
+            return action.sizeTopPosition;
+        default:
+            return state;
+    }
+}
+
+function formatTopPosition(state = initialState.formatTopPosition, action) {
+    switch(action.type) {
+        case TOGGLE_FORMAT_DROPDOWN:
+            return action.formatTopPosition;
         default:
             return state;
     }
@@ -125,6 +152,8 @@ export default combineReducers({
     sizeDropdownVisibility,
     formatDropdownVisibility,
     settingPanelVisibility,
+    sizeTopPosition,
+    formatTopPosition
 });
 
 export function getViewMode(state) {
@@ -165,4 +194,12 @@ export function getFormatDropdownVisibleState(state) {
 
 export function getSettingPanelVisibilityState(state) {
     return state.settingPanelVisibility;
+}
+
+export function getSizeTopDropdownPositionState(state) {
+    return state.sizeTopPosition;
+}
+
+export function getFormatTopDropdownPositionState(state) {
+    return state.formatTopPosition;
 }
