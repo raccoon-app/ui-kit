@@ -140,7 +140,7 @@
 
 .nav-page__link {
     font-family: $DEFAULT_FONT;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: normal;
     color: $LIGHT;
     line-height: 20px;
@@ -321,7 +321,7 @@
                 color: red;
 
                 &::after {
-                    content: "\e90a";
+                    content: "\ea0f";
                 }
             }
         }
