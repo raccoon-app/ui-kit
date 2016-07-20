@@ -22,7 +22,8 @@
     "build": "webpack --config webpack/index.js",
     "watch": "webpack-dev-server --config webpack/index.js",
     "release": "webpack --config webpack/production.js",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "react": "^0.14.7",
