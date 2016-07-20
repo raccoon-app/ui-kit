@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux';
-import { RECEIVE_PROJECT, SET_ACTIVE_ARTBOARD } from '../constants/ActionTypes';
+import { combineReducers } from 'redux'
+import { RECEIVE_PROJECT, SET_ACTIVE_ARTBOARD } from '../constants/ActionTypes'
 
 const initialState = {
     artboards: {},
@@ -14,7 +14,7 @@ function artboards(state = initialState.artboards, action = {}) {
         case RECEIVE_PROJECT:
             return action.project.artboard;
         default:
-            return state;
+          return state;
     }
 }
 

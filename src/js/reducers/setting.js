@@ -1,22 +1,23 @@
 import { combineReducers } from 'redux';
 import { CHANGE_VIEW_MODE, CHANGE_SIZE_DROPDOWN, CHANGE_FORMAT_DROPDOWN, TOGGLE_SIZE_DROPDOWN,
-    TOGGLE_FORMAT_DROPDOWN, TOGGLE_SETTING_PANEL} from '../constants/ActionTypes';
+    TOGGLE_FORMAT_DROPDOWN, TOGGLE_SETTING_PANEL, SET_MARKER_COLOR, SET_BACKGROUND_COLOR } from '../constants/ActionTypes';
 
 const initialState = {
-    markerColor: ['#A3C644', 'FF0000'],
-    backgroundColor: '#E8E8E8',
+    markerColor: { currentColor: '#a3c644', hoverColor: '#2cc4d5' },
+    backgroundColor: { backgroundColor: '#f3f3f3', radialGradient: '#b4b4b4' },
     markerColorList: [
-        { currentColor: '#A3C644', hoverColor: '#FF0000' },
-        { currentColor: '#FF0000', hoverColor: '#A3C644' },
-        { currentColor: '#0000ff', hoverColor: '#00ff00' },
-        { currentColor: '#F78F21', hoverColor: '#1B7E8E' },
+        { currentColor: '#f45602', hoverColor: '#00b189' },
+        { currentColor: '#ffd042', hoverColor: '#1d1d1d' },
+        { currentColor: '#08a3e6', hoverColor: '#eee300' },
+        { currentColor: '#e59936', hoverColor: '#dcdcdc' },
+        { currentColor: '#a3c644', hoverColor: '#2cc4d5' },
     ],
     backgroundColorList: [
-        '#E8E8E8',
-        '#F0F0F0',
-        '#BBBBBB',
-        '#999999',
-        '#333333',
+        { backgroundColor: '#e8e8e8', radialGradient: 'transparent' },
+        { backgroundColor: '#b4b4b4', radialGradient: 'transparent' },
+        { backgroundColor: '#5e5e5e', radialGradient: 'transparent' },
+        { backgroundColor: '#b4b4b4', radialGradient: '#f3f3f3' },
+        { backgroundColor: '#f3f3f3', radialGradient: '#b4b4b4' },
     ],
     viewMode: 'list',
     sizeDropdownValue: 'all',
@@ -35,12 +36,32 @@ function viewMode(state = initialState.viewMode, action) {
             return state;
     }
 }
+
+function markerColor(state = initialState.markerColor, action) {
+    switch (action.type) {
+        case SET_MARKER_COLOR:
+            return Object.assign({}, state, action.color);
+        default:
+            return state;
+    }
+}
+
+function backgroundColor(state = initialState.backgroundColor, action) {
+    switch (action.type) {
+        case SET_BACKGROUND_COLOR:
+            return Object.assign({}, state, action.color);
+        default:
+            return state;
+    }
+}
+
 function markerColorList(state = initialState.markerColorList, action) {
     switch (action.type) {
         default:
             return state;
     }
 }
+
 function backgroundColorList(state = initialState.backgroundColorList, action) {
     switch (action.type) {
         default:
@@ -94,6 +115,8 @@ function settingPanelVisibility(state = initialState.settingPanelVisibility, act
 }
 
 export default combineReducers({
+    markerColor,
+    backgroundColor,
     markerColorList,
     backgroundColorList,
     viewMode,
@@ -106,6 +129,14 @@ export default combineReducers({
 
 export function getViewMode(state) {
     return state.viewMode;
+}
+
+export function getMarkerColor(state) {
+    return state.markerColor;
+}
+
+export function getBackgroundColor(state) {
+    return state.backgroundColor;
 }
 
 export function getMarkerColorList(state) {

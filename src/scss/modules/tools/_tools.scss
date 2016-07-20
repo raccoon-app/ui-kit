@@ -6,7 +6,7 @@
     right: 0;
     flex: 0 0 350px;
     display: flex;
-    transition: flex .4s cubic-bezier(0.115, 0.715, 0.305, 0.990);
+    transition: flex .28s cubic-bezier(0.115, 0.715, 0.305, 0.990);
 
     &_disabled {
         flex-basis: 20px;
@@ -239,11 +239,22 @@
     }
 
     &__gradient-opts {
-        .icon-paint-color-2:before {
-          content: "\e905";
-          font-size: 28px;
-          vertical-align: middle;
-          margin-right: 18px;
+        .icon-paint-color-2 {
+            &:before {
+                content: "\e905";
+                font-size: 28px;
+                vertical-align: middle;
+                margin-right: 18px;
+                position: relative;
+                z-index: 2;
+            }
+        }
+        .icon-transparent-color {
+            display: block;
+            position: absolute;
+            background: url('../img/transparent-color.svg') left top no-repeat transparent;
+            width: 23px;
+            height: 28px;
         }
     }
 
@@ -296,7 +307,7 @@
         white-space: nowrap;
 
         &_animated {
-            animation: showCopyLayer 2s linear;
+            animation: showCopyLayer 1.5s linear;
             animation-fill-mode: forwards;
         }
     }

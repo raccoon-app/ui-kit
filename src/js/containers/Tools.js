@@ -36,25 +36,33 @@ class ToolsComponent extends Component {
 
         if (gradient) {
             tools.push(
-                <ToolsGradient gradientList={gradient.colorStopList} showCopyMessage={showCopyMessage} />
+                <ToolsGradient gradientList={gradient.colorStopList}
+                               showCopyMessage={showCopyMessage}
+                               copyMessage='Color copied'/>
             );
         }
 
         if (layer.background) {
             tools.push(
-                <ToolsBackground background={layer.background} showCopyMessage={showCopyMessage} />
+                <ToolsBackground background={layer.background}
+                                 showCopyMessage={showCopyMessage}
+                                 copyMessage='Color copied'/>
             );
         }
 
         if (layer.style) {
             tools.push(
-                <ToolsStyle style={layer.style} showCopyMessage={showCopyMessage} />
+                <ToolsStyle style={layer.style}
+                            showCopyMessage={showCopyMessage}
+                            copyMessage='Code style copied'/>
             );
         }
 
         if (layer.html) {
             tools.push(
-                <ToolsContent content={decodeURIComponent(layer.html)} showCopyMessage={showCopyMessage} />
+                <ToolsContent content={decodeURIComponent(layer.html)}
+                              showCopyMessage={showCopyMessage}
+                              copyMessage='Content copied'/>
             );
         }
 

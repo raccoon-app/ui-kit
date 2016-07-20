@@ -140,7 +140,7 @@
 
 .nav-page__link {
     font-family: $DEFAULT_FONT;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: normal;
     color: $LIGHT;
     line-height: 20px;
@@ -321,7 +321,7 @@
                 color: red;
 
                 &::after {
-                    content: "\e90a";
+                    content: "\ea0f";
                 }
             }
         }
@@ -337,6 +337,7 @@
 
     .icon-chevron-left::after {
         content: '\e908';
+        transform: rotate(180deg);
     }
 
     .disable {
@@ -368,8 +369,8 @@
         }
 
         &_turned {
-            &::after {
-                transform: rotate(180deg);
+            &.icon-chevron-left::after {
+                transform: none;
             }
         }
     }

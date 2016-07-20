@@ -8,7 +8,6 @@
         position: absolute;
         display: flex;
         flex-direction: row-reverse;
-        width: 640px;
         left: 60px;
         top: 0;
         overflow: hidden;
@@ -20,8 +19,12 @@
             left: -640px;
         }
 
-        .setting-control-btn:after {
-            content: "\e907";
+        .setting-control-btn {
+            background-color: $PRIMARY_CTRL;
+
+            &:after {
+                content: "\e907";
+            }
         }
 
         ~ .header-info {
@@ -40,6 +43,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 500ms ease;
 
     &:after {
         content: "\e90e";
@@ -50,7 +54,7 @@
 
 .setting-color,
 .radio-color-switcher {
-    margin: 12px 0 0 50px;
+    margin: 12px 0 0 40px;
 
     &__title {
         float: left;
@@ -80,10 +84,11 @@
     &__button {
         display: block;
         padding: 0;
-        border: 12px transparent solid;
-        border-radius: 12px;
-        border-width: 0 12px;
-        height: 24px;
+        border: 10px transparent solid;
+        border-radius: 10px;
+        border-width: 0 10px;
+        height: 20px;
+        transform: rotate(45deg);
 
         &_active {
             box-shadow: 0 0 0 2px #fff, 0 0 0 4px $PRIMARY;
