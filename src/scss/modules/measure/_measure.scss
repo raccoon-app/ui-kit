@@ -33,6 +33,10 @@
             color: #fff;
             background: $PRIMARY_CTRL;
             white-space: nowrap;
+
+            &_text_dark {
+                color: #000000;
+            }
         }
     }
 
@@ -139,6 +143,10 @@
             font-weight: 100;
             color: #fff;
             background: red;
+
+            &_text_dark {
+                color: #000000;
+            }
         }
 
         &_top &,
