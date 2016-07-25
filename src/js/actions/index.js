@@ -53,11 +53,9 @@ export function dragArtboard(event) {
     return { type: types.DRAG_ARTBOARD, event };
 }
 
-
 export function changeViewMode(mode) {
     return { type: types.CHANGE_VIEW_MODE, mode };
 }
-
 
 export function setFilter(filter = null) {
     return { type: types.CHANGE_FILTER, filter };
@@ -77,45 +75,14 @@ export function changeDropdownValue(name, currentValue) {
     }
 }
 
-export function toggleDropdown(e, name, value) {
+export function toggleDropdown(name) {
 
-    const dropdown = e.refs.dropdown;
-    const options = dropdown.refs.options;
-
-    let toolsBody = document.getElementsByClassName('tools__body')[0];
-    let toolsBodyHeight = toolsBody.getBoundingClientRect().height;
-    let toolsBodyScrollTop = toolsBody.scrollTop;
-    let optionsBottomOffset = options.getBoundingClientRect().bottom
-        - dropdown.refs.dropdownContainer.getBoundingClientRect().height;
-
-    let sizeTopPosition = false;
-    let formatTopPosition = false;
-
-
-    const newValue = !value;
-
-    //if dropdown is open check if there is enough space for it
-    if (newValue != false) {
-        console.log(toolsBodyScrollTop + toolsBodyHeight);
-        console.log(optionsBottomOffset);
-            if (toolsBodyScrollTop + toolsBodyHeight < optionsBottomOffset) {
-                if(name == 'size') {
-                    sizeTopPosition = true;
-                }
-                else {
-                    formatTopPosition = true;
-                }
-            }
-    }
-
-    switch (name) {
-        case 'size':
-            return { type: types.TOGGLE_SIZE_DROPDOWN, newValue,  sizeTopPosition };
-        default:
-            return { type: types.TOGGLE_FORMAT_DROPDOWN, newValue, formatTopPosition };
-
+    const dropdownName = name;
+    return {
+        type: types.CLICK_DROPDOWN, dropdownName
     }
 }
+
 
 export function toggleSettingPanel() {
     return { type: types.TOGGLE_SETTING_PANEL };

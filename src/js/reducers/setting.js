@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
-import { CHANGE_VIEW_MODE, CHANGE_SIZE_DROPDOWN, CHANGE_FORMAT_DROPDOWN, TOGGLE_SIZE_DROPDOWN,
-    TOGGLE_FORMAT_DROPDOWN, TOGGLE_SETTING_PANEL, SET_MARKER_COLOR, SET_BACKGROUND_COLOR, CLICK_ARTBOARD_LAYER } from '../constants/ActionTypes';
+import { CHANGE_VIEW_MODE, CHANGE_SIZE_DROPDOWN, CHANGE_FORMAT_DROPDOWN, TOGGLE_SETTING_PANEL,
+    SET_MARKER_COLOR, SET_BACKGROUND_COLOR, CLICK_ARTBOARD_LAYER
+    ,CLICK_DROPDOWN} from '../constants/ActionTypes';
 
 const initialState = {
     markerColor: { currentColor: '#a3c644', hoverColor: '#2cc4d5' },
@@ -22,12 +23,8 @@ const initialState = {
     viewMode: 'list',
     sizeDropdownValue: 'all',
     formatDropdownValue: 'PNG',
-    sizeDropdownVisibility: false,
-    formatDropdownVisibility: false,
     settingPanelVisibility: false,
-    sizeTopPosition: false,
-    formatTopPosition: false
-
+    activeDropdown: null
 };
 
 
@@ -90,30 +87,6 @@ function formatDropdownValue(state = initialState.formatDropdownValue, action) {
     }
 }
 
-function sizeDropdownVisibility(state = initialState.sizeDropdownVisibility, action) {
-    switch (action.type) {
-        case TOGGLE_SIZE_DROPDOWN:
-            return action.newValue;
-        case CLICK_ARTBOARD_LAYER:
-        case TOGGLE_FORMAT_DROPDOWN:
-            return initialState.sizeDropdownVisibility;
-        default:
-            return state;
-    }
-}
-
-function formatDropdownVisibility(state = initialState.formatDropdownVisibility, action) {
-    switch (action.type) {
-        case TOGGLE_FORMAT_DROPDOWN:
-            return action.newValue;
-        case CLICK_ARTBOARD_LAYER:
-        case TOGGLE_SIZE_DROPDOWN:
-            return initialState.formatDropdownVisibility;
-        default:
-            return state;
-    }
-}
-
 function settingPanelVisibility(state = initialState.settingPanelVisibility, action) {
     switch (action.type) {
         case TOGGLE_SETTING_PANEL:
@@ -123,19 +96,12 @@ function settingPanelVisibility(state = initialState.settingPanelVisibility, act
     }
 }
 
-function sizeTopPosition(state = initialState.sizeTopPosition, action) {
-    switch(action.type) {
-        case TOGGLE_SIZE_DROPDOWN:
-            return action.sizeTopPosition;
-        default:
-            return state;
-    }
-}
-
-function formatTopPosition(state = initialState.formatTopPosition, action) {
-    switch(action.type) {
-        case TOGGLE_FORMAT_DROPDOWN:
-            return action.formatTopPosition;
+function activeDropdown(state = initialState.activeDropdown, action) {
+    switch (action.type) {
+        case CLICK_DROPDOWN:
+            return action.dropdownName;
+        case CLICK_ARTBOARD_LAYER:
+            return initialState.activeDropdown;
         default:
             return state;
     }
@@ -149,11 +115,8 @@ export default combineReducers({
     viewMode,
     sizeDropdownValue,
     formatDropdownValue,
-    sizeDropdownVisibility,
-    formatDropdownVisibility,
     settingPanelVisibility,
-    sizeTopPosition,
-    formatTopPosition
+    activeDropdown
 });
 
 export function getViewMode(state) {
@@ -184,22 +147,10 @@ export function getFormatDropdownValue(state) {
     return state.formatDropdownValue;
 }
 
-export function getSizeDropdownVisibleState(state) {
-    return state.sizeDropdownVisibility;
-}
-
-export function getFormatDropdownVisibleState(state) {
-    return state.formatDropdownVisibility;
-}
-
 export function getSettingPanelVisibilityState(state) {
     return state.settingPanelVisibility;
 }
 
-export function getSizeTopDropdownPositionState(state) {
-    return state.sizeTopPosition;
-}
-
-export function getFormatTopDropdownPositionState(state) {
-    return state.formatTopPosition;
+export function getActiveDropdown(state) {
+    return state.activeDropdown;
 }
