@@ -15,12 +15,8 @@ class SizeDropdown extends Component {
         const {activeValue, changeDropdownValue, toggleDropdown, activeDropdown} = this.props;
         var visibility;
 
-        if (activeDropdown == name) {
-            visibility = true;
-        }
-        else {
-            visibility = false;
-        }
+        activeDropdown == name ? visibility = true : visibility = false;
+
         return (
             <Dropdown
                 activeValue = {activeValue}
