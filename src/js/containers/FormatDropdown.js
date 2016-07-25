@@ -15,9 +15,11 @@ class FormatDropdown extends Component {
 
     render() {
         const { activeValue, changeDropdownValue,  toggleDropdown, activeDropdown } = this.props;
-        var visibility;
+        var visibility = false;
 
-        activeDropdown == name ? visibility = true : visibility = false;
+        if(activeDropdown == name) {
+            visibility = true;
+        }
 
         return (
             <Dropdown
