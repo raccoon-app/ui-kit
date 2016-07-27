@@ -6,8 +6,11 @@ import Tools from './../containers/Tools';
 
 export default class App extends Component {
     render() {
+        const { id } = this.props.params;
+
         return (
             <div className="app">
+                <h1>{ id }</h1>
                 <Header />
                 <div className="main">
                     <Nav />
@@ -17,4 +20,8 @@ export default class App extends Component {
             </div>
         )
     }
+}
+
+App.propTypes = {
+    params: PropTypes.object,
 }

@@ -160,7 +160,7 @@ function createSpacing(currentLayer, hoverLayer) {
     return spacing;
 }
 
-export default function measure(state = initialState, action) {
+export default function measure(state = initialState, action = {}) {
     switch (action.type) {
         case CLICK_ARTBOARD_LAYER:
             return Object.assign({}, state, {

@@ -1,17 +1,8 @@
-import { combineReducers } from 'redux';
-import project from './project';
-import artboard from './artboard';
-import tools from './tools';
-import measure from './measure';
-import control from './control';
-import setting from './setting';
 
-export default combineReducers({
-    project,
-    artboard,
-    tools,
-    measure,
-    control,
-    setting,
-});
-
+export project from './project';
+export artboard from './projectList.js';
+export artboard from './artboard';
+export tools from './tools';
+export measure from './measure';
+export control from './control';
+export setting from './setting';
