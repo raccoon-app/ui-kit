@@ -63,10 +63,6 @@ export function setFilter(filter = null) {
     return { type: types.CHANGE_FILTER, filter };
 }
 
-export function setSwitcherColor(type, color) {
-    return { type: `SET_${type}`, color };
-}
-
 export function changeDropdownValue(name, currentValue) {
     switch (name) {
         case 'size':
@@ -117,6 +113,3 @@ export function toggleDropdown(e, name, value) {
     }
 }
 
-export function toggleSettingPanel() {
-    return { type: types.TOGGLE_SETTING_PANEL };
-}
