@@ -1,11 +1,18 @@
 /**
  * Created by Viktoriia_Goncharuk on 5/13/2016.
  */
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 
-const SettingControlButton = (props) => (
-    <div className="setting-control-btn icon-settings-icon" onClick={props.onClick}></div>
-);
+class SettingControlButton extends Component {
+    render() {
+        return (
+            <div
+                className="setting-control-btn icon-settings-icon"
+                onClick={this.props.onClick}
+                ref="settingControlBtn"
+            ></div>);
+    }
+}
 
 
 SettingControlButton.propTypes = {
