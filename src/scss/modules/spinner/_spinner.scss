@@ -8,7 +8,7 @@
 
 .spinner-container {
     padding: 20px 0;
-    margin: 0px auto;
+    margin: 0 auto;
     width: 100%;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .spinner > div {
-    background-color: rgba(166, 210, 165, 0.9);
+    background-color: $PRIMARY;
     height: 100%;
     width: 7px;
     margin: 0 3px 0 0;
