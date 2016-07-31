@@ -5,9 +5,10 @@ import { isColorLight } from '../utils/UIColors';
 export default class MeasureMarker extends Component {
     render() {
         const { scale, measure, type, color } = this.props;
+
         return (
             <div className={classnames({
-                measure_disabled: !measure.x,
+                measure_disabled: (!measure.x && measure.x !== 0),
             })}
             >
             <div className={classnames('measure-marker', 'measure-marker_' + type)} style={{
