@@ -1,5 +1,4 @@
-import { combineReducers } from 'redux'
-import { RECEIVE_PROJECT, SET_ACTIVE_ARTBOARD } from '../constants/ActionTypes'
+import { RECEIVE_PROJECT, SET_ACTIVE_ARTBOARD } from '../constants/ActionTypes';
 
 const initialState = {
     artboards: {},
@@ -9,67 +8,34 @@ const initialState = {
     },
 };
 
-function artboards(state = initialState.artboards, action = {}) {
+const getFirstArtboardId = (artboard) => {
+    let firstId;
+
+    for (const key in artboard) {
+        firstId = artboard[key].id;
+        break;
+    }
+
+    return firstId;
+};
+
+const artboard = (state = initialState, action = {}) => {
     switch (action.type) {
         case RECEIVE_PROJECT:
-            return action.project.artboard;
-        default:
-          return state;
-    }
-}
+            return Object.assign({}, state, {
+                artboards: action.project.artboard,
+                activeArtboard: action.project.artboard[getFirstArtboardId(action.project.artboard)],
+                url: action.url,
+            });
 
-function url(state = initialState.url, action = {}) {
-    switch (action.type) {
-        case RECEIVE_PROJECT:
-            return action.url;
-        default:
-            return state;
-    }
-}
-
-function activeArtboard(state = initialState.activeArtboard, action = {}) {
-    switch (action.type) {
-        case RECEIVE_PROJECT:
-            let firstId;
-
-            // @TODO FIXME
-            for (const key in action.project.artboard) {
-                firstId = action.project.artboard[key].id;
-                break;
-            }
-
-            return action.project.artboard[firstId];
-
-        default:
-            return state;
-    }
-}
-
-export default function artboard(state = initialState, action = {}) {
-    switch (action.type) {
         case SET_ACTIVE_ARTBOARD:
             return Object.assign({}, state, {
                 activeArtboard: state.artboards[action.artboardId],
             });
 
         default:
-            return {
-                artboards: artboards(state.artboards, action),
-                activeArtboard: activeArtboard(state.activeArtboard, action),
-                url: url(state.url, action)
-            };
+            return state;
     }
-}
+};
 
-export function getArtboards(state) {
-    return state.artboards;
-}
-
-export function getImage(state) {
-    return state.url + state.activeArtboard.src + '/artboard.png';
-}
-
-export function getActiveArtboard(state) {
-    return state.activeArtboard;
-}
-
+export default artboard;

@@ -1,17 +1,20 @@
-import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../actions';
-import LoginScreen from '../components/LoginScreen';
+import { login } from '../actions/auth';
+import Auth from '../components/Auth';
 
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch) => ({
-    formLogin() {
-        dispatch(login('http://design.oweather.net/'));
+    formLogin(event) {
+        event.preventDefault();
+
+        dispatch(login());
     },
-    epamLogin() {
-        dispatch(login('http://design.oweather.net/'));
+    epamLogin(event) {
+        event.preventDefault();
+
+        dispatch(login());
     },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

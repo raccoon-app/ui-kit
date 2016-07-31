@@ -1,27 +1,58 @@
-import React, { Component } from 'react';
-import Nav from './../containers/Nav';
-import Header from './../containers/Header';
-import Artboard from './../containers/Artboard';
-import Tools from './../containers/Tools';
+import React, { PropTypes, Component } from 'react';
+import Nav from '../containers/Nav';
+import Header from './Header';
+import Artboard from '../containers/Artboard';
+import Tools from '../containers/Tools';
+import HeaderInfo from '../containers/HeaderInfo';
+import Spinner from './Spinner';
 
-export default class App extends Component {
-    render() {
+class Project extends Component {
+    componentDidMount() {
+        const { projectList } = this.props;
         const { id } = this.props.params;
+
+        const activeProject = projectList.find(item => (
+            item._id === id)
+        );
+
+        if (activeProject && activeProject.url) {
+            this.props.getProject(activeProject.url);
+        } else {
+            console.log(id)
+            this.props.getProjectList(id);
+        }
+    }
+
+    render() {
+        const { project } = this.props;
+        const isFetching = !project.folders.length;
 
         return (
             <div className="app">
-                <h1>{ id }</h1>
-                <Header />
-                <div className="main">
-                    <Nav />
-                    <Artboard />
-                    <Tools />
-                </div>
+                <Header name={project.name} headerInfo={<HeaderInfo />} />
+
+                {isFetching ?
+                    <div className="main">
+                        <Spinner />
+                    </div>
+                    :
+                    <div className="main">
+                        <Nav />
+                        <Artboard />
+                        <Tools />
+                    </div>
+                }
             </div>
-        )
+        );
     }
 }
 
-App.propTypes = {
+Project.propTypes = {
     params: PropTypes.object,
-}
+    project: PropTypes.object.isRequired,
+    projectList: PropTypes.array.isRequired,
+    getProject: PropTypes.func.isRequired,
+    getProjectList: PropTypes.func.isRequired,
+};
+
+export default Project;

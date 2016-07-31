@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import { SET_ACTIVE_ARTBOARD, SET_OPEN_PAGE, RECEIVE_PROJECT, CHANGE_FILTER } from '../constants/ActionTypes';
+import { SET_ACTIVE_ARTBOARD, SET_OPEN_PAGE, CHANGE_FILTER } from '../constants/ActionTypes';
+import { RECEIVE_PROJECT, RESET_STATE } from '../actions/project';
+import { GET_PROJECT_LIST } from '../actions/projectSelection';
 
 const initialState = {
-    name: 'project name',
+    name: null,
     folders: [],
     activePage: null,
     activeArtboard: null,
@@ -14,6 +16,8 @@ function name(state = initialState.name, action = {}) {
     switch (action.type) {
         case RECEIVE_PROJECT:
             return action.project.sketchName.replace(/\.[^\.]+$/, '');
+        case RESET_STATE:
+            return initialState.name;
         default:
             return state;
     }
@@ -36,6 +40,10 @@ function folders(state = initialState.folders, action = {}) {
 
                 return item;
             });
+        case RESET_STATE:
+            return initialState.folders;
+        case GET_PROJECT_LIST:
+            return initialState.folders;
         default:
             return state;
     }
@@ -45,6 +53,8 @@ function activePage(state = initialState.activePage, action = {}) {
     switch (action.type) {
         case SET_ACTIVE_ARTBOARD:
             return action.pageId;
+        case RESET_STATE:
+            return initialState.activePage;
         default:
             return state;
     }
@@ -54,6 +64,8 @@ function activeArtboard(state = initialState.activeArtboard, action = {}) {
     switch (action.type) {
         case SET_ACTIVE_ARTBOARD:
             return action.artboardId;
+        case RESET_STATE:
+            return initialState.activeArtboard;
         default:
             return state;
     }
@@ -65,6 +77,8 @@ function openPage(state = initialState.openPage, action = {}) {
             return state === action.pageId ? null : action.pageId;
         case SET_ACTIVE_ARTBOARD:
             return action.pageId;
+        case RESET_STATE:
+            return initialState.openPage;
         default:
             return state;
     }
@@ -75,6 +89,8 @@ function filter(state = initialState.filter, action = {}) {
         case CHANGE_FILTER:
             console.log(action.filter)
             return action.filter;
+        case RESET_STATE:
+            return initialState.filter;
         default:
             return state;
     }

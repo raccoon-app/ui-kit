@@ -1,8 +1,8 @@
 
 export project from './project';
-export artboard from './projectList.js';
+export projectSelection from './projectSelection';
 export artboard from './artboard';
 export tools from './tools';
-export measure from './measure';
+export measurement from './measurement';
 export control from './control';
 export setting from './setting';

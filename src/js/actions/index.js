@@ -1,18 +1,4 @@
-import api from '../utils/api';
 import * as types from '../constants/ActionTypes';
-import { hashHistory } from 'react-router';
-
-export function receiveProject(project, url) {
-    return { type: types.RECEIVE_PROJECT, project, url };
-}
-
-export function getProject(url) {
-    return dispatch => {
-        api.getProject(project => {
-            dispatch(receiveProject(project, url));
-        }, url);
-    };
-}
 
 export function clickArtboardLayer(layer) {
     return { type: types.CLICK_ARTBOARD_LAYER, layer };
@@ -89,25 +75,3 @@ export function toggleSettingPanel() {
     return { type: types.TOGGLE_SETTING_PANEL };
 }
 
-
-export function login(url) {
-    return dispatch => {
-        return fetch('', {})
-            .then(() => {
-                hashHistory.push('select');
-                //dispatch(getProject(url));
-            })
-            .catch(error => {
-                hashHistory.push('select');
-                //dispatch(getProject(url));
-            });
-    };
-}
-
-
-export function selectProject(url) {
-    return dispatch => {
-        hashHistory.push('project');
-        dispatch(getProject(url));
-    };
-}
