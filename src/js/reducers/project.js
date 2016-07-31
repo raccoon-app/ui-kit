@@ -105,27 +105,3 @@ export default combineReducers({
     openPage,
     filter,
 });
-
-export function getProjectName(state) {
-    return state.name;
-}
-
-export function getProjectFolders(state) {
-    return state.folders;
-}
-
-export function getActivePage(state) {
-    return state.activePage;
-}
-
-export function getActiveArtboard(state) {
-    return state.activeArtboard;
-}
-
-export function getOpenPage(state) {
-    return state.openPage;
-}
-
-export function getFilter(state) {
-    return state.filter;
-}

@@ -8,9 +8,15 @@ export default class ArtboardComponent extends Component {
         super();
         this.getStyles = this.getStyles.bind(this);
     }
+
+    componentDidMount() {
+        // set scale
+    }
+
     getStyles({ backgroundColor, radialGradient }) {
         return getDottedTexture(backgroundColor, radialGradient, '10%', '16px 16px');
     }
+
     render() {
         const { image, width, height, left, top, zIndex, scale, dragging, isDragging, isCenter, background } = this.props;
 
@@ -25,6 +31,7 @@ export default class ArtboardComponent extends Component {
                 onMouseDown={this.props.takeArtboard}
                 onMouseUp={this.props.dropArtboard}
                 onMouseMove={this.props.dragArtboard}
+                ref="artboard"
             >
                 <div
                     className="artboard__draggable" style={{

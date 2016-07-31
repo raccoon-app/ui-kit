@@ -3,6 +3,11 @@ import classnames from 'classnames';
 import Marker from './MeasureMarker';
 import Spacing from './MeasureSpacing';
 
+const getRound = (value = 100, scale = 1) => {
+
+    return 2 * Math.round(value * scale / 2);
+};
+
 export default class MeasureComponent extends Component {
     render() {
         const { scale, markerColor: { currentColor, hoverColor }, isCenter, width, height } = this.props;
@@ -13,8 +18,8 @@ export default class MeasureComponent extends Component {
                     measure_disabled: !this.props.currentLayer.x && !this.props.hoverLayer.x,
                 })}
                 style={{
-                    width: width * scale + 'px',
-                    height: height * scale + 'px',
+                    width: getRound(width, scale) + 'px',
+                    height: getRound(height, scale) + 'px',
                     left: isCenter ? '50%' : '0',
                     top: isCenter ? '50%' : '0',
                     transform: isCenter ? 'translate(-50%, -50%)' : 'none',

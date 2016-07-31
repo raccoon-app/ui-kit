@@ -119,10 +119,6 @@ export default combineReducers({
     activeDropdown
 });
 
-export function getViewMode(state) {
-    return state.viewMode;
-}
-
 export function getMarkerColor(state) {
     return state.markerColor;
 }
