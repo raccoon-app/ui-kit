@@ -11,12 +11,13 @@ const getRound = (value = 100, scale = 1) => {
 export default class MeasureComponent extends Component {
     render() {
         const { scale, markerColor: { currentColor, hoverColor },
-            isCenter, width, height, currentLayer, hoverLayer } = this.props;
+            isCenter, width, height, currentLayer, hoverLayer, isAnimated } = this.props;
 
         return (
             <div className={classnames({
                     measure: true,
                     measure_disabled: (!currentLayer.x && currentLayer.x !== 0) && (!hoverLayer.x && hoverLayer.x !== 0),
+                    measure_animated: isAnimated,
                 })}
                 style={{
                     width: getRound(width, scale) + 'px',
@@ -45,4 +46,5 @@ MeasureComponent.propTypes = {
     width: PropTypes.number,
     height: PropTypes.number,
     isCenter: PropTypes.bool,
+    isAnimated: PropTypes.bool,
 };

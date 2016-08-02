@@ -91,7 +91,7 @@ class ToolsComponent extends Component {
 
 ToolsComponent.propTypes = {
     layer: PropTypes.object,
-    isExportEveryLayer: PropTypes.string,
+    isExportEveryLayer: PropTypes.number,
     url: PropTypes.string,
 };
 

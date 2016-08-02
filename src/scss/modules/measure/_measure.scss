@@ -5,9 +5,15 @@
     height: 100%;
     width: 100%;
     pointer-events: none;
+    transition: all 0.5s;
 
     &_disabled {
         display: none;
+    }
+
+    &_animated &-marker,
+    &_animated &-lighthouse {
+        transition: all 0.5s;
     }
 
     &-marker {

@@ -20,8 +20,8 @@ export function setOpenPage(pageId) {
     return { type: types.SET_OPEN_PAGE, pageId };
 }
 
-export function zoomArtboard(event, value) {
-    return { type: types.ZOOM_ARTBOARD, event, value };
+export function zoomArtboard(value) {
+    return { type: types.ZOOM_ARTBOARD, value };
 }
 
 export function scaleArtboard(event) {
