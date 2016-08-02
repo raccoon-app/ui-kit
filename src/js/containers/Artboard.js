@@ -2,9 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { clickArtboardLayer, enterArtboardLayer, leaveArtboardLayer, scaleArtboard, zoomArtboard,
     takeArtboard, dropArtboard, dragArtboard } from '../actions';
-import { getArtboards, getActiveArtboard, getImage } from '../reducers/artboard';
-import { getScale, getDragging, getIsDragging } from '../reducers/control';
-import { getBackgroundColor } from '../reducers/setting';
 import ArtboardComponent from '../components/ArtboardComponent';
 import ArtboardLayerItem from '../components/ArtboardLayerItem';
 
@@ -24,6 +21,7 @@ class Artboard extends Component {
                 scale={this.props.scale}
                 dragging={this.props.dragging}
                 isDragging={this.props.isDragging}
+                isCenter={this.props.isCenter}
                 zoomArtboard={this.props.zoomArtboard}
                 scaleArtboard={this.props.scaleArtboard}
                 takeArtboard={this.props.takeArtboard}
@@ -53,6 +51,7 @@ Artboard.propTypes = {
     scale: PropTypes.number,
     dragging: PropTypes.object,
     isDragging: PropTypes.bool,
+    isCenter: PropTypes.bool,
 
     zoomArtboard: PropTypes.func.isRequired,
     scaleArtboard: PropTypes.func.isRequired,
@@ -65,14 +64,15 @@ Artboard.propTypes = {
     leaveArtboardLayer: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-    artboards: getArtboards(state.artboard),
-    activeArtboard: getActiveArtboard(state.artboard),
-    backgroundColor: getBackgroundColor(state.setting),
-    image: getImage(state.artboard),
-    scale: getScale(state.control),
-    dragging: getDragging(state.control),
-    isDragging: getIsDragging(state.control),
+const mapStateToProps = ({ artboard, setting, control }) => ({
+    artboards: artboard.artboards,
+    activeArtboard: artboard.activeArtboard,
+    backgroundColor: setting.backgroundColor,
+    image: artboard.url + artboard.activeArtboard.src + '/artboard.png',
+    scale: control.scale,
+    dragging: control.dragging,
+    isDragging: control.isDragging,
+    isCenter: true,
 });
 
 export default connect(

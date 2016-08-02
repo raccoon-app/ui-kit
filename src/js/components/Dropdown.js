@@ -2,10 +2,34 @@ import React, { Component, PropTypes } from 'react'
 import classnames from 'classnames'
 
 export default class Dropdown extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { isOpen: false, topPosition: false };
+        this.toggleView = this.toggleView.bind(this);
+    }
+
+    toggleView() {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    }
+
+    positionDetermine() {
+        const dropdown = this.refs.dropdownContainer;
+        const options = this.refs.options;
+
+        let toolsBody = document.getElementsByClassName('tools__body')[0];
+        let screenVisibilityCapacity = toolsBody.getBoundingClientRect().height + toolsBody.scrollTop;
+        let dropdownSize = dropdown.getBoundingClientRect().bottom + options.getBoundingClientRect().height;
+
+        screenVisibilityCapacity < dropdownSize ? this.state.topPosition = true : this.state.topPosition = false;
+    }
+
     render() {
 
-        const { data, activeValue, changeDropdownValue, visibility, topPosition, name, toggleDropdown, ref } = this.props;
-
+        const { data, activeValue, changeDropdownValue, visibility, name, toggleDropdown } = this.props;
+        const topPosition = false;
         const optionList = data.map(function(option) {
             return(
                 <option value={option.value}>{option.text}</option>
@@ -16,6 +40,15 @@ export default class Dropdown extends Component {
                 <div className="dropdown__option" data-value= {option.value}>{option.text}</div>
             );
         });
+
+        const dropdownClick = () => {
+            if(!visibility) {
+                this.state.isOpen = false;
+            }
+            this.positionDetermine();
+            this.toggleView();
+            toggleDropdown();
+        }
 
         const dropdownOnchange = (e) => {
             var el = e.target;
@@ -33,14 +66,14 @@ export default class Dropdown extends Component {
         }
 
         return (
-            <div className={visibility? "dropdown dropdown--opened" : "dropdown"}
-                 onClick = {toggleDropdown}
+            <div className={visibility && this.state.isOpen ? "dropdown dropdown--opened" : "dropdown"}
+                 onClick = {dropdownClick}
                  ref = "dropdownContainer">
                 <div className = "dropdown-title">
                     <div className="dropdown__value">{activeValue}</div>
                     <span className="icon-chevron-down"></span>
                 </div>
-                <div className={topPosition ? "dropdown-options top-opened" : "dropdown-options"}
+                <div className={this.state.topPosition ? "dropdown-options top-opened" : "dropdown-options"}
                      onClick = {dropdownOnchange}
                      ref="options">
                     {dropdownList}
@@ -59,8 +92,7 @@ Dropdown.propTypes = {
     name: PropTypes.string,
     changeDropdownValue: PropTypes.func.isRequired,
     toggleDropdown: PropTypes.func.isRequired,
-    visibility: PropTypes.boolean,
-    ref: PropTypes.string
+    visibility: PropTypes.boolean
 }
 
 

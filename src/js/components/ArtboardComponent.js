@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-import Measure from './../containers/Measure';
+import Measurement from './../containers/Measurement';
 import { getDottedTexture } from '../utils/backgroundTexture';
 
 export default class ArtboardComponent extends Component {
@@ -8,11 +8,18 @@ export default class ArtboardComponent extends Component {
         super();
         this.getStyles = this.getStyles.bind(this);
     }
+
+    componentDidMount() {
+        // set scale
+    }
+
     getStyles({ backgroundColor, radialGradient }) {
         return getDottedTexture(backgroundColor, radialGradient, '10%', '16px 16px');
     }
+
     render() {
-        const { image, width, height, left, top, zIndex, scale, dragging, isDragging, background } = this.props;
+        const { image, width, height, left, top, zIndex, scale, dragging, isDragging, isCenter, background } = this.props;
+
         return (
             <div
                 className={classnames({
@@ -24,6 +31,7 @@ export default class ArtboardComponent extends Component {
                 onMouseDown={this.props.takeArtboard}
                 onMouseUp={this.props.dropArtboard}
                 onMouseMove={this.props.dragArtboard}
+                ref="artboard"
             >
                 <div
                     className="artboard__draggable" style={{
@@ -34,6 +42,8 @@ export default class ArtboardComponent extends Component {
                     <div
                         className="artboard__scale" style={{
                             transform: 'scale(' + scale + ')',
+                            left: isCenter ? '50%' : '0',
+                            top: isCenter ? '50%' : '0',
                         }}
                     >
                         <div
@@ -44,12 +54,13 @@ export default class ArtboardComponent extends Component {
                                 top: top + 'px',
                                 left: left + 'px',
                                 zIndex: zIndex,
+                                transform: isCenter ? 'translate(-50%, -50%)' : 'none',
                             }}
                         >
                             {this.props.children}
                         </div>
                     </div>
-                    <Measure scale={this.props.scale} />
+                    <Measurement scale={scale} isCenter={isCenter} width={width} height={height} />
                 </div>
 
                 <div className="tools-zoom">
@@ -88,6 +99,7 @@ ArtboardComponent.propTypes = {
     dragging: PropTypes.object,
     background: PropTypes.object,
     isDragging: PropTypes.bool,
+    isCenter: PropTypes.bool,
 
     zoomArtboard: PropTypes.func,
     scaleArtboard: PropTypes.func,

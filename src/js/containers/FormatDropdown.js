@@ -1,18 +1,25 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { changeDropdownValue, toggleDropdown } from '../actions';
-import { getFormatDropdownValue, getFormatDropdownVisibleState, getFormatTopDropdownPositionState } from '../reducers/setting';
+import { getFormatDropdownValue, getFormatTopDropdownPositionState,
+    getActiveDropdown } from '../reducers/setting';
 import Dropdown from '../components/Dropdown';
 const data = [
     { value: 'png', text: 'PNG' },
     { value: 'jpg', text: 'JPG' },
-    { value: 'gif', text: 'GIF' },
+    { value: 'gif', text: 'GIF' }
 ];
 const name = 'format';
 
 class FormatDropdown extends Component {
+
     render() {
-        const { activeValue, changeDropdownValue, visibility, topPosition, toggleDropdown } = this.props;
+        const { activeValue, changeDropdownValue,  toggleDropdown, activeDropdown } = this.props;
+        var visibility = false;
+
+        if(activeDropdown == name) {
+            visibility = true;
+        }
 
         return (
             <Dropdown
@@ -21,9 +28,7 @@ class FormatDropdown extends Component {
                 name = {name}
                 changeDropdownValue = {changeDropdownValue}
                 visibility = {visibility}
-                topPosition = {topPosition}
-                toggleDropdown = {toggleDropdown.bind(this, this, name, visibility)}
-                ref = "dropdown"
+                toggleDropdown = {toggleDropdown.bind(this, name)}
             />
         );
     }
@@ -32,15 +37,12 @@ class FormatDropdown extends Component {
 FormatDropdown.propTypes = {
     activeValue: PropTypes.string,
     changeDropdownValue: PropTypes.func.isRequired,
-    visibility: PropTypes.string,
-    toggleDropdown: PropTypes.func.isRequired,
-    topPosition: PropTypes.boolean
+    toggleDropdown: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
     activeValue: getFormatDropdownValue(state.setting),
-    visibility: getFormatDropdownVisibleState(state.setting),
-    topPosition: getFormatTopDropdownPositionState(state.setting)
+    activeDropdown: getActiveDropdown(state.setting)
 });
 
 export default connect(

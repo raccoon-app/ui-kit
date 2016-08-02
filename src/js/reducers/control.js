@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import { ZOOM_ARTBOARD, SCALE_ARTBOARD, TAKE_ARTBOARD, DROP_ARTBOARD, DRAG_ARTBOARD } from '../constants/ActionTypes';
 
 const initialState = {
@@ -21,7 +20,7 @@ let coords = {
     y: 0,
 };
 
-export default function control(state = initialState, action = {}) {
+const control = (state = initialState, action = {}) => {
     switch (action.type) {
         case ZOOM_ARTBOARD: {
             const event = action.event;
@@ -129,18 +128,6 @@ export default function control(state = initialState, action = {}) {
             return state;
         }
     }
-}
+};
 
-
-export function getScale(state) {
-    return state.scale;
-}
-
-export function getDragging(state) {
-    return state.dragging;
-}
-
-export function getIsDragging(state) {
-    return state.isDragging;
-}
-
+export default control;
