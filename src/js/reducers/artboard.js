@@ -6,6 +6,7 @@ const initialState = {
     activeArtboard: {
         layer: [],
     },
+    isExportEveryLayer: null,
 };
 
 const getFirstArtboardId = (artboard) => {
@@ -26,6 +27,7 @@ const artboard = (state = initialState, action = {}) => {
                 artboards: action.project.artboard,
                 activeArtboard: action.project.artboard[getFirstArtboardId(action.project.artboard)],
                 url: action.url,
+                isExportEveryLayer: action.project.exportEveryLayer || null,
             });
 
         case SET_ACTIVE_ARTBOARD:

@@ -2,9 +2,10 @@ import { RECEIVE_PROJECT, SET_ACTIVE_ARTBOARD } from '../actions/project';
 import { CLICK_ARTBOARD_LAYER, ENTER_ARTBOARD_LAYER, LEAVE_ARTBOARD_LAYER } from '../actions/artboard';
 
 const initialState = {
-    layer: {},
-    url: null,
-    isExportEveryLayer: null,
+    layer: {
+        x: 0,
+        y: 0,
+    },
 };
 
 const tools = (state = initialState, action = {}) => {
@@ -16,8 +17,6 @@ const tools = (state = initialState, action = {}) => {
         case RECEIVE_PROJECT:
             return Object.assign({}, state, {
                 layer: initialState.layer,
-                url: action.url,
-                isExportEveryLayer: action.project.exportEveryLayer || null,
             });
         case SET_ACTIVE_ARTBOARD:
             return Object.assign({}, state, {

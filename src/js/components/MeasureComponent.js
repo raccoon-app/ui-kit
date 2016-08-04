@@ -23,7 +23,6 @@ export default class MeasureComponent extends Component {
                     height: getRound(height, scale) + 'px',
                 }}
             >
-
                 <Marker scale={scale} measure={this.props.hoverLayer} color={hoverColor} type="hover" />
                 <Marker scale={scale} measure={this.props.currentLayer} color={currentColor} type="current" />
                 <Spacing scale={scale} spacing={this.props.spacing} color={hoverColor} />
