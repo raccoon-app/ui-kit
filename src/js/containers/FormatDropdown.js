@@ -1,13 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { changeDropdownValue, toggleDropdown } from '../actions';
-import { getFormatDropdownValue, getFormatTopDropdownPositionState,
-    getActiveDropdown } from '../reducers/setting';
+import { changeDropdownValue, toggleDropdown } from '../actions/setting';
+import { getFormatDropdownValue, getActiveDropdown } from '../reducers/setting';
 import Dropdown from '../components/Dropdown';
+
 const data = [
     { value: 'png', text: 'PNG' },
     { value: 'jpg', text: 'JPG' },
-    { value: 'gif', text: 'GIF' }
+    { value: 'gif', text: 'GIF' },
 ];
 const name = 'format';
 

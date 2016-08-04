@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { CHANGE_VIEW_MODE, CHANGE_SIZE_DROPDOWN, CHANGE_FORMAT_DROPDOWN, TOGGLE_SETTING_PANEL,
-    SET_MARKER_COLOR, SET_BACKGROUND_COLOR, CLICK_ARTBOARD_LAYER
-    ,CLICK_DROPDOWN} from '../constants/ActionTypes';
+    SET_MARKER_COLOR, SET_BACKGROUND_COLOR, CLICK_DROPDOWN } from '../actions/setting';
+import { CLICK_ARTBOARD_LAYER } from '../actions/artboard';
 
 const initialState = {
     markerColor: { currentColor: '#a3c644', hoverColor: '#2cc4d5' },

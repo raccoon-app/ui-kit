@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getMarkerColorList, getBackgroundColorList, getSettingPanelVisibilityState, getBackgroundColor, getMarkerColor } from '../reducers/setting';
 import RadioColorSwitcher from '../components/settings/RadioColorSwitcher';
 import SettingControlButton from '../components/settings/SettingControlButton';
-import { toggleSettingPanel, setSwitcherColor } from '../actions';
+import { toggleSettingPanel, setSwitcherColor } from '../actions/setting';
 import classnames from 'classnames';
 
 const SettingsPanel = (props) => {

@@ -1,5 +1,6 @@
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 import { hashHistory } from 'react-router';
+
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
 export function login(url) {
     return dispatch => {

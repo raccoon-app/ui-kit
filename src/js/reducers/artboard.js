@@ -1,4 +1,4 @@
-import { RECEIVE_PROJECT, SET_ACTIVE_ARTBOARD } from '../constants/ActionTypes';
+import { RECEIVE_PROJECT, SET_ACTIVE_ARTBOARD } from '../actions/project';
 
 const initialState = {
     artboards: {},
