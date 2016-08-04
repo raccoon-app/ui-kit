@@ -15,7 +15,9 @@
   display: inline-block;
   transform: rotate(180deg);
 }
-
+.icon-search::after {
+  content: "\e90a";
+}
 .icon-cross::after {
   content: "\ea0f";
 }

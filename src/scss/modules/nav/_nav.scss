@@ -304,26 +304,6 @@
             &:active {
                 outline: 0;
             }
-
-            &::after {
-                content: "\e90a";
-            }
-        }
-    }
-
-    &__reset-btn {
-        border: 0;
-        background: none;
-        position: absolute;
-        top: 6px;
-        right: 25px;
-        font-size: 14px;
-        color: $ULTRA-LIGHT-GREY;
-        cursor: pointer;
-
-        &:focus,
-        &:active {
-            outline: 0;
         }
     }
 

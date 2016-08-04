@@ -61,16 +61,9 @@ export default class NavPageList extends Component {
                             />
                             <button
                                 className={classnames({
-                                    'icon-cross': true,
-                                    'nav-footer__reset-btn': true
-                                })}
-                                onClick={() => this.props.setFilter()}
-                            >
-                            </button>
-                            <button
-                                className={classnames({
-                                    'icon-search': true,
-                                    'nav-footer__search-btn': true
+                                    'nav-footer__search-btn': true,
+                                    'icon-cross': this.props.filter,
+                                    'icon-search': !this.props.filter
                                 })}
                                 onClick={() => this.props.setFilter()}
                             >
