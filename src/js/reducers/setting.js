@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
-import { CHANGE_VIEW_MODE, CHANGE_SIZE_DROPDOWN, CHANGE_FORMAT_DROPDOWN, TOGGLE_SETTING_PANEL,
-    SET_MARKER_COLOR, SET_BACKGROUND_COLOR, CLICK_DROPDOWN } from '../actions/setting';
+import { CHANGE_VIEW_MODE, CHANGE_SIZE_DROPDOWN, CHANGE_FORMAT_DROPDOWN, TOGGLE_SETTING_PANEL, CLICK_DROPDOWN } from '../actions/setting';
 import { CLICK_ARTBOARD_LAYER } from '../actions/artboard';
 
 const initialState = {
@@ -39,7 +38,7 @@ function viewMode(state = initialState.viewMode, action = {}) {
 
 function markerColor(state = initialState.markerColor, action = {}) {
     switch (action.type) {
-        case SET_MARKER_COLOR:
+        case 'SET_MARKER_COLOR':
             return Object.assign({}, state, action.color);
         default:
             return state;
@@ -48,7 +47,7 @@ function markerColor(state = initialState.markerColor, action = {}) {
 
 function backgroundColor(state = initialState.backgroundColor, action = {}) {
     switch (action.type) {
-        case SET_BACKGROUND_COLOR:
+        case 'SET_BACKGROUND_COLOR':
             return Object.assign({}, state, action.color);
         default:
             return state;
