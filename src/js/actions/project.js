@@ -23,13 +23,13 @@ export function getProject(url) {
 }
 
 export function setOpenPage(pageId) {
-    return { type: types.SET_OPEN_PAGE, pageId };
+    return { type: SET_OPEN_PAGE, pageId };
 }
 
 export function setActiveArtboard(pageId, artboardId) {
-    return { type: types.SET_ACTIVE_ARTBOARD, pageId, artboardId };
+    return { type: SET_ACTIVE_ARTBOARD, pageId, artboardId };
 }
 
 export function setFilter(filter = null) {
-    return { type: types.CHANGE_FILTER, filter };
+    return { type: CHANGE_FILTER, filter };
 }

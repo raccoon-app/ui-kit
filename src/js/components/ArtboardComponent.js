@@ -79,11 +79,11 @@ export default class ArtboardComponent extends Component {
         return getDottedTexture(backgroundColor, radialGradient, '10%', '16px 16px');
     }
 
-    onScaleArtboard(event){
+    onScaleArtboard(event) {
 
     }
 
-    onTakeArtboard(event){
+    onTakeArtboard(event) {
         coords = {
             x: event.pageX,
             y: event.pageY,
@@ -94,15 +94,14 @@ export default class ArtboardComponent extends Component {
         });
     }
 
-    onDropArtboard(event){
+    onDropArtboard(event) {
         this.setState({
             isDragging: false
         });
     }
 
-    onDragArtboard(event){
-        console.log('onDragArtboard ' + this.state.isDragging)
-        if(!this.state.isDragging) {
+    onDragArtboard(event) {
+        if (!this.state.isDragging) {
             return false;
         }
 
@@ -122,7 +121,7 @@ export default class ArtboardComponent extends Component {
     }
 
     render() {
-        const { image, width, height, left, top, zIndex, isCenter, background } = this.props;
+        const { image, width, height, left, top, zIndex, background } = this.props;
         const { isDragging, scale, dragging } = this.state;
 
         return (
@@ -146,9 +145,7 @@ export default class ArtboardComponent extends Component {
                 >
                     <div
                         className="artboard__scale" style={{
-                            transform: 'scale(' + scale + ')',
-                            left: isCenter ? '50%' : '0',
-                            top: isCenter ? '50%' : '0',
+                            transform: 'scale(' + scale + ')'
                         }}
                     >
                         <div
@@ -159,23 +156,22 @@ export default class ArtboardComponent extends Component {
                                 top: top + 'px',
                                 left: left + 'px',
                                 zIndex: zIndex,
-                                transform: isCenter ? 'translate(-50%, -50%)' : 'none',
                             }}
                             onMouseEnter={(event) => {
                                 this.setState({
                                     isAnimated: false,
-                                })
+                                });
                             }}
                             onMouseLeave={(event) => {
                                 this.setState({
                                     isAnimated: true,
-                                })
+                                });
                             }}
                         >
                             {this.props.children}
                         </div>
                     </div>
-                    <Measurement scale={scale} isCenter={isCenter} width={width} height={height} isAnimated={this.state.isAnimated}/>
+                    <Measurement scale={scale} width={width} height={height} isAnimated={this.state.isAnimated}/>
                 </div>
 
                 <div className="tools-zoom">
@@ -211,6 +207,4 @@ ArtboardComponent.propTypes = {
     height: PropTypes.number,
     zIndex: PropTypes.number,
     background: PropTypes.object,
-    isDragging: PropTypes.bool,
-    isCenter: PropTypes.bool,
 };
