@@ -6,10 +6,19 @@ class Header extends Component {
     render() {
         const { headerInfo, name } = this.props;
 
+        let tools = [];
+
+        if (headerInfo) {
+            tools.push(
+                <Link className="header__projects icon-project-icon" to={`projects`}></Link>,
+                <i className="header__point icon-chevron-right"></i>
+            );
+        }
+
         return (
             <div className="header">
                 <a href="#" className="header__logo">logo</a>
-                {headerInfo ? <Link className="header__link" to={`projects`}>Projects</Link> : null}
+                {tools}
                 <h1 className="header__title">{name}</h1>
                 <SettingPanel />
                 <div className="header-info">{headerInfo}</div>
