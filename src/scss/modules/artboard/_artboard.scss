@@ -24,11 +24,15 @@
         }
     }
 
+    &_animated &__scale ,
+    &_animated &__draggable {
+        transition: all 0.5s;
+    }
+
     &__scale {
         position: absolute;
         top: 50%;
         left: 50%;
-        transition: all 0.5s;
     }
 
     &__draggable {
@@ -38,7 +42,6 @@
         margin: 20px;
         width: calc(100% - 40px);
         height: calc(100% - 40px);
-        transition: all 0.5s;
     }
 
     &_dragging &__draggable {

@@ -8,6 +8,13 @@ let coords = {
     y: 0,
 };
 
+function isNegative(n) {
+    return ((n = +n) || 1 / n) < 0;
+}
+
+
+// @TODO Refactoring of transition end
+// @TODO Refactoring of isNegative
 
 export default class ArtboardComponent extends Component {
     constructor() {
@@ -26,6 +33,8 @@ export default class ArtboardComponent extends Component {
 
     componentDidMount() {
         this.$artboard = this.refs.artboard;
+        this.$draggable = this.refs.draggable;;
+        this.$scale = this.refs.scale;
 
         this.setCentering(this.props)
     }
@@ -36,10 +45,19 @@ export default class ArtboardComponent extends Component {
 
     setCentering(props) {
         const { width, height } = props;
-        const windowWidth = this.$artboard.offsetWidth;
-        const windowHeight = this.$artboard.offsetHeight;
+        const windowWidth = this.$draggable.offsetWidth;
+        const windowHeight = this.$draggable.offsetHeight;
 
         const scale = Math.min(windowWidth/width, windowHeight/height );
+
+        const $artboard = this.$artboard;
+        this.$scale.addEventListener('transitionend', handler);
+        this.$artboard.classList.add('artboard_animated');
+
+        function handler(e) {
+            e.target.removeEventListener(e.type, handler);
+            $artboard.classList.remove('artboard_animated');
+        }
 
         this.setState({
             scale: scale,
@@ -53,6 +71,15 @@ export default class ArtboardComponent extends Component {
     setScale(value) {
         const ZOOM_STEP = 0.1;
         let newScale = this.state.scale;
+
+        const $artboard = this.$artboard;
+        this.$scale.addEventListener('transitionend', handler);
+        this.$artboard.classList.add('artboard_animated');
+
+        function handler(e) {
+            e.target.removeEventListener(e.type, handler);
+            $artboard.classList.remove('artboard_animated');
+        }
 
         switch (value) {
             case 'plus': {
@@ -80,7 +107,40 @@ export default class ArtboardComponent extends Component {
     }
 
     onScaleArtboard(event) {
+        const ZOOM_STEP = .2;
+        event.preventDefault();
 
+        if (!event.shiftKey || event.ctrlKey) {
+            return false;
+        }
+
+        const $target = this.$scale.getBoundingClientRect();
+        let newPosition = Object.assign({}, this.state.dragging);
+        let newScale = this.state.scale;
+
+        const xDiff = (event.pageX - $target.left) * ZOOM_STEP / newScale;
+        const yDiff = (event.pageY - $target.top) * ZOOM_STEP / newScale;
+
+        if (isNegative(event.deltaX) && isNegative(event.deltaY)) {
+            newPosition.x -= xDiff;
+            newPosition.y -= yDiff;
+        } else {
+            newPosition.x += xDiff;
+            newPosition.y += yDiff;
+        }
+
+        if (isNegative(event.deltaX) && isNegative(event.deltaY)) {
+            newScale += ZOOM_STEP;
+        } else {
+            newScale -= ZOOM_STEP;
+        }
+
+        newScale = newScale < 2 * ZOOM_STEP ? 2 * ZOOM_STEP : newScale;
+
+        this.setState({
+            dragging: newPosition,
+            scale: newScale,
+        });
     }
 
     onTakeArtboard(event) {
@@ -131,22 +191,24 @@ export default class ArtboardComponent extends Component {
                     artboard_dragging: isDragging,
                 })}
                 style={this.getStyles(background)}
-                onWheel={this.onScaleArtboard}
-                onMouseDown={this.onTakeArtboard.bind(this)}
-                onMouseUp={this.onDropArtboard.bind(this)}
-                onMouseMove={this.onDragArtboard.bind(this)}
+                onWheel={(event) => this.onScaleArtboard(event)}
+                onMouseDown={(event) => this.onTakeArtboard(event)}
+                onMouseUp={(event) => this.onDropArtboard(event)}
+                onMouseMove={(event) => this.onDragArtboard(event)}
+                ref="artboard"
             >
                 <div
                     className="artboard__draggable" style={{
                         left: dragging.x + 'px',
                         top: dragging.y + 'px',
                     }}
-                    ref="artboard"
+                    ref="draggable"
                 >
                     <div
                         className="artboard__scale" style={{
                             transform: 'scale(' + scale + ')'
                         }}
+                        ref="scale"
                     >
                         <div
                             className="artboard__layer-list" style={{
@@ -171,7 +233,7 @@ export default class ArtboardComponent extends Component {
                             {this.props.children}
                         </div>
                     </div>
-                    <Measurement scale={scale} width={width} height={height} isAnimated={this.state.isAnimated}/>
+                    <Measurement scale={scale} width={width} height={height} />
                 </div>
 
                 <div className="tools-zoom">

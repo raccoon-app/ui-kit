@@ -5,16 +5,10 @@
     height: 100%;
     width: 100%;
     pointer-events: none;
-    transition: all 0.5s;
     transform: translate(-50%, -50%);
 
     &_disabled {
         display: none;
-    }
-
-    &_animated &-marker,
-    &_animated &-lighthouse {
-        transition: all 0.5s;
     }
 
     &-marker {
@@ -175,4 +169,10 @@
             }
         }
     }
+}
+
+.artboard_animated .measure,
+.artboard_animated .measure-marker,
+.artboard_animated .measure-lighthouse {
+    transition: all 0.5s;
 }
