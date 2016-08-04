@@ -121,19 +121,19 @@
 .nav-page {
     .icon-selected-page-icon {
         &::after {
-          content: "\e907";
-          font-size: 32px;
-          width: 32px;
-          height: 32px;
-          color: $LIGHT;
-          position: absolute;
-          z-index: 2;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          margin: auto;
-          display: none;
+            content: "\e907";
+            font-size: 32px;
+            width: 32px;
+            height: 32px;
+            color: $LIGHT;
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            display: none;
         }
     }
 }
@@ -247,14 +247,6 @@
     padding: 12px 10px;
     background-color: $LIGHT;
 
-    .icon-list-view::after {
-        content: "\e90f";
-    }
-
-    .icon-title-view::after {
-        content: "\e909";
-    }
-
     &__btn {
         display: inline-block;
         font-size: 26px;
@@ -285,9 +277,9 @@
         float: right;
 
         &-input {
-            width: 224px;
+            width: 190px;
             height: 14px;
-            padding: 5px 25px 5px 5px;
+            padding: 5px 60px 5px 5px;
             background-color: $FORM-GREY;
             border: solid 1px $ULTRA-LIGHT-GREY;
 
@@ -316,14 +308,22 @@
             &::after {
                 content: "\e90a";
             }
+        }
+    }
 
-            &_reset {
-                color: red;
+    &__reset-btn {
+        border: 0;
+        background: none;
+        position: absolute;
+        top: 6px;
+        right: 25px;
+        font-size: 14px;
+        color: $ULTRA-LIGHT-GREY;
+        cursor: pointer;
 
-                &::after {
-                    content: "\ea0f";
-                }
-            }
+        &:focus,
+        &:active {
+            outline: 0;
         }
     }
 
@@ -336,8 +336,7 @@
     margin-left: 10px;
 
     .icon-chevron-left::after {
-        content: '\e908';
-        transform: rotate(180deg);
+        @extend .icon-chevron-right;
     }
 
     .disable {
@@ -375,6 +374,3 @@
         }
     }
 }
-
-
-
