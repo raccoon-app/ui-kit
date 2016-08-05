@@ -1,19 +1,29 @@
 import React, { PropTypes } from 'react';
-import Header from './Header';
 
 const LoginScreen = ({ formLogin, epamLogin }) => (
-    <div className="app">
-        <Header />
-        <div className="main">
-            <form>
-                <h2>LOGIN</h2>
-                <input type="text" name="login" />
-                <input type="password" name="password" />
-                <button onClick={formLogin} className="btn">SIGNIN</button>
-                <button onClick={epamLogin} className="btn">EPAM SIGNIN</button>
-            </form>
-        </div>
-    </div>
+    <section className="app auth">
+        <header className="auth__header">
+            <img className="auth__raccoon-logo"
+                 src="../src/img/raccoon-logo.svg"
+                 onerror="this.src='../src/img/raccoon-logo.png';this.onerror=null;"
+            />
+            <br />
+            <img className="auth__epam-logo"
+                 src="../src/img/e-p-a-m-logo-white.svg"
+                 onerror="this.src='../src/img/e-p-a-m-logo-white.png';this.onerror=null;"
+            />
+            <h1 className="auth__title">RACCOON APP</h1>
+            <p>Sign in with your organizational account</p>
+        </header>
+        <form className="auth-form">
+            <label className="auth-form__label">LOGIN</label>
+            <input className="auth-form__input" type="text" name="login" />
+            <label className="auth-form__label">PASSWORD</label>
+            <input className="auth-form__input" type="password" name="password" />
+            <button onClick={formLogin} className="auth-form__btn btn btn_green">SignIn</button>
+            <button onClick={epamLogin} className="auth-form__btn auth-form__btn_right btn">EPAM SignIn</button>
+        </form>
+    </section>
 );
 
 

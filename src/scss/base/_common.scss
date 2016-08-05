@@ -157,3 +157,20 @@ h3 {
     }
   }
 }
+
+.btn {
+  background-color: $PRIMARY;
+  color: $LIGHT;
+  text-transform: uppercase;
+  font: 600 20px $DEFAULT_FONT;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: background-color .3s;
+  text-decoration: none;
+
+  &_green {
+    background-color: $PRIMARY_CTRL;
+  }
+}
