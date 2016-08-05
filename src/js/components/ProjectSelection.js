@@ -14,7 +14,7 @@ class ProjectSelection extends Component {
 
         return (
             <div className="app">
-                <Header />
+                <Header name="My Projects" />
                 <div className="main project-selection">
                     {isFetching ?
                         <Spinner />
