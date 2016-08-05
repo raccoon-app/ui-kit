@@ -8,13 +8,14 @@ let coords = {
     y: 0,
 };
 
+// @TODO Refactoring of isNegative
 function isNegative(n) {
     return ((n = +n) || 1 / n) < 0;
 }
 
-
-// @TODO Refactoring of transition end
-// @TODO Refactoring of isNegative
+function getStyles({ backgroundColor, radialGradient }) {
+    return getDottedTexture(backgroundColor, radialGradient, '10%', '16px 16px');
+}
 
 export default class ArtboardComponent extends Component {
     constructor() {
@@ -27,87 +28,24 @@ export default class ArtboardComponent extends Component {
                 x: 0,
                 y: 0,
             },
-            isAnimated: true
+            isAnimated: true,
         };
     }
 
     componentDidMount() {
         this.$artboard = this.refs.artboard;
-        this.$draggable = this.refs.draggable;;
+        this.$draggable = this.refs.draggable;
         this.$scale = this.refs.scale;
 
-        this.setCentering(this.props)
+        this.setCentering(this.props);
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setCentering(nextProps)
+        this.setCentering(nextProps);
     }
 
-    setCentering(props) {
-        const { width, height } = props;
-        const windowWidth = this.$draggable.offsetWidth;
-        const windowHeight = this.$draggable.offsetHeight;
-
-        const scale = Math.min(windowWidth/width, windowHeight/height );
-
-        const $artboard = this.$artboard;
-        this.$scale.addEventListener('transitionend', handler);
-        this.$artboard.classList.add('artboard_animated');
-
-        function handler(e) {
-            e.target.removeEventListener(e.type, handler);
-            $artboard.classList.remove('artboard_animated');
-        }
-
-        this.setState({
-            scale: scale,
-            dragging: {
-                x: 0,
-                y: 0,
-            }
-        })
-    }
-
-    setScale(value) {
-        const ZOOM_STEP = 0.1;
-        let newScale = this.state.scale;
-
-        const $artboard = this.$artboard;
-        this.$scale.addEventListener('transitionend', handler);
-        this.$artboard.classList.add('artboard_animated');
-
-        function handler(e) {
-            e.target.removeEventListener(e.type, handler);
-            $artboard.classList.remove('artboard_animated');
-        }
-
-        switch (value) {
-            case 'plus': {
-                newScale += ZOOM_STEP;
-                break;
-            }
-            case 'minus': {
-                newScale -= ZOOM_STEP;
-                break;
-            }
-            default: {
-                newScale = value;
-            }
-        }
-
-        newScale = newScale < 2 * ZOOM_STEP ? 2 * ZOOM_STEP : newScale;
-
-        this.setState({
-            scale: newScale
-        });
-    }
-
-    getStyles({ backgroundColor, radialGradient }) {
-        return getDottedTexture(backgroundColor, radialGradient, '10%', '16px 16px');
-    }
-
-    onScaleArtboard(event) {
-        const ZOOM_STEP = .2;
+    onWheelArtboard(event) {
+        const ZOOM_STEP = 0.2;
         event.preventDefault();
 
         if (!event.shiftKey || event.ctrlKey) {
@@ -115,23 +53,18 @@ export default class ArtboardComponent extends Component {
         }
 
         const $target = this.$scale.getBoundingClientRect();
-        let newPosition = Object.assign({}, this.state.dragging);
         let newScale = this.state.scale;
-
+        const newPosition = Object.assign({}, this.state.dragging);
         const xDiff = (event.pageX - $target.left) * ZOOM_STEP / newScale;
         const yDiff = (event.pageY - $target.top) * ZOOM_STEP / newScale;
 
         if (isNegative(event.deltaX) && isNegative(event.deltaY)) {
             newPosition.x -= xDiff;
             newPosition.y -= yDiff;
+            newScale += ZOOM_STEP;
         } else {
             newPosition.x += xDiff;
             newPosition.y += yDiff;
-        }
-
-        if (isNegative(event.deltaX) && isNegative(event.deltaY)) {
-            newScale += ZOOM_STEP;
-        } else {
             newScale -= ZOOM_STEP;
         }
 
@@ -150,13 +83,13 @@ export default class ArtboardComponent extends Component {
         };
 
         this.setState({
-            isDragging: true
+            isDragging: true,
         });
     }
 
-    onDropArtboard(event) {
+    onDropArtboard() {
         this.setState({
-            isDragging: false
+            isDragging: false,
         });
     }
 
@@ -180,6 +113,60 @@ export default class ArtboardComponent extends Component {
         });
     }
 
+    setScale(value) {
+        const ZOOM_STEP = 0.1;
+        let newScale = this.state.scale;
+
+        this.addTransition(this.$artboard, this.$scale);
+
+        switch (value) {
+            case 'plus': {
+                newScale += ZOOM_STEP;
+                break;
+            }
+            case 'minus': {
+                newScale -= ZOOM_STEP;
+                break;
+            }
+            default: {
+                newScale = value;
+            }
+        }
+
+        newScale = newScale < 2 * ZOOM_STEP ? 2 * ZOOM_STEP : newScale;
+
+        this.setState({
+            scale: newScale,
+        });
+    }
+
+    setCentering(props) {
+        const { width, height } = props;
+        const windowWidth = this.$draggable.offsetWidth;
+        const windowHeight = this.$draggable.offsetHeight;
+        const newScale = Math.min(windowWidth / width, windowHeight / height);
+
+        this.addTransition(this.$artboard, this.$scale);
+
+        this.setState({
+            scale: newScale,
+            dragging: {
+                x: 0,
+                y: 0,
+            },
+        });
+    }
+
+    addTransition($target, $transitioned) {
+        const handler = (event) => {
+            event.target.removeEventListener(event.type, handler);
+            $target.classList.remove('artboard_animated');
+        };
+
+        $transitioned.addEventListener('transitionend', handler);
+        $target.classList.add('artboard_animated');
+    }
+
     render() {
         const { image, width, height, left, top, zIndex, background } = this.props;
         const { isDragging, scale, dragging } = this.state;
@@ -190,8 +177,8 @@ export default class ArtboardComponent extends Component {
                     artboard: true,
                     artboard_dragging: isDragging,
                 })}
-                style={this.getStyles(background)}
-                onWheel={(event) => this.onScaleArtboard(event)}
+                style={getStyles(background)}
+                onWheel={(event) => this.onWheelArtboard(event)}
                 onMouseDown={(event) => this.onTakeArtboard(event)}
                 onMouseUp={(event) => this.onDropArtboard(event)}
                 onMouseMove={(event) => this.onDragArtboard(event)}
@@ -238,20 +225,20 @@ export default class ArtboardComponent extends Component {
 
                 <div className="tools-zoom">
                     <button className="tools-zoom__btn tools-zoom__btn_full-screen icon-fit-to-screen-icon"
-                        onClick={(event) => this.setCentering(this.props)}
+                        onClick={() => this.setCentering(this.props)}
                     >
                     </button>
                     <button className="tools-zoom__btn tools-zoom__btn_minus icon-minus-circle"
-                        onClick={(event) => this.setScale('minus')}
+                        onClick={() => this.setScale('minus')}
                     >
                     </button>
                     <button className="tools-zoom__btn tools-zoom__btn_value"
-                        onClick={(event) => this.setScale(1)}
+                        onClick={() => this.setScale(1)}
                     >
                         {Math.round(scale * 100)}%
                     </button>
                     <button className="tools-zoom__btn tools-zoom__btn_plus icon-plus-circle"
-                        onClick={(event) => this.setScale('plus')}
+                        onClick={() => this.setScale('plus')}
                     >
                     </button>
                 </div>
@@ -259,7 +246,6 @@ export default class ArtboardComponent extends Component {
         );
     }
 }
-
 
 ArtboardComponent.propTypes = {
     children: PropTypes.node,
