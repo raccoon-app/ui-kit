@@ -51,12 +51,11 @@ export default class NavPageList extends Component {
                         </button>
 
                         <div className="nav-footer__search">
-
                             <input
-                                placeholder="search"
                                 className="nav-footer__search-input"
                                 type="search"
                                 value={this.props.filter}
+                                placeholder="SEARCH"
                                 onChange={(event) => this.props.setFilter(event.target.value)}
                             />
                             <button
