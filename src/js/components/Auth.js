@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Input from './Input';
 
 const LoginScreen = ({ formLogin, epamLogin }) => (
     <section className="app auth">
@@ -16,10 +17,8 @@ const LoginScreen = ({ formLogin, epamLogin }) => (
             <p>Sign in with your organizational account</p>
         </header>
         <form className="auth-form">
-            <label className="auth-form__label">LOGIN</label>
-            <input className="auth-form__input" type="text" name="login" />
-            <label className="auth-form__label">PASSWORD</label>
-            <input className="auth-form__input" type="password" name="password" />
+            <Input type="text" name="authLogin" label="LOGIN" />
+            <Input type="password" name="authPassword" label="PASSWORD" />
             <button onClick={formLogin} className="auth-form__btn btn btn_green">SignIn</button>
             <button onClick={epamLogin} className="auth-form__btn auth-form__btn_right btn">EPAM SignIn</button>
         </form>
