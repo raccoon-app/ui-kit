@@ -27,36 +27,34 @@ const getFirstArtboardId = (artboard) => {
 
 const artboard = (state = initialState, action = {}) => {
     switch (action.type) {
-        case RECEIVE_PROJECT:
-        {
+        case RECEIVE_PROJECT: {
             const activeArtboard = action.project.artboard[getFirstArtboardId(action.project.artboard)];
 
             return Object.assign({}, state, {
                 artboards: action.project.artboard,
                 url: action.url,
                 isExportEveryLayer: action.project.exportEveryLayer || null,
-                activeArtboard: activeArtboard,
+                activeArtboard,
                 layer: {
                     x: activeArtboard.x,
                     y: activeArtboard.y,
                     width: activeArtboard.width,
                     height: activeArtboard.height
-                }
+                },
             });
         }
 
-        case SET_ACTIVE_ARTBOARD:
-        {
+        case SET_ACTIVE_ARTBOARD: {
             const activeArtboard = state.artboards[action.artboardId];
 
             return Object.assign({}, state, {
-                activeArtboard: state.artboards[action.artboardId],
+                activeArtboard,
                 layer: {
                     x: activeArtboard.x,
                     y: activeArtboard.y,
                     width: activeArtboard.width,
                     height: activeArtboard.height
-                }
+                },
             });
         }
         case CLICK_ARTBOARD_LAYER:

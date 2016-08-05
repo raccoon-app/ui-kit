@@ -86,7 +86,6 @@ function openPage(state = initialState.openPage, action = {}) {
 function filter(state = initialState.filter, action = {}) {
     switch (action.type) {
         case CHANGE_FILTER:
-            console.log(action.filter)
             return action.filter;
         case RESET_STATE:
             return initialState.filter;
