@@ -2,12 +2,12 @@
  * Created by Viktoriia_Goncharuk on 7/28/2016.
  */
 jest.unmock('../SettingControlButton');
-jest.unmock('../../../actions/SettingPanelActions');
+jest.unmock('../../../actions/setting');
 
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import SettingControlButton from '../SettingControlButton';
-import { toggleSettingPanel } from '../../../actions/SettingPanelActions';
+import { toggleSettingPanel } from '../../../actions/settingPanelActions';
 import { TOGGLE_SETTING_PANEL } from '../../../constants/ActionTypes';
 
 describe('Setting Control Button appearance', () => {
