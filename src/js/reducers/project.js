@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
-import { SET_ACTIVE_ARTBOARD, SET_OPEN_PAGE, CHANGE_FILTER } from '../constants/ActionTypes';
-import { RECEIVE_PROJECT, RESET_STATE } from '../actions/project';
+import { RECEIVE_PROJECT, RESET_STATE, SET_ACTIVE_ARTBOARD, SET_OPEN_PAGE, CHANGE_FILTER } from '../actions/project';
 import { GET_PROJECT_LIST } from '../actions/projectSelection';
 
 const initialState = {
@@ -87,7 +86,6 @@ function openPage(state = initialState.openPage, action = {}) {
 function filter(state = initialState.filter, action = {}) {
     switch (action.type) {
         case CHANGE_FILTER:
-            console.log(action.filter)
             return action.filter;
         case RESET_STATE:
             return initialState.filter;

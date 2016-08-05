@@ -1,10 +1,5 @@
-import {
-    CLICK_ARTBOARD_LAYER,
-    ENTER_ARTBOARD_LAYER,
-    LEAVE_ARTBOARD_LAYER,
-    SET_ACTIVE_ARTBOARD,
-} from '../constants/ActionTypes';
-import { RESET_STATE } from '../actions/project';
+import { CLICK_ARTBOARD_LAYER, ENTER_ARTBOARD_LAYER, LEAVE_ARTBOARD_LAYER } from '../actions/artboard';
+import { RESET_STATE, SET_ACTIVE_ARTBOARD } from '../actions/project';
 import measurementLayers from '../utils/measurementLayers';
 
 const initialState = {

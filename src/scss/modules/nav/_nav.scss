@@ -121,19 +121,19 @@
 .nav-page {
     .icon-selected-page-icon {
         &::after {
-          content: "\e907";
-          font-size: 32px;
-          width: 32px;
-          height: 32px;
-          color: $LIGHT;
-          position: absolute;
-          z-index: 2;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          margin: auto;
-          display: none;
+            content: "\e907";
+            font-size: 32px;
+            width: 32px;
+            height: 32px;
+            color: $LIGHT;
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            display: none;
         }
     }
 }
@@ -160,12 +160,11 @@
         &::after {
             content: "";
             position: absolute;
-            opacity: 0;
             width: 100%;
             height: 100%;
-            border: 1px solid $LIGHT;
-            background-color: $DARK;
-            transition: opacity 0.3s ease-out;
+            border: 3px solid transparent;
+            background-color: transparent;
+            transition: background, border 0.3s ease-out;
         }
     }
 
@@ -206,8 +205,8 @@
     }
 
     .nav-page__link-img::after {
-        background-color: $PRIMARY;
-        opacity: 0.7;
+        border-color: $LIGHT;
+        background-color: rgba(0, 171, 190, 0.6);
     }
 }
 
@@ -236,7 +235,8 @@
         background-color: inherit;
 
         .nav-page__link-img::after {
-            opacity: 0.7;
+            border-color: $LIGHT;
+            background-color: rgba(0, 171, 190, 0.6);
         }
     }
 }
@@ -246,14 +246,6 @@
     flex: 0 0 50px;
     padding: 12px 10px;
     background-color: $LIGHT;
-
-    .icon-list-view::after {
-        content: "\e90f";
-    }
-
-    .icon-title-view::after {
-        content: "\e909";
-    }
 
     &__btn {
         display: inline-block;
@@ -285,11 +277,14 @@
         float: right;
 
         &-input {
-            width: 224px;
-            height: 14px;
-            padding: 5px 25px 5px 5px;
+            width: 188px;
+            height: 13px;
+            padding: 6px 60px 5px 7px;
             background-color: $FORM-GREY;
             border: solid 1px $ULTRA-LIGHT-GREY;
+            font-family: $DEFAULT_FONT;
+            font-size: 13px;
+            font-weight: normal;
 
             &:focus,
             &:active {
@@ -312,18 +307,6 @@
             &:active {
                 outline: 0;
             }
-
-            &::after {
-                content: "\e90a";
-            }
-
-            &_reset {
-                color: red;
-
-                &::after {
-                    content: "\ea0f";
-                }
-            }
         }
     }
 
@@ -336,8 +319,7 @@
     margin-left: 10px;
 
     .icon-chevron-left::after {
-        content: '\e908';
-        transform: rotate(180deg);
+        @extend .icon-chevron-right;
     }
 
     .disable {
@@ -375,6 +357,3 @@
         }
     }
 }
-
-
-

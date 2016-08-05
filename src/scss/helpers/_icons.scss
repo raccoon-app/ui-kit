@@ -1,0 +1,23 @@
+.icon-list-view::after {
+  content: "\e90f";
+}
+
+.icon-project-icon::after {
+  content: "\e909";
+}
+
+.icon-chevron-left::after {
+  content: '\E908';
+}
+
+.icon-chevron-right::after {
+  content: '\E908';
+  display: inline-block;
+  transform: rotate(180deg);
+}
+.icon-search::after {
+  content: "\e90a";
+}
+.icon-cross::after {
+  content: "\ea0f";
+}

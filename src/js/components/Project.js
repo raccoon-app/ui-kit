@@ -3,7 +3,7 @@ import Nav from '../containers/Nav';
 import Header from './Header';
 import Artboard from '../containers/Artboard';
 import Tools from '../containers/Tools';
-import HeaderInfo from '../containers/HeaderInfo';
+import ArtboardTitle from '../containers/ArtboardTitle';
 import Spinner from './Spinner';
 
 class Project extends Component {
@@ -29,7 +29,7 @@ class Project extends Component {
 
         return (
             <div className="app">
-                <Header name={project.name} headerInfo={<HeaderInfo />} />
+                <Header name={project.name} headerInfo={<ArtboardTitle />} />
 
                 {isFetching ?
                     <div className="main">

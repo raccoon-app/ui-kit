@@ -19,12 +19,30 @@
         text-indent: -9999px;
     }
 
+    &__projects {
+        order: 2;
+        color: $PRIMARY;
+        text-decoration: none;
+        font-size: 16px;
+        height: 16px;
+        align-self: center;
+    }
+
+    &__point {
+        order: 3;
+        color: $GRAY;
+        font-size: 15px;
+        height: 15px;
+        align-self: center;
+        margin: 0 10px;
+    }
+
     &__title {
         flex: 0 0 220px;
         max-width: 220px;
-        order: 2;
+        order: 3;
         padding: 4px 0 0;
-        font-size: 16px;
+        font-size: 18px;
         text-transform: uppercase;
         line-height: 1;
         font-family: $HEADLINE_FONT;

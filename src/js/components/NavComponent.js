@@ -42,7 +42,7 @@ export default class NavPageList extends Component {
                         </button>
                         <button
                             className={classnames({
-                                'icon-title-view': true,
+                                'icon-project-icon': true,
                                 'nav-footer__btn': true,
                                 'nav-footer__btn_active': this.props.viewMode === 'tile',
                             })}
@@ -51,19 +51,18 @@ export default class NavPageList extends Component {
                         </button>
 
                         <div className="nav-footer__search">
-
                             <input
-                                placeholder="search"
                                 className="nav-footer__search-input"
                                 type="search"
                                 value={this.props.filter}
+                                placeholder="SEARCH"
                                 onChange={(event) => this.props.setFilter(event.target.value)}
                             />
                             <button
                                 className={classnames({
-                                    'icon-search': true,
                                     'nav-footer__search-btn': true,
-                                    'nav-footer__search-btn_reset': this.props.filter,
+                                    'icon-cross': this.props.filter,
+                                    'icon-search': !this.props.filter
                                 })}
                                 onClick={() => this.props.setFilter()}
                             >

@@ -1,3 +1,5 @@
+// @TODO not used
+
 import { ZOOM_ARTBOARD, SCALE_ARTBOARD, TAKE_ARTBOARD, DROP_ARTBOARD, DRAG_ARTBOARD } from '../constants/ActionTypes';
 
 const initialState = {
@@ -23,20 +25,17 @@ let coords = {
 const control = (state = initialState, action = {}) => {
     switch (action.type) {
         case ZOOM_ARTBOARD: {
-            const event = action.event;
+
             const ZOOM_STEP = 0.1;
+
             let newScale = state.scale;
 
-            event.preventDefault();
-
-            if (!action.value) {
-                newScale = 1;
+            if (action.value === 'plus') {
+                newScale += ZOOM_STEP;
+            } else if (action.value === 'minus') {
+                newScale -= ZOOM_STEP;
             } else {
-                if (action.value === 'plus') {
-                    newScale += ZOOM_STEP;
-                } else {
-                    newScale -= ZOOM_STEP;
-                }
+                newScale = action.value;
             }
 
             newScale = newScale < 2 * ZOOM_STEP ? 2 * ZOOM_STEP : newScale;

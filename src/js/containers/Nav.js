@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { setOpenPage, setActiveArtboard, changeViewMode, setFilter } from '../actions';
+import { setOpenPage, setActiveArtboard, setFilter } from '../actions/project';
+import { changeViewMode } from '../actions/setting';
 import NavPageList from '../components/NavPageList';
 import NavComponent from '../components/NavComponent';
 
