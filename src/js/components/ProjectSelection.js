@@ -15,14 +15,15 @@ class ProjectSelection extends Component {
         return (
             <div className="app">
                 <Header />
-                <div className="main">
+                <div className="main project-selection">
                     {isFetching ?
                         <Spinner />
                     :
                         <ul className="project-list">
                             {projectSelection.map((project) => (
-                                <li>
+                                <li className="project-list__item">
                                     <Link className="project-list__link" to={`project/${project._id}`}>
+                                        <img className="project-list__plate" src={project.image} alt=""/>
                                         {project.title}
                                     </Link>
                                 </li>
