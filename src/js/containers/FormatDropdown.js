@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { changeDropdownValue, toggleDropdown } from '../actions';
-import { getFormatDropdownValue, getFormatDropdownVisibleState } from '../reducers/setting';
+import { changeDropdownValue, toggleDropdown } from '../actions/setting';
+import { getFormatDropdownValue, getActiveDropdown } from '../reducers/setting';
 import Dropdown from '../components/Dropdown';
+
 const data = [
     { value: 'png', text: 'PNG' },
     { value: 'jpg', text: 'JPG' },
@@ -11,8 +12,14 @@ const data = [
 const name = 'format';
 
 class FormatDropdown extends Component {
+
     render() {
-        const { activeValue, changeDropdownValue, visibility, toggleDropdown } = this.props;
+        const { activeValue, changeDropdownValue,  toggleDropdown, activeDropdown } = this.props;
+        var visibility = false;
+
+        if(activeDropdown == name) {
+            visibility = true;
+        }
 
         return (
             <Dropdown
@@ -21,7 +28,7 @@ class FormatDropdown extends Component {
                 name = {name}
                 changeDropdownValue = {changeDropdownValue}
                 visibility = {visibility}
-                toggleDropdown = {toggleDropdown.bind(this, name, visibility)}
+                toggleDropdown = {toggleDropdown.bind(this, name)}
             />
         );
     }
@@ -30,13 +37,12 @@ class FormatDropdown extends Component {
 FormatDropdown.propTypes = {
     activeValue: PropTypes.string,
     changeDropdownValue: PropTypes.func.isRequired,
-    visibility: PropTypes.string,
     toggleDropdown: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
     activeValue: getFormatDropdownValue(state.setting),
-    visibility: getFormatDropdownVisibleState(state.setting),
+    activeDropdown: getActiveDropdown(state.setting)
 });
 
 export default connect(

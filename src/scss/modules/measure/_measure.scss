@@ -1,10 +1,11 @@
 .measure {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
     height: 100%;
     width: 100%;
     pointer-events: none;
+    transform: translate(-50%, -50%);
 
     &_disabled {
         display: none;
@@ -33,6 +34,10 @@
             color: #fff;
             background: $PRIMARY_CTRL;
             white-space: nowrap;
+
+            &_text_dark {
+                color: #000000;
+            }
         }
     }
 
@@ -139,6 +144,10 @@
             font-weight: 100;
             color: #fff;
             background: red;
+
+            &_text_dark {
+                color: #000000;
+            }
         }
 
         &_top &,
@@ -160,4 +169,10 @@
             }
         }
     }
+}
+
+.artboard_animated .measure,
+.artboard_animated .measure-marker,
+.artboard_animated .measure-lighthouse {
+    transition: all 0.5s;
 }

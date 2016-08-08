@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { setOpenPage, setActiveArtboard, changeViewMode, setFilter } from '../actions';
-import { getProjectFolders, getProjectName, getActivePage, getOpenPage, getActiveArtboard, getFilter } from '../reducers/project';
-import { getViewMode } from '../reducers/setting';
+import { setOpenPage, setActiveArtboard, setFilter } from '../actions/project';
+import { changeViewMode } from '../actions/setting';
 import NavPageList from '../components/NavPageList';
 import NavComponent from '../components/NavComponent';
 
@@ -55,16 +54,16 @@ NavContainer.propTypes = {
     setOpenPage: PropTypes.func.isRequired,
     changeViewMode: PropTypes.func.isRequired,
     setFilter: PropTypes.func.isRequired,
-}
+};
 
-const mapStateToProps = (state) => ({
-    folders: getProjectFolders(state.project),
-    name: getProjectName(state.project),
-    activePage: getActivePage(state.project),
-    activeArtboard: getActiveArtboard(state.project),
-    openPage: getOpenPage(state.project),
-    filter: getFilter(state.project),
-    viewMode: getViewMode(state.setting),
+const mapStateToProps = ({ project, setting }) => ({
+    folders: project.folders,
+    name: project.name,
+    activePage: project.activePage,
+    activeArtboard: project.activeArtboard,
+    openPage: project.openPage,
+    filter: project.filter,
+    viewMode: setting.viewMode,
 });
 
 

@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux'
-import { RECEIVE_PROJECT, SET_ACTIVE_ARTBOARD } from '../constants/ActionTypes'
+import { RECEIVE_PROJECT, SET_ACTIVE_ARTBOARD } from '../actions/project';
+import { CLICK_ARTBOARD_LAYER } from '../actions/artboard';
 
 const initialState = {
     artboards: {},
@@ -7,69 +7,63 @@ const initialState = {
     activeArtboard: {
         layer: [],
     },
+    isExportEveryLayer: null,
+    layer: {
+        x: 0,
+        y: 0,
+    }
 };
 
-function artboards(state = initialState.artboards, action = {}) {
-    switch (action.type) {
-        case RECEIVE_PROJECT:
-            return action.project.artboard;
-        default:
-          return state;
+const getFirstArtboardId = (artboard) => {
+    let firstId;
+
+    for (const key in artboard) {
+        firstId = artboard[key].id;
+        break;
     }
-}
 
-function url(state = initialState.url, action = {}) {
+    return firstId;
+};
+
+const artboard = (state = initialState, action = {}) => {
     switch (action.type) {
-        case RECEIVE_PROJECT:
-            return action.url;
-        default:
-            return state;
-    }
-}
+        case RECEIVE_PROJECT: {
+            const activeArtboard = action.project.artboard[getFirstArtboardId(action.project.artboard)];
 
-function activeArtboard(state = initialState.activeArtboard, action = {}) {
-    switch (action.type) {
-        case RECEIVE_PROJECT:
-            let firstId;
-
-            // @TODO FIXME
-            for (const key in action.project.artboard) {
-                firstId = action.project.artboard[key].id;
-                break;
-            }
-
-            return action.project.artboard[firstId];
-
-        default:
-            return state;
-    }
-}
-
-export default function artboard(state = initialState, action = {}) {
-    switch (action.type) {
-        case SET_ACTIVE_ARTBOARD:
             return Object.assign({}, state, {
-                activeArtboard: state.artboards[action.artboardId],
+                artboards: action.project.artboard,
+                url: action.url,
+                isExportEveryLayer: action.project.exportEveryLayer || null,
+                activeArtboard,
+                layer: {
+                    x: activeArtboard.x,
+                    y: activeArtboard.y,
+                    width: activeArtboard.width,
+                    height: activeArtboard.height
+                },
             });
+        }
 
+        case SET_ACTIVE_ARTBOARD: {
+            const activeArtboard = state.artboards[action.artboardId];
+
+            return Object.assign({}, state, {
+                activeArtboard,
+                layer: {
+                    x: activeArtboard.x,
+                    y: activeArtboard.y,
+                    width: activeArtboard.width,
+                    height: activeArtboard.height
+                },
+            });
+        }
+        case CLICK_ARTBOARD_LAYER:
+            return Object.assign({}, state, {
+                layer: action.layer,
+            });
         default:
-            return {
-                artboards: artboards(state.artboards, action),
-                activeArtboard: activeArtboard(state.activeArtboard, action),
-                url: url(state.url, action)
-            };
+            return state;
     }
-}
+};
 
-export function getArtboards(state) {
-    return state.artboards;
-}
-
-export function getImage(state) {
-    return state.url + state.activeArtboard.src + '/artboard.png';
-}
-
-export function getActiveArtboard(state) {
-    return state.activeArtboard;
-}
-
+export default artboard;

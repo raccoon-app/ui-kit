@@ -1,19 +1,19 @@
 import React from 'react';
-import { applyMiddleware } from 'redux';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import App from './components/App';
-import configureStore from './store/configureStore';
-import { getProject } from './actions';
-import '../scss/main.scss';
+import { Router } from 'react-router';
 
-const store = configureStore(applyMiddleware(thunk));
-store.dispatch(getProject('http://design.oweather.net/'));
+import AppStore from './store';
+import routes from './routes';
+
+import '../scss/main.scss';
+const store = AppStore();
 
 render(
-    <Provider store={store}>
-        <App />
+    <Provider store={store.state}>
+        <Router history={store.history}>
+            { routes() }
+        </Router>
     </Provider>,
-    document.getElementById('react')
+    document.getElementById('root')
 );
