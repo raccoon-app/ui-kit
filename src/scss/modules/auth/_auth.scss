@@ -21,7 +21,7 @@
   }
 
   &-form {
-    max-width: 320px;
+    width: 320px;
 
     &__label {
       display: block;
@@ -33,6 +33,7 @@
     &__input {
       height: 50px;
       margin-bottom: 20px;
+      padding: 5px 10px;
       width: 100%;
       color: $DEFAULT;
     }
