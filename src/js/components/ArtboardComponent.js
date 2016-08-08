@@ -168,7 +168,7 @@ export default class ArtboardComponent extends Component {
     }
 
     render() {
-        const { image, width, height, left, top, zIndex, background } = this.props;
+        const { image, width, height, left, top, zIndex, background, resetArtboardLayer } = this.props;
         const { isDragging, scale, dragging } = this.state;
 
         return (
@@ -188,6 +188,13 @@ export default class ArtboardComponent extends Component {
                     className="artboard__draggable" style={{
                         left: dragging.x + 'px',
                         top: dragging.y + 'px',
+                    }}
+                    onClick={(event) => {
+                        event.stopPropagation();
+
+                        if (event.currentTarget === event.target) {
+                            resetArtboardLayer();
+                        }
                     }}
                     ref="draggable"
                 >
@@ -255,4 +262,5 @@ ArtboardComponent.propTypes = {
     height: PropTypes.number,
     zIndex: PropTypes.number,
     background: PropTypes.object,
+    resetArtboardLayer: PropTypes.func,
 };
