@@ -5,7 +5,7 @@ class Input extends Component {
         super();
 
         this.state = {
-            value: 'asd',
+            value: '',
         };
     }
 

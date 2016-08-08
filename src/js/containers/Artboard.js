@@ -1,13 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { clickArtboardLayer, enterArtboardLayer, leaveArtboardLayer } from '../actions/artboard';
+import { clickArtboardLayer, enterArtboardLayer, leaveArtboardLayer, resetArtboardLayer } from '../actions/artboard';
 import ArtboardComponent from '../components/ArtboardComponent';
 import ArtboardLayerItem from '../components/ArtboardLayerItem';
 
 class Artboard extends Component {
     render() {
         const { activeArtboard, image, backgroundColor,
-            clickArtboardLayer, enterArtboardLayer, leaveArtboardLayer } = this.props;
+            clickArtboardLayer, enterArtboardLayer, leaveArtboardLayer, resetArtboardLayer } = this.props;
 
         return (
             <ArtboardComponent
@@ -18,6 +18,7 @@ class Artboard extends Component {
                 height={activeArtboard.height}
                 zIndex={activeArtboard.zIndex}
                 background={backgroundColor}
+                resetArtboardLayer={resetArtboardLayer}
             >
                 {activeArtboard.layer.map(layer =>
                         <ArtboardLayerItem
@@ -49,5 +50,5 @@ const mapStateToProps = ({ artboard, setting }) => ({
 
 export default connect(
     mapStateToProps,
-    { clickArtboardLayer, enterArtboardLayer, leaveArtboardLayer }
+    { clickArtboardLayer, enterArtboardLayer, leaveArtboardLayer, resetArtboardLayer }
 )(Artboard);
