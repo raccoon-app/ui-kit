@@ -1,5 +1,5 @@
 import { RECEIVE_PROJECT, SET_ACTIVE_ARTBOARD } from '../actions/project';
-import { CLICK_ARTBOARD_LAYER } from '../actions/artboard';
+import { CLICK_ARTBOARD_LAYER, RESET_LAYER } from '../actions/artboard';
 
 const initialState = {
     artboards: {},
@@ -39,7 +39,7 @@ const artboard = (state = initialState, action = {}) => {
                     x: activeArtboard.x,
                     y: activeArtboard.y,
                     width: activeArtboard.width,
-                    height: activeArtboard.height
+                    height: activeArtboard.height,
                 },
             });
         }
@@ -53,14 +53,27 @@ const artboard = (state = initialState, action = {}) => {
                     x: activeArtboard.x,
                     y: activeArtboard.y,
                     width: activeArtboard.width,
-                    height: activeArtboard.height
+                    height: activeArtboard.height,
                 },
             });
         }
+
+        case RESET_LAYER: {
+            return Object.assign({}, state, {
+                layer: {
+                    x: state.activeArtboard.x,
+                    y: state.activeArtboard.y,
+                    width: state.activeArtboard.width,
+                    height: state.activeArtboard.height,
+                },
+            });
+        }
+
         case CLICK_ARTBOARD_LAYER:
             return Object.assign({}, state, {
                 layer: action.layer,
             });
+
         default:
             return state;
     }

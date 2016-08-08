@@ -1,6 +1,7 @@
 export const CLICK_ARTBOARD_LAYER = 'CLICK_ARTBOARD_LAYER';
 export const ENTER_ARTBOARD_LAYER = 'ENTER_ARTBOARD_LAYER';
 export const LEAVE_ARTBOARD_LAYER = 'LEAVE_ARTBOARD_LAYER';
+export const RESET_LAYER = 'RESET_LAYER';
 
 
 export function clickArtboardLayer(layer) {
@@ -14,3 +15,6 @@ export function enterArtboardLayer(layer) {
 export function leaveArtboardLayer(layer) {
     return { type: LEAVE_ARTBOARD_LAYER, layer };
 }
+
+
+export const resetArtboardLayer = () => ({ type: RESET_LAYER });

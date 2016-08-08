@@ -1,4 +1,4 @@
-import { CLICK_ARTBOARD_LAYER, ENTER_ARTBOARD_LAYER, LEAVE_ARTBOARD_LAYER } from '../actions/artboard';
+import { CLICK_ARTBOARD_LAYER, ENTER_ARTBOARD_LAYER, LEAVE_ARTBOARD_LAYER, RESET_LAYER } from '../actions/artboard';
 import { RESET_STATE, SET_ACTIVE_ARTBOARD } from '../actions/project';
 import measurementLayers from '../utils/measurementLayers';
 
@@ -40,6 +40,9 @@ const measurement = (state = initialState, action = {}) => {
             return Object.assign({}, state, {
                 spacing: initialState.spacing,
             });
+
+        case RESET_LAYER:
+            return initialState;
 
         case SET_ACTIVE_ARTBOARD:
             return initialState;

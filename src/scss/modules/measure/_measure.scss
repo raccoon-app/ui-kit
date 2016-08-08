@@ -171,8 +171,12 @@
     }
 }
 
-.artboard_animated .measure,
-.artboard_animated .measure-marker,
-.artboard_animated .measure-lighthouse {
-    transition: all 0.5s;
+.measure,
+.measure-marker,
+.measure-lighthouse {
+    transition: all 0.2s;
+
+    .artboard_animated & {
+        transition: all 0.5s;
+    }
 }
