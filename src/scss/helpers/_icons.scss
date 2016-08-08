@@ -6,6 +6,10 @@
   content: "\e909";
 }
 
+.icon-project-footer::after {
+  content: "\e912";
+}
+
 .icon-chevron-left::after {
   content: '\E908';
 }
@@ -16,8 +20,8 @@
   transform: rotate(180deg);
 }
 .icon-search::after {
-  content: "\e90a";
+  content: "\e911";
 }
 .icon-cross::after {
-  content: "\ea0f";
+  content: "\e910";
 }
