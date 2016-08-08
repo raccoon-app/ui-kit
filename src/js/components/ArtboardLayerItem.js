@@ -1,30 +1,32 @@
-import React, { Component, PropTypes } from 'react'
-import classnames from 'classnames'
+import React, { PropTypes } from 'react';
 
-export default class ArtboardLayerItem extends Component {
-    render() {
-        const { layer } = this.props
+const ArtboardLayerItem = (props) => {
+    const { layer, onClickArtboardLayer, onEnterArtboardLayer, onLeaveArtboardLayer } = props;
+    const units = 'px';
+    const style = {
+        left: layer.x + units,
+        top: layer.y + units,
+        width: layer.width + units,
+        height: layer.height + units,
+        zIndex: layer.zIndex,
+    };
 
-        return (
-            <div className="artboard__layer"
-                 style={{
-                        left: layer.x+'px',
-                        top: layer.y+'px',
-                        width: layer.width+'px',
-                        height: layer.height+'px',
-                        zIndex: layer.zIndex
-                 }}
-                 onClick={this.props.onClickArtboardLayer}
-                 onMouseEnter={this.props.onEnterArtboardLayer}
-                 onMouseLeave={this.props.onLeaveArtboardLayer}>
-            </div>
-        )
-    }
-}
+    return (
+        <div className="artboard__layer"
+            style={style}
+            onClick={onClickArtboardLayer}
+            onMouseEnter={onEnterArtboardLayer}
+            onMouseLeave={onLeaveArtboardLayer}
+        >
+        </div>
+    );
+};
 
 ArtboardLayerItem.propTypes = {
     layer: PropTypes.object,
     onClickArtboardLayer: PropTypes.func,
     onEnterArtboardLayer: PropTypes.func,
-    onLeaveArtboardLayer: PropTypes.func
-}
+    onLeaveArtboardLayer: PropTypes.func,
+};
+
+export default ArtboardLayerItem;

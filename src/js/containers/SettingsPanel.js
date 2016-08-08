@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { getMarkerColorList, getBackgroundColorList, getSettingPanelVisibilityState, getBackgroundColor, getMarkerColor } from '../reducers/setting';
 import RadioColorSwitcher from '../components/settings/RadioColorSwitcher';
 import SettingControlButton from '../components/settings/SettingControlButton';
-import { toggleSettingPanel, setSwitcherColor } from '../actions';
+import { toggleSettingPanel, setSwitcherColor } from '../actions/setting';
 import classnames from 'classnames';
 
 const SettingsPanel = (props) => {
@@ -47,12 +46,12 @@ SettingsPanel.propTypes = {
     backgroundColor: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-    markerColorList: getMarkerColorList(state.setting),
-    backgroundColorList: getBackgroundColorList(state.setting),
-    settingPanelVisibility: getSettingPanelVisibilityState(state.setting),
-    markerColor: getMarkerColor(state.setting),
-    backgroundColor: getBackgroundColor(state.setting),
+const mapStateToProps = ({ setting }) => ({
+    markerColorList: setting.markerColorList,
+    backgroundColorList: setting.backgroundColorList,
+    settingPanelVisibility: setting.settingPanelVisibility,
+    markerColor: setting.markerColor,
+    backgroundColor: setting.backgroundColor,
 });
 
 const mapDispatchToProps = (dispatch) => ({

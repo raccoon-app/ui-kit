@@ -1,12 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
+import { isColorLight } from '../utils/UIColors';
 
 export default class MeasureMarker extends Component {
     render() {
         const { scale, measure, type, color } = this.props;
+
         return (
             <div className={classnames({
-                measure_disabled: !measure.x,
+                measure_disabled: (!measure.x && measure.x !== 0),
             })}
             >
             <div className={classnames('measure-marker', 'measure-marker_' + type)} style={{
@@ -17,7 +19,11 @@ export default class MeasureMarker extends Component {
                 boxShadow: '0 0 0 1px' + color,
             }}
             >
-                <span className="measure-marker__value" style={{ backgroundColor: color }}>
+                <span className={classnames({
+                    'measure-marker__value': true,
+                    'measure-marker__value_text_dark': isColorLight(color),
+                })} style={{ backgroundColor: color }}
+                >
                     {measure.width} * {measure.height}
                 </span>
             </div>

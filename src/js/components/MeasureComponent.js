@@ -3,17 +3,26 @@ import classnames from 'classnames';
 import Marker from './MeasureMarker';
 import Spacing from './MeasureSpacing';
 
+const getRound = (value = 100, scale = 1) => {
+
+    return 2 * Math.round(value * scale / 2);
+};
+
 export default class MeasureComponent extends Component {
     render() {
-        const { scale, markerColor: { currentColor, hoverColor } } = this.props;
+        const { scale, markerColor: { currentColor, hoverColor },
+            width, height, currentLayer, hoverLayer } = this.props;
 
         return (
             <div className={classnames({
-                measure: true,
-                measure_disabled: !this.props.currentLayer.x && !this.props.hoverLayer.x,
-            })}
+                    measure: true,
+                    measure_disabled: (!currentLayer.x && currentLayer.x !== 0) && (!hoverLayer.x && hoverLayer.x !== 0),
+                })}
+                style={{
+                    width: getRound(width, scale) + 'px',
+                    height: getRound(height, scale) + 'px',
+                }}
             >
-
                 <Marker scale={scale} measure={this.props.hoverLayer} color={hoverColor} type="hover" />
                 <Marker scale={scale} measure={this.props.currentLayer} color={currentColor} type="current" />
                 <Spacing scale={scale} spacing={this.props.spacing} color={hoverColor} />
@@ -29,4 +38,6 @@ MeasureComponent.propTypes = {
     spacing: PropTypes.array,
     markerColor: PropTypes.object,
     scale: PropTypes.number,
+    width: PropTypes.number,
+    height: PropTypes.number,
 };

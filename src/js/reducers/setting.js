@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { CHANGE_VIEW_MODE, CHANGE_SIZE_DROPDOWN, CHANGE_FORMAT_DROPDOWN, TOGGLE_SIZE_DROPDOWN,
-    TOGGLE_FORMAT_DROPDOWN, TOGGLE_SETTING_PANEL, SET_MARKER_COLOR, SET_BACKGROUND_COLOR } from '../constants/ActionTypes';
+import { CHANGE_VIEW_MODE, CHANGE_SIZE_DROPDOWN, CHANGE_FORMAT_DROPDOWN, TOGGLE_SETTING_PANEL, CLICK_DROPDOWN } from '../actions/setting';
+import { CLICK_ARTBOARD_LAYER } from '../actions/artboard';
 
 const initialState = {
     markerColor: { currentColor: '#a3c644', hoverColor: '#2cc4d5' },
@@ -22,13 +22,12 @@ const initialState = {
     viewMode: 'list',
     sizeDropdownValue: 'all',
     formatDropdownValue: 'PNG',
-    sizeDropdownVisibility: false,
-    formatDropdownVisibility: false,
     settingPanelVisibility: false,
+    activeDropdown: null
 };
 
 
-function viewMode(state = initialState.viewMode, action) {
+function viewMode(state = initialState.viewMode, action = {}) {
     switch (action.type) {
         case CHANGE_VIEW_MODE:
             return action.mode;
@@ -37,39 +36,39 @@ function viewMode(state = initialState.viewMode, action) {
     }
 }
 
-function markerColor(state = initialState.markerColor, action) {
+function markerColor(state = initialState.markerColor, action = {}) {
     switch (action.type) {
-        case SET_MARKER_COLOR:
+        case 'SET_MARKER_COLOR':
             return Object.assign({}, state, action.color);
         default:
             return state;
     }
 }
 
-function backgroundColor(state = initialState.backgroundColor, action) {
+function backgroundColor(state = initialState.backgroundColor, action = {}) {
     switch (action.type) {
-        case SET_BACKGROUND_COLOR:
+        case 'SET_BACKGROUND_COLOR':
             return Object.assign({}, state, action.color);
         default:
             return state;
     }
 }
 
-function markerColorList(state = initialState.markerColorList, action) {
+function markerColorList(state = initialState.markerColorList, action = {}) {
     switch (action.type) {
         default:
             return state;
     }
 }
 
-function backgroundColorList(state = initialState.backgroundColorList, action) {
+function backgroundColorList(state = initialState.backgroundColorList, action = {}) {
     switch (action.type) {
         default:
             return state;
     }
 }
 
-function sizeDropdownValue(state = initialState.sizeDropdownValue, action) {
+function sizeDropdownValue(state = initialState.sizeDropdownValue, action = {}) {
     switch (action.type) {
         case CHANGE_SIZE_DROPDOWN:
             return action.currentValue;
@@ -78,7 +77,7 @@ function sizeDropdownValue(state = initialState.sizeDropdownValue, action) {
     }
 }
 
-function formatDropdownValue(state = initialState.formatDropdownValue, action) {
+function formatDropdownValue(state = initialState.formatDropdownValue, action = {}) {
     switch (action.type) {
         case CHANGE_FORMAT_DROPDOWN:
             return action.currentValue;
@@ -87,28 +86,21 @@ function formatDropdownValue(state = initialState.formatDropdownValue, action) {
     }
 }
 
-function sizeDropdownVisibility(state = initialState.sizeDropdownVisibility, action) {
-    switch (action.type) {
-        case TOGGLE_SIZE_DROPDOWN:
-            return action.newValue;
-        default:
-            return state;
-    }
-}
-
-function formatDropdownVisibility(state = initialState.formatDropdownVisibility, action) {
-    switch (action.type) {
-        case TOGGLE_FORMAT_DROPDOWN:
-            return action.newValue;
-        default:
-            return state;
-    }
-}
-
-function settingPanelVisibility(state = initialState.settingPanelVisibility, action) {
+function settingPanelVisibility(state = initialState.settingPanelVisibility, action = {}) {
     switch (action.type) {
         case TOGGLE_SETTING_PANEL:
             return !state;
+        default:
+            return state;
+    }
+}
+
+function activeDropdown(state = initialState.activeDropdown, action = {}) {
+    switch (action.type) {
+        case CLICK_DROPDOWN:
+            return action.dropdownName;
+        case CLICK_ARTBOARD_LAYER:
+            return initialState.activeDropdown;
         default:
             return state;
     }
@@ -122,14 +114,9 @@ export default combineReducers({
     viewMode,
     sizeDropdownValue,
     formatDropdownValue,
-    sizeDropdownVisibility,
-    formatDropdownVisibility,
     settingPanelVisibility,
+    activeDropdown
 });
-
-export function getViewMode(state) {
-    return state.viewMode;
-}
 
 export function getMarkerColor(state) {
     return state.markerColor;
@@ -155,14 +142,10 @@ export function getFormatDropdownValue(state) {
     return state.formatDropdownValue;
 }
 
-export function getSizeDropdownVisibleState(state) {
-    return state.sizeDropdownVisibility;
-}
-
-export function getFormatDropdownVisibleState(state) {
-    return state.formatDropdownVisibility;
-}
-
 export function getSettingPanelVisibilityState(state) {
     return state.settingPanelVisibility;
+}
+
+export function getActiveDropdown(state) {
+    return state.activeDropdown;
 }
