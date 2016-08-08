@@ -1,7 +1,8 @@
 .auth {
     align-items: center;
     justify-content: center;
-    background: url('../img/auth-background.jpg') center center;
+    background: $DEFAULT url('../img/auth-background.jpg') fixed center center;
+    background-size: cover;
     color: $LIGHT;
     font-family: $mainFont;
 
