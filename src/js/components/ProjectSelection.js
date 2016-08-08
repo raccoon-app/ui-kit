@@ -23,7 +23,7 @@ class ProjectSelection extends Component {
                             {projectSelection.map((project) => (
                                 <li className="project-list__item">
                                     <Link className="project-list__link" to={`project/${project._id}`}>
-                                        <img className="project-list__plate" src={project.image} alt=""/>
+                                        <img className="project-list__plate" src={project.image} alt={project.title} />
                                         {project.title}
                                     </Link>
                                 </li>
