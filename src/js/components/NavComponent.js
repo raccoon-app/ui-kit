@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 
-export default class NavPageList extends Component {
+class NavPageList extends Component {
     constructor(props) {
         super(props);
         this.state = { disabled: false };
@@ -10,7 +10,7 @@ export default class NavPageList extends Component {
 
     toggleView() {
         this.setState({
-            disabled: !this.state.disabled
+            disabled: !this.state.disabled,
         });
     }
 
@@ -62,7 +62,7 @@ export default class NavPageList extends Component {
                                 className={classnames({
                                     'nav-footer__search-btn': true,
                                     'icon-cross': this.props.filter,
-                                    'icon-search': !this.props.filter
+                                    'icon-search': !this.props.filter,
                                 })}
                                 onClick={() => this.props.setFilter()}
                             >
@@ -86,7 +86,6 @@ export default class NavPageList extends Component {
     }
 }
 
-
 NavPageList.propTypes = {
     children: PropTypes.node,
     name: PropTypes.string,
@@ -95,3 +94,5 @@ NavPageList.propTypes = {
     changeViewMode: PropTypes.func.isRequired,
     setFilter: PropTypes.func.isRequired,
 };
+
+export default NavPageList;

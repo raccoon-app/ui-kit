@@ -19,7 +19,7 @@ function getStyles({ backgroundColor, radialGradient }) {
     return getDottedTexture(backgroundColor, radialGradient, '10%', '16px 16px');
 }
 
-export default class ArtboardComponent extends Component {
+class ArtboardComponent extends Component {
     constructor() {
         super();
 
@@ -47,7 +47,6 @@ export default class ArtboardComponent extends Component {
     }
 
     onWheelArtboard(event) {
-        console.log('onWheelArtboard')
         const ZOOM_STEP = 0.2;
         event.preventDefault();
 
@@ -184,10 +183,10 @@ export default class ArtboardComponent extends Component {
                 onWheel={(event) => {
                     if (!wait) {
                         wait = true;
-                        this.onWheelArtboard(event)
+                        this.onWheelArtboard(event);
 
                         clearTimeout(deferTimer);
-                        deferTimer = setTimeout(() => (wait = false), 250);
+                        deferTimer = setTimeout(() => (wait = false), 40);
                     }
                 }}
                 onMouseDown={(event) => this.onTakeArtboard(event)}
@@ -197,8 +196,8 @@ export default class ArtboardComponent extends Component {
             >
                 <div
                     className="artboard__draggable" style={{
-                        left: dragging.x + 'px',
-                        top: dragging.y + 'px',
+                        left: `${dragging.x}px`,
+                        top: `${dragging.y}px`,
                     }}
                     onClick={(event) => {
                         event.stopPropagation();
@@ -211,17 +210,17 @@ export default class ArtboardComponent extends Component {
                 >
                     <div
                         className="artboard__scale" style={{
-                            transform: 'scale(' + scale + ')'
+                            transform: `scale(${scale})`,
                         }}
                         ref="scale"
                     >
                         <div
                             className="artboard__layer-list" style={{
-                                backgroundImage: 'url(' + image + ')',
-                                width: width + 'px',
-                                height: height + 'px',
-                                top: top + 'px',
-                                left: left + 'px',
+                                backgroundImage: `url(${image})`,
+                                width: `${width}px`,
+                                height: `${height}px`,
+                                top: `${top}px`,
+                                left: `${left}px`,
                                 zIndex: zIndex,
                             }}
                             onMouseEnter={(event) => {
@@ -271,7 +270,12 @@ ArtboardComponent.propTypes = {
     image: PropTypes.string,
     width: PropTypes.number,
     height: PropTypes.number,
+    left: PropTypes.number,
+    top: PropTypes.number,
     zIndex: PropTypes.number,
     background: PropTypes.object,
     resetArtboardLayer: PropTypes.func,
 };
+
+export default ArtboardComponent;
+

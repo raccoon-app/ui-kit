@@ -22,11 +22,18 @@ const LoginScreen = ({ formLogin, epamLogin }) => (
         <form className="auth-form" onSubmit={formLogin}>
             <Input type="text" name="authLogin" label="LOGIN" />
             <Input type="password" name="authPassword" label="PASSWORD" />
-            <button type="submit" className="auth-form__btn btn btn_green">EPAM Sign In</button>
-            <button type="button" onClick={epamLogin} className="auth-form__btn auth-form__btn_right btn">Sign In</button>
+            <button type="button" className="auth-form__btn btn btn_green">
+                EPAM Sign In
+            </button>
+            <button type="submit" onClick={epamLogin} className="auth-form__btn auth-form__btn_right btn">
+                Sign In
+            </button>
         </form>
         <div className="forgot-pwd">
-            <p>Forgot your password? <br /> Reset on <a className="forgot-pwd__link" href="//password.epam.com">password.epam.com</a></p>
+            <p>
+                Forgot your password? <br />
+                Reset on <a className="forgot-pwd__link" href="//password.epam.com">password.epam.com</a>
+            </p>
         </div>
     </section>
 );
