@@ -1,14 +1,12 @@
 import React from 'react';
 
 const Spinner = () => (
-    <div className="spinner-container">
-        <div className="spinner">
-            <div className="rect1"></div>
-            <div className="rect2"></div>
-            <div className="rect3"></div>
-            <div className="rect4"></div>
-            <div className="rect5"></div>
-        </div>
+    <div className="spinner">
+        <div className="spinner__item spinner__item_r1"></div>
+        <div className="spinner__item spinner__item_r2"></div>
+        <div className="spinner__item spinner__item_r3"></div>
+        <div className="spinner__item spinner__item_r4"></div>
+        <div className="spinner__item spinner__item_r5"></div>
     </div>
 );
 

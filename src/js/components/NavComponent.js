@@ -42,7 +42,7 @@ export default class NavPageList extends Component {
                         </button>
                         <button
                             className={classnames({
-                                'icon-project-icon': true,
+                                'icon-project-footer': true,
                                 'nav-footer__btn': true,
                                 'nav-footer__btn_active': this.props.viewMode === 'tile',
                             })}
