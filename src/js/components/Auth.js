@@ -19,11 +19,11 @@ const LoginScreen = ({ formLogin, epamLogin }) => (
             <h1 className="auth__title">RACCOON APP</h1>
             <p>Sign in with your organizational account</p>
         </header>
-        <form className="auth-form">
+        <form className="auth-form" onSubmit={formLogin}>
             <Input type="text" name="authLogin" label="LOGIN" />
             <Input type="password" name="authPassword" label="PASSWORD" />
-            <button onClick={formLogin} className="auth-form__btn btn btn_green">EPAM Sign In</button>
-            <button onClick={epamLogin} className="auth-form__btn auth-form__btn_right btn">Sign In</button>
+            <button type="submit" className="auth-form__btn btn btn_green">EPAM Sign In</button>
+            <button type="button" onClick={epamLogin} className="auth-form__btn auth-form__btn_right btn">Sign In</button>
         </form>
         <div className="forgot-pwd">
             <p>Forgot your password? <br /> Reset on <a className="forgot-pwd__link" href="//password.epam.com">password.epam.com</a></p>
