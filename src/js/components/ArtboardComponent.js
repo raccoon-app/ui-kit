@@ -7,6 +7,8 @@ let coords = {
     x: 0,
     y: 0,
 };
+let deferTimer;
+let wait = false;
 
 // @TODO Refactoring of isNegative
 function isNegative(n) {
@@ -45,6 +47,7 @@ export default class ArtboardComponent extends Component {
     }
 
     onWheelArtboard(event) {
+        console.log('onWheelArtboard')
         const ZOOM_STEP = 0.2;
         event.preventDefault();
 
@@ -178,7 +181,15 @@ export default class ArtboardComponent extends Component {
                     artboard_dragging: isDragging,
                 })}
                 style={getStyles(background)}
-                onWheel={(event) => this.onWheelArtboard(event)}
+                onWheel={(event) => {
+                    if (!wait) {
+                        wait = true;
+                        this.onWheelArtboard(event)
+
+                        clearTimeout(deferTimer);
+                        deferTimer = setTimeout(() => (wait = false), 250);
+                    }
+                }}
                 onMouseDown={(event) => this.onTakeArtboard(event)}
                 onMouseUp={(event) => this.onDropArtboard(event)}
                 onMouseMove={(event) => this.onDragArtboard(event)}
