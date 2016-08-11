@@ -7,6 +7,8 @@ let coords = {
     x: 0,
     y: 0,
 };
+let deferTimer;
+let wait = false;
 
 // @TODO Refactoring of isNegative
 function isNegative(n) {
@@ -17,7 +19,7 @@ function getStyles({ backgroundColor, radialGradient }) {
     return getDottedTexture(backgroundColor, radialGradient, '10%', '16px 16px');
 }
 
-export default class ArtboardComponent extends Component {
+class ArtboardComponent extends Component {
     constructor() {
         super();
 
@@ -34,7 +36,6 @@ export default class ArtboardComponent extends Component {
 
     componentDidMount() {
         this.$artboard = this.refs.artboard;
-        this.$draggable = this.refs.draggable;
         this.$scale = this.refs.scale;
 
         this.setCentering(this.props);
@@ -142,8 +143,14 @@ export default class ArtboardComponent extends Component {
 
     setCentering(props) {
         const { width, height } = props;
-        const windowWidth = this.$draggable.offsetWidth;
-        const windowHeight = this.$draggable.offsetHeight;
+        const $artboard = this.$artboard;
+
+        const windowStyle = window.getComputedStyle($artboard, null);
+        const padding = (2 * parseFloat(windowStyle.getPropertyValue('padding'))) || 0;
+
+        const windowWidth = $artboard.clientWidth - padding;
+        const windowHeight = $artboard.clientHeight - padding;
+
         const newScale = Math.min(windowWidth / width, windowHeight / height);
 
         this.addTransition(this.$artboard, this.$scale);
@@ -178,47 +185,54 @@ export default class ArtboardComponent extends Component {
                     artboard_dragging: isDragging,
                 })}
                 style={getStyles(background)}
-                onWheel={(event) => this.onWheelArtboard(event)}
+                onWheel={(event) => {
+                    if (!wait) {
+                        wait = true;
+                        this.onWheelArtboard(event);
+
+                        clearTimeout(deferTimer);
+                        deferTimer = setTimeout(() => (wait = false), 10);
+                    }
+                }}
                 onMouseDown={(event) => this.onTakeArtboard(event)}
                 onMouseUp={(event) => this.onDropArtboard(event)}
                 onMouseMove={(event) => this.onDragArtboard(event)}
+                onClick={(event) => {
+                    event.stopPropagation();
+                    this.onDropArtboard(event);
+
+                    if (event.currentTarget === event.target) {
+                        resetArtboardLayer();
+                    }
+                }}
                 ref="artboard"
             >
                 <div
                     className="artboard__draggable" style={{
-                        left: dragging.x + 'px',
-                        top: dragging.y + 'px',
+                        transform: `translate(${dragging.x}px, ${dragging.y}px)`,
                     }}
-                    onClick={(event) => {
-                        event.stopPropagation();
-
-                        if (event.currentTarget === event.target) {
-                            resetArtboardLayer();
-                        }
-                    }}
-                    ref="draggable"
                 >
                     <div
                         className="artboard__scale" style={{
-                            transform: 'scale(' + scale + ')'
+                            transform: `scale(${scale})`,
                         }}
                         ref="scale"
                     >
                         <div
                             className="artboard__layer-list" style={{
-                                backgroundImage: 'url(' + image + ')',
-                                width: width + 'px',
-                                height: height + 'px',
-                                top: top + 'px',
-                                left: left + 'px',
+                                backgroundImage: `url(${image})`,
+                                width: `${width}px`,
+                                height: `${height}px`,
+                                top: `${top}px`,
+                                left: `${left}px`,
                                 zIndex: zIndex,
                             }}
-                            onMouseEnter={(event) => {
+                            onMouseEnter={() => {
                                 this.setState({
                                     isAnimated: false,
                                 });
                             }}
-                            onMouseLeave={(event) => {
+                            onMouseLeave={() => {
                                 this.setState({
                                     isAnimated: true,
                                 });
@@ -260,7 +274,12 @@ ArtboardComponent.propTypes = {
     image: PropTypes.string,
     width: PropTypes.number,
     height: PropTypes.number,
+    left: PropTypes.number,
+    top: PropTypes.number,
     zIndex: PropTypes.number,
     background: PropTypes.object,
     resetArtboardLayer: PropTypes.func,
 };
+
+export default ArtboardComponent;
+

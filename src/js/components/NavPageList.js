@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import NavArtboardList from './NavArtboardList';
 import classnames from 'classnames';
 
-export default class NavPageList extends Component {
+class NavPageList extends Component {
     render() {
         const { pageId, activeArtboard, isActivePage, isOpenPage, name, viewMode, filter } = this.props;
         const artboards = this.props.artboards.filter(artboard =>
@@ -59,4 +59,6 @@ NavPageList.propTypes = {
     filter: PropTypes.string,
     onNavPageClicked: PropTypes.func,
     setActiveArtboard: PropTypes.func,
-}
+};
+
+export default NavPageList;

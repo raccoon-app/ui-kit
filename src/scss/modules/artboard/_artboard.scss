@@ -5,23 +5,10 @@
     z-index: 0;
     overflow: hidden;
     cursor: -webkit-grab;
+    padding: 20px;
 
     &_dragging {
         cursor: -webkit-grabbing;
-    }
-
-    &__title {
-        position: absolute;
-        top:0;
-        left:0;
-        background: rgba(0,0,0,.3);
-        color: $LIGHT;
-        padding: 4px;
-        z-index:999999;
-
-        &_disabled {
-            display: none;
-        }
     }
 
     &_animated &__scale ,
@@ -37,11 +24,10 @@
 
     &__draggable {
         position: absolute;
-        top: 0;
-        left: 0;
-        margin: 20px;
-        width: calc(100% - 40px);
-        height: calc(100% - 40px);
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
     }
 
     &_dragging &__draggable {
