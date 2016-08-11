@@ -4,7 +4,7 @@ import ToolsComponent from '../components/ToolsComponent';
 const mapStateToProps = ({ artboard }) => ({
     layer: artboard.layer,
     isExportEveryLayer: artboard.isExportEveryLayer,
-    url: artboard.url + artboard.activeArtboard.id + '/',
+    url: artboard.url + artboard.activeArtboard.id + '/'
 });
 
 const Tools = connect(
