@@ -36,7 +36,6 @@ class ArtboardComponent extends Component {
 
     componentDidMount() {
         this.$artboard = this.refs.artboard;
-        this.$draggable = this.refs.draggable;
         this.$scale = this.refs.scale;
 
         this.setCentering(this.props);
@@ -144,8 +143,14 @@ class ArtboardComponent extends Component {
 
     setCentering(props) {
         const { width, height } = props;
-        const windowWidth = this.$draggable.offsetWidth;
-        const windowHeight = this.$draggable.offsetHeight;
+        const $artboard = this.$artboard;
+
+        const windowStyle = window.getComputedStyle($artboard, null);
+        const padding = (2 * parseFloat(windowStyle.getPropertyValue('padding'))) || 0;
+
+        const windowWidth = $artboard.clientWidth - padding;
+        const windowHeight = $artboard.clientHeight - padding;
+
         const newScale = Math.min(windowWidth / width, windowHeight / height);
 
         this.addTransition(this.$artboard, this.$scale);
@@ -186,27 +191,26 @@ class ArtboardComponent extends Component {
                         this.onWheelArtboard(event);
 
                         clearTimeout(deferTimer);
-                        deferTimer = setTimeout(() => (wait = false), 40);
+                        deferTimer = setTimeout(() => (wait = false), 10);
                     }
                 }}
                 onMouseDown={(event) => this.onTakeArtboard(event)}
                 onMouseUp={(event) => this.onDropArtboard(event)}
                 onMouseMove={(event) => this.onDragArtboard(event)}
+                onClick={(event) => {
+                    event.stopPropagation();
+                    this.onDropArtboard(event);
+
+                    if (event.currentTarget === event.target) {
+                        resetArtboardLayer();
+                    }
+                }}
                 ref="artboard"
             >
                 <div
                     className="artboard__draggable" style={{
-                        left: `${dragging.x}px`,
-                        top: `${dragging.y}px`,
+                        transform: `translate(${dragging.x}px, ${dragging.y}px)`,
                     }}
-                    onClick={(event) => {
-                        event.stopPropagation();
-
-                        if (event.currentTarget === event.target) {
-                            resetArtboardLayer();
-                        }
-                    }}
-                    ref="draggable"
                 >
                     <div
                         className="artboard__scale" style={{
@@ -223,12 +227,12 @@ class ArtboardComponent extends Component {
                                 left: `${left}px`,
                                 zIndex: zIndex,
                             }}
-                            onMouseEnter={(event) => {
+                            onMouseEnter={() => {
                                 this.setState({
                                     isAnimated: false,
                                 });
                             }}
-                            onMouseLeave={(event) => {
+                            onMouseLeave={() => {
                                 this.setState({
                                     isAnimated: true,
                                 });
