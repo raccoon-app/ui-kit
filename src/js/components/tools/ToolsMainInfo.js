@@ -11,23 +11,23 @@ export default class ToolsMainInfo extends Component {
                     <li className="tools__item">
                         <span className="tools__item-label">X</span>
                         <span className="icon-x-coord"></span>
-                        <span className="tools__item-value">{layer.x} px</span>
+                        <span className="tools__item-value">{parseInt(layer.x)} px</span>
                     </li>
                     <li className="tools__item">
                         <span className="tools__item-label">Width</span>
                         <span className="icon-width"></span>
-                        <span className="tools__item-value">{layer.width} px</span>
+                        <span className="tools__item-value">{parseInt(layer.width)} px</span>
                     </li>
 
                     <li className="tools__item">
                         <span className="tools__item-label">Y</span>
                         <span className="icon-y-coord"></span>
-                        <span className="tools__item-value">{layer.y} px</span>
+                        <span className="tools__item-value">{parseInt(layer.y)} px</span>
                     </li>
                     <li className="tools__item">
                         <span className="tools__item-label">Height</span>
                         <span className="icon-height"></span>
-                        <span className="tools__item-value">{layer.height} px</span>
+                        <span className="tools__item-value">{parseInt(layer.height)} px</span>
                     </li>
                 </ul>
             </div>

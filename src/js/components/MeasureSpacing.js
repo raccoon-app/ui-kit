@@ -27,7 +27,7 @@ const MeasureSpacing = ({ scale, color, spacing }) => {
                         'measure-ruler__value_text_dark': isColorLight(color),
                     })} style={{ backgroundColor: color }}
                     >
-                        {rulerItem.value}
+                        {parseInt(rulerItem.value)}
                     </span>
                 </span>
             </div>

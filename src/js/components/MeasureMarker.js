@@ -20,7 +20,7 @@ const MeasureMarker = ({ scale, measure, type, color }) => (
                 'measure-marker__value_text_dark': isColorLight(color),
             })} style={{ backgroundColor: color }}
             >
-                {measure.width} * {measure.height}
+                {parseInt(measure.width)} * {parseInt(measure.height)}
             </span>
         </div>
         <div className="measure-lighthouse measure-lighthouse_top"
