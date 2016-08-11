@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 
-export default class Dropdown extends Component {
+class Dropdown extends Component {
 
     constructor(props) {
         super(props);
@@ -97,3 +97,5 @@ Dropdown.propTypes = {
     toggleDropdown: PropTypes.func.isRequired,
     visibility: PropTypes.boolean
 };
+
+export default Dropdown;

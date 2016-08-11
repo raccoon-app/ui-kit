@@ -105,16 +105,18 @@
         background: $FILL_BLACK;
         color: $LIGHT;
         border: 0;
-        padding: 10px 10px;
+        padding: 10px 10px 10px 20px;
         margin: 0 0 20px;
         font-family: $DEFAULT_FONT;
         font-size: 14px;
         line-height: 20px;
         width: 100%;
+        position: relative;
 
         &_style {
-            max-height: 240px;
-            border-left: 10px $HOVER-GREY solid;
+            max-height: 255px;
+            overflow-y: scroll;
+            box-shadow: inset 10px 0 0 $HOVER-GREY;
         }
     }
 
@@ -137,8 +139,9 @@
     &__textarea-content {
         background-color: $LIGHT;
         color: $FILL_BLACK;
-        min-height: 108px;
-        max-height: 152px;
+        min-height: 86px;
+        max-height: 245px;
+        overflow-y: scroll;
         font: 16px/22px $DEFAULT_FONT;
     }
 
@@ -244,7 +247,7 @@
                 content: "\e905";
                 font-size: 28px;
                 vertical-align: middle;
-                margin-right: 18px;
+                margin-right: 10px;
                 position: relative;
                 z-index: 2;
             }
@@ -285,6 +288,7 @@
 
     &__gradient-code {
         color: $LIGHT;
+        padding-right: 5px;
     }
 
     &-copy-info {
