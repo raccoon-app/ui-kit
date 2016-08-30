@@ -1,11 +1,9 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import RadioColorSwitcher from '../components/settings/RadioColorSwitcher';
-import SettingControlButton from '../components/settings/SettingControlButton';
-import { toggleSettingPanel, setSwitcherColor } from '../actions/setting';
+import RadioColorSwitcher from './RadioColorSwitcher';
+import SettingControlButton from './SettingControlButton';
 import classnames from 'classnames';
 
-const SettingsPanel = (props) => {
+const SettingPanel = (props) => {
     const { settingPanelVisibility, onControlBtnClick } = props;
     const bgSwitcherProps = {
         optionList: props.backgroundColorList,
@@ -36,7 +34,7 @@ const SettingsPanel = (props) => {
     );
 };
 
-SettingsPanel.propTypes = {
+SettingPanel.propTypes = {
     settingPanelVisibility: PropTypes.bool.isRequired,
     markerColorList: PropTypes.array.isRequired,
     backgroundColorList: PropTypes.array.isRequired,
@@ -46,22 +44,4 @@ SettingsPanel.propTypes = {
     backgroundColor: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = ({ setting }) => ({
-    markerColorList: setting.markerColorList,
-    backgroundColorList: setting.backgroundColorList,
-    settingPanelVisibility: setting.settingPanelVisibility,
-    markerColor: setting.markerColor,
-    backgroundColor: setting.backgroundColor,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    onControlBtnClick: () => {
-        dispatch(toggleSettingPanel());
-    },
-    onSwitcherChange: (type, color) => {
-        dispatch(setSwitcherColor(type, color));
-    },
-});
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(SettingsPanel);
+export default SettingPanel;

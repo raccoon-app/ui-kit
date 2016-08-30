@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import SettingPanel from '../containers/SettingsPanel';
+import Settings from '../containers/Settings';
 import { Link } from 'react-router';
 
 const Header = ({ headerInfo, name }) => (
@@ -8,7 +8,7 @@ const Header = ({ headerInfo, name }) => (
         {headerInfo ? <Link className="header__projects icon-project-icon" to={`projects`}></Link> : null}
         {headerInfo ? <i className="header__point icon-chevron-right"></i> : null}
         <h1 className="header__title">{name}</h1>
-        <SettingPanel />
+        <Settings />
         <div className="header-info">{headerInfo}</div>
     </div>
 );
