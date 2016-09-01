@@ -5,7 +5,6 @@ import { toggleSettingPanel, setSwitcherColor } from '../actions/setting';
 const mapStateToProps = ({ setting }) => ({
     markerColorList: setting.markerColorList,
     backgroundColorList: setting.backgroundColorList,
-    settingPanelVisibility: setting.settingPanelVisibility,
     markerColor: setting.markerColor,
     backgroundColor: setting.backgroundColor,
 });
