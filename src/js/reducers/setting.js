@@ -22,8 +22,7 @@ const initialState = {
     viewMode: 'list',
     sizeDropdownValue: 'all',
     formatDropdownValue: 'PNG',
-    settingPanelVisibility: false,
-    activeDropdown: null
+    activeDropdown: null,
 };
 
 
@@ -86,15 +85,6 @@ function formatDropdownValue(state = initialState.formatDropdownValue, action = 
     }
 }
 
-function settingPanelVisibility(state = initialState.settingPanelVisibility, action = {}) {
-    switch (action.type) {
-        case TOGGLE_SETTING_PANEL:
-            return !state;
-        default:
-            return state;
-    }
-}
-
 function activeDropdown(state = initialState.activeDropdown, action = {}) {
     switch (action.type) {
         case CLICK_DROPDOWN:
@@ -114,25 +104,8 @@ export default combineReducers({
     viewMode,
     sizeDropdownValue,
     formatDropdownValue,
-    settingPanelVisibility,
-    activeDropdown
+    activeDropdown,
 });
-
-export function getMarkerColor(state) {
-    return state.markerColor;
-}
-
-export function getBackgroundColor(state) {
-    return state.backgroundColor;
-}
-
-export function getMarkerColorList(state) {
-    return state.markerColorList;
-}
-
-export function getBackgroundColorList(state) {
-    return state.backgroundColorList;
-}
 
 export function getSizeDropdownValue(state) {
     return state.sizeDropdownValue;
@@ -140,10 +113,6 @@ export function getSizeDropdownValue(state) {
 
 export function getFormatDropdownValue(state) {
     return state.formatDropdownValue;
-}
-
-export function getSettingPanelVisibilityState(state) {
-    return state.settingPanelVisibility;
 }
 
 export function getActiveDropdown(state) {
