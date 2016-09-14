@@ -5,6 +5,7 @@
     background-size: cover;
     color: $LIGHT;
     font-family: $mainFont;
+    overflow: auto;
 
   &__header {
       margin-bottom: 55px;

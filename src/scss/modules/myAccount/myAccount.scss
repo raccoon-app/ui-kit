@@ -1,0 +1,58 @@
+.my-account {
+    color: $PRIMARY;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 6.875rem;
+    top: 0;
+    height: 3.75rem;
+    white-space: nowrap;
+    transition: all 500ms ease;
+    z-index: 10;
+
+    .setting-panel_opened & {
+        top: -5rem;
+    }
+
+    &__username {
+        display: inline-block;
+        font-size: 1.125em;
+        text-transform: uppercase;
+    }
+
+    &__icon {
+        margin-right: 0.625em;
+
+        &:before {
+            font-size: $heading2Size;
+        }
+    }
+
+    &__menu {
+        display: none;
+        position: absolute;
+        background-color: $PRIMARY;
+        min-width: 10rem;
+        top: 100%;
+
+        .my-account:hover & {
+            display: block;
+        }
+
+        &-link {
+            color: $LIGHT;
+            display: block;
+            font-size: 1.25em;
+            padding: 0.9em 2.15em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+    }
+
+
+}
+
+.icon-username:before {
+    content: "\e90a";
+}

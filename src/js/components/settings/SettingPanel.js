@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import RadioColorSwitcher from './RadioColorSwitcher';
 import SettingControlButton from './SettingControlButton';
+import MyAccount from '../MyAccount';
 import classnames from 'classnames';
 
 class SettingPanel extends Component {
@@ -35,6 +36,7 @@ class SettingPanel extends Component {
                 'setting-panel_opened': this.state.isOpened,
             })}
             >
+                <MyAccount name="ARTEM SVITELSKYI" />
                 <SettingControlButton onClick={this.togglePanel} />
                 <div className="setting-panel__options">
                     <RadioColorSwitcher {...markerSwitcherProps} />

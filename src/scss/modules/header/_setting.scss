@@ -12,6 +12,7 @@
         top: 0;
         overflow: hidden;
         transition: all 500ms ease;
+        white-space: nowrap;
     }
 
     &_opened {
@@ -54,10 +55,11 @@
 
 .setting-color,
 .radio-color-switcher {
+    display: flex;
     margin: 12px 0 0 40px;
 
     &__title {
-        float: left;
+        display: inline;
         margin: 0 10px 0 0;
         color: $PRIMARY;
         font-family: $HEADLINE_FONT;
@@ -72,7 +74,7 @@
         overflow: hidden;
         padding: 0;
         margin: 0;
-        float: left;
+        display: inline;
     }
 
     &__item {
