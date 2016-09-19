@@ -11,7 +11,7 @@ const initialState = {
     layer: {
         x: 0,
         y: 0,
-    }
+    },
 };
 
 const getFirstArtboardId = (artboard) => {

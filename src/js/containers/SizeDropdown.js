@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { changeDropdownValue, toggleDropdown } from '../actions/setting';
-import { getSizeDropdownValue, getActiveDropdown } from '../reducers/setting';
 import Dropdown from '../components/Dropdown';
 
 const data = [

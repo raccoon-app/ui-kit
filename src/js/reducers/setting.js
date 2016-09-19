@@ -106,15 +106,3 @@ export default combineReducers({
     formatDropdownValue,
     activeDropdown,
 });
-
-export function getSizeDropdownValue(state) {
-    return state.sizeDropdownValue;
-}
-
-export function getFormatDropdownValue(state) {
-    return state.formatDropdownValue;
-}
-
-export function getActiveDropdown(state) {
-    return state.activeDropdown;
-}

@@ -3,11 +3,11 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 
-import AppStore from './store';
+import appStore from './store';
 import routes from './routes';
 
 import '../scss/main.scss';
-const store = AppStore();
+const store = appStore();
 
 render(
     <Provider store={store.state}>

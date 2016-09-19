@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { changeDropdownValue, toggleDropdown } from '../actions/setting';
-import { getFormatDropdownValue, getActiveDropdown } from '../reducers/setting';
 import Dropdown from '../components/Dropdown';
 
 const data = [
@@ -40,9 +39,9 @@ FormatDropdown.propTypes = {
     toggleDropdown: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => ({
-    activeValue: getFormatDropdownValue(state.setting),
-    activeDropdown: getActiveDropdown(state.setting)
+const mapStateToProps = ({ setting }) => ({
+    activeValue: setting.sizeDropdownValue,
+    activeDropdown: setting.activeDropdown,
 });
 
 export default connect(

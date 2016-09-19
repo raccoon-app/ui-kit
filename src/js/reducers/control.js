@@ -25,7 +25,6 @@ let coords = {
 const control = (state = initialState, action = {}) => {
     switch (action.type) {
         case ZOOM_ARTBOARD: {
-
             const ZOOM_STEP = 0.1;
 
             let newScale = state.scale;
@@ -47,7 +46,7 @@ const control = (state = initialState, action = {}) => {
 
         case SCALE_ARTBOARD: {
             const event = action.event;
-            const ZOOM_STEP = .2;
+            const ZOOM_STEP = 0.2;
 
             if (!event.shiftKey) {
                 return state;

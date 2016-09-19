@@ -25,17 +25,16 @@ function name(state = initialState.name, action = {}) {
 function folders(state = initialState.folders, action = {}) {
     switch (action.type) {
         case RECEIVE_PROJECT:
-            return action.project.pageOrder.map(function(id) {
+            return action.project.pageOrder.map((id) => {
                 const item = action.project.pageData[id];
 
                 item.name = decodeURIComponent(item.name);
-                item.artboards = item.artboardId.map(function (aId) {
-                    return {
-                        id: action.project.artboard[aId].id,
-                        src:  action.url+action.project.artboard[aId].src + '/artboard.png',
-                        name: decodeURIComponent(action.project.artboard[aId].name),
-                    };
-                });
+                item.artboards = item.artboardId.map((aId) => ({
+                    id: action.project.artboard[aId].id,
+                    src: action.url + action.project.artboard[aId].src + '/artboard.png',
+                    name: decodeURIComponent(action.project.artboard[aId].name),
+                })
+                );
 
                 return item;
             });
