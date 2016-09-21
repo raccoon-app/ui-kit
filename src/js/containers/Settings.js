@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SettingPanel from '../components/settings/SettingPanel';
-import { toggleSettingPanel, setSwitcherColor } from '../actions/setting';
+import { setSwitcherColor } from '../actions/setting';
 
 const mapStateToProps = ({ setting }) => ({
     markerColorList: setting.markerColorList,
@@ -10,9 +10,6 @@ const mapStateToProps = ({ setting }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onControlBtnClick: () => {
-        dispatch(toggleSettingPanel());
-    },
     onSwitcherChange: (type, color) => {
         dispatch(setSwitcherColor(type, color));
     },
