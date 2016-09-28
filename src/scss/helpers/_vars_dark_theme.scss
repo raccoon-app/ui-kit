@@ -1,0 +1,56 @@
+/*  VARS_dark_theme.SCSS */
+
+// Color names // Named via http://chir.ag/projects/name-that-color/
+$christi: #7DA511;
+$bondiBlue: #0099AA;
+$sunglow: #FFCA29;
+$dustyGray: #999999;
+$deepDarkMineShaft: #262626;
+$darkMineShaft: #2F2F2F;
+$mineShaft: #353535;
+$gravel: #464547;
+
+$white: #fff;
+$black: #000;
+$wildWatermelon: #fe6971;
+
+/* UI elements Color matrix */
+$defaultBgColor        : $deepDarkMineShaft;
+$defaultLinkColor      : $bondiBlue;
+$defaultTextColor      : $white;
+
+$primaryTextColor      : $deepDarkMineShaft;
+$primaryHeadingColor   : $bondiBlue;
+$primaryBgColor        : $bondiBlue;
+$primaryControlColor   : $christi;
+
+$secondaryHeadingColor : $dustyGray;
+$secondaryBgColor      : $mineShaft;
+
+$headerBgColor         : $darkMineShaft;
+$buttonBgColor         : $sunglow;
+
+
+
+$HEADLINE_FONT      : 'SourceSansPro', Helvetica, sans-serif;
+$DEFAULT_FONT       : 'SourceSansPro', Helvetica, sans-serif;
+$ICONS_FONT         : 'icomoon';
+
+
+$mainFontSize: 38px;
+$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingFont: 'Oswald', Helvetica, sans-serif;
+$headingTextShadow: none;
+$heading1TextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: uppercase;
+$headingFontWeight: 600;
+
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+$headerHeight: 3.25rem;
+$defaultMargin: 0.75rem;

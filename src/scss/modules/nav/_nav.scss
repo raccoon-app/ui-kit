@@ -3,8 +3,8 @@
     flex: 0 1 350px;
     max-width: 350px;
     order: 0;
-    background: $DEFAULT;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.50);
+    background: $defaultBgColor;
+    box-shadow: 0 2px 4px 0 rgba($black, 0.50);
     z-index: 9991;
     font-family: $HEADLINE_FONT;
     transition: flex .4s cubic-bezier(0.115, 0.715, 0.305, 0.990);
@@ -40,12 +40,10 @@
 
     &__title {
         position: relative;
-        font-family: $HEADLINE_FONT;
-        font-weight: bold;
-        font-size: 18px;
-        color: $PRIMARY;
+        font: bold 18px $HEADLINE_FONT;
+        color: $primaryHeadingColor;
         line-height: 20px;
-        background: $FILL_BLACK;
+        background: $secondaryBgColor;
         display: block;
         padding: 20px;
         cursor: pointer;
@@ -53,8 +51,8 @@
         transition: all .3s;
 
         &:hover {
-            background: lighten($FILL_BLACK, 2%);
-            color: $LIGHT_BLUE;
+            background: lighten($secondaryBgColor, 2%);
+            color: lighten($primaryHeadingColor, 10%);
         }
 
         &::after {
@@ -64,7 +62,7 @@
             right: 20px;
             font-family: Arial, sans-serif;
             font-size: 30px;
-            color: $ULTRA-LIGHT-GREY;
+            color: $secondaryHeadingColor;
             line-height: 30px;
             margin-top: -15px;
             text-align: center;
@@ -89,7 +87,7 @@
         &_open {
 
             .nav-folder__title {
-                color: $LIGHT;
+                color: $defaultTextColor;
             }
 
             .nav-folder__title::after {
@@ -125,7 +123,6 @@
             font-size: 32px;
             width: 32px;
             height: 32px;
-            color: $LIGHT;
             position: absolute;
             z-index: 2;
             top: 0;
@@ -139,14 +136,9 @@
 }
 
 .nav-page__link {
-    font-family: $DEFAULT_FONT;
-    font-size: 16px;
-    font-weight: normal;
-    color: $LIGHT;
-    line-height: 20px;
-    display: block;
-    padding: 20px;
-    margin: 0;
+    font: normal 1em $DEFAULT_FONT;
+    line-height: 1.25;
+    padding: 0.688em 1.125em;
     cursor: pointer;
 
     &-img {
@@ -183,16 +175,16 @@
     transition: all .2s;
 
     &:hover {
-        background: $HOVER-GREY;
+        background: lighten($defaultBgColor, 10%);
     }
 
     &_active:hover {
-        background-color: $PRIMARY;
+        background-color: $primaryBgColor;
     }
 }
 
 .nav-page__item_active {
-    background-color: $PRIMARY;
+    background-color: $primaryBgColor;
 
     .nav-page__link {
         cursor: default;
@@ -205,16 +197,16 @@
     }
 
     .nav-page__link-img::after {
-        border-color: $LIGHT;
-        background-color: rgba(0, 171, 190, 0.6);
+        border-color: $white;
+        background-color: rgba($primaryBgColor, 0.6);
     }
 }
 
 .nav-page_active {
-    background: $PRIMARY;
+    background: $primaryBgColor;
 
     &:hover {
-        background: $PRIMARY;
+        background: $primaryBgColor;
     }
 }
 
@@ -235,9 +227,10 @@
         background-color: inherit;
 
         .nav-page__link-img::after {
-            border-color: $LIGHT;
-            background-color: rgba(0, 171, 190, 0.6);
+            border-color: $white;
+            background-color: rgba($primaryBgColor, 0.6);
         }
+
     }
 }
 
@@ -245,12 +238,11 @@
 .nav-footer {
     flex: 0 0 50px;
     padding: 12px 10px;
-    background-color: $LIGHT;
 
     &__btn {
         display: inline-block;
         font-size: 26px;
-        color: $ULTRA-LIGHT-GREY;
+        color: $primaryControlColor;
         cursor: pointer;
         border: 0;
         background-color: transparent;
@@ -263,11 +255,11 @@
         }
 
         &:hover {
-            color: $PRIMARY;
+            color: $primaryHeadingColor;
         }
 
         &_active {
-            color: $PRIMARY;
+            color: $primaryHeadingColor;
             cursor: default;
         }
     }
@@ -280,15 +272,15 @@
             width: 188px;
             height: 13px;
             padding: 6px 60px 5px 7px;
-            background-color: $FORM-GREY;
-            border: solid 1px $ULTRA-LIGHT-GREY;
+            background-color: $secondaryBgColor;
+            border: solid 1px $secondaryHeadingColor;
             font-family: $DEFAULT_FONT;
             font-size: 13px;
             font-weight: normal;
 
             &:focus,
             &:active {
-                border-color: $PRIMARY;
+                border-color: $primaryBgColor;
                 outline: 0;
             }
         }
@@ -300,7 +292,6 @@
             top: 6px;
             right: 6px;
             font-size: 14px;
-            color: $ULTRA-LIGHT-GREY;
             cursor: pointer;
 
             &:focus,
@@ -334,11 +325,10 @@
 
     &__btn {
         font-size: 20px;
-        color: $LIGHT;
         height: 40px;
         width: 40px;
         line-height: 40px;
-        background-color: $NAV_BTN;
+        background-color: rgba($black, 0.3);
         border: none;
         transition: background-color .2s;
 
@@ -353,7 +343,7 @@
         }
 
         &:hover {
-            background-color: lighten($NAV_BTN, 5%);
+            background-color: rgba($black, 0.5);
         }
 
         &_turned {

@@ -1,14 +1,15 @@
 .setting-panel {
-    flex: 0 0 60px;
-    max-width: 60px;
-    order: 4;
     position: relative;
+    order: 4;
+    align-items: center;
+    display: flex;
+    margin-right: 0.75rem;
 
     &__options {
         position: absolute;
         display: flex;
         flex-direction: row-reverse;
-        left: 60px;
+        left: $headerHeight;
         top: 0;
         overflow: hidden;
         transition: all 500ms ease;
@@ -21,7 +22,7 @@
         }
 
         .setting-control-btn {
-            background-color: $PRIMARY_CTRL;
+            background-color: $primaryControlColor;
 
             &:after {
                 content: "\e907";
@@ -35,21 +36,21 @@
 }
 
 .setting-control-btn {
+    border-radius: 50%;
     position: relative;
-    z-index: 3;
-    background-color: $PRIMARY;
+    background-color: $primaryBgColor;
     cursor: pointer;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 2rem;
+    height: 2rem;
     transition: background-color 500ms ease;
 
     &:after {
         content: "\e90e";
-        color: #fff;
-        font-size: 30px;
+        font-size: 1.125rem;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateY(-50%) translateX(-50%);
     }
 }
 
@@ -61,7 +62,7 @@
     &__title {
         display: inline;
         margin: 0 10px 0 0;
-        color: $PRIMARY;
+        color: $primaryHeadingColor;
         font-family: $HEADLINE_FONT;
         font-size:16px;
         line-height:20px;
@@ -93,7 +94,7 @@
         transform: rotate(45deg);
 
         &_active {
-            box-shadow: 0 0 0 2px #fff, 0 0 0 4px $PRIMARY;
+            box-shadow: 0 0 0 2px $white, 0 0 0 4px $primaryBgColor;
         }
 
         &:active,

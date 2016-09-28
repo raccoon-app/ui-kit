@@ -1,5 +1,4 @@
 .my-account {
-    color: $PRIMARY;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -32,7 +31,7 @@
     &__menu {
         display: none;
         position: absolute;
-        background-color: $PRIMARY;
+        background-color: $primaryBgColor;
         min-width: 10rem;
         top: 100%;
 
@@ -41,7 +40,7 @@
         }
 
         &-link {
-            color: $LIGHT;
+            color: $defaultTextColor;
             display: block;
             font-size: 1.25em;
             padding: 0.9em 2.15em;

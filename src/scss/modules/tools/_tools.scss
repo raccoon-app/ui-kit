@@ -1,7 +1,6 @@
 .tools {
     order: 2;
-    background: $DEFAULT;
-    color: $LIGHT;
+    background: $defaultBgColor;
     position: relative;
     right: 0;
     flex: 0 0 350px;
@@ -42,7 +41,7 @@
         vertical-align: middle;
 
         [class^="icon-"]:before {
-            color: $LIGHT_BLUE;
+            color: $primaryHeadingColor;
             font-size: 12px;
             margin: 0 11px;
             vertical-align: middle;
@@ -77,21 +76,19 @@
         }
 
         &-label {
-            color: $GRAY;
             display: inline-block;
             text-transform: uppercase;
             vertical-align: middle;
         }
 
         &-value {
-            color: $LIGHT;
             float: right;
 
         }
     }
 
     &__title {
-        color: $PRIMARY;
+        color: $primaryHeadingColor;
         font-family: $DEFAULT_FONT;
         font-weight: 600;
         font-size: 22px;
@@ -102,9 +99,7 @@
 
     &__textarea {
         display: block;
-        background: $FILL_BLACK;
-        color: $LIGHT;
-        border: 0;
+        background: $secondaryBgColor;
         padding: 10px 10px 10px 20px;
         margin: 0 0 20px;
         font-family: $DEFAULT_FONT;
@@ -116,12 +111,12 @@
         &_style {
             max-height: 255px;
             overflow-y: scroll;
-            box-shadow: inset 10px 0 0 $HOVER-GREY;
+            box-shadow: inset 10px 0 0 lighten($primaryControlColor, 10%);
         }
     }
 
     &__textarea-classname {
-        color: $LIGHT_BLUE;
+        color: $primaryHeadingColor;
         position: relative;
 
         &::before {
@@ -129,7 +124,7 @@
             position: absolute;
             top: 7px;
             left: -17px;
-            background: $DEFAULT;
+            background: $defaultBgColor;
             border-radius: 50%;
             width: 4px;
             height: 4px;
@@ -137,8 +132,7 @@
     }
 
     &__textarea-content {
-        background-color: $LIGHT;
-        color: $FILL_BLACK;
+        background-color: $secondaryBgColor;
         min-height: 86px;
         max-height: 245px;
         overflow-y: scroll;
@@ -146,11 +140,11 @@
     }
 
     &__textarea-value {
-        color: $LIGHT_GREEN;
+        color: lighten($primaryControlColor, 10%);
     }
 
     &__textarea-value_font-family {
-        color: $LIGHT_RED;
+        color: $wildWatermelon;
     }
 
     &__export {
@@ -160,7 +154,6 @@
         background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATYAAAC+CAYAAAC/KCOoAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTExIDc5LjE1ODMyNSwgMjAxNS8wOS8xMC0wMToxMDoyMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OERBQTBFRUYwNkU1MTFFNjkzQjRFNjJBQzNFNEY3NEQiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OERBQTBFRUUwNkU1MTFFNjkzQjRFNjJBQzNFNEY3NEQiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MzlENDA3OUQwNkUyMTFFNjg2N0ZDMDRFQjc4QkI5NDUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MzlENDA3OUUwNkUyMTFFNjg2N0ZDMDRFQjc4QkI5NDUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz57hzsPAAADTElEQVR42uzdwWnjYBRGUTu4JamG9OJ6XEk2qcFNOTakAFsEPedyDoTZTO7sPoYfxDsuy/J1eN7ler1+v/D3D+u6ft7/OOvr6+vv1f84AMQYNsCwARg2AMMGYNgADBtg2AAMG4BhA/hDp/vPZYd/56Kvr6+/V/94u91e+oXfb7uetvHbMX19ff3N/dPGQXz6o1V9fX39vfve2IAcwwYYNgDDBmDYAAwbgGEDDBuAYQOYtPXLA9+m6evrv23/uCyLb9P09fVT/cf/2M4vdH2bpq+v//Z9b2xAjmEDDBuAYQMwbACGDcCwAYYNwLABTHJXVF9fP9d3V1RfXz/Xd1dUX18/1/fGBuQYNsCwARg2AMMGYNgADBtg2AAMG8Akd0X19fVzfXdF9fX1c313RfX19XN9b2xAjmEDDBuAYQMwbACGDcCwAYYNwLABTHJXVF9fP9d3V1RfXz/Xd1dUX18/1/fGBuQYNsCwARg2AMMGYNgADBtg2AAMG8Akd0X19fVzfXdF9fX1c313RfX19XN9b2xAjmEDDBuAYQMwbACGDcCwAYYNwLABTHJXVF9fP9d3V1RfXz/Xd1dUX18/1/fGBuQYNsCwARg2AMMGYNgADBtg2AAMG8Akd0X19fVzfXdF9fX1c313RfX19XN9b2xAjmEDDBuAYQMwbACGDcCwAYYNwLABTHJXVF9fP9d3V1RfXz/Xd1dUX18/1/fGBuQYNsCwARg2AMMGYNgADBtg2AAMG8Akd0X19fVzfXdF9fX1c313RfX19XN9b2xAjmEDDBuAYQMwbACGDcCwAYYNwLABTHJXVF9fP9d3V1RfXz/Xd1dUX18/1/fGBuQYNsCwARg2AMMGYNgADBtg2AAMG8Akd0X19fVzfXdF9fX1c313RfX19XN9b2xAjmEDDBuAYQMwbACGDcCwAYYNwLABTHJXVF9fP9d3V1RfXz/Xd1dUX18/1/fGBuQYNsCwARg2AMMGYNgADBtg2AAMG8Akd0X19fVzfXdF9fX1c313RfX19XN9b2xAjmEDDBuAYQMwbACGDcCwAYYNwLABTHJXVF9fP9d3V1RfXz/Xd1dUX18/1/fGBuQYNsCwARg2AMMGYNgADBtg2AD+lR8BBgAVoX3cvfosHwAAAABJRU5ErkJggg==") left top repeat transparent;
         padding: 10px 10px 0;
         margin: 0 0 20px;
-        color: $LIGHT;
         text-decoration: none;
         text-align: center;
         transition: background-color .5s;
@@ -195,7 +188,7 @@
         }
 
         &-param {
-            color: $GRAY;
+            color: $secondaryHeadingColor;
             font: 18px $DEFAULT_FONT;
             text-transform: uppercase;
         }
@@ -210,7 +203,7 @@
 
     &__text {
         display: block;
-        color: $GRAY;
+        color: $secondaryHeadingColor;
         font-family: $DEFAULT_FONT;
         font-weight: 600;
         font-size: 16px;
@@ -221,8 +214,7 @@
 
     &__btn {
         float: right;
-        background-color: $PRIMARY;
-        color: $LIGHT;
+        background-color: $buttonBgColor;
         text-transform: uppercase;
         font: 600 20px $DEFAULT_FONT;
         padding: 7px 0;
@@ -236,7 +228,7 @@
         &:hover,
         &:active,
         &:focus {
-            background-color: $LIGHT_BLUE;
+            background-color: lighten($buttonBgColor, 10%);
             outline: none;
         }
     }
@@ -264,11 +256,11 @@
     &__gradient-item {
         list-style-type: none;
         font: 18px $DEFAULT_FONT;
-        color: $GRAY;
+        color: $secondaryHeadingColor;
 
         .icon-gradient-down-arrow:before {
             content: "\e904";
-            color: $LIGHT_BLUE;
+            color: $primaryHeadingColor;
             margin: 0 0 5px 7px;
             font-size: 11px;
             display: none;
@@ -287,7 +279,6 @@
     }
 
     &__gradient-code {
-        color: $LIGHT;
         padding-right: 5px;
     }
 
@@ -297,11 +288,11 @@
         right: 100%;
         margin-right: 10px;
 
-        color: $DEFAULT;
+        color: $primaryTextColor;
         font-family: $DEFAULT_FONT;
         font-weight: 600;
         text-transform: uppercase;
-        background-color: $INFO_SUCCESS;
+        background-color: $buttonBgColor;
         height: 60px;
         line-height: 60px;
         padding: 0 25px;
@@ -338,11 +329,10 @@
 
     &__btn {
         font-size: 20px;
-        color: $LIGHT;
         height: 40px;
         line-height: 40px;
         padding: 0 9px;
-        background-color: $NAV_BTN;
+        background-color: rgba(0,0,0, 0.3);
         border: none;
         transition: background-color .2s;
 
@@ -351,7 +341,7 @@
         }
 
         &:hover {
-            background-color: lighten($NAV_BTN, 5%);
+            background-color: rgba(0,0,0, 0.5);
         }
 
         &_value {

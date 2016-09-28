@@ -22,21 +22,16 @@
 }
 
 
-::selection {
-  background: $PRIMARY;
-  color: $LIGHT;
-}
-
+::selection,
 ::-moz-selection {
-  background: $PRIMARY;
-  color: $LIGHT;
+  background: $primaryBgColor;
+  color: $defaultTextColor;
 }
 
 body {
   padding: 0;
   margin: 0;
-  background: #E8E8E8;
-  color: $FILL_BLACK;
+  color: $defaultTextColor;
   overflow: hidden;
 }
 h1 {
@@ -81,7 +76,7 @@ h3 {
 }
 
 .dropdown {
-  background-color: $LIGHT;
+  background-color: $white;
   padding-top: 10px;
   text-align: center;
   box-sizing: border-box;
@@ -94,7 +89,7 @@ h3 {
 
   &__value {
     font: 18px $HEADLINE_FONT;
-    color: $FILL_BLACK;
+    color: $primaryTextColor;
     text-transform: uppercase;
     width: 45px;
   }
@@ -106,11 +101,10 @@ h3 {
     top: 0;
     width: 40px;
     height: 40px;
-    background-color: $FILL_BLACK;
+    background-color: $secondaryBgColor;
     &:before {
       content: "\e906";
       font-size: 10px;
-      color: $LIGHT;
       z-index: 2;
       top: 10px;
       display: inline-block;
@@ -136,13 +130,13 @@ h3 {
 
   &__option {
     font: 18px $HEADLINE_FONT;
-    color: $FILL_BLACK;
-    background-color: $LIGHT;
+    color: $primaryTextColor;
+    background-color: $white;
     padding: 5px 0;
 
     &:hover, &--selected {
-      background-color: $LIGHT_BLUE;
-      color: $LIGHT;
+      background-color: $primaryBgColor;
+      color: $defaultTextColor;
     }
   }
 
@@ -159,8 +153,8 @@ h3 {
 }
 
 .btn {
-  background-color: $PRIMARY;
-  color: $LIGHT;
+  background-color: $primaryBgColor;
+  color: $defaultTextColor;
   text-transform: uppercase;
   font: 600 20px $DEFAULT_FONT;
   padding: 12px;
@@ -172,6 +166,6 @@ h3 {
   white-space: nowrap;
 
   &_green {
-    background-color: $PRIMARY_CTRL;
+    background-color: $primaryControlColor;
   }
 }

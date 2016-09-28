@@ -4,7 +4,7 @@ import { CLICK_ARTBOARD_LAYER } from '../actions/artboard';
 
 const initialState = {
     markerColor: { currentColor: '#a3c644', hoverColor: '#2cc4d5' },
-    backgroundColor: { backgroundColor: '#f3f3f3', radialGradient: '#b4b4b4' },
+    backgroundColor: { backgroundColor: '#6c6c6c', radialGradient: 'transparent' },
     markerColorList: [
         { currentColor: '#f45602', hoverColor: '#00b189' },
         { currentColor: '#ffd042', hoverColor: '#1d1d1d' },
@@ -13,6 +13,7 @@ const initialState = {
         { currentColor: '#a3c644', hoverColor: '#2cc4d5' },
     ],
     backgroundColorList: [
+        { backgroundColor: '#6c6c6c', radialGradient: 'transparent' },
         { backgroundColor: '#e8e8e8', radialGradient: 'transparent' },
         { backgroundColor: '#b4b4b4', radialGradient: 'transparent' },
         { backgroundColor: '#5e5e5e', radialGradient: 'transparent' },
