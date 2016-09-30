@@ -1,6 +1,6 @@
 .setting-panel {
     position: relative;
-    order: 4;
+    order: 3;
     align-items: center;
     display: flex;
     margin-right: 0.75rem;
@@ -27,10 +27,6 @@
             &:after {
                 content: "\e907";
             }
-        }
-
-        ~ .header-info {
-            top: -45px;
         }
     }
 }
@@ -63,7 +59,6 @@
         display: inline;
         margin: 0 10px 0 0;
         color: $primaryHeadingColor;
-        font-family: $HEADLINE_FONT;
         font-size:16px;
         line-height:20px;
         padding: 10px 0;

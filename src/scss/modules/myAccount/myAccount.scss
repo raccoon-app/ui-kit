@@ -2,56 +2,53 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    position: absolute;
-    right: 6.875rem;
-    top: 0;
-    height: 3.75rem;
-    white-space: nowrap;
+    order: 3;
     transition: all 500ms ease;
-    z-index: 10;
+    margin-right: em(21px);
+    position: relative;
+    height: 100%;
 
-    .setting-panel_opened & {
-        top: -5rem;
+    & .icon-triangle {
+        color: $doveGray;
+        font-size: em(7px);
+        margin-left: em(6px, 7px);
     }
 
     &__username {
-        display: inline-block;
-        font-size: 1.125em;
-        text-transform: uppercase;
+        font-size: em(14px);
+        text-transform: capitalize;
     }
 
     &__icon {
-        margin-right: 0.625em;
+        background: url(../img/user_icon.svg) no-repeat center center;
+        height: 1.625rem;
+        width: 1.625rem;
+        margin-right: em(5px);
 
-        &:before {
-            font-size: $heading2Size;
-        }
     }
 
     &__menu {
         display: none;
         position: absolute;
-        background-color: $primaryBgColor;
+        background-color: $headerBgColor;
         min-width: 10rem;
-        top: 100%;
+        top: $headerHeight;
+        left: 0;
 
         .my-account:hover & {
             display: block;
         }
 
         &-link {
-            color: $defaultTextColor;
+            color: $primaryHeadingColor;
             display: block;
-            font-size: 1.25em;
-            padding: 0.9em 2.15em;
-            text-decoration: none;
+            font-size: em(14px);
+            padding: em(11px, 14px) em(31px, 14px);
             text-transform: uppercase;
+
+            & > .icon-logout {
+                margin-right: em(10px);
+            }
         }
     }
-
-
-}
-
-.icon-username:before {
-    content: "\e90a";
 }

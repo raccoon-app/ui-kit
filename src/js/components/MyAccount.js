@@ -4,10 +4,11 @@ class MyAccount extends Component {
     render() {
         return (
             <div className="my-account">
-                <span className="my-account__icon icon-username"></span>
+                <span className="my-account__icon"></span>
                 <span className="my-account__username">{ this.props.name }</span>
+                <span className="icon-triangle"></span>
                 <nav className="my-account__menu">
-                    <a href="/" className="my-account__menu-link">Sign Out</a>
+                    <a href="/" className="my-account__menu-link"><span className="icon-logout"></span>Sign Out</a>
                 </nav>
             </div>
         );

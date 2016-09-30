@@ -1,4 +1,5 @@
 .header {
+    align-items: center;
     flex: 0 0 $headerHeight;
     display: flex;
     background: $headerBgColor;
@@ -11,73 +12,12 @@
         height: 1.375em;
         background: url(../img/epam_logo@2x.png) no-repeat center center;
         background-size: 64px 22px;
-        margin: $defaultMargin*1.34 $defaultMargin*1.5 0 $defaultMargin;
+        margin: 0 $defaultMargin*1.5 0 $defaultMargin;
         text-indent: -9999px;
-    }
-
-    &__projects {
-        order: 2;
-        color: $primaryHeadingColor;
-        text-decoration: none;
-        font-size: 16px;
-        height: 16px;
-        align-self: center;
-    }
-
-    &__point {
-        order: 3;
-        color: $secondaryHeadingColor;
-        font-size: 15px;
-        height: 15px;
-        align-self: center;
-        margin: 0 10px;
-    }
-
-    &__title {
-        flex: 0 0 220px;
-        max-width: 220px;
-        order: 3;
-        padding: 4px 0 0;
-        font-size: 18px;
-        text-transform: uppercase;
-        line-height: 1;
-        font-family: $HEADLINE_FONT;
-        font-weight: 600;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        align-self: center;
-    }
-
-    &-info {
-        flex: 1 1 auto;
-        order: 3;
-        padding: 4px 290px 0 0;
-        text-align: center;
-        align-self: center;
-        position: relative;
-        top: 0;
-        transition: all 500ms ease;
-
-        &__title {
-            display: inline-block;
-            font-size: 20px;
-            font-family: $HEADLINE_FONT;
-            font-weight: 600;
-        }
-
-        &__subtitle {
-            font-size: 20px;
-            font-family: $HEADLINE_FONT;
-            font-weight: normal;
-            color: $secondaryHeadingColor;
-            padding: 0 5px;
-        }
     }
 
     &__btn {
         background: $primaryBgColor;
-        font-family: $HEADLINE_FONT;
         font-weight: 600;
         padding: 4px 12px 4px 10px;
         border: 0;
@@ -85,5 +25,50 @@
         float: left;
         display: block;
         height: 32px;
+    }
+}
+
+.breadcrumbs {
+    display: flex;
+    flex: 1 1 auto;
+    order: 2;
+    align-items: center;
+    font-size: em(14px);
+    font-weight: $semibold;
+    text-transform: uppercase;
+    transition: all 500ms ease;
+
+    &__link,
+    &__item {
+        color: $primaryHeadingColor;
+        display: inline-block;
+        font-weight: inherit;
+    }
+
+    &__delimiter {
+        color: $secondaryHeadingColor;
+        font-size: em(12px);
+        margin: 0 10px;
+    }
+}
+
+.artboard-info {
+    display: inline-block;
+    font-weight:normal;
+    text-transform: none;
+
+    &__title {
+        color: $white;
+        font-size: inherit;
+        font-weight: inherit;
+        display: inline;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    &__subtitle {
+        color: $secondaryHeadingColor;
+        padding: 0 5px;
     }
 }
