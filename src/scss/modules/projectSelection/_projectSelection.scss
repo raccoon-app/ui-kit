@@ -23,7 +23,8 @@
       color: #00abbe;
       text-decoration: none;
       text-transform: uppercase;
-      font: bold 18px $DEFAULT_FONT;
+      font-size: 18px;
+      font-weight:bold;
     }
 
     &__plate {

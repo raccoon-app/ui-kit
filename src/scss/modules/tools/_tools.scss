@@ -34,8 +34,7 @@
 
     &__item {
         padding: 0 0 5px;
-        font-family: $DEFAULT_FONT;
-        font-size:18px;
+        font-size:0.875em;
         line-height:45px;
         display: inline-block;
         vertical-align: middle;
@@ -89,7 +88,6 @@
 
     &__title {
         color: $primaryHeadingColor;
-        font-family: $DEFAULT_FONT;
         font-weight: 600;
         font-size: 22px;
         line-height: 30px;
@@ -102,7 +100,6 @@
         background: $secondaryBgColor;
         padding: 10px 10px 10px 20px;
         margin: 0 0 20px;
-        font-family: $DEFAULT_FONT;
         font-size: 14px;
         line-height: 20px;
         width: 100%;
@@ -136,7 +133,7 @@
         min-height: 86px;
         max-height: 245px;
         overflow-y: scroll;
-        font: 16px/22px $DEFAULT_FONT;
+        font: 16px/22px;
     }
 
     &__textarea-value {
@@ -189,7 +186,7 @@
 
         &-param {
             color: $secondaryHeadingColor;
-            font: 18px $DEFAULT_FONT;
+            font-size: 18px;
             text-transform: uppercase;
         }
 
@@ -204,7 +201,6 @@
     &__text {
         display: block;
         color: $secondaryHeadingColor;
-        font-family: $DEFAULT_FONT;
         font-weight: 600;
         font-size: 16px;
         line-height:20px;
@@ -216,7 +212,7 @@
         float: right;
         background-color: $buttonBgColor;
         text-transform: uppercase;
-        font: 600 20px $DEFAULT_FONT;
+        font: 600 20px;
         padding: 7px 0;
         width: 100px;
         text-align: center;
@@ -255,7 +251,7 @@
 
     &__gradient-item {
         list-style-type: none;
-        font: 18px $DEFAULT_FONT;
+        font-size: 18px;
         color: $secondaryHeadingColor;
 
         .icon-gradient-down-arrow:before {
@@ -289,7 +285,6 @@
         margin-right: 10px;
 
         color: $primaryTextColor;
-        font-family: $DEFAULT_FONT;
         font-weight: 600;
         text-transform: uppercase;
         background-color: $buttonBgColor;

@@ -10,7 +10,8 @@
   width:5px;
   height:5px;
 }
-::-webkit-scrollbar-track,::-webkit-scrollbar-corner{
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner{
   background:rgba(0,0,0,0);
 }
 ::-webkit-scrollbar-thumb{
@@ -20,7 +21,6 @@
 ::-webkit-scrollbar-thumb:hover{
   background:rgba(0,0,0,.3);
 }
-
 
 ::selection,
 ::-moz-selection {
@@ -33,15 +33,15 @@ body {
   margin: 0;
   color: $defaultTextColor;
   overflow: hidden;
+  font: normal normal $baseFontSize $baseFontFamily;
 }
-h1 {
-  margin: 0;
+
+a {
+  text-decoration: none;
 }
-h2 {
-  margin: 0;
-}
-h3 {
-  margin: 0;
+
+h1, h2, h3 {
+  font-size: $baseFontSize;
 }
 
 .app {
@@ -86,9 +86,8 @@ h3 {
   cursor: pointer;
   overflow: hidden;
 
-
   &__value {
-    font: 18px $HEADLINE_FONT;
+    font-size: 18px;
     color: $primaryTextColor;
     text-transform: uppercase;
     width: 45px;
@@ -129,7 +128,7 @@ h3 {
   }
 
   &__option {
-    font: 18px $HEADLINE_FONT;
+    font-size: 18px;
     color: $primaryTextColor;
     background-color: $white;
     padding: 5px 0;
@@ -156,7 +155,8 @@ h3 {
   background-color: $primaryBgColor;
   color: $defaultTextColor;
   text-transform: uppercase;
-  font: 600 20px $DEFAULT_FONT;
+  font-weight: 600;
+  font-size: 1.125em;
   padding: 12px;
   text-align: center;
   cursor: pointer;

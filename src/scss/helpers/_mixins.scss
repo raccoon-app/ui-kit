@@ -7,3 +7,8 @@
     background-image: url($triple);
   }
 }
+
+// converts pixels to EMs
+@function em($px, $base: $baseFontSize) {
+    @return ($px / $base) * 1em;
+}

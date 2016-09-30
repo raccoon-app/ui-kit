@@ -6,7 +6,6 @@
     background: $defaultBgColor;
     box-shadow: 0 2px 4px 0 rgba($black, 0.50);
     z-index: 9991;
-    font-family: $HEADLINE_FONT;
     transition: flex .4s cubic-bezier(0.115, 0.715, 0.305, 0.990);
 
     &_disabled {
@@ -40,7 +39,8 @@
 
     &__title {
         position: relative;
-        font: bold 18px $HEADLINE_FONT;
+        font-weight: bold;
+        font-size:  18px;
         color: $primaryHeadingColor;
         line-height: 20px;
         background: $secondaryBgColor;
@@ -136,7 +136,7 @@
 }
 
 .nav-page__link {
-    font: normal 1em $DEFAULT_FONT;
+    font-size: 1em;
     line-height: 1.25;
     padding: 0.688em 1.125em;
     cursor: pointer;
@@ -274,7 +274,6 @@
             padding: 6px 60px 5px 7px;
             background-color: $secondaryBgColor;
             border: solid 1px $secondaryHeadingColor;
-            font-family: $DEFAULT_FONT;
             font-size: 13px;
             font-weight: normal;
 

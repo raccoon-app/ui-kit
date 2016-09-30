@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import RadioColorSwitcher from './RadioColorSwitcher';
 import SettingControlButton from './SettingControlButton';
-import MyAccount from '../MyAccount';
 import classnames from 'classnames';
 
 class SettingPanel extends Component {
@@ -36,7 +35,6 @@ class SettingPanel extends Component {
                 'setting-panel_opened': this.state.isOpened,
             })}
             >
-                <MyAccount name="ARTEM SVITELSKYI" />
                 <SettingControlButton onClick={this.togglePanel} />
                 <div className="setting-panel__options">
                     <RadioColorSwitcher {...markerSwitcherProps} />
@@ -50,7 +48,6 @@ class SettingPanel extends Component {
 SettingPanel.propTypes = {
     markerColorList: PropTypes.array.isRequired,
     backgroundColorList: PropTypes.array.isRequired,
-    onControlBtnClick: PropTypes.func.isRequired,
     onSwitcherChange: PropTypes.func.isRequired,
     markerColor: PropTypes.object.isRequired,
     backgroundColor: PropTypes.object.isRequired,
