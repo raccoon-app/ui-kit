@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import Input from './Input';
 import RaccoonLogoSvg from '../../img/raccoon-logo.svg';
-import EpamLogoSvg from '../../img/e-p-a-m-logo-white.svg';
+import EpamLogoSvg from '../../img/e-p-a-m-logo.svg';
 
 const LoginScreen = ({ formLogin, epamLogin }) => (
     <section className="app auth">
@@ -17,8 +17,6 @@ const LoginScreen = ({ formLogin, epamLogin }) => (
                     src={EpamLogoSvg} alt="EPAM Logo"
                 />
             </figure>
-            <h1 className="auth__title">RACCOON APP</h1>
-            <p>Sign in with your organizational account</p>
         </header>
 
         <form className="auth-form" onSubmit={formLogin}>
