@@ -35,11 +35,12 @@ class SettingPanel extends Component {
                 'setting-panel_opened': this.state.isOpened,
             })}
             >
-                <SettingControlButton onClick={this.togglePanel} />
+                <div className="setting-panel__title">Settings</div>
                 <div className="setting-panel__options">
                     <RadioColorSwitcher {...markerSwitcherProps} />
                     <RadioColorSwitcher {...bgSwitcherProps} />
                 </div>
+                <SettingControlButton onClick={this.togglePanel} />
             </div>
         );
     }

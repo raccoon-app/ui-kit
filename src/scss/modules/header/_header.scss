@@ -2,6 +2,7 @@
     align-items: center;
     flex: 0 0 $headerHeight;
     display: flex;
+    position: relative;
     background: $headerBgColor;
     box-shadow: 0 2px 7px 0 rgba($black,0.30);
     z-index: 9990;
