@@ -1,11 +1,6 @@
 .project {
   &-selection {
-    background-image: -webkit-repeating-radial-gradient(center center, #333, #333 1px, transparent 1px, transparent 100%);
-    background-image: -moz-repeating-radial-gradient(center center, #333, #333 1px, transparent 1px, transparent 100%);
-    background-image: -ms-repeating-radial-gradient(center center, #333, #333 1px, transparent 1px, transparent 100%);
-    background-image: repeating-radial-gradient(center center, #333, #333 1px, transparent 1px, transparent 100%);
-    background-color: #464547;
-    background-size: 8px 8px;
+    background-color: $defaultBgColor;
   }
 
   &-list {
@@ -20,17 +15,22 @@
     &__link {
       display: inline-block;
       width: 200px;
-      color: #00abbe;
+      color: $turquoiseBlue;
       text-decoration: none;
-      text-transform: uppercase;
-      font-size: 18px;
-      font-weight:bold;
+      text-transform: $headingTextTransform;
+      font-size: $headingFontSize;
+      font-weight: $semibold;
     }
 
     &__plate {
       width: 200px;
       height: 200px;
       margin-bottom: 20px;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+
+      &:hover {
+        border: solid 3px $white;
+      }
     }
   }
 }
