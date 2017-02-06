@@ -7,6 +7,10 @@
 @import "base/_normalize";
 @import "base/_common";
 @import "base/_typography";
+
+/*utils*/
+@import "utils/customScroll";
+
 /*modules*/
 @import "modules/header/_header";
 @import "modules/header/_setting";

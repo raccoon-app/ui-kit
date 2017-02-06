@@ -1,11 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
+import ScrollWrap from 'react-custom-scroll';
 
 class NavPageList extends Component {
     constructor(props) {
         super(props);
+
         this.state = { disabled: false };
         this.toggleView = this.toggleView.bind(this);
+        this.componentStyle = {
+            scrollContainer: {}
+        };
+        this.resizeTimer = null;
     }
 
     toggleView() {
@@ -14,7 +20,34 @@ class NavPageList extends Component {
         });
     }
 
+    calculateNavListHeight() {
+        let navHeight = document.getElementsByClassName('nav__body')[0].clientHeight;
+        let navFooterHeight = document.getElementsByClassName('nav-footer')[0].clientHeight;
+
+        return  navHeight - navFooterHeight;
+    }
+
+    componentDidMount() {
+        const navListHeiht = this.calculateNavListHeight();
+
+        this.componentStyle.scrollContainer = Object.assign({},
+                this.componentStyle.scrollContainer, {maxHeight: navListHeiht});
+        window.addEventListener("resize", this.updateNavListHeight.bind(this));
+    }
+
+    updateNavListHeight() {
+        clearTimeout(this.resizeTimer);
+
+        this.resizeTimer = setTimeout(() => {
+            const navListHeiht = this.calculateNavListHeight();
+
+            this.componentStyle.scrollContainer = Object.assign({},
+                    this.componentStyle.scrollContainer, {maxHeight: navListHeiht});
+        }, 500);
+    }
+
     render() {
+
         return (
             <nav
                 className={classnames({
@@ -23,13 +56,6 @@ class NavPageList extends Component {
                 })}
             >
                 <div className="nav__body">
-                    <ul className={classnames({
-                        'nav-folder': true,
-                        'nav-folder_filter': this.props.filter,
-                    })}
-                    >
-                        {this.props.children}
-                    </ul>
                     <div className="nav-footer">
                         <button
                             className={classnames({
@@ -55,19 +81,36 @@ class NavPageList extends Component {
                                 className="nav-footer__search-input"
                                 type="search"
                                 value={this.props.filter}
-                                placeholder="SEARCH"
+                                placeholder="Search"
                                 onChange={(event) => this.props.setFilter(event.target.value)}
                             />
-                            <button
+                            <span
                                 className={classnames({
                                     'nav-footer__search-btn': true,
-                                    'icon-cross': this.props.filter,
-                                    'icon-search': !this.props.filter,
+                                    'icon-search': true
                                 })}
-                                onClick={() => this.props.setFilter()}
                             >
+                            </span>
+                            <button
+                                    className={classnames({
+                                    'nav-footer__search-btn': true,
+                                    'icon-cross': this.props.filter
+                                })}
+                                    onClick={() => this.props.setFilter()}
+                                    >
                             </button>
                         </div>
+                    </div>
+                    <div className="nav-scroll-container" style={this.componentStyle.scrollContainer}>
+                        <ScrollWrap heightRelativeToParent="100%">
+                            <ul className={classnames({
+                                'nav-folder': true,
+                                'nav-folder_filter': this.props.filter
+                            })}
+                                    >
+                                {this.props.children}
+                            </ul>
+                        </ScrollWrap>
                     </div>
                 </div>
                 <div className="nav-toggle">

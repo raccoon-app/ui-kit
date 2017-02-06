@@ -3,17 +3,17 @@ import classnames from 'classnames';
 
 const NavArtboardList = ({ artboardId, activeArtboard, name, src, viewMode, onNavArtboardClicked }) => {
     const navTileItem = (
-        <h5 className="nav-page__link">
+        <div className="nav-page__link">
             <span className="nav-page__link-img" style={{ backgroundImage: `url(${src})` }}>
                 <i className="icon-selected-page-icon"></i>
             </span>
-        </h5>
+        </div>
     );
 
     const navListItem = (
-        <h5 className="nav-page__link">
+        <div className="nav-page__link">
             <span className="nav-page__link-text">{name}</span>
-        </h5>
+        </div>
     );
 
     return (
