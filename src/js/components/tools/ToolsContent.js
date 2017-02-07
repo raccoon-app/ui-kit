@@ -13,7 +13,7 @@ export default class ToolsContent extends Component {
                     {content}
                 </div>
                 <CopyToClipboard text={content} onCopy={() => showCopyMessage(copyMessage)}>
-                    <button className="tools__btn">Copy</button>
+                    <button className="tools__btn tools__btn_up icon-icon-copied"></button>
                 </CopyToClipboard>
             </div>
         );

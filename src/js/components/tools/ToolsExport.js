@@ -10,21 +10,19 @@ export default class ToolsExport extends Component {
         return (
             <div className="tools-container">
                 <h5 className="tools__title">Export asset</h5>
-                <a href={fileUrl} download={name} className="tools__export">
-                    <span style={{ backgroundImage:'url('+fileUrl+')' }} className="tools__export-image"></span>
-                </a>
 
-                <div className="tools__export-config clearfix">
-                    <div className="tools__export-measure">
-                        <div className="tools__export-param">Size:</div>
-                        <SizeDropdown />
-                    </div>
-                    <div className="tools__export-measure">
-                        <div className="tools__export-param">Format:</div>
-                        <FormatDropdown />
-                    </div>
-                    <a href={fileUrl} download={name} className="tools__btn">Export</a>
+                <div className="tools__export-measure">
+                    <SizeDropdown />
                 </div>
+                <div className="tools__export-measure">
+                    <FormatDropdown />
+                </div>
+
+                <div className="tools__export">
+                    <span style={{ backgroundImage:'url('+fileUrl+')' }} className="tools__export-image"></span>
+                </div>
+
+                <a href={fileUrl} download={name} className="tools__btn tools__btn_export icon-icon-download"></a>
             </div>
         );
     }

@@ -23,7 +23,8 @@
     }
 
     &-container {
-        padding-bottom: 20px;
+        margin-bottom: 30px;
+        position: relative;
     }
 
     &__list {
@@ -78,6 +79,7 @@
             display: inline-block;
             text-transform: uppercase;
             vertical-align: middle;
+            color: $doveGray;
         }
 
         &-value {
@@ -89,7 +91,7 @@
     &__title {
         color: $primaryHeadingColor;
         font-weight: 600;
-        font-size: 22px;
+        font-size: 14px;
         line-height: 30px;
         margin: 0 0 10px;
         text-transform: uppercase;
@@ -98,8 +100,7 @@
     &__textarea {
         display: block;
         background: $secondaryBgColor;
-        padding: 10px 10px 10px 20px;
-        margin: 0 0 20px;
+        padding: 10px 45px 10px 20px;
         font-size: 14px;
         line-height: 20px;
         width: 100%;
@@ -108,7 +109,7 @@
         &_style {
             max-height: 255px;
             overflow-y: scroll;
-            box-shadow: inset 10px 0 0 lighten($primaryControlColor, 10%);
+            box-shadow: inset 10px 0 0 lighten($mineShaft, 5%);
         }
     }
 
@@ -184,12 +185,6 @@
             }
         }
 
-        &-param {
-            color: $secondaryHeadingColor;
-            font-size: 18px;
-            text-transform: uppercase;
-        }
-
         &-config {
 
             .tools__btn {
@@ -210,16 +205,17 @@
 
     &__btn {
         float: right;
-        background-color: $buttonBgColor;
-        text-transform: uppercase;
-        font: 600 20px;
+        background-color: $sunglow;
         padding: 7px 0;
-        width: 100px;
+        width: 40px;
+        height: 40px;
         text-align: center;
+        font-size: 21px;
         cursor: pointer;
         border: none;
         transition: background-color .3s;
         text-decoration: none;
+        color: $gravel;
 
         &:hover,
         &:active,
@@ -227,13 +223,28 @@
             background-color: lighten($buttonBgColor, 10%);
             outline: none;
         }
+
+        &_up, &_export {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        &_export {
+            padding-top: 9px;
+        }
+    }
+
+    &__percent {
+        color: $doveGray;
+        padding-left: 10px;
     }
 
     &__gradient-opts {
         .icon-paint-color-2 {
             &:before {
                 content: "\e905";
-                font-size: 28px;
+                font-size: 24px;
                 vertical-align: middle;
                 margin-right: 10px;
                 position: relative;
@@ -251,8 +262,10 @@
 
     &__gradient-item {
         list-style-type: none;
-        font-size: 18px;
-        color: $secondaryHeadingColor;
+        font-size: 15px;
+        color: $white;
+        background-color: $mineShaft;
+        height: 40px;
 
         .icon-gradient-down-arrow:before {
             content: "\e904";
@@ -271,11 +284,7 @@
 
     &__gradient-color {
         display: inline-block;
-        margin-top: 8px;
-    }
-
-    &__gradient-code {
-        padding-right: 5px;
+        padding: 8px 0 8px 10px;
     }
 
     &-copy-info {

@@ -12,9 +12,10 @@ export default class ToolsBackground extends Component {
                         <span className="tools__gradient-color">
                             <span className="icon-paint-color-2" style={{ color: background }}></span>
                             <span className="tools__gradient-code">{background}</span>
+                            <span className="tools__percent">(100%)</span>
                         </span>
                         <CopyToClipboard text={background} onCopy={() => showCopyMessage(copyMessage)}>
-                            <button className="tools__btn">Copy</button>
+                            <button className="tools__btn icon-icon-copied"></button>
                         </CopyToClipboard>
                     </li>
                 </ul>
