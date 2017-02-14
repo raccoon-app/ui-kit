@@ -179,14 +179,25 @@
         &-measure {
             display: inline-block;
             vertical-align: top;
+            width: 145px;
+            margin-bottom: 10px;
 
-            &:first-child {
-                margin-right: 15px;
+            &_format {
+                margin-left: 15px;
+
+                .choose-img__item {
+                    &:focus, &:active, &:hover {
+                        background-color: $lightChristi;
+                    }
+
+                    &.active {
+                        background-color: $christi;
+                    }
+                }
             }
         }
 
         &-config {
-
             .tools__btn {
                 margin-top: 23px;
             }
@@ -360,6 +371,31 @@
 
         &_full-screen {
             margin-right: 8px;
+        }
+    }
+}
+
+.choose-img {
+    display: flex;
+    justify-content: space-between;
+
+    &__item {
+        background-color: transparent;
+        border: 1px solid $gravel;
+        border-radius: 17px;
+        width: 40px;
+        height: 25px;
+        text-align: center;
+        font-size: 14px;
+        transition: all 0.2s ease-out 0s;
+
+        &:focus, &:active, &:hover {
+            outline: none;
+            background-color: $turquoiseBlue;
+        }
+
+        &.active {
+            background-color: $bondiBlue;
         }
     }
 }

@@ -14,7 +14,7 @@ export default class ToolsExport extends Component {
                 <div className="tools__export-measure">
                     <SizeDropdown />
                 </div>
-                <div className="tools__export-measure">
+                <div className="tools__export-measure tools__export-measure_format">
                     <FormatDropdown />
                 </div>
 

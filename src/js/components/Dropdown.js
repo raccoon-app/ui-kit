@@ -32,10 +32,11 @@ class Dropdown extends Component {
 
         const optionList = data.map(function(option) {
             return(
-                <option value={option.value}>{option.text}</option>
+                <button className="choose-img__item">{option.text}</button>
             );
         });
         const dropdownList = data.map(function (option) {
+            console.log(option);
             return(
                 <div className="dropdown__option" data-value= {option.value}>{option.text}</div>
             );
@@ -67,11 +68,12 @@ class Dropdown extends Component {
         };
 
         return (
-            <div className={visibility && this.state.isOpen ? 'dropdown dropdown--opened' : 'dropdown'}
+            <div
                 onClick = {dropdownClick}
                 ref = "dropdownContainer"
+                className="choose-img"
             >
-                <div className = "dropdown-title">
+                {/*<div className = "dropdown-title">
                     <div className="dropdown__value">{activeValue}</div>
                     <span className="icon-chevron-down"></span>
                 </div>
@@ -83,7 +85,8 @@ class Dropdown extends Component {
                 </div>
                 <select ref="select">
                     {optionList}
-                </select>
+                </select>*/}
+                {optionList}
             </div>
         );
     }
