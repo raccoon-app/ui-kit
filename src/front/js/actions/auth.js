@@ -2,9 +2,13 @@ import { hashHistory } from 'react-router';
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
-export function login(url) {
+export const LOGIN_SERVICES = Object.freeze({
+    LOCAL: 'LOCAL'
+});
+
+export function login(loginService) {
     return dispatch => {
-        return fetch('', {})
+        return fetch(getServiceUrl(loginService), {})
             .then((response) => {
                 dispatch(loginSuccess(response));
                 return response;
@@ -25,4 +29,14 @@ export function loginSuccess(result) {
         type: LOGIN_SUCCESS,
         userId,
     };
+}
+
+function getServiceUrl(type) {
+    const baseUrl = process.env.API_BASE_URL;
+    switch (type) {
+        case LOGIN_SERVICES.LOCAL:
+            return `${baseUrl}/auth/local`;
+        default:
+            throw new Error('Login service is not supported');
+    }
 }

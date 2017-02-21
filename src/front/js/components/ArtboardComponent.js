@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-import Measurement from './../containers/Measurement';
+import Measurement from '../containers/Measurement';
 import { getDottedTexture } from '../utils/backgroundTexture';
 
 let coords = {

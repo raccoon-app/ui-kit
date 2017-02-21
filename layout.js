@@ -3,10 +3,11 @@
 const path = require('path');
 
 const
-    srcDir = path.join(__dirname, 'src'),
-    distDir = path.join(__dirname, 'dist');
+    srcDir = path.join(__dirname, 'src/front'),
+    distDir = path.join(__dirname, 'front/dist');
 
 module.exports = {
+    envFilePath: path.join(__dirname, '.env'),
     src: {
         front: {
             jsEntry: path.join(srcDir, 'js/index.js'),
