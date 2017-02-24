@@ -1,20 +1,24 @@
 /*default*/
 
-@import "helpers/variables";
-@import "helpers/mixins";
-@import "helpers/animations";
-@import "helpers/icons";
-@import "base/normalize";
-@import "base/common";
-@import "base/typography";
+@import "helpers/_variables";
+@import "helpers/_mixins";
+@import "helpers/_animations";
+@import "helpers/_icons";
+@import "base/_normalize";
+@import "base/_common";
+@import "base/_typography";
+
+/*utils*/
+@import "utils/customScroll";
+
 /*modules*/
-@import "modules/header/header";
-@import "modules/header/setting";
+@import "modules/header/_header";
+@import "modules/header/_setting";
 @import "modules/projectSelection/projectSelection";
-@import "modules/nav/nav";
-@import "modules/artboard/artboard";
-@import "modules/tools/tools";
-@import "modules/measure/measure";
-@import "modules/spinner/spinner";
-@import "modules/auth/auth";
+@import "modules/nav/_nav";
+@import "modules/artboard/_artboard";
+@import "modules/tools/_tools";
+@import "modules/measure/_measure";
+@import "modules/spinner/_spinner";
+@import "modules/auth/_auth";
 @import "modules/myAccount/myAccount";
