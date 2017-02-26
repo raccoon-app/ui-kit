@@ -360,17 +360,42 @@
         }
 
         &_value {
-            margin: 0 4px;
             position: relative;
-            top: -2px;
+            top: -5px;
             display: inline-block;
             user-select: none;
-            min-width: 70px;
+            width: 60px;
             text-align: center;
+            font-size: 0.875 * $baseFontSize;
         }
 
         &_full-screen {
             margin-right: 8px;
+        }
+    }
+
+    &__select-wrapper {
+        display: inline-block;
+        position: relative;
+        margin: em(4px) em(4px) 0;
+    }
+
+    &__select {
+        position: absolute;
+        left: 0;
+        bottom: 120%;
+    }
+
+    &__select-item {
+        font-size: 0.875 * $baseFontSize;
+        background-color: $black-30;
+        padding: 6px 0;
+        list-style: none;
+        width: 60px;
+        text-align: center;
+
+        &:hover {
+            background-color: $christi;
         }
     }
 }
