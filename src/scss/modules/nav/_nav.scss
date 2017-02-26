@@ -31,11 +31,9 @@ $navWidth: 300px;
 }
 
 .nav-folder {
-    //overflow-y: scroll;
     list-style: none;
     padding: 0;
     margin: 0;
-    //flex: 1 1 auto;
 
     &__title {
         position: relative;
@@ -112,8 +110,6 @@ $navWidth: 300px;
     }
 }
 
-
-
 .nav-page {
     list-style: none;
     padding: 0;
@@ -136,6 +132,7 @@ $navWidth: 300px;
             display: none;
         }
     }
+
 }
 
 .nav-page__link {
@@ -183,6 +180,19 @@ $navWidth: 300px;
 
     &_active:hover {
         background-color: $primaryBgColor;
+    }
+
+    .nav-page {
+        &__tooltip {
+            box-shadow: 0 0 1px #333;
+            border-radius: 0;
+            padding: 6px 8px;
+            font-size: 14px;
+
+            &:after {
+                display: none;
+            }
+        }
     }
 }
 

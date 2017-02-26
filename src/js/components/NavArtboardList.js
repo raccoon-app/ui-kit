@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ReactTooltip from 'react-tooltip'
 import classnames from 'classnames';
 
 const NavArtboardList = ({ artboardId, activeArtboard, name, src, viewMode, onNavArtboardClicked }) => {
@@ -11,9 +12,13 @@ const NavArtboardList = ({ artboardId, activeArtboard, name, src, viewMode, onNa
     );
 
     const navListItem = (
-        <div className="nav-page__link">
-            <span className="nav-page__link-text">{name}</span>
+        <div>
+            <div data-tip data-for={name} className="nav-page__link">
+                <span className="nav-page__link-text">{name}</span>
+            </div>
+            <ReactTooltip class="nav-page__tooltip" effect="solid" delayShow={500} offset={{top: 5, left: 0}} place="right" id={name} >{name}</ReactTooltip>
         </div>
+
     );
 
     return (
