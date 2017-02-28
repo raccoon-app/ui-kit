@@ -31,6 +31,8 @@ class ArtboardComponent extends Component {
                 y: 0,
             },
             isAnimated: true,
+            zoomValues: [3, 2.5, 2, 1.5, 1, 0.5, 0.25],
+            isZoomSelectVisible: false,
         };
     }
 
@@ -138,6 +140,7 @@ class ArtboardComponent extends Component {
 
         this.setState({
             scale: newScale,
+            isZoomSelectVisible: false,
         });
     }
 
@@ -162,6 +165,10 @@ class ArtboardComponent extends Component {
                 y: 0,
             },
         });
+    }
+
+    toggleZoomSelect() {
+        return this.state.isZoomSelectVisible = !this.state.isZoomSelectVisible;
     }
 
     addTransition($target, $transitioned) {
@@ -253,11 +260,24 @@ class ArtboardComponent extends Component {
                         onClick={() => this.setScale('minus')}
                     >
                     </button>
-                    <button className="tools-zoom__btn tools-zoom__btn_value"
-                        onClick={() => this.setScale(1)}
-                    >
-                        {Math.round(scale * 100)}%
-                    </button>
+                    <div className="tools-zoom__select-wrapper">
+                        <button className="tools-zoom__btn tools-zoom__btn_value"
+                            onClick={() => this.toggleZoomSelect()}
+                        >
+                            {Math.round(scale * 100)}%
+                        </button>
+                    {this.state.isZoomSelectVisible &&
+                        <ul className="tools-zoom__select" >
+                            {this.state.zoomValues.map((value, i)=> {
+                                return (
+                                    <li className="tools-zoom__select-item" key={i}
+                                    onClick={() => this.setScale(value)}>
+                                        {Math.round(value * 100)}%
+                                    </li>)
+                            })}
+                        </ul>
+                        }
+                    </div>
                     <button className="tools-zoom__btn tools-zoom__btn_plus icon-plus-circle"
                         onClick={() => this.setScale('plus')}
                     >
