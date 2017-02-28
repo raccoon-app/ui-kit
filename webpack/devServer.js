@@ -8,6 +8,9 @@ module.exports = {
     host: 'localhost',
     port: 8080,
     proxy: {
-        '*':'localhost:9000'
+        '*': {
+            target: 'http://localhost:9000',
+            secure: false
+        }
     }
 };
