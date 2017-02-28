@@ -1,0 +1,51 @@
+/*  VARS_dark_theme.SCSS */
+
+// Color names // Named via http://chir.ag/projects/name-that-color/
+$christi: #7DA511;
+$lightChristi: #96BC31;
+$bondiBlue: #0099AA;
+$turquoiseBlue: #00abbe;
+$sunglow: #FFCA29;
+$dustyGray: #999999;
+$deepDarkMineShaft: #262626;
+$darkMineShaft: #2F2F2F;
+$mineShaft: #353535;
+$gravel: #464547;
+
+$white: #fff;
+$darkWhite: #fafafa;
+$black: #000;
+$wildWatermelon: #fe6971;
+$doveGray: #6f6f6f;
+
+/* UI elements Color matrix */
+$defaultBgColor        : $deepDarkMineShaft;
+$defaultLinkColor      : $bondiBlue;
+$defaultTextColor      : $white;
+
+$primaryTextColor      : $deepDarkMineShaft;
+$primaryHeadingColor   : $bondiBlue;
+$primaryBgColor        : $bondiBlue;
+$primaryControlColor   : $christi;
+
+$secondaryHeadingColor : $dustyGray;
+$secondaryBgColor      : $mineShaft;
+
+$headerBgColor         : $darkMineShaft;
+$buttonBgColor         : $sunglow;
+
+/* typography */
+$baseFontSize: 16px;
+$baseLineHeight: $baseFontSize * 1.25;
+$baseFontFamily: 'SourceSansPro', Helvetica, sans-serif;
+$arialFontFamily: Arial, Helvetica, sans-serif;
+$iconsFontFamily: 'icomoon';
+
+$headingFontSize: 18px;
+$headingLineHeight: 1.28;
+$headingTextTransform: uppercase;
+$semibold: 600;
+
+/* other ui elements */
+$headerHeight: 3.25rem;
+$defaultMargin: 0.75rem;
