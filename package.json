@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "npm-run-all start:front start:back",
-    "watch": "npm-run-all -p watch:*",
+    "watch": "npm-run-all --parallel watch:*",
     "lint": "eslint src",
     "test:front": "jest",
     "test:backend": "mocha --timeout 10000 src/back/test --require ./src/back/test/bootstrap",
@@ -27,8 +27,8 @@
     "build:release": "webpack --config webpack/production.js",
     "start:back": "cd src/back && nodemon",
     "start:front": "webpack --config webpack/index.js",
-    "watch:front": "webpack-dev-server --config webpack/index.js",
     "watch:back": "npm run start:back",
+    "watch:front": "webpack-dev-server --config webpack/index.js",
     "lint:front": "eslint src/front",
     "lint:back": "eslint src/back",
     "db": "mongod --dbpath .local-db"

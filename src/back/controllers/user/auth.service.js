@@ -1,3 +1,5 @@
+'use strict';
+
 const expressJwt = require('express-jwt');
 const env = require('../../../../env');
 const User = require('../../models/User');
@@ -22,6 +24,11 @@ exports.getAccount = (req, res) => {
         res.status(200).send(userToSend);
     });
 };
+
+
+
+
+
 
 exports.logout = (req, res) => {
     req.logout();

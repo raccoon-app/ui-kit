@@ -6,4 +6,8 @@ module.exports = (app) => app
     .use(expressValidator())
 	.use(bodyParser.json({ limit: '15mb' }))
 	.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}))
-	.use(passport.initialize());
+	.use(passport.initialize())
+	.use(function(req, res, next) {
+		res.header('Access-Control-Allow-Origin', '*');
+		next();
+	});;

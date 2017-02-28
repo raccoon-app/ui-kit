@@ -7,4 +7,7 @@ module.exports = {
     progress: true,
     host: 'localhost',
     port: 8080,
+    proxy: {
+        '*':'localhost:9000'
+    }
 };
