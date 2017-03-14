@@ -1,0 +1,60 @@
+.auth {
+    align-items: center;
+    justify-content: center;
+    background: $defaultBgColor url('../img/auth-background.jpg') fixed center center;
+    background-size: cover;
+    overflow: auto;
+
+  &__header {
+      margin-bottom: 55px;
+      text-align: center;
+  }
+  &__figure {
+      margin: 0;
+      padding: 10px 0;
+  }
+
+  &__title {
+      font-size: 1.375em;
+      font-weight: bold;
+      margin: 0 0 60px;
+  }
+
+  &-form {
+      width: 320px;
+
+      &__label {
+          display: block;
+          font-size: em(18px);
+          font-weight: bold;
+          margin-bottom: 5px;
+      }
+
+      &__input {
+          height: 50px;
+          margin-bottom: 20px;
+          padding: 5px 10px;
+          width: 100%;
+          color: $primaryTextColor;
+      }
+
+      &__btn {
+          width: 150px;
+      }
+
+      &__btn_right {
+          float: right;
+      }
+  }
+}
+
+.forgot-pwd {
+    line-height: 1.5;
+    margin-top: 50px;
+    text-align: center;
+
+    &__link {
+        color: $defaultLinkColor;
+        text-decoration: none;
+    }
+}

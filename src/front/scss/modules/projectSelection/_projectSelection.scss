@@ -1,0 +1,36 @@
+.project {
+  &-selection {
+    background-color: $defaultBgColor;
+  }
+
+  &-list {
+    text-align: center;
+    margin: auto;
+
+    &__item {
+      display: inline-block;
+      padding: 0 50px;
+    }
+
+    &__link {
+      display: inline-block;
+      width: 200px;
+      color: $turquoiseBlue;
+      text-decoration: none;
+      text-transform: $headingTextTransform;
+      font-size: $headingFontSize;
+      font-weight: $semibold;
+    }
+
+    &__plate {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+
+      &:hover {
+        border: solid 3px $white;
+      }
+    }
+  }
+}

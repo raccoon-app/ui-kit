@@ -1,0 +1,50 @@
+.icon-list-view::after {
+  content: "\e90f";
+}
+
+.icon-project-icon::before {
+  content: "\e909";
+  font-size: em(18px);
+  margin-right: em(10px);
+}
+
+.icon-project-footer::after {
+  content: "\e912";
+}
+
+.icon-chevron-left::after {
+  content: '\E908';
+}
+
+.icon-chevron-right::after {
+  content: '\E908';
+  display: inline-block;
+  transform: rotate(180deg);
+}
+.icon-search::after {
+  content: "\e911";
+}
+
+.icon-cross::after {
+  content: "\e910";
+}
+
+.icon-icon-copied:before {
+  content: "\e913";
+}
+
+.icon-icon-download:before {
+  content: "\e914";
+}
+
+.icon-icon-history:before {
+  content: "\e915";
+}
+
+.icon-triangle:after {
+  content: "\e916";
+}
+
+.icon-logout:before {
+  content: "\e917";
+}

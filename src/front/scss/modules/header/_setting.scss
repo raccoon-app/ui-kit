@@ -1,0 +1,127 @@
+.setting-panel {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0.75rem;
+    order: 3;
+    align-items: center;
+    justify-content: flex-end;
+    height:100%;
+
+
+    &__options {
+        background-color: $headerBgColor;
+        display: flex;
+        flex-direction: row-reverse;
+        overflow: hidden;
+        transition: all 500ms ease;
+        white-space: nowrap;
+        width: 0;
+    }
+
+    &__title {
+        display: none;
+    }
+
+    &_opened {
+        width: calc(100% - 90px);
+
+        .setting-panel__title {
+            background-color: $headerBgColor;
+            color: $defaultLinkColor;
+            display: block;
+            padding: 0 0 0 em(18px);
+            text-transform: uppercase;
+
+            &:before {
+                content: "\e90e";
+                font-size: 1.125rem;
+                top: 50%;
+                transform: translateY(-50%);
+                font-family:$iconsFontFamily;
+                margin-right: em(10px);
+            }
+        }
+
+        .setting-panel__options {
+            padding-right: em(30px);
+            width: 100%;
+        }
+
+        .setting-control-btn {
+            background-color: $primaryControlColor;
+
+            &:after {
+                content: "\e907";
+            }
+        }
+    }
+}
+
+.setting-control-btn {
+    border-radius: 50%;
+    position: relative;
+    background-color: $primaryBgColor;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    transition: background-color 500ms ease;
+
+    &:after {
+        content: "\e90e";
+        font-size: 1.125rem;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
+}
+
+.setting-color,
+.radio-color-switcher {
+    display: flex;
+    margin: 0 0 0 em(40px);
+
+    &__title {
+        display: inline;
+        margin: 0 10px 0 0;
+        color: $primaryHeadingColor;
+        font-size:16px;
+        line-height:20px;
+        padding: 10px 0;
+        text-transform: uppercase;
+    }
+
+    &__list {
+        list-style: none;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        display: inline;
+    }
+
+    &__item {
+        display: inline-block;
+        padding: em(11px) em(5px) 0;
+        margin: 0;
+    }
+
+    &__button {
+        display: block;
+        padding: 0;
+        border: 10px transparent solid;
+        border-radius: 10px;
+        border-width: 0 10px;
+        height: 20px;
+        transform: rotate(45deg);
+
+        &_active {
+            box-shadow: 0 0 0 2px $secondaryBgColor, 0 0 0 4px $primaryBgColor;
+        }
+
+        &:active,
+        &:focus {
+            outline: 0;
+        }
+    }
+}

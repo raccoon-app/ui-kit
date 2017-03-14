@@ -1,0 +1,171 @@
+* {
+  box-sizing: border-box;
+}
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar{
+  width:5px;
+  height:5px;
+}
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner{
+  background:rgba(0,0,0,0);
+}
+::-webkit-scrollbar-thumb{
+  background:rgba(0,0,0,.2);
+  border-radius:2px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background:rgba(0,0,0,.3);
+}
+
+::selection,
+::-moz-selection {
+  background: $primaryBgColor;
+  color: $defaultTextColor;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  color: $defaultTextColor;
+  overflow: hidden;
+  font: normal normal $baseFontSize $baseFontFamily;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1, h2, h3 {
+  font-size: $baseFontSize;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main {
+  flex: 1 1 200px;
+  display: flex;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.clearfix:after {
+  display: block;
+  clear: both;
+  content: '';
+}
+
+.dropdown {
+  background-color: $white;
+  padding-top: 10px;
+  text-align: center;
+  box-sizing: border-box;
+  position: relative;
+  height: 40px;
+  width: 85px;
+  cursor: pointer;
+  overflow: hidden;
+
+  &__value {
+    font-size: 18px;
+    color: $primaryTextColor;
+    text-transform: uppercase;
+    width: 45px;
+  }
+
+  .icon-chevron-down {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background-color: $secondaryBgColor;
+    &:before {
+      content: "\e906";
+      font-size: 10px;
+      z-index: 2;
+      top: 10px;
+      display: inline-block;
+      margin-top: 16px;
+
+    }
+  }
+  select {
+    display: none;
+  }
+
+  &-options {
+    opacity: 0;
+    overflow: hidden;
+    margin-top: 7px;
+    width: 45px;
+    transition: opacity .2s;
+    &.top-opened {
+      position: absolute;
+      bottom: 40px;
+    }
+  }
+
+  &__option {
+    font-size: 18px;
+    color: $primaryTextColor;
+    background-color: $white;
+    padding: 5px 0;
+
+    &:hover, &--selected {
+      background-color: $primaryBgColor;
+      color: $defaultTextColor;
+    }
+  }
+
+  &--opened {
+    overflow: visible;
+    .icon-chevron-down {
+      transform: rotateX(180deg);
+    }
+
+    .dropdown-options {
+      opacity: 1;
+    }
+  }
+}
+
+.btn {
+  background-color: $primaryBgColor;
+  color: $defaultTextColor;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.125em;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: background-color .3s;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &_green {
+    background-color: $primaryControlColor;
+  }
+}

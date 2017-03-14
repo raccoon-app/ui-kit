@@ -9,3 +9,8 @@ tmp/**
 node_modules/
 dist/
 coverage/
+
+!.local-db/
+.local-db/*
+!.local-db/.gitkeep
+.env
