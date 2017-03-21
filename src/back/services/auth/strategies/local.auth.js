@@ -1,10 +1,10 @@
 const crypto = require('crypto');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const fs  = require("fs");
-const authService = require('../auth.service');
+const authService = require('./../auth.service');
 const jwt = require('jsonwebtoken');
 const env = require('../../../../../env');
+const STATUS = require('./../../../common/const').STATUS;
 
 const User = require('../../../models/User');
 
@@ -46,13 +46,13 @@ exports.postLogin = (req, res, next) => {
     const errors = req.validationErrors();
 
     if (errors) {
-        return res.status(400).send({errors});
+        return res.status(STATUS.OK).send({errors});
     }
 
     passport.authenticate('local', {session: false}, (err, user, info) => {
         if (err) { return next(err); }
         if (!user) {
-            return res.status(404).send({errors: info});
+            return res.status(STATUS.NOTFOUND).send({errors: info});
         }
         req.logIn(user, (err) => {
             if (err) { return next(err); }
@@ -62,7 +62,7 @@ exports.postLogin = (req, res, next) => {
             }, env.SESSION_SECRET, {
                 expiresIn: '12h'
             });
-            return res.status(200).json({
+            return res.status(STATUS.OK).json({
                 token: req.token
             });
         });
@@ -77,7 +77,7 @@ exports.postSignup = (req, res, next) => {
     const errors = req.validationErrors();
 
     if (errors) {
-        return res.status(400).send({errors});
+        return res.status(STATUS.BADREQUEST).send({errors});
     }
 
     const user = new User({
@@ -88,7 +88,7 @@ exports.postSignup = (req, res, next) => {
     User.findOne({ email: req.body.email }, (err, existingUser) => {
         if (err) { return next(err); }
         if (existingUser) {
-            return res.sendStatus(409);
+            return res.sendStatus(STATUS.CONFLICT);
         }
         user.save((err) => {
             if (err) { return next(err); }
@@ -96,7 +96,14 @@ exports.postSignup = (req, res, next) => {
                 if (err) {
                     return next(err);
                 }
-                res.sendStatus(200);
+                req.token = jwt.sign({
+                    id: req.user.id,
+                }, env.SESSION_SECRET, {
+                    expiresIn: '12h'
+                });
+                return res.status(STATUS.OK).json({
+                    token: req.token
+                });
             });
         });
     });
