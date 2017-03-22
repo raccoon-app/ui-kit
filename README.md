@@ -39,9 +39,9 @@ NODE_ENV - development|production
 
 Routes for authorization are in \back\controllers\auth.js
 
-http://localhost:9000/auth/local/login
-http://localhost:9000/auth/local/signup
-http://localhost:9000/auth/logout
+* http://localhost:9000/auth/local/login
+* http://localhost:9000/auth/local/signup
+* http://localhost:9000/auth/logout
 
 Authorization strategies have to be in \back\services\auth\strategies
 Initialization of all strategies and common method (logout) are in \back\services\auth\strategies\common.js
@@ -71,20 +71,20 @@ module.exports = router()
 
 User's RESTs:
 
-http://localhost:9000/user/
-http://localhost:9000/user/account
-http://localhost:9000/user/get/"id"
-http://localhost:9000/user/find
-http://localhost:9000/user/add
-http://localhost:9000/user/update
-http://localhost:9000/user/delete
+* http://localhost:9000/user/
+* http://localhost:9000/user/account
+* http://localhost:9000/user/get/"id"
+* http://localhost:9000/user/find
+* http://localhost:9000/user/add
+* http://localhost:9000/user/update
+* http://localhost:9000/user/delete
 
 Project's RESTs:
 
-http://localhost:9000/project/get
-http://localhost:9000/project/add
-http://localhost:9000/project/find/"id"
-http://localhost:9000/project/update/"id"
-http://localhost:9000/project/delete/"id"
+* http://localhost:9000/project/get
+* http://localhost:9000/project/add
+* http://localhost:9000/project/find/"id"
+* http://localhost:9000/project/update/"id"
+* http://localhost:9000/project/delete/"id"
 
 
