@@ -2,7 +2,7 @@
 
 const router = require('express').Router;
 const User = require('./../models/User');
-const auth = require('./../services/auth/auth.service');
+const auth = require('./../services/auth/auth.middleware');
 const STATUS = require('./../common/const').STATUS;
 
 module.exports = router()

@@ -6,28 +6,14 @@ const env = require('../../../../env');
 const User = require('../../models/User');
 const STATUS = require('./../../common/const').STATUS;
 
+// Function expects in request header next record
+// authorization: Bearer <token>
 const authenticate = expressJwt({secret : env.SESSION_SECRET});
 
-const strategies = [];
-
-exports.init = () => {
-    strategies.forEach(strategy => strategy.init());
-};
-
-// This function called from modules with strategies and there each strategy register itself
-exports.registerStrategy = (strategy) => strategies.push(strategy);
-
-exports.logout = (req, res) => {
-    req.logout();
-    res.sendStatus(STATUS.OK);
-};
-
-// Function expects in request header next record
-// Authorization: Bearer <token>
 exports.isAuthenticated = authenticate;
 
 // Function expects in request header next record
-// Authorization: Bearer <token>
+// authorization: Bearer <token>
 exports.requiredRole = (roleName) => {
     return function(req, res, next) {
         if (!req.headers.authorization) {
@@ -42,9 +28,7 @@ exports.requiredRole = (roleName) => {
 
         return User.findOne({_id: decodedUser.id, role: roleName})
             .then((result) => {
-                console.log(result);
                 if (result) {
-                    console.log('aaaaaaa');
                     next();
                 } else {
                     res.send(STATUS.FORBIDDEN);

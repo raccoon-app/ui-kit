@@ -1,14 +1,14 @@
 const crypto = require('crypto');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const authService = require('./../auth.service');
+const strategies = require('./common');
 const jwt = require('jsonwebtoken');
 const env = require('../../../../../env');
 const STATUS = require('./../../../common/const').STATUS;
 
 const User = require('../../../models/User');
 
-authService.registerStrategy(this);
+strategies.register(this);
 
 exports.init = () => {
     passport.serializeUser((user, done) => {
@@ -58,7 +58,7 @@ exports.postLogin = (req, res, next) => {
             if (err) { return next(err); }
             // https://github.com/auth0/node-jsonwebtoken contains example with another algorithm. TODO: compare and choose
             req.token = jwt.sign({
-                id: req.user.id,
+                id: req.user.id
             }, env.SESSION_SECRET, {
                 expiresIn: '12h'
             });
@@ -97,7 +97,7 @@ exports.postSignup = (req, res, next) => {
                     return next(err);
                 }
                 req.token = jwt.sign({
-                    id: req.user.id,
+                    id: req.user.id
                 }, env.SESSION_SECRET, {
                     expiresIn: '12h'
                 });

@@ -1,14 +1,14 @@
 'use strict';
 
-// Authentication routes
+// Authorization routes
 
 const router = require('express').Router;
 const localAuth = require('./../services/auth/strategies/local.auth');
-const authService = require('./../services/auth/auth.service');
+const strategies = require('./../services/auth/strategies');
 
-authService.init();
+strategies.init();
 
 module.exports = router()
     .post('local/signup', localAuth.postSignup)
     .post('/local/login', localAuth.postLogin)
-    .get('/logout', authService.logout);
+    .get('/logout', strategies.logout);

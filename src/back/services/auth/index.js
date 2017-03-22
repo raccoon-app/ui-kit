@@ -1,1 +1,0 @@
-module.exports = require('./auth.service.js');

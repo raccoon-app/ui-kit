@@ -3,7 +3,7 @@
 const router = require('express').Router;
 const jwt = require('jsonwebtoken');
 const Project = require('./../models/Project');
-const auth = require('./../services/auth');
+const auth = require('./../services/auth/auth.middleware');
 const STATUS = require('./../common/const').STATUS;
 
 module.exports = router()
