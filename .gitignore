@@ -7,5 +7,10 @@
 log/*.log
 tmp/**
 node_modules/
-dist/build
+dist/
 coverage/
+
+!.local-db/
+.local-db/*
+!.local-db/.gitkeep
+.env

@@ -1,0 +1,75 @@
+.header {
+    align-items: center;
+    flex: 0 0 $headerHeight;
+    display: flex;
+    position: relative;
+    background: $headerBgColor;
+    box-shadow: 0 2px 7px 0 rgba($black,0.30);
+    z-index: 9990;
+
+    &__logo {
+        flex: 0 0 4rem;
+        order: 1;
+        height: 1.375em;
+        background: url(../img/epam_logo@2x.png) no-repeat center center;
+        background-size: 64px 22px;
+        margin: 0 $defaultMargin*1.5 0 $defaultMargin;
+        text-indent: -9999px;
+    }
+
+    &__btn {
+        background: $primaryBgColor;
+        font-weight: 600;
+        padding: 4px 12px 4px 10px;
+        border: 0;
+        font-size: 16px;
+        float: left;
+        display: block;
+        height: 32px;
+    }
+}
+
+.breadcrumbs {
+    display: flex;
+    flex: 1 1 auto;
+    order: 2;
+    align-items: center;
+    font-size: em(14px);
+    font-weight: $semibold;
+    text-transform: uppercase;
+    transition: all 500ms ease;
+
+    &__link,
+    &__item {
+        color: $primaryHeadingColor;
+        display: inline-block;
+        font-weight: inherit;
+    }
+
+    &__delimiter {
+        color: $secondaryHeadingColor;
+        font-size: em(12px);
+        margin: 0 10px;
+    }
+}
+
+.artboard-info {
+    display: inline-block;
+    font-weight:normal;
+    text-transform: none;
+
+    &__title {
+        color: $white;
+        font-size: inherit;
+        font-weight: inherit;
+        display: inline;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    &__subtitle {
+        color: $secondaryHeadingColor;
+        padding: 0 5px;
+    }
+}

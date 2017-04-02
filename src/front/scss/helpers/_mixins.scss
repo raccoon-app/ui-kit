@@ -1,0 +1,14 @@
+@mixin retina-background($double, $triple) {
+  @media screen and (min-device-pixel-ratio: 2) {
+    background-image: url($double);
+  }
+
+  @media screen and (min-device-pixel-ratio: 3) {
+    background-image: url($triple);
+  }
+}
+
+// converts pixels to EMs
+@function em($px, $base: $baseFontSize) {
+    @return ($px / $base) * 1em;
+}
