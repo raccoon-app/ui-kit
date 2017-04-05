@@ -3,7 +3,7 @@ Raccoon App is a tool to measuring and getting styles of layouts design
 
 ### Latest version of app online
 
-<a href="https://raccoon-app-ui-kit.herokuapp.com/">Online version</a>
+<a href="http://raccoon-app.github.io/ui-kit/dist/release/">Online version</a>
 ---------
 
 ## Main npm scripts
