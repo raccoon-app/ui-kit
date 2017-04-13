@@ -4,8 +4,8 @@ import SettingControlButton from './SettingControlButton';
 import classnames from 'classnames';
 
 class SettingPanel extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             isOpened: false,
         };

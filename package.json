@@ -72,6 +72,7 @@
     "css-loader": "^0.23.1",
     "csscomb-loader": "0.0.2",
     "dotenv": "^2.0.0",
+    "enzyme": "2.8.0",
     "eslint": "^2.10.2",
     "eslint-config-airbnb": "^6.2.0",
     "eslint-loader": "^1.3.0",
@@ -83,7 +84,8 @@
     "glob": "^7.0.3",
     "html-webpack-plugin": "^2.14.0",
     "import-glob-loader": "^1.1.0",
-    "jest-cli": "^13.1.1",
+    "jest-cli": "19.0.2",
+    "jest-enzyme": "3.0.1",
     "mocha": "^3.2.0",
     "node-sass": "^3.4.2",
     "nodemon": "^1.9.1",
@@ -100,11 +102,18 @@
     "webpack-dev-server": "^1.14.1"
   },
   "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/node_modules/jest-enzyme/lib/index.js",
+    "transform": {
+      ".*": "<rootDir>/node_modules/babel-jest"
+    },
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/"
     ],
-    "testPathDirs": [
-      "<rootDir>/src/js/"
-    ]
+    "roots": [
+      "<rootDir>/src/front/js/"
+    ],
+    "moduleNameMapper": {
+      "\\.(svg)$": "<rootDir>/src/front/js/__mocks__/fileMock.js"
+    }
   }
 }

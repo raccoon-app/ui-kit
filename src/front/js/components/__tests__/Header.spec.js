@@ -4,7 +4,7 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import { Header } from '../Header';
 
-describe('Header', () => {
+xdescribe('Header', () => {
 
     it('should have title', () => {
         const container = <Header name="test title" />;
