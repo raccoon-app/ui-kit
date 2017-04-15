@@ -40,6 +40,7 @@ class RadioColorSwitcher extends Component {
 
     render() {
         const { optionList, title, type } = this.props;
+
         const list = optionList.map((option, index) => (
                 <li key = { index } className="radio-color-switcher__item">
                     <button
