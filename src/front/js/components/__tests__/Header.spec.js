@@ -15,7 +15,7 @@ describe('Header', () => {
 
     it('should have only header info', () => {
         const props = {
-            headerInfo: <Header/>//TODO mockElement
+            headerInfo: <br/>
         };
         wrapper = shallow(<Header {...props} />);
         expect(wrapper.find('.breadcrumbs__item').length).toEqual(1);
@@ -24,9 +24,8 @@ describe('Header', () => {
     it('should have both name and header info', () => {
         const props = {
             name: 'name',
-            headerInfo: <Header/>//TODO mockElement
+            headerInfo: <br/>
         };
-        console.log(wrapper.find('.breadcrumbs__item').length);
         wrapper = shallow(<Header {...props} />);
         expect(wrapper.find('.breadcrumbs__item').length).toEqual(2);
     });

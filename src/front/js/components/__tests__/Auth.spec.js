@@ -6,7 +6,7 @@ import LoginScreen from "../Auth";
 describe('Auth', () => {
     let wrapper;
     const props = {
-        formLogin: jest.fn(() => console.log(123)),
+        formLogin: jest.fn(),
         epamLogin: jest.fn()
     };
 
