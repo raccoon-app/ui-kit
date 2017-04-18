@@ -1,0 +1,9 @@
+language: node_js
+
+script:
+  - npm run test:front
+  - npm run test:backend
+
+cache:
+  directories:
+    - node_modules
