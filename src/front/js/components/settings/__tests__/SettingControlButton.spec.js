@@ -1,40 +1,32 @@
-/**
- * Created by Viktoriia_Goncharuk on 7/28/2016.
- */
-jest.unmock('../SettingControlButton');
-jest.unmock('../../../actions/setting');
-
-import React from 'react';
-import TestUtils from 'react-addons-test-utils';
-import SettingControlButton from '../SettingControlButton';
-import { toggleSettingPanel } from '../../../actions/settingPanelActions';
-import { TOGGLE_SETTING_PANEL } from '../../../constants/ActionTypes';
+import React from "react";
+import SettingControlButton from "../SettingControlButton";
+import { shallow } from "enzyme";
 
 describe('Setting Control Button appearance', () => {
     let props;
-    let output;
-    let renderer;
+    let wrapper;
 
     beforeEach(() => {
         props = {
-            onClick: toggleSettingPanel,
+            onClick: jest.fn(),
             ref: 'settingControlBtn',
             class: 'setting-control-btn',
         };
-        renderer = TestUtils.createRenderer();
-        renderer.render(<SettingControlButton {...props} />);
-        output = renderer.getRenderOutput();
+
+        wrapper = shallow(<SettingControlButton {...props} />)
     });
 
-    it('Should display Control Button', () => {
-        expect(output.ref).toBe(props.ref);
-        expect(output.props.className).toContain(props.class);
+    it('should have proper ref on display Control Button', () => {
+        expect(wrapper.find('div').node.ref).toBe(props.ref);
     });
 
-    it('Should be triggered toggleSettingPanel action on buttonn click', () => {
-        TestUtils.Simulate.click(output.ref);
-        expect(props.onClick()).toEqual({
-            type: TOGGLE_SETTING_PANEL,
-        });
+    it('should have proper class name', () => {
+        expect(wrapper.find('div').node.props.className).toContain(props.class);
     });
+
+    it('Should be trigger onClick action on button click', () => {
+        wrapper.find('div').simulate('click');
+        expect(props.onClick).toHaveBeenCalled();
+    });
+
 });
