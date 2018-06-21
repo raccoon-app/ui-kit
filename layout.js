@@ -4,7 +4,7 @@ const path = require('path');
 
 const
     srcDir = path.join(__dirname, 'src/front'),
-    distDir = path.join(__dirname, 'front/dist');
+    distDir = path.join(__dirname, 'dist');
 
 module.exports = {
     envFilePath: path.join(__dirname, '.env'),
