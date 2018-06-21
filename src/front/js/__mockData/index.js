@@ -1,20 +1,21 @@
 export const projectList = [
     {
-        _id: 'rccn',
-        url: 'http://mokhovyk.com/racoon_source/raccon',
+        _id: 'rcnw',
+        url: 'http://mokhovyk.com/racoon_content/raccon_new/',
         title: 'Raccoon',
         image: 'http://mokhovyk.com/racoon_content/raccoon.png'
     },
     {
+        _id: 'rccn',
+        url: 'http://mokhovyk.com/racoon_content/raccon/',
+        title: 'Raccoon old version',
+        image: 'http://mokhovyk.com/racoon_content/raccoon.png'
+    },
+    {
         _id: 'tstp',
-        url: 'http://mokhovyk.com/racoon_source/raccon_test',
+        url: 'http://mokhovyk.com/racoon_content/raccon_test/',
         title: 'Test Project',
         image: 'http://mokhovyk.com/racoon_content/test-project.png'
     },
-    {
-        _id: 'wthr',
-        url: 'http://design.oweather.net/oWeather/',
-        title: 'oWeather',
-        image: 'http://mokhovyk.com/racoon_content/oweather.png'
-    },
+
 ];
